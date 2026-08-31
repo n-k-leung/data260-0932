@@ -6,7 +6,7 @@ class ModelClient:
         self.client=ollama.Client(host=base_url)
     def complete(self,messages,tools=None):
         response=self.client.chat(model=self.model, messages=messages,tools=tools)
-        input_tokens=response.get("promp_eval_count",0)
+        input_tokens=response.get("prompt_eval_count",0)
         output_tokens=response.get("eval_count",0)
         return{
             "content":response["message"]["content"],
