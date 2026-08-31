@@ -1,0 +1,182 @@
+[
+  {
+    "run": 1,
+    "tags": [
+      "toys safety",
+      "silicone toys",
+      "plastic alternatives"
+    ],
+    "latency_ms": 20288
+  },
+  {
+    "run": 2,
+    "tags": [
+      "toy safety",
+      "material innovation",
+      "parent preferences"
+    ],
+    "latency_ms": 25147
+  },
+  {
+    "run": 3,
+    "tags": [
+      "material comparison",
+      "toys safety",
+      "tactile design"
+    ],
+    "latency_ms": 25557
+  },
+  {
+    "run": 4,
+    "tags": [
+      "silicon toys safety",
+      "plastic toy alternatives",
+      "toys material innovation"
+    ],
+    "latency_ms": 26445
+  },
+  {
+    "run": 5,
+    "tags": [
+      "silicone toys safety",
+      "plastic vs silicone",
+      "soft toy materials"
+    ],
+    "latency_ms": 32026
+  },
+  {
+    "run": 6,
+    "tags": [
+      "silicone vs plastic toys",
+      "toy safety comparison",
+      "soft toy materials"
+    ],
+    "latency_ms": 40280
+  },
+  {
+    "run": 7,
+    "tags": [
+      "toy safety",
+      "silicone toys",
+      "plastic alternatives"
+    ],
+    "latency_ms": 27016
+  },
+  {
+    "run": 8,
+    "tags": [
+      "child safety",
+      "material comparison",
+      "toys safety"
+    ],
+    "latency_ms": 27520
+  },
+  {
+    "run": 9,
+    "tags": [
+      "toys safety",
+      "silicone materials",
+      "plastic alternatives"
+    ],
+    "latency_ms": 20673
+  },
+  {
+    "run": 10,
+    "tags": [
+      "toys safety",
+      "silicone vs plastic",
+      "parent preference"
+    ],
+    "latency_ms": 33116
+  },
+  {
+    "run": 11,
+    "tags": [
+      "toys safety",
+      "silicone texture",
+      "parent appeal"
+    ],
+    "latency_ms": 33870
+  },
+  {
+    "run": 12,
+    "tags": [
+      "silicone toys",
+      "plastic alternatives",
+      "toys safety"
+    ],
+    "latency_ms": 24045
+  },
+  {
+    "run": 13,
+    "tags": [
+      "toys material comparison",
+      "child safety in toys",
+      "soft toy materials"
+    ],
+    "latency_ms": 28824
+  },
+  {
+    "run": 14,
+    "tags": [
+      "toys material comparison",
+      "child safety toys",
+      "flexible toy materials"
+    ],
+    "latency_ms": 23861
+  },
+  {
+    "run": 15,
+    "tags": [
+      "material comparison",
+      "safety benefits",
+      "tactile appeal"
+    ],
+    "latency_ms": 23953
+  },
+  {
+    "run": 16,
+    "tags": [
+      "toys safety",
+      "silicone toys",
+      "plastic alternatives"
+    ],
+    "latency_ms": 24826
+  },
+  {
+    "run": 17,
+    "tags": [
+      "toy safety",
+      "silicone toys",
+      "plastic alternatives"
+    ],
+    "latency_ms": 28449
+  },
+  {
+    "run": 18,
+    "tags": [
+      "toys safety",
+      "silicone benefits",
+      "sensory play"
+    ],
+    "latency_ms": 27354
+  },
+  {
+    "run": 19,
+    "tags": [
+      "toys safety",
+      "silicone benefits",
+      "plastic alternatives"
+    ],
+    "latency_ms": 30192
+  },
+  {
+    "run": 20,
+    "tags": [
+      "silicone toy safety",
+      "plastic toy alternatives",
+      "toys material comparison"
+    ],
+    "latency_ms": 25536
+  }
+]

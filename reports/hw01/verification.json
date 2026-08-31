@@ -1,0 +1,46 @@
+{
+   "timestamp": "2026-08-31T17:37:56.868631+00:00",
+   "overall_stat": "PASS",
+   "checks": [
+      {
+         "check": "AGENT.md exists at github repo",
+         "passed": true,
+         "detail": ""
+      },
+      {
+         "check": "src/model_client.py exists at github repo",
+         "passed": true,
+         "detail": ""
+      },
+      {
+         "check": "code/hw1_client.py exists at github repo",
+         "passed": true,
+         "detail": ""
+      },
+      {
+         "check": "code/agents_demo.py exists at github repo",
+         "passed": true,
+         "detail": ""
+      },
+      {
+         "check": "code/web_application/index.html exists at github repo",
+         "passed": true,
+         "detail": ""
+      },
+      {
+         "check": "code/web_application/package_vulnerabilities.js exists at github repo",
+         "passed": true,
+         "detail": ""
+      },
+      {
+         "check": "AGENT.md needs to say bullet point formating",
+         "passed": true,
+         "detail": "mentions bullet point format"
+      },
+      {
+         "check": "Ollama server if connected or not",
+         "passed": true,
+         "detail": "Ollama is open and can be connected to"
+      }
+   ]
+}

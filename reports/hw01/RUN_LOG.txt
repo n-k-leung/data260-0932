@@ -1,0 +1,277 @@
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\code> docker build -t my-web-app .                                                  
+>> docker run -d -p 8032:80 --name my-web-app-container my-web-app   
+[+] Building 0.5s (8/8) FINISHED                                                                                                              docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                                                                          0.0s
+ => => transferring dockerfile: 170B                                                                                                                          0.0s
+ => [internal] load metadata for docker.io/library/nginx:alpine                                                                                               0.2s
+ => [internal] load .dockerignore                                                                                                                             0.0s
+ => => transferring context: 2B                                                                                                                               0.0s
+ => [1/3] FROM docker.io/library/nginx:alpine@sha256:db35bfc6b2951e7f8a72db5db120288c127ffaeeb4a6d4b95a26fead017d5913                                         0.0s
+ => => resolve docker.io/library/nginx:alpine@sha256:db35bfc6b2951e7f8a72db5db120288c127ffaeeb4a6d4b95a26fead017d5913                                         0.0s
+ => [internal] load build context                                                                                                                             0.0s
+ => => transferring context: 209B                                                                                                                             0.0s
+ => CACHED [2/3] RUN rm -rf /usr/share/nginx/html/*                                                                                                           0.0s
+ => CACHED [3/3] COPY . /usr/share/nginx/html/                                                                                                                0.0s
+ => exporting to image                                                                                                                                        0.1s
+ => => exporting layers                                                                                                                                       0.0s
+ => => exporting manifest sha256:b4d6bd25263af8b3c931ee6f4127bdda50c38175488c4fa95f2de3ae61bfb453                                                             0.0s
+ => => exporting config sha256:69dbaa56e13128938bb495a1c6cb1a6ffe8a42f6661dc18b9586ae13f86c345f                                                               0.0s
+ => => exporting attestation manifest sha256:b4ddc0724819705bc1035799f4f33718be822f4acc2b0b71c403db7409fa61fe                                                 0.0s
+ => => exporting manifest list sha256:d7cb83b9909413037202274f14411678b12972bdf461af5b11d1b7a440042737                                                        0.0s
+ => => naming to docker.io/library/my-web-app:latest                                                                                                          0.0s
+ => => unpacking to docker.io/library/my-web-app:latest                                                                                                       0.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/d0zcoh23rlfglh8a4cdce72eq
+0fd5502fd5a9207acbc5ce39b4dcabd062de99a176552b0068a89c2e2daca316
+
+PS C:\WINDOWS\system32> aws login
+No AWS region has been configured. The AWS region is the geographic location of your AWS resources.
+
+If you have used AWS before and already have resources in your account, specify which region they were created in. If you have not created resources in your account before, you can pick the region closest to you: https://docs.aws.amazon.com/global-infrastructure/latest/regions/aws-regions.html.
+
+You are able to change the region in the CLI at any time with the command "aws configure set region NEW_REGION".
+AWS Region [us-east-1]: us-east-1
+Attempting to open your default browser. If the browser does not open, open the following URL.
+If you are unable to open the URL on this device, run this command again with the '--remote' option.
+
+https://us-east-1.signin.aws.amazon.com/v1/authorize?response_type=code&client_id=arn%3Aaws%3Asignin%3A%3A%3Adevtools%2Fsame-device&state=a2575571-df91-4ed5-b61d-096e61e80bb5&code_challenge_method=SHA-256&scope=openid&redirect_uri=http%3A%2F%2F127.0.0.1%3A65505%2Foauth%2Fcallback&code_challenge=NYy9JEqiFTqTqamUBs7azUtQbd8W6-isCImSQHNeZVc
+
+
+Updated profile default to use arn:aws:iam::872302839503:root credentials.
+PS C:\WINDOWS\system32> aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 872302839503.dkr.ecr.us-east-1.amazonaws.com
+Login Succeeded
+docker tag my-web-app:latest 872302839503.dkr.ecr.us-east-1.amazonaws.com/my-web-app:latest
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\code> docker push 872302839503.dkr.ecr.us-east-1.amazonaws.com/my-web-app:latest
+The push refers to repository [872302839503.dkr.ecr.us-east-1.amazonaws.com/my-web-app]
+c3ffca85b626: Pushed 
+44136fa355b3: Pushed 
+d94291c26261: Pushed 
+55afa1ecc21d: Pushed 
+0ea935727878: Pushed 
+0d62d88506ba: Pushed 
+1ed8e39a7434: Pushed 
+8cdfe4f23778: Pushed 
+da4dea1b00af: Pushed 
+fb597529c916: Pushed 
+2ee81bd86624: Pushed 
+d33ebb2c248a: Pushed 
+latest: digest: sha256:abdffb0a258215106183cabc1f95a2c212c8310ef5aa6a271ed4a4484de7a9a4 size: 856
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> ollama serve        
+Error: listen tcp 127.0.0.1:11434: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> ollama pull qwen3:8b
+pulling manifest 
+pulling a3de86cd1c13: 100% ▕████████████████████████████████████████████▏ 5.2 GB                         
+pulling ae370d884f10: 100% ▕████████████████████████████████████████████▏ 1.7 KB                         
+pulling d18a5cc71b84: 100% ▕████████████████████████████████████████████▏  11 KB                         
+pulling cff3f395ef37: 100% ▕████████████████████████████████████████████▏  120 B                         
+pulling 05a61d37b084: 100% ▕████████████████████████████████████████████▏  487 B                         
+verifying sha256 digest 
+writing manifest 
+success 
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\code> python .\agents_demo.py --title "Slicon VS Plastic Toys" --content "Many toys now lean away from plastic as silicon provides a fun new texture. Its flexible structure and softness are more appealing to parents as there are less risk of their child being hurt by these toys." --email "test@sjsu.edu" --strict
+
+--- Planner (16640 ms) ---
+{
+  "thought": "Identified key topics: material comparison, child safety, and texture appeal. Formulated relevant tags and a concise summary.",
+  "message": "Tags and summary created based on the blog's focus on silicon vs. plastic toys, safety, and material properties.",
+  "data": {
+    "tags": [
+      "silicon vs plastic toys",
+      "child safety in toys",
+      "flexible toy materials"
+    ],
+    "summary": "Silicon toys offer a safer, softer alternative to plastic, appealing to parents due to their flexibility and reduced injury risk.",
+    "issues": []
+  }
+}
+
+--- Planner (9820 ms) ---
+{
+  "thought": "Identified key topics: material comparison, child safety, and texture appeal. Formulated relevant tags and a concise summary.",
+  "message": "Tags and summary created based on the blog's focus on silicon vs. plastic toys, safety, and material properties.",
+  "data": {
+    "tags": [
+      "silicon vs plastic toys",
+      "child safety in toys",
+      "flexible toy materials"
+    ],
+    "summary": "Silicon toys offer a safer, softer alternative to plastic, appealing to parents due to their flexibility and reduced injury risk.",
+    "issues": []
+  }
+}
+
+ Finalized Output 
+{
+  "thought": "Finalizing tags and summary based on material comparison, safety focus, and tactile properties emphasized in the blog.",
+  "message": "Tags and summary reflect the blog's emphasis on silicone's safety advantages and material characteristics over plastic toys.",
+  "data": {
+    "tags": [
+      "silicone vs plastic toys",
+      "toy safety materials",
+      "flexible toy materials"
+    ],
+    "summary": "Silicone toys offer safer, softer alternatives to plastic, appealing to parents due to reduced injury risks.",
+    "issues": []
+  }
+}
+
+ Publish Package 
+{
+  "title": "Slicon VS Plastic Toys",
+  "email": "test@sjsu.edu",
+  "content": "Many toys now lean away from plastic as silicon provides a fun new texture. Its flexible structure and softness are more appealing to parents as there are less risk of their child being hurt by these toys.",
+  "agents": {
+    "transcript": [
+      {
+        "role": "Planner",
+        "content": "Tags and summary created based on the blog's focus on silicon vs. plastic toys, safety, and material properties."
+      },
+      {
+        "role": "Reviewer",
+        "content": "Tags and summary created based on the blog's focus on silicon vs. plastic toys, safety, and material properties."
+      }
+    ],
+    "final": {
+      "tags": [
+        "silicone vs plastic toys",
+        "toy safety materials",
+        "flexible toy materials"
+      ],
+      "summary": "Silicone toys offer safer, softer alternatives to plastic, appealing to parents due to reduced injury risks.",
+      "issues": []
+    }
+  },
+  "submissionDate": "2026-08-d07:23:4507:23:45Z"
+}
+
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\code> python .\nondeterminism.py
+temp=0.7 run=1/20
+temp=0.7 run=2/20
+temp=0.7 run=3/20
+temp=0.7 run=4/20
+temp=0.7 run=5/20
+temp=0.7 run=6/20
+temp=0.7 run=7/20
+temp=0.7 run=8/20
+temp=0.7 run=9/20
+temp=0.7 run=10/20
+temp=0.7 run=11/20
+temp=0.7 run=12/20
+temp=0.7 run=13/20
+temp=0.7 run=14/20
+temp=0.7 run=15/20
+temp=0.7 run=16/20
+temp=0.7 run=17/20
+temp=0.7 run=18/20
+temp=0.7 run=19/20
+temp=0.7 run=20/20
+temp=0.0 run=1/20
+temp=0.0 run=2/20
+temp=0.0 run=3/20
+temp=0.0 run=4/20
+temp=0.0 run=5/20
+temp=0.0 run=6/20
+temp=0.0 run=7/20
+temp=0.0 run=8/20
+temp=0.0 run=9/20
+temp=0.0 run=10/20
+temp=0.0 run=11/20
+temp=0.0 run=12/20
+temp=0.0 run=13/20
+temp=0.0 run=14/20
+temp=0.0 run=15/20
+temp=0.0 run=16/20
+temp=0.0 run=17/20
+temp=0.0 run=18/20
+temp=0.0 run=19/20
+temp=0.0 run=20/20
+
+Metrics table
+'Metric' | 'Temp 0.7' | 'Temp 0.0'
+Distinct tag sets | 17 | 2
+Tags in all 20 runs | [] | ['silicone toys']
+Tags in exactly 1 run | ['child safety', 'child safety in toys', 'child safety toys', 'flexible toy materials', 'material innovation', 'parent appeal', 'parent preference', 'parent preferences', 'plastic vs silicone', 'safety benefits', 'sensory play', 'silicon toys safety', 'silicone materials', 'silicone texture', 'silicone toy safety', 'silicone toys safety', 'silicone vs plastic', 'silicone vs plastic toys', 'tactile appeal', 'tactile design', 'toy safety comparison', 'toys material innovation'] | ['plastic alternatives', 'toy safety']
+Latency p50 (ms) | 26730.5 | 27078.0
+Latency p95 (ms) | 39959.5 | 27411.45
+Latency p99 (ms) | 45343.9 | 27454.29
+Done
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> ollama serve        
+Error: listen tcp 127.0.0.1:11434: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> ollama pull qwen3:8b
+pulling manifest 
+pulling a3de86cd1c13: 100% ▕████████████████████████████████████████████▏ 5.2 GB                         
+pulling ae370d884f10: 100% ▕████████████████████████████████████████████▏ 1.7 KB                         
+pulling d18a5cc71b84: 100% ▕████████████████████████████████████████████▏  11 KB                         
+pulling cff3f395ef37: 100% ▕████████████████████████████████████████████▏  120 B                         
+pulling 05a61d37b084: 100% ▕████████████████████████████████████████████▏  487 B                         
+verifying sha256 digest 
+writing manifest 
+success 
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\code> python .\hw1_client.py
+Type code to review, /stats for stats, or /exit to stop the program
+you> def divide(a,b):   if b=0:         x=0     else:           x=a/b
+assistant> - Syntax error: Using = instead of == in the if condition  
+- Missing return statement  
+- Division by zero if b is zero (but the code checks for b=0, which is incorrect)
+[turn 1] | input_tokens=0 | output_tokens=777 | totak_tokens=777
+you> /stats
+
+[/stats] turns=1 total_input_tokens=0 total_output_tokens=777 chars=754
+
+you> /exit
+
+Ending stats: turns=1 | total_in_tokens=0 | total_out_tokens=777
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\code> python .\verify_hw01.py
+{
+   "timestamp": "2026-08-31T17:37:56.868631+00:00",
+   "overall_stat": "PASS",
+   "checks": [
+      {
+         "check": "AGENT.md exists at github repo",
+         "passed": true,
+         "detail": ""
+      },
+      {
+         "check": "src/model_client.py exists at github repo",
+         "passed": true,
+         "detail": ""
+      },
+      {
+         "check": "code/hw1_client.py exists at github repo",
+         "passed": true,
+         "detail": ""
+      },
+      {
+         "check": "code/agents_demo.py exists at github repo",
+         "passed": true,
+         "detail": ""
+      },
+      {
+         "check": "code/web_application/index.html exists at github repo",
+         "passed": true,
+         "detail": ""
+      },
+      {
+         "check": "code/web_application/package_vulnerabilities.js exists at github repo",
+         "passed": true,
+         "detail": ""
+      },
+      {
+         "check": "AGENT.md needs to say bullet point formating",
+         "passed": true,
+         "detail": "mentions bullet point format"
+      },
+      {
+         "check": "Ollama server if connected or not",
+         "passed": true,
+         "detail": "Ollama is open and can be connected to"
+      }
+   ]
+}
+done

@@ -10,7 +10,7 @@ git clone https://github.com/n-k-leung/data260-0932
 
 ## Running Vulnerability Form on Docker
 1. Open Docker
-2. Change directory to be 
+2. Change directory to be code
 3. Run the following commands to build and run the docker image
 
 docker build -t my-web-app .    
@@ -21,3 +21,26 @@ docker run -d -p 8032:80 --name my-web-app-container my-web-app
 5. To view the console on this site, you can click F12 and click the Console tab. This updates when you submit to the form.
 
 ## AWS ECS
+
+## Agentic AI
+1. Change directory to be code
+2. Run the following command 
+python .\agents_demo.py --title "Slicon VS Plastic Toys" --content "Many toys now lean away from plastic as silicon provides a fun new texture. Its flexible structure and softness are more appealing to parents as there are less risk of their child being hurt by these toys." --email "test@sjsu.edu" --strict
+
+## Measuring Non-Determinism
+1. Change directory to be code
+2. Run the following command
+python run nondeterminism.py
+
+## Model Client and Token Accounting
+1. Change directory to be code
+2. Run the following command
+python .\hw1_client.py
+// example code to try is def divide(a,b):   if b=0:         x=0     else:           x=a/b
+// note: paste code as one line
+
+## Verifying all files
+1. Change directory to be code
+2. Run the following command
+python .\verify_hw01.py
+

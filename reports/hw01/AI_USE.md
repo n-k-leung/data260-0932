@@ -1,0 +1,5 @@
+Questions Answers
+1. I used an AI assistant to help with regex functions. When working on the non determinism part 3. I had difficulty extracting just the finialized output. I was unfamilar with regex. After attempting to get the finialized output, I was able to get the output but it cut off strangly at quotes or commas due to the structure. I was able to get around 40% of the correct output. I used AI assistent to help me fix my regex formula.
+2. I was able to independtly verify the regex formula my manually going through it along with using w3school website. I also ran it through my code and checked it three times to confirm the AI assient output was correct. I did have to make some adjustments because it seemed to not get correctly the summary when there are periods within the summary.
+3. I was able to detect the problem when I ran the code and checked the files under raw as  well as the output metrics table. I used a smaller set of rerunning the agents_demo.py pipeline 5 times instead of 20 and manually checking. I verified it manually by looking through the outputs and made the neccessary adjustments and verification it was correct afterword.
+4. 
