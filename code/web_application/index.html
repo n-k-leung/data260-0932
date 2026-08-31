@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<meta charset = "UTF-8"/>
+<meta name = "viewport" content="width=device-width, initial-scale=1.0"/>
+<title> HW-Natalie Leung </title>
+<style>
+body{
+    font-family:Arial, sans-serif;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 300px;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+}
+
+h1{
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 10px;
+    border-bottom: 2px solid #4CAF50;
+}
+
+h2{
+    color: #555;
+    margin-top: 40px;
+}
+
+form{
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+label{
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+input:focus, select:focus, textarea:focus{
+    border-color: #4CAF50;
+    outline:none;
+}
+
+.checkbox{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom: 15px;
+}
+.checkbox input{
+    width:auto;
+    margin:0;
+}
+
+.checkbox label{
+    margin:0;
+    font-weight: normal;
+}
+
+button{
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 30px;
+    border:none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin:20px auto 0;
+}
+
+button:hover{
+    background-color: #4CAF50;
+}
+
+#vulList{
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+#vulList li{
+    background: #f9f9f9;
+    margin: 10px 0;
+    padding: 5px;
+    border-radius: 5px;
+    border-left: 4px solid #4CAF50;
+}
+#vulList button {
+    background-color: #ff4444;
+    margin: 10px 0 0 0;
+    padding: 8px 15px;
+    font-size: 14px;
+}
+#vulList button:hover{
+    background-color: #cc0000;
+}
+</style>
+</head>
+<body>
+    <h1>Open-Source Package Vulnerability Form</h1>
+    <form id="vulForm">
+        <label for="package">Package Name *</label><br/>
+        <input type="text" id ="package_name" placeholder="Full Open-Source Package Name (e.g Python npx module)" autofocus required /><br/><br/>
+
+        <label for="version">Version Number *</label><br/>
+        <input type="text" id ="version_num" placeholder="Version Number of the Package (e.g. 1.0.1)" required /><br/><br/>
+
+        <label for="source">Email *</label><br/>
+        <input type="email" id ="email_name" placeholder="last.first@gmail.com" required /><br/><br/>
+
+        <label for="problem">Vulnerability Problem *</label><br/>
+        <textarea id = "problem_note" rows="4" placeholder="Describe the vulnerability, the risk it causes for the system, and/or if the open-source package version is EOL (Must be at least 25 characters long)" required ></textarea><br/><br/>
+
+        <label for="vulSeverity">Vulnerability Severity Level *</label><br/>
+            <select id="severity_level" required>
+                <option value=""disabled selected>Choose</option>
+		        <option value="Critical Risk"selected>Critical Risk</option>
+                <option value="High Risk"selected>High Risk</option>
+                <option value="Medium Risk"selected>Medium Risk</option>
+                <option value="Low Risk"selected>Low Risk</option>
+            </select><br><br>
+        
+        <div class="checkbox">
+            <input type="checkbox" id="agreeTerms"/>
+            <label for="agreeTerms">I agree with the terms and conditions.</label>
+        </div>
+    <button type="submit">Submit Vulnerability</button>
+    </form>
+
+    <h2>Vulnerability Submissions</h2>
+    <ul id="vulList"></ul>
+
+    <script src="package_vulnerabilities.js"></script>
+</body>
+</html>
