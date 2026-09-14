@@ -58,6 +58,7 @@ a {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+
 .package-table {
     width: 80%;
     margin: 20px auto;
@@ -80,70 +81,4 @@ a {
 
 .package-table td {
     text-align: left;
-}
-
-.hidden{
-    display:none;
-}
-
-.state-message {
-    max-width: 500px;
-    margin: 20px auto;
-    padding:12px;
-    border-radius: 4px;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.state-message.error{
-    background-color: white;
-    color: red;
-}
-
-.spinner{
-    display:inline-block;
-    width:16px;
-    height:16px;
-    border:3px solid white;
-    border-top: 3pxx solid blue;
-    border: radius 50%;
-    animation:spin 1s linear infinite;
-    vertical-align:middle;
-}
-
-@keyframes spin{
-    to {
-        transform:rotate(360deg);
-    }
-}
-
-.table-wrapper{
-    width: 100%;
-    overflow-x:auto;
-}
-
-@media(max-width:375px){
-    body{
-        padding:8px;
-    }
-    
-    .heading{
-        font-size: 1.2em;
-    }
-
-    .actions-container{
-        max-width: 100%;
-        padding: 12px;
-    }
-
-    input, button{
-        width: 100%;
-        margin: 6px 0;
-        box-sizing: border-box;
-    }
-
-    .package-table{
-        width: 100%;
-        font-size: 0.9em;
-    }
 }

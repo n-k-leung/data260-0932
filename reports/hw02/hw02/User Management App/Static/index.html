@@ -12,27 +12,18 @@
     <h1 class="heading">Package Management App - REST API</h1>
 
     <h2>Packages List</h2>
-    <!-- loading, empty, and error state Section -->
-    <div id="loadingState" class="state-message hidden">
-        <span class="spinner"></span> Loading Packages
-    </div>
-    <div id="emptyState" class="state-message hidden"> No Packages Found</div>
-    <div id="errorState" class="state-message error hidden"></div>
-    
-    <div class="table-wrapper">
-        <table id="packageTable" class="package-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Package Name</th>
-                    <th>Severity</th>
-                </tr>
-            </thead>
-            <tbody id="packageTableBody">
-                <!-- Packages will be loaded here via JavaScript -->
-            </tbody>
-        </table>
-    </div>
+    <table id="packageTable" class="package-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Package Name</th>
+                <th>Severity</th>
+            </tr>
+        </thead>
+        <tbody id="packageTableBody">
+            <!-- Packages will be loaded here via JavaScript -->
+        </tbody>
+    </table>
 
     <!-- Search Package Section -->
     <div class="actions-container">
