@@ -11,7 +11,7 @@
 git clone https://github.com/n-k-leung/data260-0932
 
 # Running FastAPI
-1. Change directory to be reports/hw02/'Open Source Package Vul Management'
+1. Change directory to be reports/code/'Open Source Package Vul Management'
 2. Run the following command 
 
 python main.py

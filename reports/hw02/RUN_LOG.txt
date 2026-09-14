@@ -1,4 +1,4 @@
-PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw02\Open Source Package Vul Management App> python main.py
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\code\Open Source Package Vul Management App> python main.py
 INFO:     Started server process [6532]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
