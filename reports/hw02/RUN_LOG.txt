@@ -1,3 +1,176 @@
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw02\Open Source Package Vul Management App> python main.py
+INFO:     Started server process [6532]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8032 (Press CTRL+C to quit)
+INFO:     127.0.0.1:59102 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59102 - "GET /api/packages HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65363 - "GET /api/packages/search/nodejs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54698 - "GET /api/packages/search/nodejs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62996 - "GET /api/packages/search/nodejs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59989 - "GET /api/packages/search/nodejs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54698 - "GET /api/packages/search/nodejs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60473 - "GET /api/packages/search/test HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59992 - "GET /api/packages HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64722 - "GET /api/packages HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52975 - "GET /api/packages HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57717 - "GET /api/packages HTTP/1.1" 200 OK
+Deleted package: id=2 package_name='python' severity='Low'
+INFO:     127.0.0.1:64727 - "DELETE /api/packages/2 HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:64727 - "GET /api/packages HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56427 - "GET /api/packages HTTP/1.1" 200 OK
+Deleted package: id=1 package_name='nodejs' severity='High'
+INFO:     127.0.0.1:56427 - "DELETE /api/packages/1 HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:56427 - "GET /api/packages HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58797 - "GET /api/packages HTTP/1.1" 200 OK
+Created package: id=1 package_name='pip' severity='Low'
+INFO:     127.0.0.1:63872 - "POST /api/packages HTTP/1.1" 201 Created
+INFO:     127.0.0.1:63872 - "GET /api/packages HTTP/1.1" 200 OK
+Created package: id=2 package_name='javascript' severity='Critical'
+INFO:     127.0.0.1:64510 - "POST /api/packages HTTP/1.1" 201 Created
+INFO:     127.0.0.1:64510 - "GET /api/packages HTTP/1.1" 200 OK
+Updated package: id=1 package_name='pip3' severity='Medium'
+INFO:     127.0.0.1:51153 - "PUT /api/packages/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51153 - "GET /api/packages HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55786 - "GET /api/packages/search/pip3 HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [6532]
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> ollama serve
+Error: listen tcp 127.0.0.1:11434: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> ollama pull qwen3:8b
+pulling manifest 
+pulling a3de86cd1c13: 100% ▕████████████████████████████████████████████████▏ 5.2 GB                         
+pulling ae370d884f10: 100% ▕████████████████████████████████████████████████▏ 1.7 KB                         
+pulling d18a5cc71b84: 100% ▕████████████████████████████████████████████████▏  11 KB                         
+pulling cff3f395ef37: 100% ▕████████████████████████████████████████████████▏  120 B                         
+pulling 05a61d37b084: 100% ▕████████████████████████████████████████████████▏  487 B                         
+verifying sha256 digest 
+writing manifest 
+success 
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw02> python .\agent_graph.py
+
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Sustainable Living", "Eco-Friendly Practices", "Green Lifestyle"],
+  "summary": "Discover simple strategies to minimize environmental impact through everyday eco-conscious choices."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {
+  "tags": ["Sustainable Living", "Eco-Friendly Practices", "Green Lifestyle"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, reducing injury risks and promoting eco-conscious play for children."
+}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Sustainable Living", "Eco-Friendly Practices", "Green Home Tips"],
+  "summary": "Discover practical tips to adopt sustainable habits and reduce your environmental footprint at home."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 4, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Time Management", "Productivity Tips", "Work-Life Balance"],
+  "summary": "Learn strategies to prioritize tasks, reduce stress, and maintain efficiency while balancing personal and professional responsibilities."
+}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+
+Result
+Turn count:  5
+Planner tags  ['Time Management', 'Productivity Tips', 'Work-Life Balance']
+Planner summary:  Learn strategies to prioritize tasks, reduce stress, and maintain efficiency while balancing personal and professional responsibilities.
+Reviwer tags:  ['Sustainable Living', 'Eco-Friendly Practices', 'Green Lifestyle']
+Reviwer summary:  Silicone toys offer safer, flexible alternatives to plastic, reducing injury risks and promoting eco-conscious play for children.
+Changes made:  {True}
+
+
+Result using .stream() method
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+Stream step output:  {'supervisor': {'turn_count': 1}}
+
+
+--NODE: Planner ---
+Response:  {
+  "tags": ["Productivity Tips", "Time Management", "Work Efficiency"],
+  "summary": "Discover effective time management strategies to boost productivity and achieve work-life balance."
+}
+Stream step output:  {'planner': {'planner_proposal': {'tags': ['Productivity Tips', 'Time Management', 'Work Efficiency'], 'summary': 'Discover effective time management strategies to boost productivity and achieve work-life balance.'}}}
+
+
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+Stream step output:  {'supervisor': {'turn_count': 2}}
+
+
+--NODE: Reviewer ---
+Feedback:  {
+  "tags": ["Toy Safety", "Material Innovation", "Parental Preferences"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents for their softness and reduced injury risk."
+}
+Stream step output:  {'reviewer': {'reviewer_feedback': {'tags': ['Toy Safety', 'Material Innovation', 'Parental Preferences'], 'summary': 'Silicone toys offer safer, flexible alternatives to plastic, appealing to parents for their softness and reduced injury risk.', 'has_changes': {True}}}}
+
+
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+Stream step output:  {'supervisor': {'turn_count': 3}}
+
+
+--NODE: Planner ---
+Response:  {
+  "tags": ["Productivity Hacks", "Time Management", "Work Efficiency"],
+  "summary": "Learn practical tips to enhance productivity, manage time efficiently, and achieve work-life balance."
+}
+Stream step output:  {'planner': {'planner_proposal': {'tags': ['Productivity Hacks', 'Time Management', 'Work Efficiency'], 'summary': 'Learn practical tips to enhance productivity, manage time efficiently, and achieve work-life balance.'}}}
+
+
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 4, which is less than turn count limit 5
+Stream step output:  {'supervisor': {'turn_count': 4}}
+
+
+--NODE: Planner ---
+Response:  {
+  "tags": ["Time Management", "Productivity Tips", "Work-Life Balance"],
+  "summary": "Discover effective strategies to enhance productivity and achieve work-life balance through smart time management techniques."
+}
+Stream step output:  {'planner': {'planner_proposal': {'tags': ['Time Management', 'Productivity Tips', 'Work-Life Balance'], 'summary': 'Discover effective strategies to enhance productivity and achieve work-life balance through smart time management techniques.'}}}
+
+
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+Stream step output:  {'supervisor': {'turn_count': 5}}
+
+
 PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw02\User Management App> pip install fastapi
 Collecting fastapi
   Downloading fastapi-0.141.1-py3-none-any.whl.metadata (27 kB)
@@ -35,3 +208,2604 @@ Successfully installed click-8.5.0 uvicorn-0.52.4
 [notice] A new release of pip is available: 25.0.1 -> 26.2.1
 [notice] To update, run: python.exe -m pip install --upgrade pip
 
+
+
+
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw02> python .\part4.py
+
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Soft Toy Materials"],
+  "summary": "Silicon toys offer safer, softer alternatives to plastic, appealing to parents due to reduced injury risks and unique texture."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Soft Toy Materials"], "summary": "Silicon toys provide safer, softer alternatives to plastic, reducing injury risks and offering a unique texture appealing to parents."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Innovation", "Child Safety Toys", "Silicon vs Plastic Comparison"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Innovation", "Child Safety Toys", "Silicon vs Plastic Comparison"], "summary": "Silicon toys provide safer, flexible alternatives to plastic, attracting parents with reduced injury risks and soft textures."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 1/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Silicone Toy Advantages", "Plastic Toy Alternatives", "Child Safety in Play"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Silicone Toy Advantages", "Plastic Toy Alternatives", "Child Safety in Play"], "summary": "Silicone toys provide safer, flexible options compared to plastic, with soft textures reducing injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Innovation", "Child Safety in Toys", "Silicone vs. Plastic Comparison"],
+  "summary": "Silicone toys are replacing plastic due to their soft, flexible texture, offering safer play options for children."
+}
+Validation parsing error:  1 validation error for PlannerOutput
+tags
+  Value error, tag 'Silicone vs. Plastic Comparison' must be 3-30 characters [type=value_error, input_value=['Toys Material Innovatio...vs. Plastic Comparison'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Silicone Toys", "Plastic Alternatives"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents due to their softness and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Silicone Toys", "Plastic Alternatives"], "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents due to their softness and reduced injury risk."}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to end
+run 2/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Comparison", "Child Safety in Toys", "Innovative Toy Materials"],
+  "summary": "Silicon toys offer safer, softer alternatives to plastic, appealing to parents with reduced injury risks and unique texture."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Comparison", "Child Safety in Toys", "Innovative Toy Materials"], "summary": "Silicon toys provide safer, softer options compared to plastic, reducing injury risks and offering a unique tactile experience."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Eco-Friendly Toys"],
+  "summary": "Silicon toys are preferred over plastic for their soft, flexible texture and reduced injury risk, making them safer for children."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Eco-Friendly Toys"], "summary": "Silicon toys offer a safer, flexible alternative to plastic with a softer texture, reducing injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 3/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety Materials", "Silicone Toy Advantages", "Plastic Toy Alternatives"],
+  "summary": "Toys are shifting from plastic to silicone for safer, flexible, and softer options that appeal to parents."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety Materials", "Silicone Toy Advantages", "Plastic Toy Alternatives"], "summary": "Toys are shifting from plastic to silicone for safer, flexible, and softer options that appeal to parents."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+run 4/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Comparison", "Child Safety Toys", "Plastic Replacement Trends"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents due to their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Comparison", "Child Safety Toys", "Plastic Replacement Trends"], "summary": "Silicone toys provide safer, flexible alternatives to plastic, reducing injury risks and appealing to parents with their soft texture."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Child-Friendly Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Child-Friendly Design"], "summary": "Silicon toys provide safer, flexible options compared to plastic, with soft textures that reduce injury risks and appeal to parents."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 5/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Innovation", "Child Safety Toys", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, softer alternatives to plastic, appealing to parents due to reduced injury risks and flexible design."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Innovation", "Child Safety Toys", "Flexible Toy Design"], "summary": "Silicon toys offer safer, softer alternatives to plastic, appealing to parents due to reduced injury risks and flexible design."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+run 6/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Parental Preferences"],
+  "summary": "Silicon toys are gaining popularity over plastic due to their softness, flexibility, and enhanced safety for children."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Parental Preferences"], "summary": "Silicon toys are gaining popularity over plastic due to their softness, flexibility, and enhanced safety for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+run 7/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"],
+  "summary": "Silicone toys replace plastic for safer, flexible play with reduced injury risks."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"], "summary": "Silicone toys replace plastic for safer, flexible play with reduced injury risks."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+run 8/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Safe Toy Alternatives", "Plastic vs. Silicone"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risks."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Safe Toy Alternatives", "Plastic vs. Silicone"], "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risks."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+run 9/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Safety", "Silicone Toys", "Plastic Alternatives"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents due to their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Safety", "Silicone Toys", "Plastic Alternatives"], "summary": "Silicone toys provide safer, flexible options over plastic, with soft textures reducing injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Comparison", "Child Safety in Toys", "Silicone Toy Advantages"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Comparison", "Child Safety in Toys", "Silicone Toy Advantages"], "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 10/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety Materials", "Eco-Friendly Toy Alternatives", "Soft Toy Innovation"],
+  "summary": "Silicon toys are gaining popularity as safer, flexible, and soft alternatives to plastic, preferred by parents for reduced injury risks."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety Materials", "Eco-Friendly Toy Alternatives", "Soft Toy Innovation"], "summary": "Silicon toys offer safer, flexible, and soft options for children, reducing injury risks and appealing to parents seeking non-plastic alternatives."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Toy Safety Comparison", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Toy Safety Comparison", "Flexible Toy Design"], "summary": "Silicon toys provide safer, flexible options over plastic, with soft textures reducing injury risks and appealing to parents."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 11/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"], "summary": "Silicone toys provide safer, flexible alternatives to plastic, reducing injury risks and offering a soft, appealing texture for parents."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Silicone vs. Plastic Comparison"],
+  "summary": "Silicone toys are gaining popularity over plastic due to their soft, flexible texture and enhanced child safety."
+}
+Validation parsing error:  1 validation error for PlannerOutput
+tags
+  Value error, tag 'Silicone vs. Plastic Comparison' must be 3-30 characters [type=value_error, input_value=['Toy Material Innovation...vs. Plastic Comparison'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Child-Friendly Toys"],
+  "summary": "Silicone toys are gaining popularity over plastic due to their softness, flexibility, and enhanced safety for children."
+}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Child-Friendly Toys"], "summary": "Silicone toys are gaining popularity over plastic due to their softness, flexibility, and enhanced safety for children."}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to end
+run 12/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Parent Appeal"],
+  "summary": "Silicon toys are replacing plastic due to their soft, flexible design, offering safer play options for children with reduced injury risks."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {
+  "tags": ["Toy Safety", "Material Innovation", "Parent Appeal"],
+  "summary": "Silicon toys are replacing plastic due to their soft, flexible design, offering safer play options for children with reduced injury risks."
+}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+run 13/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Safety-Focused Design", "Eco-Conscious Alternatives"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Safety-Focused Design", "Eco-Conscious Alternatives"], "summary": "Silicon toys provide safer, flexible alternatives to plastic, offering parents softer textures and lower injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Soft Toy Design"],
+  "summary": "Silicon toys are gaining popularity over plastic due to their safer, flexible, and soft design, appealing to parents concerned about child safety."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Soft Toy Design"], "summary": "Silicon toys are replacing plastic due to safer, flexible, and soft designs, appealing to safety-conscious parents."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 14/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Safety", "Material Innovation", "Plastic vs. Silicone Toys"],
+  "summary": "Silicone toys offer safer, softer alternatives to plastic, reducing injury risks and appealing to parents with their flexible texture."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {
+  "tags": ["Toys Safety", "Material Innovation", "Plastic vs. Silicone Toys"],
+  "summary": "Silicone toys provide safer, softer alternatives to plastic, reducing injury risks and appealing to parents with their flexible texture."
+}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"],
+  "summary": "Silicon toys replace plastic due to their soft, flexible design, enhancing child safety and appeal."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"], "summary": "Silicon toys offer safer, flexible alternatives to plastic, prioritizing child safety and tactile appeal."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 15/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Comparison", "Plastic vs Silicone Toys", "Child Safety in Toy Design"],
+  "summary": "Toys are shifting from plastic to silicone for safer, softer, and more flexible play options, appealing to parents."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Comparison", "Plastic vs Silicone Toys", "Child Safety in Toy Design"], "summary": "Toys are transitioning to silicone for safer, softer, and flexible alternatives, prioritizing parental concerns."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Comparison", "Child Safety in Toys", "Soft Toy Materials"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Comparison", "Child Safety in Toys", "Soft Toy Materials"], "summary": "Silicon toys provide safer, flexible options compared to plastic, with soft textures and lower injury risks appealing to parents."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 16/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Safety", "Material Innovation", "Child-Friendly Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Safety", "Material Innovation", "Child-Friendly Design"], "summary": "Silicon toys provide safer, flexible alternatives to plastic, offering soft textures and lower injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"],
+  "summary": "Silicon toys are replacing plastic due to their soft, flexible texture and reduced injury risk for children."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"], "summary": "Silicon toys are gaining popularity as safer alternatives to plastic, offering softness and flexibility for children."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 17/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Comparison", "Safety in Toys", "Sensory Play Materials"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Comparison", "Safety in Toys", "Sensory Play Materials"], "summary": "Silicon toys provide safer, flexible options compared to plastic, with soft textures that reduce injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Comparison", "Safe Toy Alternatives", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with reduced injury risks and unique texture."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Comparison", "Safe Toy Alternatives", "Flexible Toy Design"], "summary": "Silicon toys provide safer, flexible options compared to plastic, reducing injury risks and offering a unique tactile experience for children."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 18/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety Considerations", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, softer alternatives to plastic, appealing to parents with reduced injury risks and unique texture."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety Considerations", "Flexible Toy Design"], "summary": "Silicon toys provide safer, softer options for children, reducing injury risks and offering a unique tactile experience."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety Toys", "Flexible Toy Design"],
+  "summary": "Toys are shifting to silicone for safer, softer playthings with reduced injury risks."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety Toys", "Flexible Toy Design"], "summary": "Toys are transitioning to silicone for safer, softer options with lower injury risks."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 19/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Safe Toy Alternatives", "Plastic vs. Silicone"],
+  "summary": "Toys are shifting from plastic to silicone for safer, flexible, and soft alternatives, appealing to parents due to reduced injury risks."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Safe Toy Alternatives", "Plastic vs. Silicone"], "summary": "Toys are shifting from plastic to silicone for safer, flexible, and soft alternatives, appealing to parents due to reduced injury risks."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+run 20/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Comparison", "Child Safety Toys", "Silicone Toy Advantages"],
+  "summary": "Toys are transitioning from plastic to silicone, offering safer, flexible, and soft play options for children."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Comparison", "Child Safety Toys", "Silicone Toy Advantages"], "summary": "Toys are transitioning from plastic to silicone, offering safer, flexible, and soft play options for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+run 21/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"],
+  "summary": "Silicone toys offer safer, softer alternatives to plastic, reducing injury risks and appealing to parents seeking safer play options."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"], "summary": "Silicone toys provide safer, flexible alternatives to plastic, offering a softer texture that reduces injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Safe Play Materials", "Plastic Toy Alternatives"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks and soft texture."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Safe Play Materials", "Plastic Toy Alternatives"], "summary": "Silicone toys provide safer, flexible alternatives to plastic, reducing injury risks and offering a soft, appealing texture for parents."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 22/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"],
+  "summary": "Silicone toys are replacing plastic due to their soft, flexible design, offering safer play options for children."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"], "summary": "Silicone toys are replacing plastic due to their soft, flexible design, offering safer play options for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+run 23/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Sensory Play"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Sensory Play"], "summary": "Silicon toys provide safer, flexible alternatives to plastic, appealing to parents with their soft texture and lower injury risk."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Materials"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Materials"], "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to their soft texture and reduced injury risk."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 24/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Safety", "Material Innovation", "Child-Friendly Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Safety", "Material Innovation", "Child-Friendly Design"], "summary": "Silicon toys provide safer, flexible options over plastic, with soft textures reducing injury risks and appealing to parents."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Silicon Toys Comparison", "Child Safety Toys", "Soft Texture Toys"],
+  "summary": "Silicon toys provide safer, flexible alternatives to plastic, offering a soft texture that appeals to parents and reduces injury risks."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Silicon Toys Comparison", "Child Safety Toys", "Soft Texture Toys"], "summary": "Silicon toys offer safer, flexible alternatives to plastic with a soft texture, appealing to parents and minimizing injury risks."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 25/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, with softer textures that reduce injury risks for children."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"], "summary": "Silicon toys provide safer, flexible options compared to plastic, with softer textures lowering injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Comparison", "Child Safety in Toys", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Comparison", "Child Safety in Toys", "Flexible Toy Design"], "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 26/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"], "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+run 27/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Shift", "Safety in Toy Design", "Flexible Toy Texture"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Shift", "Safety in Toy Design", "Flexible Toy Texture"], "summary": "Silicone toys provide safer, flexible options compared to plastic, with softer textures reducing injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Silicone Toys", "Plastic Alternatives"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Silicone Toys", "Plastic Alternatives"], "summary": "Silicone toys provide safer, flexible alternatives to plastic, offering parents a softer option with lower injury risk."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+run 28/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Silicone Toy Advantages"],
+  "summary": "Silicone toys are replacing plastic for their soft, flexible design and improved child safety."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Silicone Toy Advantages"], "summary": "Silicone toys are replacing plastic for their soft, flexible design and improved child safety."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+run 29/30
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety Toys", "Silicone vs. Plastic"],
+  "summary": "Silicone toys provide safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {
+  "tags": ["Toy Material Innovation", "Child Safety Toys", "Silicone vs. Plastic"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and lower injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Safety in Toy Design", "Child-Friendly Toy Alternatives"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks and soft texture."
+}
+Validation parsing error:  1 validation error for PlannerOutput
+tags
+  Value error, tag 'Child-Friendly Toy Alternatives' must be 3-30 characters [type=value_error, input_value=['Toy Material Innovation...endly Toy Alternatives'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Child-Friendly Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Child-Friendly Design"], "summary": "Silicon toys provide safer, flexible alternatives to plastic with softer textures and lower injury risks, attracting parent attention."}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to end
+run 30/30
+Saved outputs to schema_validation_runs.csv
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks and soft texture."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"], "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks and soft texture."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 1/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Silicone vs Plastic Comparison"],
+  "summary": "Silicone toys are gaining popularity over plastic due to their soft, flexible texture and enhanced safety for children."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Silicone vs Plastic Comparison"], "summary": "Silicone toys are gaining popularity over plastic due to their soft, flexible texture and enhanced safety for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 2/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Soft Toy Alternatives"],
+  "summary": "Silicon toys offer safer, softer alternatives to plastic, reducing injury risks and appealing to parents."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Soft Toy Alternatives"], "summary": "Silicon toys provide safer, softer options compared to plastic, lowering injury risks and attracting parent interest."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 3/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Innovation", "Child Safety in Toys", "Silicon vs Plastic Comparison"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Innovation", "Child Safety in Toys", "Silicon vs Plastic Comparison"], "summary": "Silicon toys provide safer, flexible options over plastic, reducing injury risks and appealing to parents seeking softer, durable playthings."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 4/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risk and unique texture."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"], "summary": "Silicon toys provide safer, flexible options over plastic, offering parents reduced injury risks and a unique tactile experience."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 5/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Eco-Friendly Materials", "Child-Friendly Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Eco-Friendly Materials", "Child-Friendly Design"], "summary": "Silicon toys provide safer, flexible options over plastic, with soft textures reducing injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 6/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Comparison", "Child Safety Toys", "Flexible Toy Materials"],
+  "summary": "Silicon toys are gaining popularity over plastic due to their soft, flexible design and enhanced safety for children."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Comparison", "Child Safety Toys", "Flexible Toy Materials"], "summary": "Silicon toys are becoming preferred over plastic for their soft, flexible design and improved safety for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 7/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Safety", "Silicone Toys", "Plastic vs Silicone"],
+  "summary": "Silicone toys are replacing plastic due to their soft, flexible design and reduced injury risk for children."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Safety", "Silicone Toys", "Plastic vs Silicone"], "summary": "Silicone toys are gaining popularity for their safety, soft texture, and lower risk of injury compared to plastic alternatives."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 8/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Parental Preference"],
+  "summary": "Silicon toys offer safer, softer alternatives to plastic, appealing to parents due to their flexibility and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Parental Preference"], "summary": "Silicon toys provide safer, more flexible options than plastic, appealing to parents with their softness and lower injury risk."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 9/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Comparison", "Child Safety Toys", "Soft Toy Innovation"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Comparison", "Child Safety Toys", "Soft Toy Innovation"], "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to their soft texture and reduced injury risk."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 10/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic vs Silicone Toys"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic vs Silicone Toys"], "summary": "Silicone toys provide safer, flexible alternatives to plastic, offering parents softer textures and lower injury risks."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 11/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Comparison", "Child Safety Toys", "Silicon Toy Advantages"],
+  "summary": "Toys are shifting from plastic to silicon for its soft, flexible texture, offering safer play options for children."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Comparison", "Child Safety Toys", "Silicon Toy Advantages"], "summary": "Toys are shifting from plastic to silicon for its soft, flexible texture, offering safer play options for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 12/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Safety", "Silicone Toys", "Plastic Alternatives"],
+  "summary": "Toys are shifting from plastic to silicone for safer, flexible, and soft textures appealing to parents."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Safety", "Silicone Toys", "Plastic Alternatives"], "summary": "Toys are moving toward silicone for safer, flexible, and soft options that parents find more appealing."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 13/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Eco-Friendly Toys"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, reducing injury risks and appealing to parents."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Eco-Friendly Toys"], "summary": "Silicon toys provide safer, flexible alternatives to plastic, minimizing injury risks and attracting parent interest."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 14/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"], "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 15/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents due to their softness and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"], "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents due to their softness and reduced injury risk."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 16/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety Innovations", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, softer alternatives to plastic, appealing to parents with reduced injury risks and unique tactile experience."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety Innovations", "Flexible Toy Design"], "summary": "Silicone toys provide safer, softer options for children, reducing injury risks and offering a novel tactile experience."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 17/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Comparison", "Child Safety Toys", "Flexible Toy Materials"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to their softness and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Comparison", "Child Safety Toys", "Flexible Toy Materials"], "summary": "Silicon toys provide safer, flexible options compared to plastic, with soft textures reducing injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 18/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Safety in Toy Design", "Silicone vs. Plastic Toys"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks and unique texture."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Safety in Toy Design", "Silicone vs. Plastic Toys"], "summary": "Silicone toys provide safer, flexible alternatives to plastic, offering parents a softer texture with lower injury risks."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 19/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Innovation", "Child Safety in Toys", "Silicon vs Plastic Comparison"],
+  "summary": "Toys are shifting from plastic to silicon for its soft, flexible texture, offering safer play options for children."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Innovation", "Child Safety in Toys", "Silicon vs Plastic Comparison"], "summary": "Toys are shifting to silicone for its soft, flexible texture, prioritizing child safety over traditional plastic materials."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 2 run 20/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Comparison", "Toy Safety Innovations", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Comparison", "Toy Safety Innovations", "Flexible Toy Design"], "summary": "Silicon toys provide safer, flexible options over plastic, with soft textures reducing injury risks and appealing to parents."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Innovation", "Child Safety in Toys", "Silicone vs Plastic Comparison"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Innovation", "Child Safety in Toys", "Silicone vs Plastic Comparison"], "summary": "Silicone toys provide safer, flexible alternatives to plastic, appealing to parents with their soft texture and lower injury risk."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 5, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Silicone Toys", "Plastic Alternatives"],
+  "summary": "Silicone toys are gaining popularity over plastic due to their soft, flexible texture and enhanced safety for children."
+}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Silicone Toys", "Plastic Alternatives"], "summary": "Silicone toys are becoming preferred over plastic for their soft, flexible texture and reduced injury risk for children."}
+--NODE: Supervisor ---
+Turn count: 7
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 7, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Comparison", "Toy Safety Materials", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 8
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Comparison", "Toy Safety Materials", "Flexible Toy Design"], "summary": "Silicon toys provide safer, flexible options compared to plastic, with soft textures reducing injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 9
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 9, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Innovation", "Child Safety Toys", "Silicone vs Plastic Comparison"],
+  "summary": "Silicone toys are gaining popularity over plastic due to their soft, flexible texture and enhanced child safety."
+}
+--NODE: Supervisor ---
+Turn count: 10
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Innovation", "Child Safety Toys", "Silicone vs Plastic Comparison"], "summary": "Silicone toys are rising in popularity for their soft texture and safer alternatives to plastic, appealing to parents seeking reduced injury risks."}
+--NODE: Supervisor ---
+Turn count: 11
+--Routing Logic---
+Routing to end
+ceiling 10 run 1/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Silicon vs. Plastic Toys", "Toy Safety Materials", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Silicon vs. Plastic Toys", "Toy Safety Materials", "Flexible Toy Design"], "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 10 run 2/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Safety", "Soft Toy Materials", "Parent Preferred Toys"],
+  "summary": "Blog discusses silicon toys' safer, softer texture as parents favor over plastic."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Safety", "Soft Toy Materials", "Parent Preferred Toys"], "summary": "Blog highlights silicon toys' safer, softer texture, preferred by parents over plastic."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Comparison", "Safety in Toy Design", "Innovations in Toy Manufacturing"],
+  "summary": "Silicone toys are gaining popularity over plastic due to their soft, flexible texture and enhanced safety for children."
+}
+Validation parsing error:  1 validation error for PlannerOutput
+tags
+  Value error, tag 'Innovations in Toy Manufacturing' must be 3-30 characters [type=value_error, input_value=['Toy Material Comparison...s in Toy Manufacturing'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Innovation", "Child Safety in Toys", "Silicon vs Plastic Comparison"],
+  "summary": "Silicon toys offer safer, softer alternatives to plastic, appealing to parents with their flexible, non-harmful design."
+}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Innovation", "Child Safety in Toys", "Silicon vs Plastic Comparison"], "summary": "Silicon toys provide safer, softer alternatives to plastic, appealing to parents with their flexible, non-toxic design."}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 6, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Playthings", "Silicone Toy Advantages"],
+  "summary": "Toys are shifting from plastic to silicone for safer, softer play. Flexible silicone reduces injury risk, appealing to parents."
+}
+--NODE: Supervisor ---
+Turn count: 7
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Playthings", "Silicone Toy Advantages"], "summary": "Toys transition to silicone for safer, softer play. Flexible material reduces injury risk, attracting parents."}
+--NODE: Supervisor ---
+Turn count: 8
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 8, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Silicon vs Plastic Comparison"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks and soft texture."
+}
+--NODE: Supervisor ---
+Turn count: 9
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Silicon vs Plastic Comparison"], "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks and soft texture."}
+--NODE: Supervisor ---
+Turn count: 10
+--Routing Logic---
+Routing to end
+ceiling 10 run 3/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, softer alternatives to plastic, reducing injury risks and enhancing child appeal."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"], "summary": "Silicon toys provide safer, softer options compared to plastic, lowering injury risks and improving child engagement."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Comparison", "Child Safety in Toys", "Silicone Toy Advantages"],
+  "summary": "Silicone toys offer safer, softer alternatives to plastic, reducing injury risks and providing a unique texture for children."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Comparison", "Child Safety in Toys", "Silicone Toy Advantages"], "summary": "Silicone toys provide safer, softer alternatives to plastic, minimizing injury risks and offering a distinct tactile experience for children."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 5, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic vs Silicone Toys"],
+  "summary": "Silicone toys offer a safer, softer alternative to plastic, appealing to parents due to their flexibility and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic vs Silicone Toys"], "summary": "Silicone toys provide a safer, softer alternative to plastic, reducing injury risks and appealing to parents with their flexible design."}
+--NODE: Supervisor ---
+Turn count: 7
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 7, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety Toys", "Plastic vs. Silicone Comparison"],
+  "summary": "Silicone toys offer safer, softer alternatives to plastic, reducing injury risks and appealing to parents."
+}
+Validation parsing error:  1 validation error for PlannerOutput
+tags
+  Value error, tag 'Plastic vs. Silicone Comparison' must be 3-30 characters [type=value_error, input_value=['Toy Material Innovation...s. Silicone Comparison'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+--NODE: Supervisor ---
+Turn count: 8
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Plastic vs. Silicone Comparison"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks and unique texture."
+}
+Validation parsing error:  1 validation error for PlannerOutput
+tags
+  Value error, tag 'Plastic vs. Silicone Comparison' must be 3-30 characters [type=value_error, input_value=['Toy Material Innovation...s. Silicone Comparison'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+--NODE: Supervisor ---
+Turn count: 9
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic vs. Silicone"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, prioritizing child safety and comfort through soft, non-harmful materials."
+}
+--NODE: Supervisor ---
+Turn count: 10
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic vs. Silicone"], "summary": "Silicone toys provide safer, flexible alternatives to plastic, enhancing child safety with soft, non-toxic materials."}
+--NODE: Supervisor ---
+Turn count: 11
+--Routing Logic---
+Routing to end
+ceiling 10 run 4/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"],
+  "summary": "Blog explores the shift from plastic to silicon toys, highlighting their flexible, soft texture and enhanced child safety."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"], "summary": "Blog highlights the trend toward silicone toys for their safety benefits and soft, flexible texture."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety Toys", "Plastic Alternatives"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their softness and lower injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety Toys", "Plastic Alternatives"], "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their softness and lower injury risk."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+ceiling 10 run 5/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, softer alternatives to plastic, providing flexible and appealing options for children."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"], "summary": "Silicon toys provide safer, softer alternatives to plastic, offering flexible and child-friendly designs."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety Toys", "Eco-Friendly Toy Alternatives"],
+  "summary": "Toys are shifting from plastic to silicone for its flexible, soft texture, offering safer play options for children."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety Toys", "Eco-Friendly Toy Alternatives"], "summary": "Toys are shifting from plastic to silicone for its flexible, soft texture, offering safer play options for children."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+ceiling 10 run 6/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Transition", "Safety in Toy Design", "Soft Texture Toys"],
+  "summary": "Silicon toys offer safer, softer alternatives to plastic, reducing injury risks and providing a unique tactile experience for children."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Transition", "Safety in Toy Design", "Soft Texture Toys"], "summary": "Silicon toys offer safer, softer alternatives to plastic, reducing injury risks and providing a unique tactile experience for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 10 run 7/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Silicone Toys", "Plastic vs. Silicone"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Silicone Toys", "Plastic vs. Silicone"], "summary": "Silicone toys provide safer, flexible options compared to plastic, with softer textures and lower injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"], "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+ceiling 10 run 8/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Comparison", "Safe Toy Design", "Plastic Alternatives for Kids"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks and soft texture."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Comparison", "Safe Toy Design", "Plastic Alternatives for Kids"], "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks and soft texture."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 10 run 9/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Comparison", "Child Safety in Toys", "Plastic vs Silicone Alternatives"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."
+}
+Validation parsing error:  1 validation error for PlannerOutput
+tags
+  Value error, tag 'Plastic vs Silicone Alternatives' must be 3-30 characters [type=value_error, input_value=['Toys Material Compariso... Silicone Alternatives'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Comparison", "Child Safety Toys", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Comparison", "Child Safety Toys", "Flexible Toy Design"], "summary": "Silicon toys provide safer, flexible options compared to plastic, with softer textures and lower injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 4, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Comparison", "Child Safety", "Material Innovation"],
+  "summary": "Silicon toys provide a safer, softer alternative to plastic, offering flexibility and reduced injury risk for children."
+}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Comparison", "Child Safety", "Material Innovation"], "summary": "Silicon toys offer a safer, softer alternative to plastic with flexibility and lower injury risk for children."}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 6, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Parental Preferences"],
+  "summary": "Silicon toys are gaining popularity over plastic due to their soft, flexible design and enhanced safety for children."
+}
+--NODE: Supervisor ---
+Turn count: 7
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Parental Preferences"], "summary": "Silicon toys are gaining popularity over plastic due to their soft, flexible design and enhanced safety for children."}
+--NODE: Supervisor ---
+Turn count: 8
+--Routing Logic---
+Routing to end
+ceiling 10 run 10/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Silicone Toy Advantages"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Silicone Toy Advantages"], "summary": "Silicone toys provide safer, flexible alternatives to plastic, appealing to parents with their soft texture and lower injury risk."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Materials Comparison", "Safe Toy Alternatives", "Child Safety in Toys"],
+  "summary": "Silicon toys offer a safer, softer alternative to plastic, appealing to parents with reduced injury risks and unique texture."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Materials Comparison", "Safe Toy Alternatives", "Child Safety in Toys"], "summary": "Silicon toys provide a safer, softer option compared to plastic, attracting parents due to lower injury risks and novel texture."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 5, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety Toys", "Flexible Toy Design"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks and soft texture."
+}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {
+  "tags": ["Toy Material Innovation", "Child Safety Toys", "Flexible Toy Design"],
+  "summary": "Silicone toys provide safer, flexible alternatives to plastic, reducing injury risks and offering a soft, appealing texture for children."
+}
+--NODE: Supervisor ---
+Turn count: 7
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 7, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Comparison", "Safe Toy Materials", "Plastic vs. Silicone Toys"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, reducing injury risks and appealing to parents with their soft texture."
+}
+--NODE: Supervisor ---
+Turn count: 8
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Comparison", "Safe Toy Materials", "Plastic vs. Silicone Toys"], "summary": "Silicone toys provide safer, flexible options over plastic, reducing injury risks and offering a softer, more appealing texture for parents."}
+--NODE: Supervisor ---
+Turn count: 9
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 9, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Safety", "Silicone Toy Benefits", "Plastic vs. Silicone Toys"],
+  "summary": "Silicone toys offer a safer, flexible alternative to plastic, providing a soft texture and reduced injury risk for children."
+}
+--NODE: Supervisor ---
+Turn count: 10
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Safety", "Silicone Toy Benefits", "Plastic vs. Silicone Toys"], "summary": "Silicone toys provide a safer, flexible alternative to plastic with softer textures and lower injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 11
+--Routing Logic---
+Routing to end
+ceiling 10 run 11/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic vs. Silicone Toys"],
+  "summary": "Silicone toys offer safer, softer alternatives to plastic, reducing injury risks and appealing to parents with their flexible texture."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic vs. Silicone Toys"], "summary": "Silicone toys provide safer, flexible alternatives to plastic, reducing injury risks and attracting parents with their soft texture."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Safety", "Silicone Toy Advantages", "Plastic vs. Silicone Comparison"],
+  "summary": "Toys are transitioning from plastic to silicone, offering safer, flexible, and softer options that appeal to parents due to reduced injury risks."
+}
+Validation parsing error:  1 validation error for PlannerOutput
+tags
+  Value error, tag 'Plastic vs. Silicone Comparison' must be 3-30 characters [type=value_error, input_value=['Toy Material Safety', '...s. Silicone Comparison'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Comparison", "Safe Toy Alternatives", "Parent-Friendly Toy Design"],
+  "summary": "Silicon toys offer safer, softer alternatives to plastic, appealing to parents due to reduced injury risks and unique texture."
+}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Comparison", "Safe Toy Alternatives", "Parent-Friendly Toy Design"], "summary": "Silicon toys provide safer, softer options compared to plastic, reducing injury risks and offering a unique tactile experience for children."}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 6, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Innovation", "Child Safety in Toys", "Silicon vs Plastic Comparison"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks."
+}
+--NODE: Supervisor ---
+Turn count: 7
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Innovation", "Child Safety in Toys", "Silicon vs Plastic Comparison"], "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks."}
+--NODE: Supervisor ---
+Turn count: 8
+--Routing Logic---
+Routing to end
+ceiling 10 run 12/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic vs. Silicone Toys"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic vs. Silicone Toys"], "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 10 run 13/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Silicone Toy Innovation", "Toy Safety Comparison", "Material Texture Trends"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Silicone Toy Innovation", "Toy Safety Comparison", "Material Texture Trends"], "summary": "Silicone toys provide safer, flexible options over plastic, with soft textures reducing injury risks and appealing to parents."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"],
+  "summary": "Silicone toys are gaining popularity over plastic due to their softness, flexibility, and enhanced safety for children."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"], "summary": "Silicone toys are gaining popularity over plastic due to their softness, flexibility, and enhanced safety for children."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to end
+ceiling 10 run 14/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Silicon Toy Advantages"],
+  "summary": "Silicon toys offer safer, softer alternatives to plastic, reducing injury risks and appealing to parents with their flexible design."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Silicon Toy Advantages"], "summary": "Silicon toys provide safer, softer alternatives to plastic, reducing injury risks and offering flexible designs that appeal to parents."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety Materials", "Silicone Toy Advantages", "Child-Safe Toy Options"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents due to their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {
+  "tags": ["Toy Safety Materials", "Silicone Toy Advantages", "Child-Safe Toy Options"],
+  "summary": "Silicone toys provide safer, flexible alternatives to plastic, with softer textures and lower injury risks, attracting parent interest."
+}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 5, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Plastic vs. Silicone Toys"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents for their softness and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Plastic vs. Silicone Toys"],
+  "summary": "Silicone toys provide safer, flexible alternatives to plastic, prioritizing child safety with reduced injury risks and soft textures."
+}
+--NODE: Supervisor ---
+Turn count: 7
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 7, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Comparison", "Child Safety Toys", "Flexible Toy Materials"],
+  "summary": "Silicon toys are gaining popularity over plastic due to their flexibility, softness, and enhanced safety for children."
+}
+--NODE: Supervisor ---
+Turn count: 8
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Comparison", "Child Safety Toys", "Flexible Toy Materials"], "summary": "Silicon toys are preferred for their safe, flexible, and soft properties, offering a safer alternative to traditional plastic toys."}
+--NODE: Supervisor ---
+Turn count: 9
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 9, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Innovation", "Child Safety in Toys", "Plastic Alternatives for Kids"],
+  "summary": "Toys are shifting from plastic to silicone for safer, flexible, and softer options, reducing injury risks for children."
+}
+--NODE: Supervisor ---
+Turn count: 10
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Innovation", "Child Safety in Toys", "Plastic Alternatives for Kids"], "summary": "Toys are transitioning to silicone for safer, flexible, and softer alternatives, minimizing injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 11
+--Routing Logic---
+Routing to end
+ceiling 10 run 15/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Child-Friendly Toys"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Child-Friendly Toys"], "summary": "Silicon toys provide safer, flexible options for children, combining soft texture with reduced injury risk compared to plastic."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, softer alternatives to plastic, reducing injury risks and appealing to parents with their flexible, child-friendly design."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Flexible Toy Design"], "summary": "Silicon toys provide safer, softer options compared to plastic, reducing injury risks and featuring flexible designs that appeal to parents."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 5, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Safety", "Silicone Toys", "Toys Material Innovation"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents for their softness and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Safety", "Silicone Toys", "Toys Material Innovation"], "summary": "Silicone toys provide safer, flexible alternatives to plastic, reducing injury risks and offering soft textures parents find appealing."}
+--NODE: Supervisor ---
+Turn count: 7
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 7, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to their softness and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 8
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Flexible Toy Design"], "summary": "Silicon toys provide safer, flexible options compared to plastic, with softer textures reducing injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 9
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 9, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety Innovations", "Material Comparison in Toys", "Flexible Toy Design"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 10
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety Innovations", "Material Comparison in Toys", "Flexible Toy Design"], "summary": "Silicone toys provide safer, flexible options compared to plastic, with soft textures and lower injury risks appealing to parents."}
+--NODE: Supervisor ---
+Turn count: 11
+--Routing Logic---
+Routing to end
+ceiling 10 run 16/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Comparison", "Child Safety Toys", "Flexible Toy Design"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Comparison", "Child Safety Toys", "Flexible Toy Design"], "summary": "Silicone toys provide safer, flexible alternatives to plastic, with soft textures reducing injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Child-Friendly Design"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Child-Friendly Design"], "summary": "Silicone toys provide safer, flexible options over plastic, with soft textures reducing injury risks and appealing to parents."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 5, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Comparison", "Silicon Toy Safety", "Plastic to Silicone Shift"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents for their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Comparison", "Silicon Toy Safety", "Plastic to Silicone Shift"], "summary": "Silicon toys provide safer, flexible options compared to plastic, with soft textures and lower injury risks, attracting parent interest."}
+--NODE: Supervisor ---
+Turn count: 7
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 7, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety Materials", "Silicone Toy Advantages", "Plastic vs. Silicone Toys"],
+  "summary": "Silicone toys offer safer, softer alternatives to plastic, reducing injury risks and providing a unique tactile experience for children."
+}
+--NODE: Supervisor ---
+Turn count: 8
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety Materials", "Silicone Toy Advantages", "Plastic vs. Silicone Toys"], "summary": "Silicone toys provide safer, softer options compared to plastic, minimizing injury risks and offering a distinct tactile experience for kids."}
+--NODE: Supervisor ---
+Turn count: 9
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 9, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Silicone Toy Advantages", "Plastic Toy Alternatives", "Toy Safety Innovations"],
+  "summary": "Silicone toys offer safer, softer alternatives to plastic, reducing injury risks and appealing to parents due to their flexibility and gentle texture."
+}
+--NODE: Supervisor ---
+Turn count: 10
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Silicone Toy Advantages", "Plastic Toy Alternatives", "Toy Safety Innovations"], "summary": "Silicone toys offer safer, softer alternatives to plastic, reducing injury risks and appealing to parents due to their flexibility and gentle texture."}
+--NODE: Supervisor ---
+Turn count: 11
+--Routing Logic---
+Routing to end
+ceiling 10 run 17/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Comparison", "Toy Safety Innovations", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, softer alternatives to plastic, appealing to parents with their flexible design and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Comparison", "Toy Safety Innovations", "Flexible Toy Design"], "summary": "Silicon toys provide safer, softer options compared to plastic, with flexible designs that reduce injury risks for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Safety", "Material Innovation", "Flexible Toy Design"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Safety", "Material Innovation", "Flexible Toy Design"], "summary": "Silicon toys provide safer, flexible options compared to plastic, with softer textures and lower injury risks, attracting parent interest."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 5, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Innovation", "Child Safety in Toys", "Silicone vs Plastic Comparison"],
+  "summary": "Silicone toys are gaining popularity over plastic due to their flexible, soft texture, offering safer play options for children."
+}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Innovation", "Child Safety in Toys", "Silicone vs Plastic Comparison"], "summary": "Silicone toys are gaining popularity over plastic due to their flexible, soft texture, offering safer play options for children."}
+--NODE: Supervisor ---
+Turn count: 7
+--Routing Logic---
+Routing to end
+ceiling 10 run 18/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Toy Safety Materials", "Soft Toy Alternatives"],
+  "summary": "Silicon toys offer a safer, softer alternative to plastic, providing flexible and appealing options for children."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Toy Safety Materials", "Soft Toy Alternatives"], "summary": "Silicon toys provide safer, flexible alternatives to plastic, offering a softer and more appealing option for children."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 3, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Safety", "Silicone Toy Benefits", "Plastic vs Silicone"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents due to reduced injury risks and soft texture."
+}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Safety", "Silicone Toy Benefits", "Plastic vs Silicone"], "summary": "Silicone toys provide safer, flexible alternatives to plastic, reducing injury risks and offering a softer texture for parents."}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 5, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Comparison", "Child Safety Toys", "Soft Toy Alternatives"],
+  "summary": "Silicon toys are gaining popularity over plastic due to their flexible, soft texture, offering safer alternatives for children."
+}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Comparison", "Child Safety Toys", "Soft Toy Alternatives"], "summary": "Silicon toys are becoming preferred over plastic for their safe, flexible texture, appealing to parents seeking safer play options."}
+--NODE: Supervisor ---
+Turn count: 7
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 7, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"],
+  "summary": "Silicon toys offer safer, flexible alternatives to plastic, appealing to parents due to their softness and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 8
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"], "summary": "Silicon toys provide safer, flexible alternatives to plastic, offering parents softer options with lower injury risk."}
+--NODE: Supervisor ---
+Turn count: 9
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 9, which is less than turn count limit 10
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety Considerations", "Plastic vs. Silicone Toys"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and reduced injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 10
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety Considerations", "Plastic vs. Silicone Toys"], "summary": "Silicone toys provide safer, flexible alternatives to plastic, offering soft textures that appeal to parents due to reduced injury risks."}
+--NODE: Supervisor ---
+Turn count: 11
+--Routing Logic---
+Routing to end
+ceiling 10 run 19/20 completed=True
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, reducing injury risks and appealing to parents with their soft texture."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Safety", "Material Innovation", "Plastic Alternatives"], "summary": "Silicone toys offer safer, flexible alternatives to plastic, reducing injury risks and appealing to parents with their soft texture."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+ceiling 10 run 20/20 completed=True
+Saved outputs to ceiling_comparision_runs.csv
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Dessert", "Pie", "Food"],
+  "summary": "Explains the nature and characteristics of pie as a dessert."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Dessert", "Pie", "Food"], "summary": "Explains the nature and characteristics of pie as a dessert."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+run1/5 run for valid_first_attempt
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Pie Recipes", "Baking", "Desserts"],
+  "summary": "Pie is a sweet dish made from a pastry crust filled with fruits, meats, or custard, often baked and served as a dessert or main course."
+}
+Validation parsing error:  1 validation error for PlannerOutput
+summary
+  Value error, summary must be max 25 words [type=value_error, input_value='Pie is a sweet dish made...dessert or main course.', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["AdversarialTesting", "SecurityAnalysis", "MachineLearning"],
+  "summary": "Exploring methods to detect and mitigate malicious inputs in AI systems."
+}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["AdversarialTesting", "SecurityAnalysis", "MachineLearning"], "summary": "Analyzing techniques to identify and counteract harmful inputs in artificial intelligence systems."}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 4, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Dessert", "Pastry", "Food"],
+  "summary": "Pie is a baked dish with a crust filled with sweet or savory ingredients like fruit, meat, or custard."
+}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Dessert", "Pastry", "Food"], "summary": "Pie is a baked dish with a crust filled with sweet or savory ingredients like fruit, meat, or custard."}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to end
+run2/5 run for valid_first_2plus_retries
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Dessert Recipes", "Baking Techniques", "Pie Varieties"],
+  "summary": "Pie is a baked dessert made from a pastry crust filled with ingredients like fruit, meat, or custard, often enjoyed as a sweet treat."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Dessert Recipes", "Baking Techniques", "Pie Varieties"], "summary": "Pie is a baked dessert made from a pastry crust filled with ingredients like fruit, meat, or custard, often enjoyed as a sweet treat."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+run3/5 run for valid_first_attempt
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Pie Explanation", "Food Description", "Bakery Basics"],
+  "summary": "Pie is a baked dessert with a crust filled with fruit, custard, or other ingredients."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Pie Explanation", "Food Description", "Bakery Basics"], "summary": "Pie is a baked dessert with a crust filled with fruit, custard, or other ingredients."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+run4/5 run for valid_first_attempt
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Food", "Dessert", "Culinary"],
+  "summary": "Pie is a baked dish with a dough base and fillings like fruit, meat, or custard."
+}
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Food", "Dessert", "Culinary"], "summary": "Pie is a baked dish with a dough base and fillings like fruit, meat, or custard."}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to end
+run5/5 run for valid_first_attempt
+Saved outputs to adversarial_runs.csv
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw02> python .\verify_hw02.py
+--NODE: Supervisor ---
+Turn count: 1
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Silicone Toy Advantages", "Plastic vs. Silicone Comparison", "Child Safety Materials"],
+  "summary": "Toys are transitioning from plastic to silicone for its flexible, soft texture, providing safer play options for children with reduced injury risks."
+}
+Validation parsing error:  1 validation error for PlannerOutput
+tags
+  Value error, tag 'Plastic vs. Silicone Comparison' must be 3-30 characters [type=value_error, input_value=['Silicone Toy Advantages...Child Safety Materials'], input_type=list]
+    For further information visit https://errors.pydantic.dev/2.13/v/value_error
+--NODE: Supervisor ---
+Turn count: 2
+--Routing Logic---
+Routing to planner because no planner proposal
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toy Material Innovation", "Child Safety in Toys", "Sensory Play Benefits"],
+  "summary": "Silicon toys are replacing plastic due to their soft, flexible texture and improved safety for children."
+}
+--NODE: Supervisor ---
+Turn count: 3
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toy Material Innovation", "Child Safety in Toys", "Sensory Play Benefits"], "summary": "Silicon toys offer safer, flexible alternatives to plastic, enhancing sensory experiences for children."}
+--NODE: Supervisor ---
+Turn count: 4
+--Routing Logic---
+Routing to back planner because reviewer made changes and turn count is 4, which is less than turn count limit 5
+--NODE: Planner ---
+Response:  {
+  "tags": ["Toys Material Shift", "Safe Toy Design", "Silicone Toy Advantages"],
+  "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and lower injury risk."
+}
+--NODE: Supervisor ---
+Turn count: 5
+--Routing Logic---
+Routing to reviewer because no reviewer feedback
+--NODE: Reviewer ---
+Feedback:  {"tags": ["Toys Material Shift", "Safe Toy Design", "Silicone Toy Advantages"], "summary": "Silicone toys offer safer, flexible alternatives to plastic, appealing to parents with their soft texture and lower injury risk."}
+--NODE: Supervisor ---
+Turn count: 6
+--Routing Logic---
+Routing to end
+{"sid4": "0932", "port_base": 8032, "prefix": "s0932", "seed": 932, "verify_seed": 260932, "domain_id": 4, "commit_hash": "github repo is unavailable", "model_config": "qwen8:3b", "timestamp": "2026-09-14T10:36:43", "checks": [{"name": "fastapi_responds", "detail": "http://localhost:8032/api/packages failed, HTTPConnectionPool(host='localhost', port=8032): Max retries exceeded with url: /api/packages (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=8032): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it\")), fastapi is not running on PORT_BASE 8032", "passed": false}, {"name": "langgraph_works_and_returns_three_tags", "detail": "finished time: 38132.607ms, attempts: 3, number of tags: 3", "passed": true}], "passed_all": false}
+ouput written to:  C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw02\verification.json
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw02> python .\output_metrics.py
+valid first attempt | 11 | 12692.4
+valid after 1 retry | 16 | 27454.5
+valid after 2+ retries | 3 | 28685.5
+hit turn ceiling | 0 | N/A

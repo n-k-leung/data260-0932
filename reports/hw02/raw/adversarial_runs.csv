@@ -1,0 +1,6 @@
+runs,outcome,hit_ceiling,elapsed_ms
+1,valid_first_attempt,False,15577.6
+2,valid_first_2plus_retries,False,49633.9
+3,valid_first_attempt,False,13124.0
+4,valid_first_attempt,False,16444.4
+5,valid_first_attempt,False,19733.0

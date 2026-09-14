@@ -6,8 +6,25 @@ document.addEventListener('DOMContentLoaded', () => {
     loadPackages();
 });
 
+function setState(state){
+    const loading=document.getElementById('loadingState');
+    const empty=document.getElementById('emptyState');
+    const error=document.getElementById('errorState');
+
+    loading.classList.add('hidden');
+    empty.classList.add('hidden');
+    error.classList.add('hidden');
+    if(state==='loading')
+        loading.classList.remove('hidden')
+    if(state==='empty')
+        empty.classList.remove('hidden')
+    if(state==='error')
+        error.classList.remove('hidden')
+}
+
 // Fetch and display all packages
 async function loadPackages() {
+    await new Promise(r => setTimeout(r, 2000));
     try {
         const response = await fetch(API_URL);
         if (!response.ok) {
@@ -16,6 +33,10 @@ async function loadPackages() {
 
         const packages = await response.json();
         displayPackages(packages);
+        if(packages.length ==0)
+            setState('empty');
+        else
+            setState(null)
     } catch (error) {
         console.error('Error loading packages:', error);
         alert('Failed to load packages');

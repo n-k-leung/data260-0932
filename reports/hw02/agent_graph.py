@@ -17,7 +17,7 @@ class AgentState(TypedDict):
     reviewer_feedback: Dict[str, Any]
     turn_count:int
 
-llm = ChatOllama(mode="qwen3:8b")
+llm = ChatOllama(model="qwen3:8b")
 
 def planner_node(state:AgentState) -> Dict[str,Any]:
     print("--NODE: Planner ---")
@@ -73,9 +73,9 @@ def reviewer_node(state:AgentState) -> Dict[str,Any]:
     #should see graph route the task back to planner
     # feedback["has_changes"] = True
     
-    feedback["has_changes"]={
+    feedback["has_changes"]=(
         feedback.get("tags") != state["planner_proposal"].get("tags") or feedback.get("summary") != state["planner_proposal"].get("summary")
-    }
+    )
     return {"reviewer_feedback": feedback}
 
 def supervisor_node(state:AgentState) -> Dict[str,Any]:
@@ -83,7 +83,7 @@ def supervisor_node(state:AgentState) -> Dict[str,Any]:
     print("--NODE: Supervisor ---")
     tc=state.get("turn_count",0) +1
     print("Turn count:", tc)
-    return {"turn count":tc}
+    return {"turn_count":tc}
 
 def router_logic(state:AgentState) -> Literal["planner", "reviewer", "end"]:
     #reads state and decide where to go next by return, a string 
@@ -100,7 +100,7 @@ def router_logic(state:AgentState) -> Literal["planner", "reviewer", "end"]:
         
     #check if reviewer made changes and turn limit is not exceeded to loop back to planner
     #part 4 test turn ceilings 2 and 10, test 5 for part 3 to see what happens
-    if state.get("reviewer_feedback", {}).get("has_changes") or state.get("turn_count",0) < 5:
+    if state.get("reviewer_feedback", {}).get("has_changes") and state.get("turn_count",0) < 5:
         print(f"Routing to back planner because reviewer made changes and turn count is {state.get('turn_count',0)}, which is less than turn count limit 5")
         return "planner"
     
@@ -161,7 +161,7 @@ def main():
     stream["turn_count"]=0
     
     #.stream() method called to see output from each step
-    for step in workflow_graph.stream(stream):
+    for step in compile.stream(stream):
         print("Stream step output: ", step)
         print("\n")
 

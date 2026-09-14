@@ -8,7 +8,7 @@ import uvicorn
 app = FastAPI(title="Package Management API", version="1.0.0")
 
 # Mount static files directory for serving HTML/CSS/JS
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/Static", StaticFiles(directory="Static"), name="Static")
 
 # Pydantic models for request/response validation
 class Package(BaseModel):
@@ -33,7 +33,7 @@ packages: List[Package] = [
 # Serve the main HTML page
 @app.get("/")
 async def read_root():
-    return FileResponse("static/index.html")
+    return FileResponse("Static/index.html")
 
 # REST API Endpoints
 

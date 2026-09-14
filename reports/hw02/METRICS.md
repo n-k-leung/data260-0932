@@ -1,0 +1,5 @@
+'outcome over 30 runs' | 'count' | 'mean latency (ms)'
+'valid first attempt' | '11' | '12692.4'
+'valid after 1 retry' | '16' | '27454.5'
+'valid after 2+ retries' | '3' | '28685.5'
+'hit turn ceiling '| '0' |' N/A'
