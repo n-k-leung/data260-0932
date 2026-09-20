@@ -46,12 +46,15 @@ def login_page(request: Request):
     the template can choose what to display.
     """
     user = request.session.get("user")
+    #implementing error message
+    error = request.session.pop("login_error", None)
 
     return templates.TemplateResponse(
         "login.html",
         {
             "request": request,
-            "user": user
+            "user": user,
+            "error": error
         }
     )
 
@@ -81,6 +84,7 @@ def login(request: Request, username: str = Form(...), password: str = Form(...)
     # NOTE:
     # No error message is shown intentionally.
     # Students are expected to add Bootstrap alerts.
+    request.session["login_error"] = "Invalid user or password"
     return RedirectResponse(
         url="/login",
         status_code=HTTP_302_FOUND

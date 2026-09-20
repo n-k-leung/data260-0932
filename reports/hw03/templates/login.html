@@ -31,7 +31,11 @@
 
           <!-- Intentionally no alert shown for invalid login.
                Students can add a Bootstrap Alert as an extra step. -->
-
+          {% if error %}
+            <div class="alert alert-danger">
+              <strong>Danger!</strong> Invalid user or password. Please login again.
+            </div>
+          {% endif %}
           <form method="post" action="/login">
             <div class="mb-3">
               <label class="form-label">Username</label>
