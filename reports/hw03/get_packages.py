@@ -22,7 +22,7 @@ def get_version(version):
     url=f"https://pypi.org/pypi/{version}/json"
     with urllib.request.urlopen(url) as r:
         return json.load(r)
-    
+#find the sha256 encoding    
 def get_sha(path):
     with open(path, "rb") as f:
         files_byte=f.read()

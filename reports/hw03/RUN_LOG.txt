@@ -1,3 +1,63 @@
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw03> python main.py
+INFO:     Will watch for changes in these directories: ['C:\\Users\\natal\\Documents\\masters\\fall 26\\data 260\\github\\data260-0932\\reports\\hw03']
+INFO:     Uvicorn running on http://127.0.0.1:8032 (Press CTRL+C to quit)
+INFO:     Started reloader process [9600] using StatReload
+INFO:     Started server process [27096]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:55465 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55465 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62501 - "GET /login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62503 - "POST /login HTTP/1.1" 302 Found
+INFO:     127.0.0.1:62503 - "GET /dashboard HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62504 - "GET /logout HTTP/1.1" 302 Found
+INFO:     127.0.0.1:62504 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62513 - "GET /dashboard HTTP/1.1" 302 Found
+INFO:     127.0.0.1:62513 - "GET /login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62515 - "GET /dashboard HTTP/1.1" 302 Found
+INFO:     127.0.0.1:62515 - "GET /login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62516 - "POST /login HTTP/1.1" 302 Found
+INFO:     127.0.0.1:62516 - "GET /login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62517 - "GET /logout HTTP/1.1" 302 Found
+INFO:     127.0.0.1:62517 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52580 - "GET /login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52582 - "GET /login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52600 - "POST /login HTTP/1.1" 302 Found
+INFO:     127.0.0.1:52600 - "GET /dashboard HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58674 - "GET /logout HTTP/1.1" 302 Found
+INFO:     127.0.0.1:58674 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64736 - "GET /dashboard HTTP/1.1" 302 Found
+INFO:     127.0.0.1:64736 - "GET /login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55543 - "POST /login HTTP/1.1" 302 Found
+INFO:     127.0.0.1:55543 - "GET /login HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [27096]
+INFO:     Stopping reloader process [9600]
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw03> python main.py
+INFO:     Will watch for changes in these directories: ['C:\\Users\\natal\\Documents\\masters\\fall 26\\data 260\\github\\data260-0932\\reports\\hw03']
+INFO:     Uvicorn running on http://127.0.0.1:8032 (Press CTRL+C to quit)
+INFO:     Started reloader process [17812] using StatReload
+INFO:     Started server process [18420]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:63583 - "GET /dashboard HTTP/1.1" 302 Found
+INFO:     127.0.0.1:63583 - "GET /login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63583 - "GET /login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63583 - "GET /login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63598 - "POST /login HTTP/1.1" 302 Found
+INFO:     127.0.0.1:63598 - "GET /dashboard HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63611 - "GET /dashboard HTTP/1.1" 302 Found
+INFO:     127.0.0.1:63611 - "GET /login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63615 - "GET /dashboard HTTP/1.1" 302 Found
+INFO:     127.0.0.1:63615 - "GET /login HTTP/1.1" 200 OK
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [10348]
+INFO:     Stopping reloader process [17812]
+
 PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> pip install llama_index
 Collecting llama_index
   Downloading llama_index-0.14.24-py3-none-any.whl.metadata (14 kB)
