@@ -1,0 +1,31 @@
+package: paramiko (version:paramiko/2.4.1)
+vulnerability count: 4
+
+id: PYSEC-2022-166
+aliases: CVE-2022-24302, GHSA-f8q4-jwww-x3wv
+summary: None
+details: In Paramiko before 2.10.1, a race condition (between creation and chmod) in the write_private_key_file function could allow unauthorized information disclosure.
+vulnerability fixed in versions: 2.9.3, 2.10.1
+links: 
+---------------------------
+id: GHSA-f2j6-wrhh-v25m
+aliases: CVE-2018-1000805, PYSEC-2018-69
+summary: None
+details: Paramiko version 2.4.1, 2.3.2, 2.2.3, 2.1.5, 2.0.8, 1.18.5, 1.17.6 contains a Incorrect Access Control vulnerability in SSH server that can result in RCE. This attack appear to be exploitable via network connectivity.
+vulnerability fixed in versions: 2.4.2, 2.3.3, 2.2.4, 2.1.6, 2.0.9
+links: 
+---------------------------
+id: GHSA-r374-rxx8-8654
+aliases: CVE-2026-44405, PYSEC-2026-2858
+summary: None
+details: In Paramiko through 4.0.0 before a448945, rsakey.py allows the SHA-1 algorithm.
+vulnerability fixed in versions: 
+links: 
+---------------------------
+id: PYSEC-2026-2858
+aliases: CVE-2026-44405, GHSA-r374-rxx8-8654
+summary: None
+details: In Paramiko through 4.0.0 before a448945, rsakey.py allows the SHA-1 algorithm.
+vulnerability fixed in versions: 
+links: 
+---------------------------

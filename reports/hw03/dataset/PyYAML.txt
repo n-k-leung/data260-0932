@@ -1,0 +1,31 @@
+package: PyYAML (version:pyyaml/5.3)
+vulnerability count: 4
+
+id: PYSEC-2020-96
+aliases: CVE-2020-1747, CVE-2025-50460, GHSA-6757-jp84-gxfx, GHSA-fm6c-f59h-7mmg
+summary: None
+details: A vulnerability was discovered in the PyYAML library in versions before 5.3.1, where it is susceptible to arbitrary code execution when it processes untrusted YAML files through the full_load method or with the FullLoader loader. Applications that use the library to process untrusted input may be vulnerable to this flaw. An attacker could use this flaw to execute arbitrary code on the system by abusing the python/object/new constructor.
+vulnerability fixed in versions: 5.3.1
+links: 
+---------------------------
+id: PYSEC-2021-142
+aliases: CVE-2020-14343, GHSA-8q59-q68h-6hv4
+summary: None
+details: A vulnerability was discovered in the PyYAML library in versions before 5.4, where it is susceptible to arbitrary code execution when it processes untrusted YAML files through the full_load method or with the FullLoader loader. Applications that use the library to process untrusted input may be vulnerable to this flaw. This flaw allows an attacker to execute arbitrary code on the system by abusing the python/object/new constructor. This flaw is due to an incomplete fix for CVE-2020-1747.
+vulnerability fixed in versions: 5.4
+links: 
+---------------------------
+id: GHSA-8q59-q68h-6hv4
+aliases: CVE-2020-14343, PYSEC-2021-142
+summary: None
+details: A vulnerability was discovered in the PyYAML library in versions before 5.4, where it is susceptible to arbitrary code execution when it processes untrusted YAML files through the full_load method or with the FullLoader loader. Applications that use the library to process untrusted input may be vulnerable to this flaw. This flaw allows an attacker to execute arbitrary code on the system by abusing the python/object/new constructor. This flaw is due to an incomplete fix for CVE-2020-1747.
+vulnerability fixed in versions: 5.4
+links: 
+---------------------------
+id: GHSA-6757-jp84-gxfx
+aliases: CVE-2020-1747, PYSEC-2020-96
+summary: None
+details: A vulnerability was discovered in the PyYAML library in versions before 5.3.1, where it is susceptible to arbitrary code execution when it processes untrusted YAML files through the full_load method or with the FullLoader loader. Applications that use the library to process untrusted input may be vulnerable to this flaw. An attacker could use this flaw to execute arbitrary code on the system by abusing the python/object/new constructor.
+vulnerability fixed in versions: 5.3.1
+links: 
+---------------------------

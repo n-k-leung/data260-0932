@@ -1,0 +1,155 @@
+package: Jinja2 (version:jinja2/2.4.1)
+vulnerability count: 18
+
+id: PYSEC-2014-82
+aliases: CVE-2014-0012, GHSA-fqh9-2qgg-h84h
+summary: None
+details: FileSystemBytecodeCache in Jinja2 2.7.2 does not properly create temporary directories, which allows local users to gain privileges by pre-creating a temporary directory with a user's uid.  NOTE: this vulnerability exists because of an incomplete fix for CVE-2014-1402.
+vulnerability fixed in versions: 2.7.3
+links: 
+---------------------------
+id: PYSEC-2014-8
+aliases: CVE-2014-1402, GHSA-8r7q-cvjq-x353
+summary: None
+details: The default configuration for bccache.FileSystemBytecodeCache in Jinja2 before 2.7.2 does not properly create temporary files, which allows local users to gain privileges via a crafted .cache file with a name starting with __jinja2_ in /tmp.
+vulnerability fixed in versions: 2.7.2
+links: 
+---------------------------
+id: PYSEC-2021-66
+aliases: CVE-2020-28493, SNYK-PYTHON-JINJA2-1012994, GHSA-g3rq-g295-4j3m
+summary: None
+details: This affects the package jinja2 from 0.0.0 and before 2.11.3. The ReDoS vulnerability is mainly due to the `_punctuation_re regex` operator and its use of multiple wildcards. The last wildcard is the most exploitable as it searches for trailing punctuation. This issue can be mitigated by Markdown to format user content instead of the urlize filter, or by implementing request timeouts and limiting process memory.
+vulnerability fixed in versions: 2.11.3
+links: 
+---------------------------
+id: PYSEC-2019-220
+aliases: CVE-2016-10745, GHSA-hj2j-77xm-mc5v
+summary: None
+details: In Pallets Jinja before 2.8.1, str.format allows a sandbox escape.
+vulnerability fixed in versions: 2.8.1
+links: 
+---------------------------
+id: PYSEC-2019-217
+aliases: CVE-2019-10906, GHSA-462w-v97r-4m45
+summary: None
+details: In Pallets Jinja before 2.10.1, str.format_map allows a sandbox escape.
+vulnerability fixed in versions: 2.10.1
+links: 
+---------------------------
+id: GHSA-462w-v97r-4m45
+aliases: CVE-2019-10906, PYSEC-2019-217
+summary: None
+details: In Pallets Jinja before 2.10.1, `str.format_map` allows a sandbox escape.
+
+The sandbox is used to restrict what code can be evaluated when rendering untrusted, user-provided templates. Due to the way string formatting works in Python, the `str.format_map` method could be used to escape the sandbox.
+
+This issue was previously addressed for the `str.format` method in Jinja 2.8.1, which discusses the issue in detail. However, the less-common `str.format_map` method was overlooked. This release applies the same sandboxing to both methods.
+
+If you cannot upgrade Jinja, you can override the `is_safe_attribute` method on the sandbox and explicitly disallow the `format_map` method on string objects.
+vulnerability fixed in versions: 2.10.1
+links: 
+---------------------------
+id: GHSA-g3rq-g295-4j3m
+aliases: CVE-2020-28493, PYSEC-2021-66, SNYK-PYTHON-JINJA2-1012994
+summary: None
+details: This affects the package jinja2 from 0.0.0 and before 2.11.3. The ReDOS vulnerability of the regex is mainly due to the sub-pattern [a-zA-Z0-9._-]+.[a-zA-Z0-9._-]+ This issue can be mitigated by Markdown to format user content instead of the urlize filter, or by implementing request timeouts and limiting process memory.
+vulnerability fixed in versions: 2.11.3
+links: 
+---------------------------
+id: GHSA-hj2j-77xm-mc5v
+aliases: CVE-2016-10745, PYSEC-2019-220
+summary: None
+details: In Pallets Jinja before 2.8.1, str.format allows a sandbox escape.
+vulnerability fixed in versions: 2.8.1
+links: 
+---------------------------
+id: GHSA-8r7q-cvjq-x353
+aliases: CVE-2014-1402, PYSEC-2014-8
+summary: None
+details: The default configuration for `bccache.FileSystemBytecodeCache` in Jinja2 before 2.7.2 does not properly create temporary files, which allows local users to gain privileges via a crafted .cache file with a name starting with `__jinja2_` in `/tmp`.
+vulnerability fixed in versions: 2.7.2
+links: 
+---------------------------
+id: GHSA-h5c8-rqwp-cp95
+aliases: CVE-2024-22195, PYSEC-2026-1473
+summary: None
+details: The `xmlattr` filter in affected versions of Jinja accepts keys containing spaces. XML/HTML attributes cannot contain spaces, as each would then be interpreted as a separate attribute. If an application accepts keys (as opposed to only values) as user input, and renders these in pages that other users see as well, an attacker could use this to inject other attributes and perform XSS. Note that accepting keys as user input is not common or a particularly intended use case of the `xmlattr` filter, and an application doing so should already be verifying what keys are provided regardless of this fix.
+vulnerability fixed in versions: 3.1.3
+links: 
+---------------------------
+id: GHSA-fqh9-2qgg-h84h
+aliases: CVE-2014-0012, PYSEC-2014-82
+summary: None
+details: FileSystemBytecodeCache in Jinja2 prior to version 2.7.2 does not properly create temporary directories, which allows local users to gain privileges by pre-creating a temporary directory with a user's uid. NOTE: this vulnerability exists because of an incomplete fix for CVE-2014-1402.
+vulnerability fixed in versions: 2.7.2
+links: 
+---------------------------
+id: GHSA-h75v-3vvj-5mfj
+aliases: CVE-2024-34064, PYSEC-2026-1474
+summary: None
+details: The `xmlattr` filter in affected versions of Jinja accepts keys containing non-attribute characters. XML/HTML attributes cannot contain spaces, `/`, `>`, or `=`, as each would then be interpreted as starting a separate attribute. If an application accepts keys (as opposed to only values) as user input, and renders these in pages that other users see as well, an attacker could use this to inject other attributes and perform XSS. The fix for the previous GHSA-h5c8-rqwp-cp95 CVE-2024-22195 only addressed spaces but not other characters.
+
+Accepting keys as user input is now explicitly considered an unintended use case of the `xmlattr` filter, and code that does so without otherwise validating the input should be flagged as insecure, regardless of Jinja version. Accepting _values_ as user input continues to be safe.
+vulnerability fixed in versions: 3.1.4
+links: 
+---------------------------
+id: GHSA-q2x7-8rv6-6q7h
+aliases: CVE-2024-56326, PYSEC-2026-1475
+summary: None
+details: An oversight in how the Jinja sandboxed environment detects calls to `str.format` allows an attacker that controls the content of a template to execute arbitrary Python code.
+
+To exploit the vulnerability, an attacker needs to control the content of a template. Whether that is the case depends on the type of application using Jinja. This vulnerability impacts users of applications which execute untrusted templates.
+
+Jinja's sandbox does catch calls to `str.format` and ensures they don't escape the sandbox. However, it's possible to store a reference to a malicious string's `format` method, then pass that to a filter that calls it. No such filters are built-in to Jinja, but could be present through custom filters in an application. After the fix, such indirect calls are also handled by the sandbox.
+vulnerability fixed in versions: 3.1.5
+links: 
+---------------------------
+id: GHSA-cpwx-vrp4-4pq7
+aliases: CVE-2025-27516, PYSEC-2026-1471
+summary: None
+details: An oversight in how the Jinja sandboxed environment interacts with the `|attr` filter allows an attacker that controls the content of a template to execute arbitrary Python code.
+
+To exploit the vulnerability, an attacker needs to control the content of a template. Whether that is the case depends on the type of application using Jinja. This vulnerability impacts users of applications which execute untrusted templates.
+
+Jinja's sandbox does catch calls to `str.format` and ensures they don't escape the sandbox. However, it's possible to use the `|attr` filter to get a reference to a string's plain format method, bypassing the sandbox. After the fix, the `|attr` filter no longer bypasses the environment's attribute lookup.
+vulnerability fixed in versions: 3.1.6
+links: 
+---------------------------
+id: PYSEC-2026-1473
+aliases: CVE-2024-22195, GHSA-h5c8-rqwp-cp95
+summary: None
+details: The `xmlattr` filter in affected versions of Jinja accepts keys containing spaces. XML/HTML attributes cannot contain spaces, as each would then be interpreted as a separate attribute. If an application accepts keys (as opposed to only values) as user input, and renders these in pages that other users see as well, an attacker could use this to inject other attributes and perform XSS. Note that accepting keys as user input is not common or a particularly intended use case of the `xmlattr` filter, and an application doing so should already be verifying what keys are provided regardless of this fix.
+vulnerability fixed in versions: 3.1.3
+links: 
+---------------------------
+id: PYSEC-2026-1471
+aliases: CVE-2025-27516, GHSA-cpwx-vrp4-4pq7
+summary: None
+details: An oversight in how the Jinja sandboxed environment interacts with the `|attr` filter allows an attacker that controls the content of a template to execute arbitrary Python code.
+
+To exploit the vulnerability, an attacker needs to control the content of a template. Whether that is the case depends on the type of application using Jinja. This vulnerability impacts users of applications which execute untrusted templates.
+
+Jinja's sandbox does catch calls to `str.format` and ensures they don't escape the sandbox. However, it's possible to use the `|attr` filter to get a reference to a string's plain format method, bypassing the sandbox. After the fix, the `|attr` filter no longer bypasses the environment's attribute lookup.
+vulnerability fixed in versions: 3.1.6
+links: 
+---------------------------
+id: PYSEC-2026-1474
+aliases: CVE-2024-34064, GHSA-h75v-3vvj-5mfj
+summary: None
+details: The `xmlattr` filter in affected versions of Jinja accepts keys containing non-attribute characters. XML/HTML attributes cannot contain spaces, `/`, `>`, or `=`, as each would then be interpreted as starting a separate attribute. If an application accepts keys (as opposed to only values) as user input, and renders these in pages that other users see as well, an attacker could use this to inject other attributes and perform XSS. The fix for the previous GHSA-h5c8-rqwp-cp95 CVE-2024-22195 only addressed spaces but not other characters.
+
+Accepting keys as user input is now explicitly considered an unintended use case of the `xmlattr` filter, and code that does so without otherwise validating the input should be flagged as insecure, regardless of Jinja version. Accepting _values_ as user input continues to be safe.
+vulnerability fixed in versions: 3.1.4
+links: 
+---------------------------
+id: PYSEC-2026-1475
+aliases: CVE-2024-56326, GHSA-q2x7-8rv6-6q7h
+summary: None
+details: An oversight in how the Jinja sandboxed environment detects calls to `str.format` allows an attacker that controls the content of a template to execute arbitrary Python code.
+
+To exploit the vulnerability, an attacker needs to control the content of a template. Whether that is the case depends on the type of application using Jinja. This vulnerability impacts users of applications which execute untrusted templates.
+
+Jinja's sandbox does catch calls to `str.format` and ensures they don't escape the sandbox. However, it's possible to store a reference to a malicious string's `format` method, then pass that to a filter that calls it. No such filters are built-in to Jinja, but could be present through custom filters in an application. After the fix, such indirect calls are also handled by the sandbox.
+vulnerability fixed in versions: 3.1.5
+links: 
+---------------------------
