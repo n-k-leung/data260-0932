@@ -1,0 +1,25 @@
+- id: q1
+  question: "What PyYAML method could allow arbitrary code execution and when was it fixed?"
+  expected_answer: "full_load / FullLoader; fixed in PyYAML 5.3.1"
+  expected_source_file: "dataset/PyYAML.txt"
+  single_source_only: true
+- id: q2
+  question: "What bug affected Paramiko's write_private_key_file?"
+  expected_answer: "fA race condition between file creation and chmod that code cause information disclosure"
+  expected_source_file: "dataset/paramiko.txt"
+  single_source_only: true
+- id: q3
+  question: "What NumPy component had a string comparision bug and when was it fixed?"
+  expected_answer: "numpy.core; fixed in NumPy 1.22"
+  expected_source_file: "dataset/numpy.txt"
+  single_source_only: true
+- id: q4
+  question: "Which package has the most vulnerabilites in the datasets?"
+  expected_answer: "Pillow, which has 52 vulnerabilites"
+  expected_source_file: "dataset/pillow.txt"
+  single_source_only: false
+- id: q5
+  question: "Name two packages with RCE related vulnerabilites in SSH or networking code."
+  expected_answer: "Paramiko and Twisted"
+  expected_source_file: "dataset/paramiko.txt and dataset/Twsited"
+  single_source_only: false

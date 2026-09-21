@@ -1,0 +1,1 @@
+{"token": {"num_chunks": 438, "avg_chunk_len": 662.6369863013699, "mean_latency_ms": 11.83930000042892}, "semantic": {"num_chunks": 118, "avg_chunk_len": 1971.8135593220338, "mean_latency_ms": 7.588400000531692}, "sentenceWindow": {"num_chunks": 1031, "avg_chunk_len": 225.67798254122212, "mean_latency_ms": 21.037019999494078}}
