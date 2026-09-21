@@ -427,3 +427,147 @@ Twisted.txt, bytes: 27438, number of vuls: 24
 paramiko.txt, bytes: 1282, number of vuls: 4
 SOURCES.md created
 CORPUS_MANIFEST.json created
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw03> python .\retrieval_pipeline.py
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights: 100%|████████████████████████████████████████████████████████████████████| 103/103 [00:00<00:00, 9249.63it/s]
+
+token index
+token:438 chunks, avg length 663 chars
+
+token | query: 'What PyYAML method could allow arbitrary code execution and when was it fixed?'
+query vector shape: (384,), first 8 values: [-0.043  0.031 -0.079 -0.009 -0.045 -0.063 -0.113 -0.036]
+stacked vectors shape: (3, 384)
+rank, store_score, cosine_sim, chunk_len, preview
+1, 0.738, 0.7237804265392968, 804, could use this flaw to execute arbitrary code on the system by abusing the python/object/new constructor. vulnerability fixed in versions: 5.3.1 links:  -------
+2, 0.727, 0.7264973669635378, 702, package: PyYAML (version:pyyaml/5.3) vulnerability count: 4  id: PYSEC-2020-96 aliases: CVE-2020-1747, CVE-2025-50460, GHSA-6757-jp84-gxfx, GHSA-fm6c-f59h-7mmg 
+3, 0.723, 0.6947960142607781, 796, attacker to execute arbitrary code on the system by abusing the python/object/new constructor. This flaw is due to an incomplete fix for CVE-2020-1747. vulnerab
+
+token | query: "What bug affected Paramiko's write_private_key_file?"
+query vector shape: (384,), first 8 values: [-0.04  -0.006 -0.085  0.032  0.032 -0.03  -0.02   0.095]
+stacked vectors shape: (3, 384)
+rank, store_score, cosine_sim, chunk_len, preview
+1, 0.750, 0.7290187621460011, 530, package: paramiko (version:paramiko/2.4.1) vulnerability count: 4  id: PYSEC-2022-166 aliases: CVE-2022-24302, GHSA-f8q4-jwww-x3wv summary: None details: In Par
+2, 0.567, 0.5682809410690168, 491, None details: Paramiko version 2.4.1, 2.3.2, 2.2.3, 2.1.5, 2.0.8, 1.18.5, 1.17.6 contains a Incorrect Access Control vulnerability in SSH server that can result
+3, 0.545, 0.4699150282476977, 426, PYSEC-2026-2858 summary: None details: In Paramiko through 4.0.0 before a448945, rsakey.py allows the SHA-1 algorithm. vulnerability fixed in versions:  links: 
+
+token | query: 'What NumPy component had a string comparision bug and when was it fixed?'
+query vector shape: (384,), first 8 values: [-0.042 -0.016 -0.035  0.003 -0.001 -0.046 -0.033  0.038]
+stacked vectors shape: (3, 384)
+rank, store_score, cosine_sim, chunk_len, preview
+1, 0.644, 0.6877965828168188, 376, package: numpy (version:numpy/1.21.0) vulnerability count: 1  id: GHSA-fpfv-jqm9-f5jm aliases: CVE-2021-34141, PYSEC-2021-855 summary: None details: Incomplete 
+2, 0.384, 0.4082623583283577, 607, fixed in versions: 12.2.0 links:  --------------------------- id: PYSEC-2026-165 aliases: CVE-2026-42308, GHSA-wjx4-4jcj-g98j summary: None details: Pillow is a
+3, 0.374, 0.3880033653290349, 875, small subgroup.  Only SECT curves are impacted by this.  ## Credit  This vulnerability was discovered by: - XlabAI Team of Tencent Xuanwu Lab - Atuin Automated 
+
+token | query: 'Which package has the most vulnerabilites in the datasets?'
+query vector shape: (384,), first 8 values: [-0.051  0.006 -0.069 -0.05   0.05  -0.032 -0.009  0.08 ]
+stacked vectors shape: (3, 384)
+rank, store_score, cosine_sim, chunk_len, preview
+1, 0.386, 0.42865609164071083, 376, package: numpy (version:numpy/1.21.0) vulnerability count: 1  id: GHSA-fpfv-jqm9-f5jm aliases: CVE-2021-34141, PYSEC-2021-855 summary: None details: Incomplete 
+2, 0.366, 0.3765998807712292, 597, package: pillow (version:pillow/8.2.0) vulnerability count: 52  id: PYSEC-2021-331 aliases: CVE-2021-34552, GHSA-7534-mm45-c74v summary: None details: Pillow th
+3, 0.356, 0.39722910619797513, 574, BIT-pillow-2022-45198, CVE-2022-45198, GHSA-m2vv-5vj5-2hm7 summary: None details: Pillow before 9.2.0 performs Improper Handling of Highly Compressed GIF Data (
+
+token | query: 'Name two packages with RCE related vulnerabilites in SSH or networking code.'
+query vector shape: (384,), first 8 values: [-0.078  0.052 -0.054 -0.051  0.081  0.005 -0.009  0.099]
+stacked vectors shape: (3, 384)
+rank, store_score, cosine_sim, chunk_len, preview
+1, 0.531, 0.5330640997602768, 491, None details: Paramiko version 2.4.1, 2.3.2, 2.2.3, 2.1.5, 2.0.8, 1.18.5, 1.17.6 contains a Incorrect Access Control vulnerability in SSH server that can result
+2, 0.384, 0.40500948641356066, 519, site) reactor.run() ``` Output: ``` ❯ curl -H"Host:<h1>HELLO THERE</h1>" http://localhost:8080/  <html>   <head><title>404 - No Such Resource</title></head>   <
+3, 0.351, 0.37791884441974266, 376, package: numpy (version:numpy/1.21.0) vulnerability count: 1  id: GHSA-fpfv-jqm9-f5jm aliases: CVE-2021-34141, PYSEC-2021-855 summary: None details: Incomplete 
+
+semantic index
+semantic:118 chunks, avg length 1972 chars
+
+semantic | query: 'What PyYAML method could allow arbitrary code execution and when was it fixed?'
+query vector shape: (384,), first 8 values: [-0.043  0.031 -0.079 -0.009 -0.045 -0.063 -0.113 -0.036]
+stacked vectors shape: (3, 384)
+rank, store_score, cosine_sim, chunk_len, preview
+1, 0.731, 0.6867692839036744, 845, This flaw allows an attacker to execute arbitrary code on the system by abusing the python/object/new constructor. This flaw is due to an incomplete fix for CVE
+2, 0.724, 0.726753249451751, 1107, package: PyYAML (version:pyyaml/5.3) vulnerability count: 4  id: PYSEC-2020-96 aliases: CVE-2020-1747, CVE-2025-50460, GHSA-6757-jp84-gxfx, GHSA-fm6c-f59h-7mmg 
+3, 0.710, 0.6335310828338969, 653, This flaw allows an attacker to execute arbitrary code on the system by abusing the python/object/new constructor. This flaw is due to an incomplete fix for CVE
+
+semantic | query: "What bug affected Paramiko's write_private_key_file?"
+query vector shape: (384,), first 8 values: [-0.04  -0.006 -0.085  0.032  0.032 -0.03  -0.02   0.095]
+stacked vectors shape: (3, 384)
+rank, store_score, cosine_sim, chunk_len, preview
+1, 0.733, 0.7150091588376839, 704, package: paramiko (version:paramiko/2.4.1) vulnerability count: 4  id: PYSEC-2022-166 aliases: CVE-2022-24302, GHSA-f8q4-jwww-x3wv summary: None details: In Par
+2, 0.575, 0.5331738596991491, 578, vulnerability fixed in versions: 2.4.2, 2.3.3, 2.2.4, 2.1.6, 2.0.9 links:  --------------------------- id: GHSA-r374-rxx8-8654 aliases: CVE-2026-44405, PYSEC-20
+3, 0.430, 0.4013753060649975, 2676, This can lead to security issues in various situations, such as the most commonly used signature verification (ECDSA) and shared key negotiation (ECDH). When th
+
+semantic | query: 'What NumPy component had a string comparision bug and when was it fixed?'
+query vector shape: (384,), first 8 values: [-0.042 -0.016 -0.035  0.003 -0.001 -0.046 -0.033  0.038]
+stacked vectors shape: (3, 384)
+rank, store_score, cosine_sim, chunk_len, preview
+1, 0.644, 0.6877965828168188, 376, package: numpy (version:numpy/1.21.0) vulnerability count: 1  id: GHSA-fpfv-jqm9-f5jm aliases: CVE-2021-34141, PYSEC-2021-855 summary: None details: Incomplete 
+2, 0.358, 0.3496219164474602, 653, This flaw allows an attacker to execute arbitrary code on the system by abusing the python/object/new constructor. This flaw is due to an incomplete fix for CVE
+3, 0.356, 0.3502011060755762, 6436, ### Patches Patched version: 12.2.0.  PdfParser (introduced in Pillow 4.2.0) follows Prev pointers in PDF trailers to read cross-reference sections. If a traile
+
+semantic | query: 'Which package has the most vulnerabilites in the datasets?'
+query vector shape: (384,), first 8 values: [-0.051  0.006 -0.069 -0.05   0.05  -0.032 -0.009  0.08 ]
+stacked vectors shape: (3, 384)
+rank, store_score, cosine_sim, chunk_len, preview
+1, 0.386, 0.42865609164071083, 376, package: numpy (version:numpy/1.21.0) vulnerability count: 1  id: GHSA-fpfv-jqm9-f5jm aliases: CVE-2021-34141, PYSEC-2021-855 summary: None details: Incomplete 
+2, 0.347, 0.35019274272291423, 6220, package: pillow (version:pillow/8.2.0) vulnerability count: 52  id: PYSEC-2021-331 aliases: CVE-2021-34552, GHSA-7534-mm45-c74v summary: None details: Pillow th
+3, 0.337, 0.3653976498432271, 1866, package: Django (version:django/1.11.28) vulnerability count: 18  id: PYSEC-2020-36 aliases: BIT-django-2020-9402, CVE-2020-9402, GHSA-3gh2-xw74-jmcw, PYSEC-202
+
+semantic | query: 'Name two packages with RCE related vulnerabilites in SSH or networking code.'
+query vector shape: (384,), first 8 values: [-0.078  0.052 -0.054 -0.051  0.081  0.005 -0.009  0.099]
+stacked vectors shape: (3, 384)
+rank, store_score, cosine_sim, chunk_len, preview
+1, 0.387, 0.3505041270339254, 3193, More details about the vulnerability itself can be found in https://www.openssl.org/news/secadv/20230530.txt.  If you are building cryptography source ("sdist")
+2, 0.380, 0.39146292665432536, 2856, More details about the vulnerabilities themselves can be found in https://www.openssl.org/news/secadv/20221213.txt and https://www.openssl.org/news/secadv/20230
+3, 0.354, 0.3454630812245813, 578, vulnerability fixed in versions: 2.4.2, 2.3.3, 2.2.4, 2.1.6, 2.0.9 links:  --------------------------- id: GHSA-r374-rxx8-8654 aliases: CVE-2026-44405, PYSEC-20
+
+sentenceWindow index
+sentenceWindow:1031 chunks, avg length 226 chars
+
+sentenceWindow | query: 'What PyYAML method could allow arbitrary code execution and when was it fixed?'
+query vector shape: (384,), first 8 values: [-0.043  0.031 -0.079 -0.009 -0.045 -0.063 -0.113 -0.036]
+stacked vectors shape: (3, 384)
+rank, store_score, cosine_sim, chunk_len, preview
+1, 0.712, 0.7256470891631759, 413, package: PyYAML (version:pyyaml/5.3) vulnerability count: 4  id: PYSEC-2020-96 aliases: CVE-2020-1747, CVE-2025-50460, GHSA-6757-jp84-gxfx, GHSA-fm6c-f59h-7mmg 
+2, 0.707, 0.4460866878703384, 115, This flaw allows an attacker to execute arbitrary code on the system by abusing the python/object/new constructor. 
+3, 0.707, 0.4460866878703384, 115, This flaw allows an attacker to execute arbitrary code on the system by abusing the python/object/new constructor. 
+
+sentenceWindow | query: "What bug affected Paramiko's write_private_key_file?"
+query vector shape: (384,), first 8 values: [-0.04  -0.006 -0.085  0.032  0.032 -0.03  -0.02   0.095]
+stacked vectors shape: (3, 384)
+rank, store_score, cosine_sim, chunk_len, preview
+1, 0.789, 0.7711990802247894, 315, package: paramiko (version:paramiko/2.4.1) vulnerability count: 4  id: PYSEC-2022-166 aliases: CVE-2022-24302, GHSA-f8q4-jwww-x3wv summary: None details: In Par
+2, 0.641, 0.32539294028084276, 69, vulnerability fixed in versions:  links:  ---------------------------
+3, 0.622, 0.5613412682848823, 271, vulnerability fixed in versions: 2.4.2, 2.3.3, 2.2.4, 2.1.6, 2.0.9 links:  --------------------------- id: GHSA-r374-rxx8-8654 aliases: CVE-2026-44405, PYSEC-20
+
+sentenceWindow | query: 'What NumPy component had a string comparision bug and when was it fixed?'
+query vector shape: (384,), first 8 values: [-0.042 -0.016 -0.035  0.003 -0.001 -0.046 -0.033  0.038]
+stacked vectors shape: (3, 384)
+rank, store_score, cosine_sim, chunk_len, preview
+1, 0.626, 0.6595318335982803, 303, package: numpy (version:numpy/1.21.0) vulnerability count: 1  id: GHSA-fpfv-jqm9-f5jm aliases: CVE-2021-34141, PYSEC-2021-855 summary: None details: Incomplete 
+2, 0.582, 0.262929101599153, 73, vulnerability fixed in versions: 1.22 links:  ---------------------------
+3, 0.373, 0.36884570835772607, 193, The bug is reachable through the public save API:  ```python im.save(out, format="TGA", compression="tga_rle") ```  Older affected Pillow versions use the equiv
+
+sentenceWindow | query: 'Which package has the most vulnerabilites in the datasets?'
+query vector shape: (384,), first 8 values: [-0.051  0.006 -0.069 -0.05   0.05  -0.032 -0.009  0.08 ]
+stacked vectors shape: (3, 384)
+rank, store_score, cosine_sim, chunk_len, preview
+1, 0.427, 0.4847990656467272, 303, package: numpy (version:numpy/1.21.0) vulnerability count: 1  id: GHSA-fpfv-jqm9-f5jm aliases: CVE-2021-34141, PYSEC-2021-855 summary: None details: Incomplete 
+2, 0.402, 0.4495544475793688, 372, package: Django (version:django/1.11.28) vulnerability count: 18  id: PYSEC-2020-36 aliases: BIT-django-2020-9402, CVE-2020-9402, GHSA-3gh2-xw74-jmcw, PYSEC-202
+3, 0.352, 0.34902080227094245, 268, vulnerability fixed in versions: 42.0.2 links:  --------------------------- id: PYSEC-2026-2141 aliases: CVE-2026-26007, GHSA-r6ph-v2qm-q3c2 summary: None detai
+
+sentenceWindow | query: 'Name two packages with RCE related vulnerabilites in SSH or networking code.'
+query vector shape: (384,), first 8 values: [-0.078  0.052 -0.054 -0.051  0.081  0.005 -0.009  0.099]
+stacked vectors shape: (3, 384)
+rank, store_score, cosine_sim, chunk_len, preview
+1, 0.461, 0.4515095687466853, 326, vulnerability fixed in versions: 2.9.3, 2.10.1 links:  --------------------------- id: GHSA-f2j6-wrhh-v25m aliases: CVE-2018-1000805, PYSEC-2018-69 summary: Non
+2, 0.386, 0.42900134835625914, 117, More details about the vulnerabilities themselves can be found in https://www.openssl.org/news/secadv/20230908.txt.  
+3, 0.383, 0.3991560332907133, 170, More details about the vulnerabilities themselves can be found in https://www.openssl.org/news/secadv/20221213.txt and https://www.openssl.org/news/secadv/20230
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw03> python .\metrics.py
+# METRICS.md
+
+## Retrieval quality summary
+
+| Technique | Chunks | Avg chunk length (chars) | Top-1 cosine | Mean@3 cosine | Recall@3 | Mean retrieval latency (ms) |
+|---|---|---|---|---|---|---|
+| token | 438 | 663 | 0.620 | 0.528 | 0.000 | 11.84 |
+| semantic | 118 | 1972 | 0.574 | 0.488 | 0.000 | 7.59 |
+| sentenceWindow | 1031 | 226 | 0.619 | 0.475 | 0.000 | 21.04 |
