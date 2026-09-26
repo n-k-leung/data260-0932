@@ -17,3 +17,9 @@ class SessionToken(Base):
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     expires_at = Column(DateTime(timezone=True), nullable=False)
+    
+class Vul(Base):
+    __tablename__ = "vulnerabilities"
+
+    package_name = Column(String(255), nullable=False)
+    severity = Column(String(255), nullable=False)

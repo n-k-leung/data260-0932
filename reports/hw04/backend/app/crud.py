@@ -35,3 +35,36 @@ def delete_user(db: Session, user_id: int):
     return user
 
 
+def create_vul(db: Session, payload: schema.VulCreate):
+    vul = models.Vul(name=payload.name, email=payload.email)
+    db.add(vul)
+    db.commit()
+    db.refresh(vul)
+    return vul
+
+def get_vuls(db: Session):
+    return db.query(models.Vul).order_by(models.Vul.id.asc()).all()
+
+def get_vul(db: Session, vul_id: int):
+    return db.query(models.Vul).filter(models.Vul.id == vul_id).first()
+
+def update_vul(db: Session, vul_id: int, payload: schema.VulUpdate):
+    vul = get_vul(db, vul_id)
+    if not vul:
+        return None
+    vul.package_name = payload.package_name
+    vul.severity = payload.severity
+    db.commit()
+    db.refresh(vul)
+    return vul
+
+def delete_vul(db: Session, vul_id: int):
+    vul = get_vul(db, vul_id)
+    if not vul:
+        return None
+    db.delete(vul)
+    db.commit()
+    return vul
+
+
+

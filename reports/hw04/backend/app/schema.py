@@ -15,3 +15,18 @@ class UserOut(BaseModel):
 
     class Config:
         from_attributes = True
+
+class VulCreate(BaseModel):
+    package_name: str = Field(min_length=1)
+    severity: str = Field(min_length=1)
+
+class VulUpdate(BaseModel):
+    package_name: str = Field(min_length=1)
+    severity: str = Field(min_length=1)
+
+class VulOut(BaseModel):
+    package_name: str
+    severity: str
+
+    class Config:
+        from_attributes = True

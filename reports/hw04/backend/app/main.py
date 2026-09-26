@@ -70,6 +70,44 @@ def remove_user(user_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="User not found")
     return user
 
+#vulnerabilities
+
+@app.post("/vuls", response_model=schema.VulOut)
+def add_user(payload: schema.VulCreate, db: Session = Depends(get_db)):
+    try:
+        return crud.create_vul(db, payload)
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(status_code=409, detail="Email already exists")
+    
+@app.get("/vuls", response_model=list[schema.VulOut])
+def list_users(
+    db: Session = Depends(get_db),
+    _session = Depends(require_session)
+):
+    return crud.get_users(db)
+
+@app.get("/vuls/{vul_id}", response_model=schema.VulOut)
+def get_vul(vul_id: int, db: Session = Depends(get_db)):
+    vul = crud.get_user(db, vul_id)
+    if not vul:
+        raise HTTPException(status_code=404, detail="Vulnerability not found")
+    return vul
+
+@app.put("/vuls/{vul_id}", response_model=schema.VulOut)
+def edit_vul(vul_id: int, payload: schema.VulUpdate, db: Session = Depends(get_db)):
+    vul = crud.update_vul(db, vul_id, payload)
+    if not vul:
+        raise HTTPException(status_code=404, detail="Vulnerability not found")
+    return vul
+
+@app.delete("/vuls/{vul_id}", response_model=schema.VulOut)
+def remove_vul(vul_id: int, db: Session = Depends(get_db)):
+    vul = crud.delete_vul(db, vul_id)
+    if not vul:
+        raise HTTPException(status_code=404, detail="Vulnerability not found")
+    return vul
+
 @app.get("/auth/me")
 def me(_session = Depends(require_session)):
     return {"logged_in": True, "user_id": _session.user_id}

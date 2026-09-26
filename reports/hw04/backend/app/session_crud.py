@@ -7,7 +7,7 @@ SESSION_TTL_MINUTES = 30
 
 def create_session(db: Session, user_id: int) -> SessionToken:
     token = secrets.token_hex(32)
-    expires = datetime.utcnow() + timedelta(minutes=SESSION_TTL_MINUTES)  # ✅ naive UTC
+    expires = datetime.utcnow() + timedelta(minutes=SESSION_TTL_MINUTES)  # naive UTC
 
     row = SessionToken(id=token, user_id=user_id, expires_at=expires)
     db.add(row)
@@ -20,7 +20,7 @@ def get_session(db: Session, token: str) -> SessionToken | None:
     if not s:
         return None
 
-    # ✅ compare naive-to-naive
+    # compare naive-to-naive
     if s.expires_at < datetime.utcnow():
         db.delete(s)
         db.commit()
