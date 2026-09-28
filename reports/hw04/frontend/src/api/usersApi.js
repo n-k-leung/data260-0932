@@ -30,12 +30,10 @@ export async function deleteUser(id) {
   return res.data;
 }
 
-export async function login(userId) {
-  // login uses query param for demo simplicity
-  const res = await api.post(`/auth/login?user_id=${userId}`);
-  return res.data;
+export async function login(email, password) {
+const res = await api.post("/auth/login", { email, password });
+return res.data;
 }
-
 export async function logout() {
   const res = await api.post("/auth/logout");
   return res.data;

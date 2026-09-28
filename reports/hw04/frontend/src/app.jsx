@@ -5,11 +5,12 @@ import Navbar from "./components/Navbar.jsx";
 import LoginBar from "./components/LoginBar.jsx";
 
 import Home from "./pages/Home.jsx";
-import CreateUser from "./pages/createUser.jsx";
-import UpdateUser from "./pages/updateUser.jsx";
-import DeleteUser from "./pages/deleteUser.jsx";
+import CreateRecord from "./pages/CreateRecord.jsx";
+import UpdateRecord from "./pages/UpdateRecord.jsx";
+import DeleteRecord from "./pages/DeleteRecord.jsx";
+import Login from "./pages/Login.jsx";
 
-import { fetchUsers, createUser, updateUser, deleteUser } from "./api/usersApi.js";
+import { fetchVuls, createVul, updateVul, deleteVul, me } from "./api/vulApi.js";
 
 export default function App() {
   const navigate = useNavigate();
@@ -33,25 +34,36 @@ export default function App() {
   // Auth state (cookie session is checked inside LoginBar via /auth/me)
   const [auth, setAuth] = useState({ loggedIn: false, userId: null });
 
-  // Users data
-  const [users, setUsers] = useState([]);
+  // Records data
+  const [records, setRecords] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // Fetch users only when logged in
+  useEffect(() => {
+    (async () => {
+      try {
+        const data = await me();
+        setAuth({ loggedIn: true, userId: data.user_id });
+      }catch {
+      setAuth({ loggedIn: false, userId: null });
+      }
+    })();
+  }, []);
+
+  // Fetch records only when logged in
   useEffect(() => {
     (async () => {
       if (!auth.loggedIn) {
-        setUsers([]);
+        setRecords([]);
         setLoading(false);
         return;
       }
 
       try {
         setLoading(true);
-        const data = await fetchUsers();
-        setUsers(data);
+        const data = await fetchVuls();
+        setRecords(data);
       } catch (e) {
-        console.error("fetchUsers failed:", e);
+        console.error("fetchVuls failed:", e);
         // If session expired, backend returns 401; UI will show not logged in after next /auth/me check.
       } finally {
         setLoading(false);
@@ -60,38 +72,39 @@ export default function App() {
   }, [auth.loggedIn]);
 
   // Create (props)
-  async function onAdd(newUser) {
-    const created = await createUser(newUser);
-    setUsers((prev) => [...prev, created]);
+  async function onAdd(newRecord) {
+    const created = await createVul(newRecord);
+    setRecords((prev) => [...prev, created]);
     navigate("/");
   }
 
   // Update (props)
-  async function onUpdate(id, updatedUser) {
-    const updated = await updateUser(id, updatedUser);
-    setUsers((prev) => prev.map((u) => (u.id === id ? updated : u)));
+  async function onUpdate(id, updatedRecord) {
+    const updated = await updateVul(id, updatedRecord);
+    setRecords((prev) => prev.map((u) => (u.id === id ? updated : u)));
     navigate("/");
   }
 
   // Delete (props)
   async function onDelete(id) {
-    await deleteUser(id);
-    setUsers((prev) => prev.filter((u) => u.id !== id));
+    await deleteVul(id);
+    setRecords((prev) => prev.filter((u) => u.id !== id));
     navigate("/");
   }
 
   return (
     <div className="container">
-      <Navbar auth={auth} />
+      <Navbar auth={auth} setAuth={setAuth}/>
 
       {/* Login session demo UI */}
-      <LoginBar auth={auth} setAuth={setAuth} />
+      {/* <LoginBar auth={auth} setAuth={setAuth} /> */}
 
       <Routes>
-        <Route path="/" element={<Home users={users} loading={loading} auth={auth} />} />
-        <Route path="/create" element={<RequireAuth auth={auth}> <CreateUser onAdd={onAdd} auth={auth} /></RequireAuth> }/>
-        <Route path="/update/:id" element={<UpdateUser onUpdate={onUpdate} auth={auth} />} />
-        <Route path="/delete/:id" element={<DeleteUser onDelete={onDelete} auth={auth} />} />
+        <Route path="/" element={<Home records={records} loading={loading} auth={auth} />} />
+        <Route path="/login" element={<Login setAuth={setAuth}/>}/>
+        <Route path="/create" element={<RequireAuth auth={auth}> <CreateRecord onAdd={onAdd} auth={auth} /></RequireAuth> }/>
+        <Route path="/update/:id" element={<RequireAuth auth={auth}><UpdateRecord onUpdate={onUpdate} auth={auth} /></RequireAuth>} />
+        <Route path="/delete/:id" element={<RequireAuth auth={auth}> <DeleteRecord onDelete={onDelete} auth={auth} /></RequireAuth>} />
       </Routes>
     </div>
   );

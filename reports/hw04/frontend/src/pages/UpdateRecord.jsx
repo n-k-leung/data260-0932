@@ -1,63 +1,63 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchUserById } from "../api/usersApi.js";
+import { fetchVulById } from "../api/vulApi.js";
 
-export default function UpdateUser({ onUpdate }) {
+export default function UpdateRecord({ onUpdate }) {
   const { id } = useParams();
-  const userId = Number(id);
+  const recordId = Number(id);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [package_name, setPackageName] = useState("");
+  const [severity, setSeverity] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
         setLoading(true);
-        const user = await fetchUserById(userId);
-        setName(user.name);
-        setEmail(user.email);
+        const record = await fetchVulById(recordId);
+        setPackageName(record.package_name);
+        setSeverity(record.severity);
       } catch (e) {
         console.error(e);
       } finally {
         setLoading(false);
       }
     })();
-  }, [userId]);
+  }, [recordId]);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await onUpdate(userId, { name, email });
+    await onUpdate(recordId, { package_name, severity });
   }
 
-  if (loading) return <p>Loading user...</p>;
+  if (loading) return <p>Loading record...</p>;
 
   return (
     <div className="card">
         <div className="card-header">
-        <div className="page-title">Update User (ID: {userId})</div>
+        <div className="page-title">Update Record (ID: {recordId})</div>
         </div>
 
         <div className="card-body">
         <form className="form" onSubmit={handleSubmit}>
             <label>
-            Name
+            Package Name
             <input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={package_name}
+                onChange={(e) => setPackageName(e.target.value)}
             />
             </label>
 
             <label>
-            Email
+            Severity
             <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={severity}
+                onChange={(e) => setSeverity(e.target.value)}
             />
             </label>
 
             <button className="btn primary" type="submit">
-            Update User
+            Update Record
             </button>
         </form>
         </div>

@@ -3,6 +3,7 @@ from pydantic import BaseModel, Field, EmailStr
 class UserCreate(BaseModel):
     name: str = Field(min_length=1)
     email: EmailStr
+    password: str = Field(min_length=1)
 
 class UserUpdate(BaseModel):
     name: str = Field(min_length=1)
@@ -15,6 +16,10 @@ class UserOut(BaseModel):
 
     class Config:
         from_attributes = True
+
+class LoginRequest(BaseModel):
+    email:EmailStr
+    password:str
 
 class VulCreate(BaseModel):
     package_name: str = Field(min_length=1)

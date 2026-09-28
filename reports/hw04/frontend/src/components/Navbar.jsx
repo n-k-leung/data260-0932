@@ -13,11 +13,17 @@ export default function Navbar({ auth }) {
     navigate("/create");
   }
 
+  async function handleLogout() {
+    await logout();
+    setAuth({ loggedIn: false, userId: null });
+    navigate("/login");
+  }
+
   return (
     <header className="navbar">
       <Link className="brand" to="/">
         <span className="brand-badge" />
-        User Management
+        Open Source Package Vulnerability Manager
       </Link>
 
       <nav className="navlinks">
@@ -25,15 +31,24 @@ export default function Navbar({ auth }) {
           Home
         </NavLink>
 
-        {/* ✅ Guarded Add User */}
+        {/* Guarded Add User */}
         <a
           href="/create"
           onClick={handleAddClick}
           className={auth.loggedIn ? "" : "disabled-link"}
           aria-disabled={!auth.loggedIn}
         >
-          Add User
+          Add Vulnerability Record
         </a>
+        {auth. loggedIn ? (
+          <a href="#" onClick={(e) => {e.preventDefault(); handleLogout(); }}>
+          Logout
+          </a>) : (
+            <NavLink to="/login" className={({ isActive }) => (isActive ? "active" : "")}>
+            Login
+            </NavLink>
+          )
+        }
       </nav>
     </header>
   );

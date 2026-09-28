@@ -194,7 +194,7 @@ body{
 }
 
 .card-body{
-  padding: 28px 30px; /* ✅ consistent padding for Create/Update/Delete/Home */
+  padding: 28px 30px; /* consistent padding for Create/Update/Delete/Home */
 }
 
 /* =========================

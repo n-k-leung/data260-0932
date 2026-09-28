@@ -1,48 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchUserById } from "../api/usersApi.js";
+import { fetchVulById } from "../api/vulApi.js";
 
-export default function DeleteUser({ onDelete }) {
+export default function DeleteRecord({ onDelete }) {
   const { id } = useParams();
-  const userId = Number(id);
+  const recordId = Number(id);
 
-  const [user, setUser] = useState(null);
+  const [record, setRecord] = useState(null);
 
   useEffect(() => {
     (async () => {
       try {
-        const data = await fetchUserById(userId);
-        setUser(data);
+        const data = await fetchVulById(recordId);
+        setRecord(data);
       } catch {
-        setUser(null);
+        setRecord(null);
       }
     })();
-  }, [userId]);
+  }, [recordId]);
 
   async function handleDelete() {
-    await onDelete(userId);
+    await onDelete(recordId);
   }
 
   return (
     <div className="card">
         <div className="card-header">
-        <div className="page-title">Delete User</div>
+        <div className="page-title">Delete Record</div>
         </div>
 
         <div className="card-body">
-        {user ? (
+        {record ? (
             <>
             <p style={{ fontSize: "18px", marginBottom: "24px" }}>
-                Are you sure you want to delete <strong>{user.name}</strong> ({user.email})?
+                Are you sure you want to delete <strong>{record.package_name}</strong> ({record.severity})?
             </p>
 
             <button className="btn danger" onClick={handleDelete}>
-                Delete User
+                Delete record
             </button>
             </>
         ) : (
             <div className="notice">
-            User not found (or already deleted).
+            record not found (or already deleted).
             </div>
         )}
         </div>

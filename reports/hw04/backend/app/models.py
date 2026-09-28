@@ -8,6 +8,7 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     name = Column(String(255), nullable=False)
     email = Column(String(255), nullable=False, unique=True)
+    password_hash=Column(String(255), nullable=False)
 
 
 class SessionToken(Base):
@@ -20,6 +21,6 @@ class SessionToken(Base):
     
 class Vul(Base):
     __tablename__ = "vulnerabilities"
-
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     package_name = Column(String(255), nullable=False)
     severity = Column(String(255), nullable=False)

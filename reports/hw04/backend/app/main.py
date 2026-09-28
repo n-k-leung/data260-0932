@@ -7,10 +7,11 @@ from .session_crud import create_session, get_session, delete_session
 
 from .database import Base, engine, get_db
 from . import crud, schema
+from .routers.auth import router as auth_router, require_session
 
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="User Management API")
+app = FastAPI(title="Open Source Vulnerability Management API")
 
 # Allow React dev server
 app.add_middleware(
@@ -20,6 +21,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+app.include_router(auth_router)
 
 def require_session(request: Request, db: Session = Depends(get_db)):
     token = request.cookies.get("session_id")
@@ -73,68 +75,65 @@ def remove_user(user_id: int, db: Session = Depends(get_db)):
 #vulnerabilities
 
 @app.post("/vuls", response_model=schema.VulOut)
-def add_user(payload: schema.VulCreate, db: Session = Depends(get_db)):
-    try:
-        return crud.create_vul(db, payload)
-    except IntegrityError:
-        db.rollback()
-        raise HTTPException(status_code=409, detail="Email already exists")
+def add_vul(payload: schema.VulCreate, db: Session = Depends(get_db), _session = Depends(require_session)):
+
+    return crud.create_vul(db, payload)
     
 @app.get("/vuls", response_model=list[schema.VulOut])
-def list_users(
+def list_vuls(
     db: Session = Depends(get_db),
     _session = Depends(require_session)
 ):
-    return crud.get_users(db)
+    return crud.get_vuls(db)
 
 @app.get("/vuls/{vul_id}", response_model=schema.VulOut)
-def get_vul(vul_id: int, db: Session = Depends(get_db)):
-    vul = crud.get_user(db, vul_id)
+def get_vul(vul_id: int, db: Session = Depends(get_db), _session = Depends(require_session)):
+    vul = crud.get_vul(db, vul_id)
     if not vul:
         raise HTTPException(status_code=404, detail="Vulnerability not found")
     return vul
 
 @app.put("/vuls/{vul_id}", response_model=schema.VulOut)
-def edit_vul(vul_id: int, payload: schema.VulUpdate, db: Session = Depends(get_db)):
+def edit_vul(vul_id: int, payload: schema.VulUpdate, db: Session = Depends(get_db), _session = Depends(require_session)):
     vul = crud.update_vul(db, vul_id, payload)
     if not vul:
         raise HTTPException(status_code=404, detail="Vulnerability not found")
     return vul
 
 @app.delete("/vuls/{vul_id}", response_model=schema.VulOut)
-def remove_vul(vul_id: int, db: Session = Depends(get_db)):
+def remove_vul(vul_id: int, db: Session = Depends(get_db), _session = Depends(require_session)):
     vul = crud.delete_vul(db, vul_id)
     if not vul:
         raise HTTPException(status_code=404, detail="Vulnerability not found")
     return vul
+# implemented in routers file like in hw3
+# @app.get("/auth/me")
+# def me(_session = Depends(require_session)):
+#     return {"logged_in": True, "user_id": _session.user_id}
 
-@app.get("/auth/me")
-def me(_session = Depends(require_session)):
-    return {"logged_in": True, "user_id": _session.user_id}
+# @app.post("/auth/login")
+# def login(user_id: int, response: Response, db: Session = Depends(get_db)):
+#     # Demo-simple: login using an existing user_id (no password)
+#     user = crud.get_user(db, user_id)
+#     if not user:
+#         raise HTTPException(status_code=404, detail="User not found")
 
-@app.post("/auth/login")
-def login(user_id: int, response: Response, db: Session = Depends(get_db)):
-    # Demo-simple: login using an existing user_id (no password)
-    user = crud.get_user(db, user_id)
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
+#     s = create_session(db, user_id=user_id)
 
-    s = create_session(db, user_id=user_id)
+#     # cookie sent to browser/postman
+#     response.set_cookie(
+#         key="session_id",
+#         value=s.id,
+#         httponly=True,
+#         samesite="lax",
+#         max_age=30 * 60
+#     )
+#     return {"message": "logged in", "user_id": user_id}
 
-    # cookie sent to browser/postman
-    response.set_cookie(
-        key="session_id",
-        value=s.id,
-        httponly=True,
-        samesite="lax",
-        max_age=30 * 60
-    )
-    return {"message": "logged in", "user_id": user_id}
-
-@app.post("/auth/logout")
-def logout(request: Request, response: Response, db: Session = Depends(get_db)):
-    token = request.cookies.get("session_id")
-    if token:
-        delete_session(db, token)
-    response.delete_cookie("session_id")
-    return {"message": "logged out"}
+# @app.post("/auth/logout")
+# def logout(request: Request, response: Response, db: Session = Depends(get_db)):
+#     token = request.cookies.get("session_id")
+#     if token:
+#         delete_session(db, token)
+#     response.delete_cookie("session_id")
+#     return {"message": "logged out"}
