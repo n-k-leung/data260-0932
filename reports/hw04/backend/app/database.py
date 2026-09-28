@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 load_dotenv()
@@ -13,6 +13,14 @@ engine = create_engine(
     DATABASE_URL,
     pool_pre_ping=True,
 )
+
+
+
+query_count = {"n": 0}
+
+@event.listens_for(engine, "before_cursor_execute")
+def count_queries(conn, cursor, statement, parameters, context, executemany) :
+    query_count["n"] += 1
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

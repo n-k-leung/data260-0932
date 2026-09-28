@@ -1,10 +1,11 @@
 import React from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-
-export default function Navbar({ auth }) {
+import { logout } from "../api/vulApi.js"
+export default function Navbar({ auth, setAuth }) {
   const navigate = useNavigate();
 
   function handleAddClick(e) {
+    e.preventDefault();
     if (!auth.loggedIn) {
       e.preventDefault();
       alert("Please login first to add a user.");

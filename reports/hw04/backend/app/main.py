@@ -5,9 +5,10 @@ from sqlalchemy.exc import IntegrityError
 from fastapi import Response, Request
 from .session_crud import create_session, get_session, delete_session
 
-from .database import Base, engine, get_db
-from . import crud, schema
+from .database import Base, engine, get_db, query_count
+from . import crud, schema, models
 from .routers.auth import router as auth_router, require_session
+from sqlalchemy.orm import joinedload
 
 Base.metadata.create_all(bind=engine)
 
@@ -22,16 +23,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 app.include_router(auth_router)
-
-def require_session(request: Request, db: Session = Depends(get_db)):
-    token = request.cookies.get("session_id")
-    if not token:
-        raise HTTPException(status_code=401, detail="Not logged in")
-    s = get_session(db, token)
-    if not s:
-        raise HTTPException(status_code=401, detail="Session expired or invalid")
-    return s  # contains user_id
-
 @app.get("/health")
 def health():
     return {"status": "ok"}
@@ -60,7 +51,11 @@ def get_user(user_id: int, db: Session = Depends(get_db)):
 
 @app.put("/users/{user_id}", response_model=schema.UserOut)
 def edit_user(user_id: int, payload: schema.UserUpdate, db: Session = Depends(get_db)):
-    user = crud.update_user(db, user_id, payload)
+    try:
+        user= crud.update_user(db, user_id, payload)
+    except IntegrityError:
+        db.rollback()
+        raise HTTPException(status_code=409, detail="Email exists")
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return user
@@ -86,6 +81,30 @@ def list_vuls(
 ):
     return crud.get_vuls(db)
 
+@app.get("/vuls/naive", response_model=list[schema.VulAdvi])
+def list_naive(response: Response, limit: int = 10, db: Session = Depends(get_db), _session = Depends(require_session)):
+    query_count["n"] =0 
+    vulns = db.query(models.Vul).order_by(models.Vul.id).limit(limit).all()
+    result = []
+    for v in vulns:
+    # the extra query, run once per record
+        advs = db.query(models.Advisory).filter(models.Advisory.vul_id == v.id).all()
+        result.append({"id": v.id, "package_name": v.package_name, "severity": v.severity, "advisories": advs})
+    response.headers["X-SQL-Count"] = str(query_count["n"])
+    return result
+
+@app.get("/vuls/fixed", response_model=list[schema.VulAdvi])
+def list_fixed(response: Response, limit: int = 10, db: Session = Depends(get_db), _session = Depends(require_session)):
+    query_count["n"]=0
+    vulns = (db.query(models.Vul)
+        .options(joinedload(models.Vul.advisories))
+        .order_by(models.Vul.id).limit(limit).all())
+    result = []
+    for v in vulns:
+        result.append({"id": v.id, "package_name": v.package_name, "severity": v.severity, "advisories": v.advisories})
+    response.headers["X-SQL-Count"] = str(query_count["n"])
+    return result
+
 @app.get("/vuls/{vul_id}", response_model=schema.VulOut)
 def get_vul(vul_id: int, db: Session = Depends(get_db), _session = Depends(require_session)):
     vul = crud.get_vul(db, vul_id)
@@ -106,6 +125,9 @@ def remove_vul(vul_id: int, db: Session = Depends(get_db), _session = Depends(re
     if not vul:
         raise HTTPException(status_code=404, detail="Vulnerability not found")
     return vul
+
+
+
 # implemented in routers file like in hw3
 # @app.get("/auth/me")
 # def me(_session = Depends(require_session)):

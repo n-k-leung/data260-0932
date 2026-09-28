@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, DateTime, ForeignKey
 from .database import Base
 from sqlalchemy.sql import func
+from sqlalchemy.orm import relationship
 
 class User(Base):
     __tablename__ = "users"
@@ -24,3 +25,16 @@ class Vul(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     package_name = Column(String(255), nullable=False)
     severity = Column(String(255), nullable=False)
+    advisories = relationship(
+        "Advisory",
+        primaryjoin="Vul. id == Advisory.vul_id",
+        foreign_keys="Advisory.vul_id",
+        viewonly=True,
+    )
+
+class Advisory (Base):
+    __tablename__ = "advisories"
+
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    vul_id = Column(Integer, nullable=False)
+    fix_version = Column(String(50), nullable=False)

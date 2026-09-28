@@ -30,8 +30,22 @@ class VulUpdate(BaseModel):
     severity: str = Field(min_length=1)
 
 class VulOut(BaseModel):
+    id: int
     package_name: str
     severity: str
 
     class Config:
         from_attributes = True
+        
+class AdviOut (BaseModel):
+    id: int
+    fix_version: str
+
+    class Config:
+        from_attributes = True
+
+class VulAdvi(BaseModel):
+    id: int
+    package_name: str
+    severity: str
+    advisories: list[AdviOut]

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 import Navbar from "./components/Navbar.jsx";
-import LoginBar from "./components/LoginBar.jsx";
 
 import Home from "./pages/Home.jsx";
 import CreateRecord from "./pages/CreateRecord.jsx";
@@ -12,10 +11,7 @@ import Login from "./pages/Login.jsx";
 
 import { fetchVuls, createVul, updateVul, deleteVul, me } from "./api/vulApi.js";
 
-export default function App() {
-  const navigate = useNavigate();
-
-  function RequireAuth({ auth, children }) {
+function RequireAuth({ auth, children }) {
   if (!auth.loggedIn) {
     return (
       <div className="card">
@@ -27,10 +23,12 @@ export default function App() {
         </div>
       </div>
     );
-  }
+  } 
   return children;
 }
 
+export default function App() {
+  const navigate = useNavigate();
   // Auth state (cookie session is checked inside LoginBar via /auth/me)
   const [auth, setAuth] = useState({ loggedIn: false, userId: null });
 

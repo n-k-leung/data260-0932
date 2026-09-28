@@ -17,7 +17,7 @@ export default function Home({ records, loading, auth }) {
 
         <div className="card-body">
           <div className="notice">
-            You are not logged in. Use the Login bar above.
+            You are not logged in. Use the Login link above.
           </div>
         </div>
       </div>
