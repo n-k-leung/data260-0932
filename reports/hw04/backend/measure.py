@@ -5,8 +5,6 @@ import requests
 
 BASE = "http://localhost:8032"
 SIZES = [10, 50, 200]
-RUNS = 30
-
 def percentile(values, p):
     values = sorted(values)
     index = int(round((p / 100) * (len(values) - 1)))
@@ -26,7 +24,7 @@ for size in SIZES:
     for version in ["naive", "fixed"]:
         times = []
         counts = []
-        for n in range(1, RUNS + 1):
+        for n in range(1, 31):
             start = time.perf_counter()
             r = s.get(BASE + "/vuls/" + version, params={"limit": size})
             ms = (time.perf_counter() - start) * 1000

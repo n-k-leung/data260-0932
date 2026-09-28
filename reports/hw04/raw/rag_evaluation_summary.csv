@@ -1,0 +1,4 @@
+config,accuracy,faithfulness,format_compliance,robustness
+A,0.5,0.0,n/a,0.0
+B,0.5,0.5,n/a,0.0
+C,0.5,0.5,1.0,1.0

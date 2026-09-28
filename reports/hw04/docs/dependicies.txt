@@ -1,0 +1,28 @@
+Dependency Update Policy
+
+Severity levels. Every vulnerability is given a severity level: Low, Medium, High or Critical. The level
+comes from the CVSS score published for the vulnerability. The severity level decides how quickly we
+must act.
+
+Purpose. This policy explains how our team keeps open source packages up to date and how fast known
+vulnerabilities must be fixed.
+
+Fix deadlines. Critical vulnerabilities must be fixed within 7 days. High severity vulnerabilities must
+be fixed within 14 days. Medium severity vulnerabilities must be fixed within 30 days. Low severity
+vulnerabilities are fixed in the next scheduled release.
+
+Automatic updates. A bot opens a pull request every week for outdated packages. Minor and patch updates
+may be merged after the tests pass. Major version updates need a review from a second developer.
+
+Exceptions. If a fix is not available yet, the team lead may approve a written exception. Every
+exception must be reviewed again after 30 days.
+
+Testing updates. Every dependency update must pass the full automated test suite before it is merged. If
+a test fails, the developer decides whether to fix the code or to pin the older version and write a
+ticket.
+
+Ownership. Each repository has an owner who is responsible for its dependencies. The owner receives the
+weekly report of outdated packages and checks that the report does not stay unread.
+
+Reporting. The security team sends a monthly summary that lists open vulnerabilities, how old they are,
+and which repositories have the most overdue fixes.

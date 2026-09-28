@@ -1,0 +1,27 @@
+Package Evaluation Checklist
+
+Purpose. Before a new open source package is added to a project, the developer must go through this
+checklist.
+
+Maintenance. The package should have at least one commit in the last 12 months. Check if the maintainers
+answer issues and publish fixes.
+
+Licenses. Approved licenses are MIT, Apache-2.0 and BSD. Any other license needs approval from the legal
+team.
+
+Known problems. Run pip-audit for Python packages or npm audit for JavaScript packages. A package with
+an unfixed Critical or High vulnerability must not be added.
+
+Popularity. Prefer packages with many users and more than one maintainer. A package with a single
+maintainer is a risk if that person stops working on it.
+
+Decision. The developer writes a short note in the pull request that lists the results of each check.
+
+Alternatives. If two packages do the same job, prefer the one that has better documentation and a recent
+release. Write down why the other package was not chosen.
+
+Size. Avoid packages that pull in a very large number of other packages. Each extra package is one more
+place where a vulnerability can appear.
+
+Review. The checklist is repeated once a year for every important package, to make sure it is still
+maintained.

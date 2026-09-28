@@ -1,0 +1,27 @@
+Vulnerability Disclosure Policy
+
+Purpose. This policy explains how people outside our team can report a security problem in the open
+source packages that we publish.
+
+How to report. Send an email to the security contact address listed in the README file of the package.
+Please do not open a public issue for a security problem.
+
+Our response. We confirm that we received a report within 3 business days. We then check the problem and
+tell the reporter if we accept it.
+
+Coordinated disclosure. We ask reporters to keep the problem private for 90 days while we prepare a fix.
+If the fix is ready earlier, we publish the advisory earlier.
+
+Credit. With the reporter's permission we name them in the published advisory.
+
+Advisories. Every fixed vulnerability gets a security advisory with a CVE number, the affected versions,
+and the fixed version.
+
+Scope. This policy covers packages published under our organization on ppm and PyPI. It does not cover
+websites, servers or third party packages that we only use.
+
+Safe harbor. We will not start legal action against people who follow this policy, who do not access
+private data, and who do not harm our users.
+
+Contact language. Reports may be written in English. We do not offer money rewards for reports at this
+time.

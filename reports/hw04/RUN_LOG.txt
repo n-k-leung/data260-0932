@@ -1,0 +1,499 @@
+PS C:\Users\natal\Documents\masters\fall 26\dauvicorn app.main:app --reload --port 8032ackend> 
+INFO:     Will watch for changes in these directories: ['C:\\Users\\natal\\Documents\\masters\\fall 26\\data 260\\github\\data260-0932\\reports\\hw04\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8032 (Press CTRL+C to quit)
+INFO:     Started reloader process [18312] using StatReload
+INFO:     Started server process [43796]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     127.0.0.1:64377 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:64377 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59562 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59563 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59567 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59568 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59568 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59576 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59590 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59591 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59601 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:65124 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:65128 - "POST /auth/register%0A HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65132 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65132 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65138 - "GET /vuls/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "GET /vuls/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65141 - "OPTIONS /vuls/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65138 - "PUT /vuls/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "GET /vuls/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65138 - "GET /vuls/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "DELETE /vuls/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65138 - "GET /vuls/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65139 - "GET /vuls/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65142 - "OPTIONS /vuls/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65138 - "PUT /vuls/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58722 - "OPTIONS /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58723 - "POST /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58730 - "POST /auth/logout HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "POST /auth/register HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:58738 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=10 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/naive?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58738 - "GET /vuls/fixed?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53885 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53886 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53897 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53898 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:51843 - "POST /auth/register%0A HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53259 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53260 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:63585 - "POST /auth/login%0A HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49803 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49804 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:49818 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:49819 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:49827 - "POST /auth/login%0A HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49829 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49829 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63016 - "OPTIONS /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63017 - "POST /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64573 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64574 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64573 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52258 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52257 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52258 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52303 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52304 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52303 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57554 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:57554 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:52362 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54715 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54715 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54715 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54715 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54715 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54715 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54715 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54715 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54715 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54715 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:54715 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:50474 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:50474 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:50474 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:50474 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:49586 - "POST /auth/logout HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49587 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49588 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59801 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59801 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59822 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59821 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59837 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59838 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59858 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59858 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59873 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59874 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:59875 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59876 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59876 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59896 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59895 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59896 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59926 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59927 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59926 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59942 - "OPTIONS /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59943 - "POST /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54182 - "GET /vuls/5002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54183 - "GET /vuls/5002 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62367 - "GET /vuls/5002 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62368 - "GET /vuls/5002 HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:62367 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62368 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62367 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62368 - "POST /auth/logout HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62396 - "OPTIONS /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62397 - "POST /auth/login HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62397 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62417 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62418 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62417 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62436 - "OPTIONS /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62437 - "POST /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62438 - "GET /vuls/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62439 - "GET /vuls/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62444 - "OPTIONS /vuls/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62445 - "PUT /vuls/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62449 - "GET /vuls/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62450 - "GET /vuls/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63634 - "OPTIONS /vuls/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63635 - "DELETE /vuls/1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50755 - "POST /auth/records%0A HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50762 - "POST /auth/records%0A HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50776 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50777 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50776 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50793 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50794 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50793 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53561 - "POST /vuls%0A HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53579 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53578 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53579 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53599 - "POST /vuls%0A HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:62390 - "POST /auth/register%0A HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:62392 - "POST /auth/register%0A HTTP/1.1" 409 Conflict
+INFO:     127.0.0.1:62395 - "POST /auth/login%0A HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56365 - "POST /vuls%0A HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56381 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56382 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56381 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56401 - "POST /vuls%0A HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56401 - "GET /vuls%0A HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54635 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54636 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54635 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51206 - "GET /vuls/3%0A HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64158 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64159 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64158 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63428 - "PUT /vuls/2%0A HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63444 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63445 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63444 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55163 - "DELETE /vuls/2%0A HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55179 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55179 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55179 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55212 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55212 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55212 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56856 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56857 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56856 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58410 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58411 - "GET /auth/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58410 - "GET /vuls HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [43796]
+INFO:     Stopping reloader process [18312]
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw04\frontend> npm run dev
+
+> frontend@1.0.0 dev
+> vite
+
+
+  VITE v5.4.21  ready in 210 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw04\backend> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw04\backend> python .\seed.py   
+Seeded 5000 vulnerabilities and 200 advisories (SEED = 932)
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw04\backend> python .\measure.py
+2026-09-28 10:20:05 start measuring
+2026-09-28 10:20:05 size 10 naive p50 5.85 p95 6.5 p99 7.07 stmts/req 11
+2026-09-28 10:20:05 size 10 fixed p50 3.06 p95 3.64 p99 4.96 stmts/req 1
+2026-09-28 10:20:06 size 50 naive p50 17.3 p95 18.33 p99 18.54 stmts/req 51
+2026-09-28 10:20:06 size 50 fixed p50 3.86 p95 4.64 p99 22.06 stmts/req 1
+2026-09-28 10:20:08 size 200 naive p50 60.85 p95 66.89 p99 77.59 stmts/req 201
+2026-09-28 10:20:08 size 200 fixed p50 6.06 p95 23.67 p99 25.55 stmts/req 1
+2026-09-28 10:20:08 done, saved 180 requests to .. /raw/
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw04\backend> python .\explain_index.py
+EXPLAIN SELECT * FROM advisories WHERE vul_id = 42
+ --- BEFORE (no index) --- 
+id | select_type | table | partitions | type | possible_keys | key | key_len | ref | rows | filtered | Extra
+1 | SIMPLE | advisories | None | ALL | None | None | None | None | 200 | 10.0 | Using where
+ --- AFTER (index added) --- 
+id | select_type | table | partitions | type | possible_keys | key | key_len | ref | rows | filtered | Extra
+1 | SIMPLE | advisories | None | ref | idx_advisories_vul_id | idx_advisories_vul_id | 4 | const | 1 | 100.0 | None
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw04> python .\rag.py
+MODEL = qwen3:8b | SEED = 932 | chunks = 21 | chunk_size = 500 | overlap = 50
+ === Q1 (top_k = 3): How many days do we have to fix a Medium severity vulnerability?
+ #1 score=0.375 source=dependicies.txt chunk_id=dependicies.txt#0
+      Dependency Update Policy  Severity levels. Every vulnerability is given a severity level: Low, Medium, High or Critical. The level comes from the CVSS ... 
+ #2 score=0.333 source=severity_scoring.txt chunk_id=severity_scoring.txt#0
+      Severity Scoring Guide  Severity levels. Every vulnerability is given a severity level: Low, Medium, High or Critical. The level comes from the CVSS s ... 
+ #3 score=0.272 source=dependicies.txt chunk_id=dependicies.txt#1
+      everity vulnerabilities must be fixed within 14 days. Medium severity vulnerabilities must be fixed within 30 days. Low severity vulnerabilities are f ... 
+ correct retrieval: yes | relevant chunks: 1 | irrelevant chunks: 2
+ === Q2 (top_k = 1): What CVSS score makes a vulnerability Critical, and how many days do we have to fix it?
+ #1 score=0.469 source=severity_scoring.txt chunk_id=severity_scoring.txt#0
+      Severity Scoring Guide  Severity levels. Every vulnerability is given a severity level: Low, Medium, High or Critical. The level comes from the CVSS s ... 
+ correct retrieval: no | relevant chunks: 0 | irrelevant chunks: 1
+ === Q2 (top_k = 3): What CVSS score makes a vulnerability Critical, and how many days do we have to fix it?
+ #1 score=0.469 source=severity_scoring.txt chunk_id=severity_scoring.txt#0
+      Severity Scoring Guide  Severity levels. Every vulnerability is given a severity level: Low, Medium, High or Critical. The level comes from the CVSS s ... 
+ #2 score=0.428 source=severity_scoring.txt chunk_id=severity_scoring.txt#1
+      0.1 to 3.9 is Low. A score from 4.0 to 6.9 is Medium. A score from 7.0 to 8. is High. A score from 9.0 to 10.0 is Critical.  Reading the score. The ba ... 
+ #3 score=0.29 source=dependicies.txt chunk_id=dependicies.txt#0
+      Dependency Update Policy  Severity levels. Every vulnerability is given a severity level: Low, Medium, High or Critical. The level comes from the CVSS ... 
+ correct retrieval: yes | relevant chunks: 2 | irrelevant chunks: 1
+ === Q2 (top_k = 5): What CVSS score makes a vulnerability Critical, and how many days do we have to fix it?
+ #1 score=0.469 source=severity_scoring.txt chunk_id=severity_scoring.txt#0
+      Severity Scoring Guide  Severity levels. Every vulnerability is given a severity level: Low, Medium, High or Critical. The level comes from the CVSS s ... 
+ #2 score=0.428 source=severity_scoring.txt chunk_id=severity_scoring.txt#1
+      0.1 to 3.9 is Low. A score from 4.0 to 6.9 is Medium. A score from 7.0 to 8. is High. A score from 9.0 to 10.0 is Critical.  Reading the score. The ba ... 
+ #3 score=0.29 source=dependicies.txt chunk_id=dependicies.txt#0
+      Dependency Update Policy  Severity levels. Every vulnerability is given a severity level: Low, Medium, High or Critical. The level comes from the CVSS ... 
+ #4 score=0.23 source=severity_scoring.txt chunk_id=severity_scoring.txt#2
+      tabase to find the CVSS score of a vulnerability.  Examples. A remote code execution bug that needs no login usually scores 9.8 and is Critical. A cro ... 
+ #5 score=0.144 source=vul_disclosure.txt chunk_id=vul_disclosure.txt#1
+      r if we accept it.  Coordinated disclosure. We ask reporters to keep the problem private for 90 days while we prepare a fix. If the fix is ready earli ... 
+ correct retrieval: yes | relevant chunks: 2 | irrelevant chunks: 3
+ === Q3 (top_k = 3): What is the deadline for fixing a Critical vulnerability?
+ #1 score=0.218 source=incidents.txt chunk_id=incidents.txt#0
+      Incident Response Playbook  Purpose. This playbook is used when a vulnerability in an open source package is being attacked in the real world, also ca ... 
+ #2 score=0.192 source=severity_scoring.txt chunk_id=severity_scoring.txt#0
+      Severity Scoring Guide  Severity levels. Every vulnerability is given a severity level: Low, Medium, High or Critical. The level comes from the CVSS s ... 
+ #3 score=0.168 source=dependicies.txt chunk_id=dependicies.txt#0
+      Dependency Update Policy  Severity levels. Every vulnerability is given a severity level: Low, Medium, High or Critical. The level comes from the CVSS ... 
+ correct retrieval: no | relevant chunks: 1 | irrelevant chunks: 2
+ === Q4 (top_k = 3): How long do we have to respond?
+ #1 score=0.146 source=packages_track.txt chunk_id=packages_track.txt#2
+      rom the lockfile so they do not create extra risk.  Build systems. Build servers must run in a clean environment and must not reuse caches from other  ... 
+ #2 score=0.0 source=dependicies.txt chunk_id=dependicies.txt#2
+      approve a written exception. Every exception must be reviewed again after 30 days.  Testing updates. Every dependency update must pass the full automa ... 
+ #3 score=0.0 source=dependicies.txt chunk_id=dependicies.txt#1
+      everity vulnerabilities must be fixed within 14 days. Medium severity vulnerabilities must be fixed within 30 days. Low severity vulnerabilities are f ... 
+ correct retrieval: no | relevant chunks: 0 | irrelevant chunks: 3
+ === Q5 (top_k = 3): What is the yearly budget of the security team?
+ #1 score=0.274 source=vul_disclosure.txt chunk_id=vul_disclosure.txt#0
+      Vulnerability Disclosure Policy  Purpose. This policy explains how people outside our team can report a security problem in the open source packages t ... 
+ #2 score=0.229 source=severity_scoring.txt chunk_id=severity_scoring.txt#3
+      core and does not use temporal scores for deadlines.  Review. The security team checks the severity of all open vulnerabilities once a month and updat ... 
+ #3 score=0.219 source=dependicies.txt chunk_id=dependicies.txt#3
+      at the report does not stay unread.  Reporting. The security team sends a monthly summary that lists open vulnerabilities, how old they are, and which ... 
+ correct retrieval: n/a | relevant chunks: 0 | irrelevant chunks: 3
+ === Q6 (top_k = 3): How do I bake a chocolate cake?
+ #1 score=0.0 source=dependicies.txt chunk_id=dependicies.txt#2
+      approve a written exception. Every exception must be reviewed again after 30 days.  Testing updates. Every dependency update must pass the full automa ... 
+ #2 score=0.0 source=dependicies.txt chunk_id=dependicies.txt#1
+      everity vulnerabilities must be fixed within 14 days. Medium severity vulnerabilities must be fixed within 30 days. Low severity vulnerabilities are f ... 
+ #3 score=0.0 source=dependicies.txt chunk_id=dependicies.txt#0
+      Dependency Update Policy  Severity levels. Every vulnerability is given a severity level: Low, Medium, High or Critical. The level comes from the CVSS ... 
+ correct retrieval: n/a | relevant chunks: 0 | irrelevant chunks: 3
+Q1 A -> The number of days required to fix a **Medium severity vulnerability** depends on organizational pol
+Q1 B -> The policy states that **Medium severity vulnerabilities must be fixed within 30 days**.   **Answer:
+Q1 C -> The team must fix a Medium severity vulnerability within 30 days [1].
+Q2 A -> The **CVSS (Common Vulnerability Scoring System)** defines a vulnerability as **Critical** if its **
+Q2 B -> A vulnerability is classified as **Critical** if its CVSS score falls within the range **9.0 to 10.0
+Q2 C -> A CVSS score of 9.0 to 10.0 makes a vulnerability Critical [2]. The context does not specify how man
+Q3 A -> The deadline for fixing a **Critical vulnerability** depends on several factors, including industry 
+Q3 B -> The deadline for fixing a Critical vulnerability is **within 7 days**. This is specified in the **De
+Q3 C -> I cannot answer this question from the provided documents. The context mentions an "Emergency deadli
+Q4 A -> The time frame for responding depends on the specific context. Here are some common scenarios and ty
+Q4 B -> The response time depends on the severity of the vulnerability:   - **High severity vulnerabilities*
+Q4 C -> I cannot answer this question from the provided documents.
+Q5 A -> The yearly budget of a security team can vary significantly depending on the organization's size, in
+Q5 B -> The provided context does not mention or specify the yearly budget of the security team. The documen
+Q5 C -> I cannot answer this question from the provided documents.
+Q6 A -> Baking a chocolate cake is a rewarding process! Here's a step-by-step guide to help you create a moi
+Q6 B -> The context provided is about a software dependency update policy and does not relate to baking a ch
+Q6 C -> I cannot answer this question from the provided documents.
+sweep k = 1 B -> **Answer:**   A vulnerability is classified as **Critical** if its CVSS score is **7.0 or higher** (
+sweep k = 1 C -> I cannot answer this question from the provided documents. The context does not specify the CVSS sco
+sweep k = 3 B -> A vulnerability is classified as **Critical** if its CVSS score falls within the range **9.0 to 10.0
+sweep k = 3 C -> A CVSS score of 9.0 to 10.0 makes a vulnerability Critical [2]. The context does not specify how man
+sweep k = 5 B -> A vulnerability is classified as **Critical** if its CVSS score falls within the range **9.0 to 10.0
+sweep k = 5 C -> A CVSS score of 9.0 to 10.0 makes a vulnerability Critical [1][2]. The context mentions a 90-day per
+config | accuracy | faithfulness | format_compliance | robustness
+['A', 0.5, 0.0, 'n/a', 0.0]
+['B', 0.5, 0.5, 'n/a', 0.0]
+['C', 0.5, 0.5, 1.0, 1.0]
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw04> python .\verify_hw04.py
+PASS backend responds on PORT_BASE -GET /health returned 200
+PASS list endpoint needs login -GET /vuls without login returned 401
+PASS login sets an HTTP-only session cookie -login returned 200, HTTP-only session cookie set: True
+PASS naive list endpoint returns data -limit 50 -> 50 records
+PASS fixed list endpoint returns data -limit 50 -> 50 records
+PASS naive and fixed return the same data -naive and fixed return the same records: True
+PASS raw/ has all 180 N+1 requests -raw/n_plus_one_raw.csv has 180 rows
+PASS RAG corpus has at least 5 documents -6 documents in rag/docs

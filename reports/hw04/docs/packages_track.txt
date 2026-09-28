@@ -1,0 +1,27 @@
+Package Tracking Guide
+
+Purpose. This guide describes how we track which open source packages are inside our software.
+
+Software bill of materials. An SBOM is a list of every package and version used in a release. We create
+an SBOM in CycloneDX format for every release and store it with the release files.
+
+Lockfiles. Lockfiles such as package-lock,ison and requirements.txt with pinned versions must be
+committed to the repository. Builds must install exactly the versions in the lockfile.
+
+Package sources. Packages may only be installed from the official registries: ppm and PyPI. Packages
+from personal websites or unknown mirrors are not allowed.
+
+Scanning. The dependency scanner runs on every pull request and every night. It compares the SBOM with
+public vulnerability databases and opens a ticket when it finds a match.
+
+Removing packages. Packages that are no longer used must be removed from the lockfile so they do not
+create extra risk.
+
+Build systems. Build servers must run in a clean environment and must not reuse caches from other
+projects. This reduces the chance that a changed package reaches a release without being noticed.
+
+Signing. Release files are signed by the release manager. The signature is checked before a release is
+deployed to production.
+
+Retention. SBOM files are kept for as long as the release is supported by the team, and then for one
+more year.

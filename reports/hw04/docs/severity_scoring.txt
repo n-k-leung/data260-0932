@@ -1,0 +1,28 @@
+Severity Scoring Guide
+
+Severity levels. Every vulnerability is given a severity level: Low, Medium, High or Critical. The level
+comes from the CVSS score published for the vulnerability. The severity level decides how quickly we
+must act.
+
+Purpose. This guide explains how we read the CVSS score of a vulnerability. CVSS is the Common
+Vulnerability Scoring System and gives every vulnerability a number from 0.0 to 10.0.
+
+Score ranges. A score from 0.1 to 3.9 is Low. A score from 4.0 to 6.9 is Medium. A score from 7.0 to 8.
+is High. A score from 9.0 to 10.0 is Critical.
+
+Reading the score. The base score does not know how we use a package. A vulnerability in a library that
+is only used in tests may be less urgent, but the team lead must write down that decision. Never lower
+severity level without a written note.
+
+Sources. We use the National Vulnerability Database and the GitHub Advisory Database to find the CVSS
+score of a vulnerability.
+
+Examples. A remote code execution bug that needs no login usually scores 9.8 and is Critical. A cross-
+site scripting bug that needs a logged-in user usually scores about 5.4 and is Medium. A bug that only
+leaks a version number usually scores under 4.0 and is Low.
+
+Temporal factors. The exploit maturity and the availability of a fix can change the temporal score. Our
+team only records the base score and does not use temporal scores for deadlines.
+
+Review. The security team checks the severity of all open vulnerabilities once a month and updates the
+level if the published score changed.

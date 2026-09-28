@@ -1,0 +1,30 @@
+Incident Response Playbook
+
+Purpose. This playbook is used when a vulnerability in an open source package is being attacked in the
+real world, also called actively exploited.
+
+Detection. Alerts come from the dependency scanner, from security mailing lists, or from a customer
+report. Anyone who sees an alert must tell the security team within 1 hour.
+
+Emergency deadline. When a Critical vulnerability is actively exploited, the affected service must be
+patched or protected with a mitigation within 24 hours. This deadline replaces the normal fix deadline
+from the dependency update policy.
+
+Roles. The security team names one incident commander. The incident commander decides on the mitigation,
+writes the status updates, and closes the incident after the fix is deployed.
+
+Mitigations. Examples of mitigations are turning off the affected feature, adding a firewall rule, or
+pinning the package to a safe older version.
+
+After the incident. Within 5 business days the team holds a review meeting and writes down what went
+well and what must change.
+
+Communication. Status updates are posted in the incident channel every 4 hours until the incident is
+closed. Customers are informed by the support team only after the incident commander approves the
+message.
+
+Evidence. Keep logs, package versions and the time of every action. Do not delete the logs of the
+affected service, because they are needed for the review meeting.
+
+Tools. The team uses the dependency scanner, the deployment dashboard and the incident channel during an
+incident.
