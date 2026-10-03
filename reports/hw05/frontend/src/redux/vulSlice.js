@@ -58,14 +58,23 @@ const vulSlice = createSlice({
         .addCase(createVul.fulfilled, (state, action) => {
             state.items.push(action.payload);
         })
+        .addCase(createVul.rejected, (state, action) => {
+            state.error = action.error.message;
+        })
         // update: replace the old record with the updated one
         .addCase(updateVul.fulfilled, (state, action) => {
             const i = state.items.findIndex((r) => r.id === action.payload.id);
             if (i !== -1) state.items[i] = action.payload;
         })
+        .addCase(updateVul.rejected, (state, action) => {
+            state.error=action.error.message;
+        })
         // delete: remove the record with the matching id
         .addCase(deleteVul.fulfilled, (state, action) => {
             state.items = state.items.filter((r) => r.id !== action.payload);
+        })
+        .addCase(deleteVul.rejected, (state, action) => {
+            state.error=action.error.message;
         });
     },
 });

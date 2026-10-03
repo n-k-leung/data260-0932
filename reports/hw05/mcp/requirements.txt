@@ -1,0 +1,2 @@
+mpc[cli]==1.9.4
+requests

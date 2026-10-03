@@ -11,6 +11,7 @@ export default function DeleteRecord({}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [record, setRecord] = useState(null);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -25,8 +26,13 @@ export default function DeleteRecord({}) {
 
   async function handleDelete() {
     // await onDelete(recordId);
-    await dispatch(deleteVul(recordId));
-    Navigate("/")
+    setError("")
+    try {
+      await dispatch(deleteVul(recordId));
+      navigate("/")
+    } catch(err){
+      setError("Cannot delete record")
+    }
   }
 
   return (
@@ -41,7 +47,7 @@ export default function DeleteRecord({}) {
             <p style={{ fontSize: "18px", marginBottom: "24px" }}>
                 Are you sure you want to delete <strong>{record.package_name}</strong> ({record.severity})?
             </p>
-
+            {error && <div className="notice">{error}</div>}
             <button className="btn danger" onClick={handleDelete}>
                 Delete record
             </button>

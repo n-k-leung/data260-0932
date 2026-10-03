@@ -14,6 +14,7 @@ export default function UpdateRecord({ onUpdate }) {
   const [vulcode, setVulcode] = useState("");
   const [vendorId, setvendorId] = useState("");
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -34,16 +35,21 @@ export default function UpdateRecord({ onUpdate }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await dispatch(updateVul({
-      id: recordId,
-      data: {
-        package_name: packageName,
-        severity: severity,
-        vul_code: vulcode,
-        vendor_id: Number(vendorId),
-      },
-    }));
-    navigate("/");
+    setError("")
+    try{
+      await dispatch(updateVul({
+        id: recordId,
+        data: {
+          package_name: packageName,
+          severity: severity,
+          vul_code: vulcode,
+          vendor_id: Number(vendorId),
+        },
+      }));
+      navigate("/");
+    } catch (err){
+      setError("Cannot update record, check input fields")
+    }
     // await onUpdate(recordId, { package_name, severity });
   }
 
@@ -89,7 +95,7 @@ export default function UpdateRecord({ onUpdate }) {
                 onChange={(e) => setVendorId(e.target.value)}
             />
             </label>
-
+            {error && <div className="notice">{error}</div>}
             <button className="btn primary" type="submit">
             Update Record
             </button>
