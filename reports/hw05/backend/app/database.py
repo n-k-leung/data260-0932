@@ -2,10 +2,11 @@ import os
 from dotenv import load_dotenv
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import sessionmaker, declarative_base
-
+import sys
 load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL")
+print("DATABASE:", DATABASE_URL,file=sys.stderr)
 if not DATABASE_URL:
     raise RuntimeError("DATABASE_URL missing. Create backend/.env with DATABASE_URL=...")
 

@@ -44,7 +44,7 @@ def delete_user(db: Session, user_id: int):
 
 #functions for vulnerabilites, follows ame locgic as useres demo
 def create_vul(db: Session, payload: schema.VulCreate):
-  vul = models.Vul(package_name=payload.package_name, severity=payload.severity)
+  vul = models.Vul(package_name=payload.package_name, severity=payload.severity, vul_code = payload.vul_code, vendor_id = payload.vendor_id)
   db.add(vul)
   db.commit()
   db.refresh(vul)
@@ -62,6 +62,8 @@ def update_vul(db: Session, vul_id: int, payload: schema.VulUpdate):
       return None
   vul.package_name = payload.package_name
   vul.severity = payload.severity
+  vul.vul_code = payload.vul_code
+  vul.vendor_id = payload.vendor_id
   db.commit()
   db.refresh(vul)
   return vul

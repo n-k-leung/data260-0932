@@ -20,8 +20,8 @@ def search_vulnerabilities(package_name: str) -> dict:
 
     db = SessionLocal()
     try:
-        rows = (db.query(models.Vul).filter(models.Vul.package_name.ilike("%" + package_name + "%").all()))
-        results = [{"id": r.id, "package_name": r.package_name, "severity": r.severity,"cve_id": r.cve_id} for r in rows]
+        rows = db.query(models.Vul).filter(models.Vul.package_name.ilike("%" + package_name + "%")).all()
+        results = [{"id": r.id, "package_name": r.package_name, "severity": r.severity,"vul_code": r.vul_code, "vendor_id": r.vendor_id,} for r in rows]
         return envelope(True, data=results)
     except Exception as e:
         logger.error("search_vulnerabilities failed: %s", e)
@@ -36,7 +36,7 @@ def get_vulnerability(vuln_id: int) -> dict:
         row = db.query(models.Vul).filter(models.Vul.id == vuln_id).first()
         if not row:
             return envelope(False, error="vulnerability not found")
-        data = {"id": row.id, "package_name": row.package_name, "severity": row.severity,"cve_id": row.cve_id, "report_count": row.report_count, "vendor_id": row.vendor_id}
+        data = {"id": row.id, "package_name": row.package_name, "severity": row.severity,"vul_code": row.vul_code, "vendor_id": row.vendor_id, "report_count": row.report_count}
         return envelope(True, data=data)
     except Exception as e:
         logger.error("get_vulnerability failed: %s", e)

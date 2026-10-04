@@ -1,3 +1,59 @@
+PS C:\Users\natal> & "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
+Enter password: *******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.41 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> DROP DATABASE s0932_rel;
+Query OK, 5 rows affected (0.08 sec)
+
+mysql> CREATE DATABASE s0932_rel;
+Query OK, 1 row affected (0.01 sec)
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> cd .\reports\hw05
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05> cd .\frontend\
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\frontend> npm install
+
+up to date, audited 62 packages in 807ms
+
+15 packages are looking for funding
+  run `npm fund` for details
+
+2 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\frontend> npm run dev
+
+> frontend@1.0.0 dev
+> vite
+
+
+  VITE v8.3.2  ready in 494 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> cd .\reports\hw05\backend\
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend> uvicorn app.main:app --reload --port 8032
+INFO:     Will watch for changes in these directories: ['C:\\Users\\natal\\Documents\\masters\\fall 26\\data 260\\github\\data260-0932\\reports\\hw05\\backend']
+INFO:     Uvicorn running on http://127.0.0.1:8032 (Press CTRL+C to quit)
+INFO:     Started reloader process [37856] using StatReload
+INFO:     Started server process [30184]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+
+
 PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\mcp> pip install "mcp[cli]==1.9.4"
 Defaulting to user installation because normal site-packages is not writeable
 Collecting mcp==1.9.4 (from mcp[cli]==1.9.4)
@@ -74,3 +130,18 @@ MCP Inspector Web is up and running at:
 
 Opening browser...
 Terminate batch job (Y/N)? Y
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\mcp> python .\part3_testing.py
+DATABASE: mysql+pymysql://root:seekrit@localhost:3306/s0932_rel
+Success on the first attempt
+{'ok': True, 'data': 'query result', 'error': None, 'attempts': 1}
+
+Failure on the first attempt followed by success after a retry
+{'ok': True, 'data': 'query result', 'error': None, 'attempts': 2}
+
+Failure after all allowed retries, returning a clean error result instead of crashing
+{'ok': False, 'data': None, 'error': 'storage failed', 'attempts': 4}
+2026-10-03 20:32:11 start fault-injection measurement, VERIFY_SEED = 260932
+2026-10-03 20:32:11 rate 0.0 success rate 1.0 mean ms 1.2 p99_ms 26.8
+2026-10-03 20:32:12 rate 0.2 success rate 1.0 mean ms 20.96 p99_ms 102.19
+2026-10-03 20:32:18 rate 0.5 success rate 0.92 mean ms 129.13 p99_ms 702.31

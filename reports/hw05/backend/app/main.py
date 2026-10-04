@@ -77,7 +77,7 @@ def add_vul(payload: schema.VulCreate, db: Session = Depends(get_db), _session =
         return crud.create_vul(db, payload)
     except IntegrityError:
         db.rollback()
-        raise HTTPException(status_code=409, detail="CVE id already exists")
+        raise HTTPException(status_code=409, detail="vulnerability code already exists")
 
     
 @app.get("/vuls", response_model=list[schema.VulOut])
@@ -127,7 +127,7 @@ def edit_vul(vul_id: int, payload: schema.VulUpdate, db: Session = Depends(get_d
         vul = crud.update_vul(db, vul_id, payload)
     except IntegrityError:
         db.rollback()
-        raise HTTPException(status_code=409, detail="CVE id already exists")
+        raise HTTPException(status_code=409, detail="vulnerability code already exists")
     if not vul:
         raise HTTPException(status_code=404, detail="Vulnerability not found")
     return vul
@@ -185,7 +185,7 @@ def remove_vendor(vendor_id: int, db: Session = Depends(get_db),session = Depend
 def list_vulnerabilities_for_vendor(vendor_id: int, db: Session = Depends(get_db), _session = Depends(require_session)):
     if not crud.get_vendor(db, vendor_id):
         raise HTTPException(status_code=404, detail="Vendor not found")
-    return crud.get_vulnerabilities_by_vendor(db, vendor_id)
+    return crud.get_vuls_by_vendor(db, vendor_id)
 
     
 
