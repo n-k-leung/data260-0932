@@ -56,3 +56,21 @@ MCP Inspector Web is up and running at:
 
 Opening browser...
 Terminate batch job (Y/N)? y
+
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\mcp> mcp dev .\vul.py                                    
+C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Starting MCP inspector...
+
+MCP Inspector Web is up and running at:
+   http://127.0.0.1:6274?MCP_INSPECTOR_API_TOKEN=59d72f2adb83ac2ae7fec1042fbb0a56a4717627ac075fc46f8d135261bf8e9d
+
+   Sandbox (MCP Apps): http://127.0.0.1:6275/sandbox
+
+   Auth token: 59d72f2adb83ac2ae7fec1042fbb0a56a4717627ac075fc46f8d135261bf8e9d
+
+   Secrets: OS keychain
+
+Opening browser...
+Terminate batch job (Y/N)? Y
