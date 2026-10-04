@@ -1,0 +1,58 @@
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\mcp> pip install "mcp[cli]==1.9.4"
+Defaulting to user installation because normal site-packages is not writeable
+Collecting mcp==1.9.4 (from mcp[cli]==1.9.4)
+  Downloading mcp-1.9.4-py3-none-any.whl.metadata (28 kB)
+Requirement already satisfied: anyio>=4.5 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from mcp==1.9.4->mcp[cli]==1.9.4) (4.15.1)
+Requirement already satisfied: httpx-sse>=0.4 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from mcp==1.9.4->mcp[cli]==1.9.4) (0.4.3)
+Requirement already satisfied: httpx>=0.27 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from mcp==1.9.4->mcp[cli]==1.9.4) (0.28.1)
+Requirement already satisfied: pydantic-settings>=2.5.2 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from mcp==1.9.4->mcp[cli]==1.9.4) (2.15.0)
+Requirement already satisfied: pydantic<3.0.0,>=2.7.2 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from mcp==1.9.4->mcp[cli]==1.9.4) (2.13.5)
+Requirement already satisfied: python-multipart>=0.0.9 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from mcp==1.9.4->mcp[cli]==1.9.4) (0.0.32)
+Requirement already satisfied: sse-starlette>=1.6.1 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from mcp==1.9.4->mcp[cli]==1.9.4) (3.5.0)
+Requirement already satisfied: starlette>=0.27 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from mcp==1.9.4->mcp[cli]==1.9.4) (1.7.0)
+Requirement already satisfied: uvicorn>=0.23.1 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from mcp==1.9.4->mcp[cli]==1.9.4) (0.54.0)
+Requirement already satisfied: python-dotenv>=1.0.0 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from mcp[cli]==1.9.4) (1.2.3)
+Requirement already satisfied: typer>=0.12.4 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from mcp[cli]==1.9.4) (0.27.2)
+Requirement already satisfied: annotated-types>=0.6.0 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from pydantic<3.0.0,>=2.7.2->mcp==1.9.4->mcp[cli]==1.9.4) (0.8.0)
+Requirement already satisfied: pydantic-core==2.46.5 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from pydantic<3.0.0,>=2.7.2->mcp==1.9.4->mcp[cli]==1.9.4) (2.46.5)
+Requirement already satisfied: typing-extensions>=4.14.1 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from pydantic<3.0.0,>=2.7.2->mcp==1.9.4->mcp[cli]==1.9.4) (4.16.0)
+Requirement already satisfied: typing-inspection>=0.4.2 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from pydantic<3.0.0,>=2.7.2->mcp==1.9.4->mcp[cli]==1.9.4) (0.4.4)
+Requirement already satisfied: idna>=2.8 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from anyio>=4.5->mcp==1.9.4->mcp[cli]==1.9.4) (3.20)
+Requirement already satisfied: certifi in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from httpx>=0.27->mcp==1.9.4->mcp[cli]==1.9.4) (2026.7.22)
+Requirement already satisfied: httpcore==1.* in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from httpx>=0.27->mcp==1.9.4->mcp[cli]==1.9.4) (1.0.9)
+Requirement already satisfied: h11>=0.16 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from httpcore==1.*->httpx>=0.27->mcp==1.9.4->mcp[cli]==1.9.4) (0.16.0)
+Requirement already satisfied: shellingham>=1.3.0 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from typer>=0.12.4->mcp[cli]==1.9.4) (1.5.4)
+Requirement already satisfied: rich>=13.8.0 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from typer>=0.12.4->mcp[cli]==1.9.4) (15.0.0)
+Requirement already satisfied: annotated-doc>=0.0.2 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from typer>=0.12.4->mcp[cli]==1.9.4) (0.0.5)
+Requirement already satisfied: colorama in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from typer>=0.12.4->mcp[cli]==1.9.4) (0.4.6)
+Requirement already satisfied: markdown-it-py>=2.2.0 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from rich>=13.8.0->typer>=0.12.4->mcp[cli]==1.9.4) (4.2.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from rich>=13.8.0->typer>=0.12.4->mcp[cli]==1.9.4) (2.21.0)
+Requirement already satisfied: mdurl~=0.1 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from markdown-it-py>=2.2.0->rich>=13.8.0->typer>=0.12.4->mcp[cli]==1.9.4) (0.1.2)
+Requirement already satisfied: click>=7.0 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from uvicorn>=0.23.1->mcp==1.9.4->mcp[cli]==1.9.4) (8.5.0)
+Downloading mcp-1.9.4-py3-none-any.whl (130 kB)
+Installing collected packages: mcp
+  Attempting uninstall: mcp
+    Found existing installation: mcp 1.30.0
+    Uninstalling mcp-1.30.0:
+      Successfully uninstalled mcp-1.30.0
+  WARNING: The script mcp.exe is installed in 'C:\Users\natal\AppData\Roaming\Python\Python314\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed mcp-1.9.4
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\mcp> mcp dev .\meals.py
+>> 
+C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Starting MCP inspector...
+
+MCP Inspector Web is up and running at:
+   http://127.0.0.1:6274?MCP_INSPECTOR_API_TOKEN=bbf1792c00ed4bb2e1bd2f90bf55e2f9df8b49e10a1b519917246e21f12e748f
+
+   Sandbox (MCP Apps): http://127.0.0.1:6275/sandbox
+
+   Auth token: bbf1792c00ed4bb2e1bd2f90bf55e2f9df8b49e10a1b519917246e21f12e748f
+
+   Secrets: OS keychain
+
+Opening browser...
+Terminate batch job (Y/N)? y
