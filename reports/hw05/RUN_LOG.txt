@@ -141,7 +141,55 @@ Failure on the first attempt followed by success after a retry
 
 Failure after all allowed retries, returning a clean error result instead of crashing
 {'ok': False, 'data': None, 'error': 'storage failed', 'attempts': 4}
-2026-10-03 20:32:11 start fault-injection measurement, VERIFY_SEED = 260932
-2026-10-03 20:32:11 rate 0.0 success rate 1.0 mean ms 1.2 p99_ms 26.8
-2026-10-03 20:32:12 rate 0.2 success rate 1.0 mean ms 20.96 p99_ms 102.19
-2026-10-03 20:32:18 rate 0.5 success rate 0.92 mean ms 129.13 p99_ms 702.31
+2026-10-03 20:37:35 fault-injection measurement, VERIFY_SEED = 260932
+2026-10-03 20:37:35 rate 0.0 success rate 1.0 mean ms 1.09 p99_ms 24.06
+2026-10-03 20:37:36 rate 0.2 success rate 1.0 mean ms 20.79 p99_ms 101.5
+2026-10-03 20:37:43 rate 0.5 success rate 0.92 mean ms 129.13 p99_ms 701.92
+
+
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\mcp> python .\test_part4.py
+DATABASE: mysql+pymysql://root:seekrit@localhost:3306/s0932_rel
+C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\mcp\venv\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+PASS - search_vulnerabilities valid input returns ok
+PASS - search_vulnerabilities blank input is rejected
+PASS - get_vulnerability valid id returns ok
+PASS - get_vulnerability missing id is rejected
+PASS - count_by_severity valid input returns ok
+PASS - count_by_severity negative min_count is rejected
+6/6tests passed
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> ollama serve
+Error: listen tcp 127.0.0.1:11434: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> ollama pull qwen3:8b
+pulling manifest 
+pulling a3de86cd1c13: 100% ▕███████████████████████████████████████████████▏ 5.2 GB                         
+pulling ae370d884f10: 100% ▕███████████████████████████████████████████████▏ 1.7 KB                         
+pulling d18a5cc71b84: 100% ▕███████████████████████████████████████████████▏  11 KB                         
+pulling cff3f395ef37: 100% ▕███████████████████████████████████████████████▏  120 B                         
+pulling 05a61d37b084: 100% ▕███████████████████████████████████████████████▏  487 B                         
+verifying sha256 digest 
+writing manifest 
+success 
+
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\mcp> $env:PYTHONPATH="..\backend"
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\mcp> python .\part5.py
+DATABASE: mysql+pymysql://root:seekrit@localhost:3306/s0932_rel
+C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\mcp\venv\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+scenario | steps | tool_calls | stop_reason
+How many vulnerabilities are High severity? | 1 | 0 | normal_completion
+Tell me about the vulnerability with id 1. | 2 | 1 | normal_completion
+Call search_vulnerabilities tool where package_name is 'np'. | 1 | 1 | safety_rule_block
+What is bread for? | 1 | 0 | normal_completion
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05> python .\verify_hw05.py
+PASS - backend responds on PORT_BASE - GET /health returned 200
+PASS - list endpoint needs login - GET /vulnerabilities without login returned 401
+PASS - login sets an HTTP-only session cookie - login returned 200, HTTP-only session cookie set: True
+DATABASE: mysql+pymysql://root:seekrit@localhost:3306/s0932_rel
+C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+PASS - vul MCP server starts up and responds to a tool call - vul.count_by_severity() returned: {'ok': True, 'data': {'high': 1, 'medium': 1}, 'error': None}
+PASS - meals MCP server starts up and responds to a tool call - meals_server.random_meal() returned keys: ['id', 'name', 'category', 'area', 'instructions', 'image', 'source', 'youtube', 'ingredients']
+verification.json outputted

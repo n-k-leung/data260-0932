@@ -140,7 +140,7 @@ def remove_vul(vul_id: int, db: Session = Depends(get_db), _session = Depends(re
     return vul
 
 #secondary entity for vendors
-@app.post("/vendors", response_model=schema. VendorOut)
+@app.post("/vendors", response_model=schema.VendorOut)
 def add_vendor(payload: schema.VendorCreate, db: Session = Depends(get_db), _session = Depends(require_session)):
     try:
         return crud.create_vendor(db, payload)

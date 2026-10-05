@@ -27,7 +27,7 @@ class Vul(Base):
     severity = Column(String(255), nullable=False)
     advisories = relationship(
         "Advisory",
-        primaryjoin="Vul. id == Advisory.vul_id",
+        primaryjoin="Vul.id == Advisory.vul_id",
         foreign_keys="Advisory.vul_id",
         viewonly=True,
     )

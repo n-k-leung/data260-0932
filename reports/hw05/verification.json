@@ -1,0 +1,35 @@
+{
+  "homework": 5,
+  "sid4": "0932",
+  "commit": "unknown",
+  "model": "qwen3:8b",
+  "seed": 932,
+  "verify_seed": 260932,
+  "checks": [
+    {
+      "check": "backend responds on PORT_BASE",
+      "result": "pass",
+      "detail": "GET /health returned 200"
+    },
+    {
+      "check": "list endpoint needs login",
+      "result": "pass",
+      "detail": "GET /vulnerabilities without login returned 401"
+    },
+    {
+      "check": "login sets an HTTP-only session cookie",
+      "result": "pass",
+      "detail": "login returned 200, HTTP-only session cookie set: True"
+    },
+    {
+      "check": "vul MCP server starts up and responds to a tool call",
+      "result": "pass",
+      "detail": "vul.count_by_severity() returned: {'ok': True, 'data': {'high': 1, 'medium': 1}, 'error': None}"
+    },
+    {
+      "check": "meals MCP server starts up and responds to a tool call",
+      "result": "pass",
+      "detail": "meals_server.random_meal() returned keys: ['id', 'name', 'category', 'area', 'instructions', 'image', 'source', 'youtube', 'ingredients']"
+    }
+  ]
+}

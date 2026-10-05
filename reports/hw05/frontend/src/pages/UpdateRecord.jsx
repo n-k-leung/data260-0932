@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchVulById } from "../api/vulApi.js";
 import { useDispatch } from "react-redux";
 import { updateVul } from "../redux/vulSlice.js";
+import { useNavigate } from "react-router-dom";
 
 export default function UpdateRecord({ onUpdate }) {
   const { id } = useParams();
@@ -92,7 +93,7 @@ export default function UpdateRecord({ onUpdate }) {
             <input
                 type="number"
                 value={vendorId}
-                onChange={(e) => setVendorId(e.target.value)}
+                onChange={(e) => setvendorId(e.target.value)}
             />
             </label>
             {error && <div className="notice">{error}</div>}

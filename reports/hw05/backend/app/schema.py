@@ -31,6 +31,8 @@ class VulCreate(BaseModel):
 class VulUpdate(BaseModel):
     package_name: str = Field(min_length=1)
     severity: str = Field(min_length=1)
+    vul_code: str = Field(min_length=1)
+    vendor_id: int
 
 class VulOut(BaseModel):
     id: int

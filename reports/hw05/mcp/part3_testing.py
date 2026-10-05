@@ -76,7 +76,7 @@ def make_db(fail_flags):
 raw_rows = []
 summary_rows = []
 
-print(time.strftime("%Y-%m-%d %H:%M:%S"), "start fault-injection measurement, VERIFY_SEED =", VERIFY_SEED)
+print(time.strftime("%Y-%m-%d %H:%M:%S"), "fault-injection measurement, VERIFY_SEED =", VERIFY_SEED)
 
 for rate in RATES:
 
@@ -106,7 +106,7 @@ with open(os.path.join(RAW_DIR, "fault_injection_raw.csv"), "w", newline="") as 
     w = csv.writer(f)
     w.writerow(["injected failure rate", "call number", "success", "attempts", "latency ms"])
     w.writerows(raw_rows)
-
+#for metrics table
 with open(os.path.join(RAW_DIR, "fault_injection_summary.csv"), "w", newline="") as f:
     w = csv.writer(f)
     w.writerow(["injected failure rate", "success rate", "mean latency ms", "p99 latency ms"])
