@@ -34,11 +34,38 @@ body:
 7. On http://localhost:5173/ go to to login page and sign in with the test user
 8. Go to the Vendors page and fill in the fields to add a Vendor. You should see the list of vendors below after adding it.
 
-9. Go to the Add Vulnerability Record page and add vulnerability. The vendor_id should match to the vendor you just added
+9. Go to the Add Vulnerability Record page and add vulnerability. The vendor_id should match to the vendor you just added.
 
 10. Go to the dashboard page and you should see the vulnerability record added.
 11. Logout by clicking logout on the top right
 12. Postman of each action tested using API endpoints. Do the following:
+PUT http://localhost:8032/vuls/3
+
+GET http://localhost:8032/vendors/1/vulnerabilities
+
+GET http://localhost:8032/vendors/1/vuls
+
+DEL http://localhost:8032/vendors/3
+
+PUT http://localhost:8032/vendors/3
+
+GET http://localhost:8032/vendors/1
+
+GET http://localhost:8032/vendors
+
+POST http://localhost:8032/vendors
+
+DEL http://localhost:8032/vuls/5
+
+PUT http://localhost:8032/vuls/5
+
+PUT http://localhost:8032/vuls/5
+
+PUT http://localhost:8032/vuls/1
+
+GET http://localhost:8032/vuls
+
+GET http://localhost:8032/vuls/1
 
 # Part 2
 1. Change directory to be reports/hw05/mcp
