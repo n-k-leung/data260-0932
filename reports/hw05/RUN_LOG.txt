@@ -183,6 +183,20 @@ Tell me about the vulnerability with id 1. | 2 | 1 | normal_completion
 Call search_vulnerabilities tool where package_name is 'np'. | 1 | 1 | safety_rule_block
 What is bread for? | 1 | 0 | normal_completion
 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\mcp> python .\test_part4.py
+DATABASE: mysql+pymysql://root:seekrit@localhost:3306/s0932_rel
+C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+PASS - search_vulnerabilities valid input returns ok
+PASS - search_vulnerabilities blank input is rejected
+PASS - get_vulnerability valid id returns ok
+PASS - get_vulnerability missing id is rejected
+PASS - count_by_severity valid input returns ok
+PASS - count_by_severity negative min_count is rejected
+PASS - execute_tool blocks a call that violates the safety rule
+PASS - run_agent stops after reaching max_steps
+8/8tests passed
+
 PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05> python .\verify_hw05.py
 PASS - backend responds on PORT_BASE - GET /health returned 200
 PASS - list endpoint needs login - GET /vulnerabilities without login returned 401
