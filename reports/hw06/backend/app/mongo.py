@@ -1,13 +1,9 @@
-from typing import get_args
-from pymongo import MongoClient
-from pymongo.errors import PyMongoError
-from .schema import StatusType, CategoryType
 import os
 from typing import get_args
 from dotenv import load_dotenv
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
-from .schema import StatusType, CategoryType
+from .mongo_schema import StatusType, CategoryType
 
 load_dotenv()
 

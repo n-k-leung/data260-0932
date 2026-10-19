@@ -6,7 +6,7 @@ from fastapi import APIRouter, HTTPException
 from pymongo.errors import PyMongoError
 
 from ..mongo import get_collection
-from ..schema import VulDocCreate, VulDocUpdate, VulDocOut
+from ..mongo_schema import VulDocCreate, VulDocUpdate, VulDocOut
 
 router = APIRouter(prefix="/api/vul-docs", tags=["Vulnerability Docs (MongoDB)"])
 
