@@ -53,3 +53,59 @@ def setup_collection():
         print("Created collection", COLLECTION_NAME)
     except PyMongoError as e:
         print("MongoDB setup warning:", e)
+
+def get_messages_col():
+    return get_db()[MESSAGES_COLLECTION]
+
+def get_summaries_col():
+    return get_db()[SUMMARIES_COLLECTION]
+
+def get_episodes_col():
+    return get_db()[EPISODES_COLLECTION]
+
+def setup_memory_collections():
+    try:
+        db = get_db()
+        existing = db.list_collection_names()
+
+        if MESSAGES_COLLECTION not in existing:
+            db.create_collection(MESSAGES_COLLECTION, validator={"$jsonSchema": {
+            "bsonType": "object",
+            "required": ["user_id", "session_id", "role", "content", "created_at"],
+            "properties": {
+                "user_id": {"bsonType": "string"},
+                "session_id": {"bsonType": "string"},
+                "role": {"enum": ["user", "assistant"]},
+                "content": {"bsonType": "string"},
+                "created_at": {"bsonType": "date"},
+        }}})
+        if SUMMARIES_COLLECTION not in existing:
+            db.create_collection(SUMMARIES_COLLECTION, validator={"$jsonSchema": {
+            "bsonType": "object",
+            "required": ["user_id", "session_id", "scope", "text", "created_at"],
+            "properties": {
+                "user_id": {"bsonType": "string"},
+                "session_id": {"bsonType": ["string", "null"]},
+                "scope": {"enum": ["session", "user"]},
+                "text": {"bsonType": "string"},
+                "created_at": {"bsonType": "date"},
+        }}})
+        if EPISODES_COLLECTION not in existing:
+            db.create_collection(EPISODES_COLLECTION, validator={"$jsonSchema": {
+            "bsonType": "object",
+            "required": ["user_id", "session_id", "fact", "importance",
+            "embedding", "created_at"],
+            "properties": {
+                "user_id": {"bsonType": "string"},
+                "session_id": {"bsonType": "string"},
+                "fact": {"bsonType": "string", "maxLength": 200},
+                "importance": {"bsonType": ["double", "int"], "minimum": 0, "maximum": 1},
+                "embedding": {"bsonType": "array"},
+                "created_at": {"bsonType": "date"},
+        }}})
+        
+        get_messages_col().create_index([("user_id",1),("session_id",1),("created_at", 1)])
+        get_summaries_col().create_index([("user_id", 1), ("created_at", 1)])
+        get_episodes_col().create_index([("user_id", 1), ("created_at", 1)])
+    except PyMongoError as e:
+        print("MongoDB memory setup warning:", e)

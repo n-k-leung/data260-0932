@@ -13,6 +13,8 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from .mongo import setup_collection
 from .routers.mongo_docs import router as docs_router
+from .mongo import setup_memory_collections
+from .routers.memory import router as memory_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -30,8 +32,10 @@ app.include_router(auth_router)
 
 setup_collection()
 app.include_router(docs_router)
+setup_memory_collections()
+app.include_router(memory_router)
 
-@app. exception_handler(RequestValidationError)
+@app.exception_handler(RequestValidationError)
 async def validation_error_handler(request: Request, exc: RequestValidationError):
     errors = []
     for e in exc.errors():

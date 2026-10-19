@@ -51,9 +51,7 @@ def extract_and_store_episodes(user_key: str, session_key: str, user_text: str):
     raw = text
     if "```" in raw:
         parts = raw.split("```")
-        # try to grab the middle block if present
         raw = parts[1] if len(parts) >= 2 else raw
-    # pull out the first JSON array
     m = re.search(r"\[.*\]", raw, flags=re.S)
     raw_json = m.group(0) if m else raw
 
@@ -71,7 +69,7 @@ def extract_and_store_episodes(user_key: str, session_key: str, user_text: str):
         db.save_episode(user_key, session_key, f["fact"], importance, e)
 
 def maybe_summarize(user_key: str, session_key: str):
-    # Summarize every N user turns
+    #sum for every N user turns
     user_count = db.count_user_messages(session_key, role="user")
     if user_count % SUMMARIZE_EVERY_USER_MSGS != 0:
         return
@@ -87,7 +85,7 @@ def maybe_summarize(user_key: str, session_key: str):
 
     if summary_text:
         db.save_summary(user_key, session_key, scope="session", text=summary_text)
-        # Occasionally refresh the user lifetime summary using session summaries
+        #refresh the user lifetime summary using session summaries
         lifetime_src = db.latest_summary(user_key, None, scope="user")
         combined = (lifetime_src + "\n\n" if lifetime_src else "") + summary_text
         prompt2 = [
@@ -100,18 +98,12 @@ def maybe_summarize(user_key: str, session_key: str):
             db.save_summary(user_key, session_key="", scope="user", text=lt)
 
 def generate_reply(user_key: str, session_key: str, user_message: str):
-    # Persist the user message
     db.ensure_user_and_session(user_key, session_key)
     db.save_message(user_key, session_key, "user", user_message)
-
-    # Episode extraction (best-effort, non-blocking semantics here but we run inline)
     extract_and_store_episodes(user_key, session_key, user_message)
-
-    # Build memory context
     st, long_term, episodic_texts = _build_context(user_key, session_key)
 
-    # Retrieve top episodic items relevant to this user message
-    # Retrieve top-k episodic items relevant to this user message
+    #top episodic items
     episodes_full = db.fetch_all_episodes(user_key)
     episodic_hits = top_k_by_embedding(user_message, episodes_full, k=5)
     episodic_use = [e["fact"] for e in episodic_hits]
@@ -128,16 +120,9 @@ def generate_reply(user_key: str, session_key: str, user_message: str):
     model = response_model()
     resp = client.chat.completions.create(model=model, messages=messages, temperature=0.6, max_tokens=500)
     reply = (resp.choices[0].message.content or "").strip()
-
-
-    # Save assistant reply
     db.save_message(user_key, session_key, "assistant", reply)
-
-    # Update short-term cache
     st2 = (st + [{"role":"user","content":user_message},{"role":"assistant","content":reply}])[-8:]
     set_short_term(session_key, st2, ttl_seconds=1800)
-
-    # Maybe summarize
     maybe_summarize(user_key, session_key)
 
     return reply, st2, long_term, episodic_use

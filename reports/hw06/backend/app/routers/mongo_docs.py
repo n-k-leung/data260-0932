@@ -1,4 +1,3 @@
-# Route handlers (Part 1 - II: separate file for route handlers)
 from datetime import datetime, timezone
 from bson import ObjectId
 from bson.errors import InvalidId

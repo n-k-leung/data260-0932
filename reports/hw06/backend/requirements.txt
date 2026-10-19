@@ -6,3 +6,5 @@ pymysql
 pydantic
 email-validator
 pymongo
+requests
+ollama
