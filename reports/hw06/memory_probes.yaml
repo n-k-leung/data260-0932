@@ -1,0 +1,30 @@
+probes :
+  - id: P1
+    question: "What is my name and which company do I work for?"
+    expected_answer: "Alice, Northwind Bank"
+    expected_keywords: ["alice","northwind"]
+    planted_at_turn: 1
+
+  - id: P2
+    question: "Who owns the login service?"
+    expected_answer: "Marcus Reed"
+    expected_keywords: ["marcus"]
+    planted_at_turn: 10
+
+  - id: P3
+    question: "What is our patch deadline for critical issues?"
+    expected_answer: "7 days"
+    expected_keywords: ["7|seven"]
+    planted_at_turn: 18
+
+  - id: P4
+    question: "Which vendor supplies the reports page?"
+    expected_answer: "Acme Corp"
+    expected_keywords: ["acme"]
+    planted_at_turn: 25
+
+  - id: P5
+    question: "What answer format did I ask you to use?"
+    expected_answer: "Bullet points"
+    expected_keywords: ["bullet"]
+    planted_at_turn: 29

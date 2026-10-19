@@ -89,3 +89,269 @@ pulling 31df23ea7daa: 100% ▕████████████████�
 verifying sha256 digest 
 writing manifest 
 success 
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw06> python .\part3.py
+00:03:14  run N4: SHORT_TERM_N=4, policy=none
+00:03:31 N4 turn 1/30 prompt=61completion=134 latency=14647ms
+00:03:44 N4 turn 2/30 prompt=150completion=197 latency=11253ms
+00:04:06 N4 turn 3/30 prompt=200completion=200 latency=20328ms
+00:04:24 N4 turn 4/30 prompt=266completion=224 latency=15699ms
+00:04:49 N4 turn 5/30 prompt=328completion=239 latency=22825ms
+00:05:03 N4 turn 6/30 prompt=551completion=267 latency=12311ms
+00:05:16 N4 turn 7/30 prompt=606completion=389 latency=11101ms
+00:05:39 N4 turn 8/30 prompt=606completion=331 latency=20597ms
+00:05:58 N4 turn 9/30 prompt=634completion=241 latency=17152ms
+00:06:36 N4 turn 10/30 prompt=627completion=260 latency=35863ms
+00:06:56 N4 turn 11/30 prompt=883completion=301 latency=17757ms
+00:07:17 N4 turn 12/30 prompt=873completion=386 latency=19035ms
+00:07:39 N4 turn 13/30 prompt=916completion=352 latency=20311ms
+00:07:58 N4 turn 14/30 prompt=919completion=259 latency=16917ms
+00:08:31 N4 turn 15/30 prompt=934completion=378 latency=31110ms
+00:08:54 N4 turn 16/30 prompt=1019completion=507 latency=21159ms
+00:09:20 N4 turn 17/30 prompt=1010completion=525 latency=23701ms
+00:09:39 N4 turn 18/30 prompt=1075completion=325 latency=17227ms
+00:10:04 N4 turn 19/30 prompt=1095completion=363 latency=22223ms
+00:10:50 N4 turn 20/30 prompt=1118completion=321 latency=44154ms
+00:11:12 N4 turn 21/30 prompt=1125completion=453 latency=20547ms
+00:11:34 N4 turn 22/30 prompt=1151completion=397 latency=19956ms
+00:11:55 N4 turn 23/30 prompt=1184completion=335 latency=18643ms
+00:12:21 N4 turn 24/30 prompt=1178completion=625 latency=23384ms
+00:12:49 N4 turn 25/30 prompt=1203completion=433 latency=26773ms
+00:13:10 N4 turn 26/30 prompt=1197completion=396 latency=19099ms
+00:13:35 N4 turn 27/30 prompt=1198completion=304 latency=22875ms
+00:13:55 N4 turn 28/30 prompt=1190completion=214 latency=17747ms
+00:14:12 N4 turn 29/30 prompt=1150completion=576 latency=14981ms
+00:14:43 N4 turn 30/30 prompt=1335completion=273 latency=29285ms
+00:14:56 N4 probe P1 score=3
+00:15:06 N4 probe P2 score=5
+00:15:15 N4 probe P3 score=5
+00:15:27 N4 probe P4 score=5
+00:15:44 N4 probe P5 score=5
+00:15:44  run N12: SHORT_TERM_N=12, policy=none
+00:15:58 N12 turn 1/30 prompt=61completion=111 latency=12071ms
+00:16:11 N12 turn 2/30 prompt=132completion=219 latency=11191ms
+00:16:34 N12 turn 3/30 prompt=177completion=247 latency=21105ms
+00:16:51 N12 turn 4/30 prompt=237completion=156 latency=14758ms
+00:17:15 N12 turn 5/30 prompt=298completion=204 latency=22148ms
+00:17:29 N12 turn 6/30 prompt=535completion=242 latency=12287ms
+00:17:47 N12 turn 7/30 prompt=588completion=686 latency=15135ms
+00:18:11 N12 turn 8/30 prompt=578completion=348 latency=22152ms
+00:18:33 N12 turn 9/30 prompt=617completion=447 latency=19920ms
+00:19:03 N12 turn 10/30 prompt=612completion=369 latency=27821ms
+00:19:22 N12 turn 11/30 prompt=794completion=266 latency=17008ms
+00:19:44 N12 turn 12/30 prompt=804completion=454 latency=19930ms
+00:20:06 N12 turn 13/30 prompt=856completion=327 latency=20775ms
+00:20:27 N12 turn 14/30 prompt=904completion=316 latency=18087ms
+00:20:56 N12 turn 15/30 prompt=894completion=248 latency=27335ms
+00:21:17 N12 turn 16/30 prompt=966completion=358 latency=19361ms
+00:21:41 N12 turn 17/30 prompt=987completion=322 latency=21203ms
+00:22:01 N12 turn 18/30 prompt=1006completion=264 latency=16932ms
+00:22:25 N12 turn 19/30 prompt=1002completion=382 latency=22569ms
+00:23:08 N12 turn 20/30 prompt=1039completion=318 latency=40737ms
+00:23:29 N12 turn 21/30 prompt=1089completion=356 latency=19230ms
+00:23:52 N12 turn 22/30 prompt=1111completion=405 latency=20172ms
+00:24:12 N12 turn 23/30 prompt=1133completion=313 latency=18461ms
+00:24:39 N12 turn 24/30 prompt=1141completion=730 latency=24549ms
+00:25:04 N12 turn 25/30 prompt=1180completion=321 latency=23228ms
+00:25:25 N12 turn 26/30 prompt=1195completion=418 latency=19151ms
+00:25:52 N12 turn 27/30 prompt=1202completion=387 latency=24352ms
+00:26:14 N12 turn 28/30 prompt=1216completion=392 latency=20413ms
+00:26:31 N12 turn 29/30 prompt=1198completion=431 latency=14543ms
+00:26:58 N12 turn 30/30 prompt=1197completion=147 latency=25032ms
+00:27:11 N12 probe P1 score=3
+00:27:23 N12 probe P2 score=5
+00:27:34 N12 probe P3 score=5
+00:27:45 N12 probe P4 score=5
+00:28:07 N12 probe P5 score=5
+00:28:07  run N30: SHORT_TERM_N=30, policy=none
+00:28:22 N30 turn 1/30 prompt=61completion=111 latency=12143ms
+00:28:36 N30 turn 2/30 prompt=132completion=219 latency=12177ms
+00:28:59 N30 turn 3/30 prompt=177completion=248 latency=20903ms
+00:29:17 N30 turn 4/30 prompt=238completion=299 latency=16683ms
+00:29:41 N30 turn 5/30 prompt=331completion=216 latency=21900ms
+00:29:55 N30 turn 6/30 prompt=527completion=209 latency=12029ms
+00:30:06 N30 turn 7/30 prompt=588completion=207 latency=8920ms
+00:30:29 N30 turn 8/30 prompt=594completion=275 latency=20168ms
+00:30:50 N30 turn 9/30 prompt=633completion=371 latency=18956ms
+00:31:29 N30 turn 10/30 prompt=627completion=356 latency=37338ms
+00:31:51 N30 turn 11/30 prompt=875completion=343 latency=18189ms
+00:32:12 N30 turn 12/30 prompt=900completion=377 latency=19363ms
+00:32:34 N30 turn 13/30 prompt=957completion=302 latency=20089ms
+00:32:56 N30 turn 14/30 prompt=980completion=284 latency=17558ms
+00:33:27 N30 turn 15/30 prompt=985completion=349 latency=29314ms
+00:33:49 N30 turn 16/30 prompt=1125completion=413 latency=20012ms
+00:34:13 N30 turn 17/30 prompt=1152completion=368 latency=21696ms
+00:34:33 N30 turn 18/30 prompt=1163completion=361 latency=18166ms
+00:34:59 N30 turn 19/30 prompt=1171completion=438 latency=23647ms
+00:35:56 N30 turn 20/30 prompt=1231completion=399 latency=55098ms
+00:36:17 N30 turn 21/30 prompt=1227completion=365 latency=19511ms
+00:36:40 N30 turn 22/30 prompt=1239completion=449 latency=20596ms
+00:37:00 N30 turn 23/30 prompt=1242completion=290 latency=18162ms
+00:37:23 N30 turn 24/30 prompt=1245completion=497 latency=21112ms
+00:37:54 N30 turn 25/30 prompt=1266completion=420 latency=28070ms
+00:38:14 N30 turn 26/30 prompt=1211completion=381 latency=18923ms
+00:38:42 N30 turn 27/30 prompt=1210completion=492 latency=25521ms
+00:39:02 N30 turn 28/30 prompt=1195completion=233 latency=18276ms
+00:39:17 N30 turn 29/30 prompt=1160completion=435 latency=12762ms
+00:39:52 N30 turn 30/30 prompt=1162completion=288 latency=33020ms
+00:40:05 N30 probe P1 score=1
+00:40:15 N30 probe P2 score=5
+00:40:23 N30 probe P3 score=5
+00:40:33 N30 probe P4 score=5
+00:40:56 N30 probe P5 score=5
+00:40:56  run COMPRESS: SHORT_TERM_N=12, policy=compress
+00:41:14 COMPRESS turn 1/30 prompt=61completion=111 latency=14348ms
+00:41:28 COMPRESS turn 2/30 prompt=132completion=223 latency=11594ms
+00:41:51 COMPRESS turn 3/30 prompt=181completion=266 latency=21435ms
+00:42:10 COMPRESS turn 4/30 prompt=244completion=271 latency=16516ms
+00:42:38 COMPRESS turn 5/30 prompt=316completion=237 latency=26314ms
+00:42:54 COMPRESS turn 6/30 prompt=529completion=380 latency=14126ms
+00:43:06 COMPRESS turn 7/30 prompt=584completion=276 latency=9883ms
+00:43:30 COMPRESS turn 8/30 prompt=595completion=349 latency=21559ms
+00:43:49 COMPRESS turn 9/30 prompt=622completion=247 latency=17245ms
+00:44:28 COMPRESS turn 10/30 prompt=618completion=371 latency=36374ms
+00:44:47 COMPRESS turn 11/30 prompt=887completion=322 latency=17756ms
+00:45:08 COMPRESS turn 12/30 prompt=898completion=354 latency=18816ms
+00:45:32 COMPRESS turn 13/30 prompt=971completion=422 latency=21280ms
+00:45:53 COMPRESS turn 14/30 prompt=988completion=399 latency=18990ms
+00:46:25 COMPRESS turn 15/30 prompt=1017completion=324 latency=29909ms
+00:46:46 COMPRESS turn 16/30 prompt=1100completion=382 latency=19670ms
+00:47:11 COMPRESS turn 17/30 prompt=1101completion=464 latency=22923ms
+00:47:35 COMPRESS turn 18/30 prompt=1136completion=643 latency=21924ms
+00:48:00 COMPRESS turn 19/30 prompt=1107completion=407 latency=23189ms
+00:48:46 COMPRESS turn 20/30 prompt=1111completion=430 latency=43852ms
+00:49:09 COMPRESS turn 21/30 prompt=1147completion=411 latency=20480ms
+00:49:32 COMPRESS turn 22/30 prompt=1168completion=465 latency=20870ms
+00:49:53 COMPRESS turn 23/30 prompt=1174completion=377 latency=19510ms
+00:50:17 COMPRESS turn 24/30 prompt=1167completion=527 latency=21965ms
+00:50:44 COMPRESS turn 25/30 prompt=1207completion=303 latency=24254ms
+00:51:04 COMPRESS turn 26/30 prompt=1210completion=317 latency=18106ms
+00:51:30 COMPRESS turn 27/30 prompt=1199completion=418 latency=24702ms
+00:51:51 COMPRESS turn 28/30 prompt=1218completion=236 latency=18209ms
+00:52:05 COMPRESS turn 29/30 prompt=1201completion=308 latency=12584ms
+00:52:51 COMPRESS turn 30/30 prompt=1166completion=169 latency=43792ms
+00:53:03 COMPRESS probe P1 score=3
+00:53:14 COMPRESS probe P2 score=5
+00:53:22 COMPRESS probe P3 score=5
+00:53:31 COMPRESS probe P4 score=5
+00:53:51 COMPRESS probe P5 score=5
+00:53:51 
+| Setting | Mean prompt tokens/turn | Mean latency (ms) | Probe quality (1-5) |
+| --- | --- | --- | --- |
+| N4 | 859.4 | 20955 | 4.6 |
+| N12 | 825.0 | 20389 | 4.6 |
+| N30 | 886.8 | 21343 | 4.2 |
+| COMPRESS | 868.5 | 21739 | 4.6 |
+
+Compression vs N12: token savings = -5.3%,probe quality change = +0.00
+
+Cost of 10000 x 30-turn conversations(input $1.0/M, output $5.0/M):
+| Setting | Probe quality | Input tokens | Output tokens | Cost (USD) | Role |
+| --- | --- | --- | --- | --- | --- |
+| N4 | 4.6 | 257,820,000 |102,060,000 | $768.12 |  |
+| N12 | 4.6 | 247,500,000 |101,850,000 | $756.75 | BEST |
+| N30 | 4.2 | 266,040,000 |99,960,000 | $765.84 |  |
+| COMPRESS | 4.6 | 260,550,000 |104,100,000 | $781.05 | WORST |
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw06\backend> python .\consolidation_test.py
+ORIGINAL: total lines = 55 | non-empty non-comment lines = 50
+needs consolidation: True -> 50 non-empty, non-comment lines (limit 40)
+
+consolitated: total lines = 38
+duplicates merged: 6
+contradictions resolved : 4
+[api.port] kept (2026-10-01) The API runs on port 8032
+dropped (2026-09-07) The API runs on port 8000
+[test.framework] kept (2026-10-09) Tests are written with unittest, only for this one demo script
+dropped (2026-09-08) Tests are written with pytest
+[vendor.reports] kept (2026-10-08) The vendor for the reports page is Acme Corp
+dropped (2026-09-20) The vendor for the reports page is Globex Inc
+[patch.deadline] kept (2026-10-02) Critical issues must be patched within 14 days
+dropped (2026-09-12) Critical issues must be patched within 7 days
+
+possibly wrong resolutions (newest-wins picked a temporary exception):
+[test.framework] kept: Tests are written with unittest, only for this one demo script
+should have kept: Tests are written with pytest
+
+checks
+fewer than 40 lines: True (38 lines)
+at least 3 duplicates merged: True
+at least 3 contradictions found: True
+nothing silently deleted:  True (every removed fact is in MEMORY_archive.md)
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw06\backend> python .\test_agent.py
+
+ === case: buggy code  === 
+reply:
+- The function does not handle the case where the input list is empty, leading to a ZeroDivisionError
+- The except block is too broad and silently ignores errors instead of raising exceptions
+- No input validation is performed for non-list types (e.g. None or integers)
+- The function returns None on failure instead of raising appropriate exceptions
+- The code lacks documentation for expected input/output behavior
+ [PASS] only bullet points: all lines are bullets
+ [PASS] no introduction or summary: none found
+ [PASS] one issue per bullet: every bullet is short and one sentence
+ [PASS] no repeated bullets: all bullets are different
+ [PASS] no code shown: no backticks found
+
+ === case: clean code  === 
+reply:
+- There are no errors in the code
+ [PASS] only bullet points: all lines are bullets
+ [PASS] no introduction or summary: none found
+ [PASS] one issue per bullet: every bullet is short and one sentence
+ [PASS] no repeated bullets: all bullets are different
+ [PASS] no code shown: no backticks found
+ [PASS] no-issue reply: exact sentence used
+
+OVERALL: ALL RULES FOLLOWED
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw06\backend> python -m app.file_mem_chat
+[memory] consolidation needed: no last-consolidated timestamp is recorded -> type /compact
+Paste code to review. Type /help for commands.
+you> /help
+Available commands: 
+/memory show the current file-based memory (AGENT.md and MEMORY.md) 
+/ compact consolidate MEMORY.md and compress the chat history; shows counts before and after
+/dream find useful long-term facts in the recent conversation and add them to MEMORY.md
+/help show this list
+/exit quit
+you> /memory
+AGENT.md
+## Project description
+- The project is an Open Source Vulnerability Management API with a React frontend.
+- You are a code reviewer: the user pastes code and you point out the problems in it.
+
+## Technology stack
+- The backend uses Python 3, FastAPI, Pydantic, SQLAlchemy with MySQL, and PyMongo with MongoDB.
+- The local language model runs through Ollama (qwen3:8b).
+
+## Coding conventions
+- Python names use snake_case and every function has a short comment.
+- Route handlers must return correct HTTP status codes (400, 404, 422, 500).
+
+## Testing approach
+- Tests are written with pytest, and test names describe the behavior they check.
+
+## Prohibited actions and response rules
+You are a code reviewer. Follow the following rules/guidelines for every response:
+- Answer only in bullet points
+- Do not include any introductions, or summaries, or paragraphs
+- Each bullet point will only show one issue
+- Do not repeat bullet poinyd, do not repeat any code to user
+- Do not show any code to user
+- If there are no issues, reply with one bullet point telling user "There are no errors in the code"
+
+ MEMORY.md 
+# MEMORY
+- [user.name] The user's name is test (2026-10-18)
+- [project.name] The project is the Open Source Vulnerability Management API (2026-10-18)
+- [api.port] The API runs on port 8032 (2026-10-18)
+
+[status] 4 memory lines | consolidation needed: True (no last-consolidated timestamp is recorded)
+you> /compact
+[/compact] MEMORY.md lines: 4 -> 4(duplicates merged: 0, contradictions resolved: 0)
+[/compact] Conversation messages: 1 -> 1
+you> /dream
+[/dream] facts added to MEMORY.md: 0
+you> /exit

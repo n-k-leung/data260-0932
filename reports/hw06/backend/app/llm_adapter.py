@@ -16,7 +16,7 @@ client = ModelClient(model=MODEL, base_url=OLLAMA_URL)
 
 def chat(messages) :
     try:
-        result = client.complete(messages,options={"seed": 932, "temperature": 0})
+        result = client.complete(messages,options={"seed": 932, "temperature": 0, "num_ctx":8192})
     except Exception as e:
         raise RuntimeError("Model service error: " + str(e))
     text = result["content"]

@@ -66,3 +66,31 @@ For the message put the following in order to replicate:
 "Which vendor supplies the reports page?"
 3. Open MongoDB Compass
 View hw6 connection -> s0932_doc -> episodes, messages, summaries
+
+# Part 3
+1. Run the following commands:
+(another terminal)
+cd reports/hw06/backend
+pip install -r requirements.txt
+uvicorn app.main:app --port 8032 --reload
+(another terminal)
+python .\part3.py
+
+# Part 4
+1. Run the following commands:
+(another terminal)
+cd reports/hw06/backend
+pip install -r requirements.txt
+uvicorn app.main:app --port 8032 --reload
+(another terminal)
+ollama pull qwen3:8b
+(another terminal)
+cd reports/hw06/backend
+python consolidation_test.py
+python test_agent.py
+python file_mem_chat.py
+/help
+/memory
+/compact
+/dream
+/exit

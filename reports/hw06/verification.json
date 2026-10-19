@@ -1,0 +1,65 @@
+{
+  "homework": 6,
+  "sid4": "0932",
+  "commit": "unknown",
+  "model": "qwen3:8b",
+  "seed": 932,
+  "verify_seed": 260932,
+  "checks": [
+    {
+      "check": "backend responds on PORT_BASE",
+      "result": "pass",
+      "detail": "GET /health returned 200"
+    },
+    {
+      "check": "document API create, read, delete works",
+      "result": "pass",
+      "detail": "create 201, get 200, delete 200, get after delete 404"
+    },
+    {
+      "check": "invalid document is rejected with 422",
+      "result": "pass",
+      "detail": "POST with an invalid category returned 422"
+    },
+    {
+      "check": "POST /api/chat returns a reply",
+      "result": "pass",
+      "detail": "POST /api/chat returned 200, reply length: 29"
+    },
+    {
+      "check": "user and assistant messages are saved",
+      "result": "pass",
+      "detail": "GET /api/memory returned 2 messages, user + assistant saved: True"
+    },
+    {
+      "check": "short-term window is used on the next turn",
+      "result": "pass",
+      "detail": "second turn short_term_count = 2 (needs 2 or more)"
+    },
+    {
+      "check": "aggregate endpoint counts messages",
+      "result": "pass",
+      "detail": "GET /api/aggregate returned 200, total messages counted: 4"
+    },
+    {
+      "check": "memory is isolated between users",
+      "result": "pass",
+      "detail": "a different user_id sees no messages or facts: True"
+    },
+    {
+      "check": "chat request is logged with tokens and latency",
+      "result": "pass",
+      "detail": "chat_usage.csv rows 144 -> 146, token and latency columns present: True"
+    },
+    {
+      "check": "AGENT.md and MEMORY.md load into the system prompt",
+      "result": "pass",
+      "detail": "AGENT.md chars: 1101, MEMORY.md chars: 264, AGENT.md in system prompt: True"
+    },
+    {
+      "check": "consolidation trigger (over 40 lines / 24 hours)",
+      "result": "pass",
+      "detail": "41 lines needs consolidation: True, small recent file needs it: False"
+    }
+  ]
+}

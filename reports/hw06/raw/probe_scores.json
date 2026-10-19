@@ -1,0 +1,182 @@
+[
+  {
+    "run": "N4",
+    "probe_id": "P1",
+    "question": "What is my name and which company do I work for?",
+    "expected": "Alice, Northwind Bank",
+    "answer": "- **Your name**: test  \n- **Company**: Northwind Bank",
+    "matched_keywords": 1,
+    "auto_score": 3
+  },
+  {
+    "run": "N4",
+    "probe_id": "P2",
+    "question": "Who owns the login service?",
+    "expected": "Marcus Reed",
+    "answer": "- **Login service owner**: Marcus Reed (team lead)  \n- **Audit logs** track user actions and responsibilities to ensure accountability.",
+    "matched_keywords": 1,
+    "auto_score": 5
+  },
+  {
+    "run": "N4",
+    "probe_id": "P3",
+    "question": "What is our patch deadline for critical issues?",
+    "expected": "7 days",
+    "answer": "- **Critical patch deadline**: 7 days (patch window scheduled for applying updates to mitigate vulnerabilities).",
+    "matched_keywords": 1,
+    "auto_score": 5
+  },
+  {
+    "run": "N4",
+    "probe_id": "P4",
+    "question": "Which vendor supplies the reports page?",
+    "expected": "Acme Corp",
+    "answer": "- **Reports page vendor**: Acme Corp (provides CVE tracking and vulnerability assessments via MITRE\u2019s CVE Program).",
+    "matched_keywords": 1,
+    "auto_score": 5
+  },
+  {
+    "run": "N4",
+    "probe_id": "P5",
+    "question": "What answer format did I ask you to use?",
+    "expected": "Bullet points",
+    "answer": "- **Answer format**: Bullet points (as requested).",
+    "matched_keywords": 1,
+    "auto_score": 5
+  },
+  {
+    "run": "N12",
+    "probe_id": "P1",
+    "question": "What is my name and which company do I work for?",
+    "expected": "Alice, Northwind Bank",
+    "answer": "- **Your name**: test  \n- **Company**: Northwind Bank  \n- **Vendor for reports page**: Acme Corp (not your company)",
+    "matched_keywords": 1,
+    "auto_score": 3
+  },
+  {
+    "run": "N12",
+    "probe_id": "P2",
+    "question": "Who owns the login service?",
+    "expected": "Marcus Reed",
+    "answer": "- **Login service owner**: Marcus Reed (team lead)  \n- **Audit logs** track responsibilities and user actions for accountability  \n- **Authorization** defines permissions for service access",
+    "matched_keywords": 1,
+    "auto_score": 5
+  },
+  {
+    "run": "N12",
+    "probe_id": "P3",
+    "question": "What is our patch deadline for critical issues?",
+    "expected": "7 days",
+    "answer": "- **Critical patch deadline**: 7 days  \n- **Patch window**: Scheduled timeframe for applying updates to mitigate zero-day risks  \n- **Zero-day risk**: Exploits occur before patches are available, emphasizing urgency for critical fixes",
+    "matched_keywords": 1,
+    "auto_score": 5
+  },
+  {
+    "run": "N12",
+    "probe_id": "P4",
+    "question": "Which vendor supplies the reports page?",
+    "expected": "Acme Corp",
+    "answer": "- **Reports page vendor**: Acme Corp  \n- **Function**: Lists software components, versions, and dependencies (SBOM)  \n- **Zero-day note**: Vulnerabilities unknown to the vendor until exploited",
+    "matched_keywords": 1,
+    "auto_score": 5
+  },
+  {
+    "run": "N12",
+    "probe_id": "P5",
+    "question": "What answer format did I ask you to use?",
+    "expected": "Bullet points",
+    "answer": "- **Answer format**: Bullet points (as requested)  \n- **CVE format**: CVE-YEAR-SEQUENCE (e.g., CVE-2023-1234)  \n- **2FA methods**: SMS codes, authenticator apps, hardware tokens",
+    "matched_keywords": 1,
+    "auto_score": 5
+  },
+  {
+    "run": "N30",
+    "probe_id": "P1",
+    "question": "What is my name and which company do I work for?",
+    "expected": "Alice, Northwind Bank",
+    "answer": "- **Your name**: test  \n- **Company**: Not provided in the session data.  \n- **Vendor for reports page**: Acme Corp (not your company unless specified).",
+    "matched_keywords": 0,
+    "auto_score": 1
+  },
+  {
+    "run": "N30",
+    "probe_id": "P2",
+    "question": "Who owns the login service?",
+    "expected": "Marcus Reed",
+    "answer": "- **Login service owner**: Marcus Reed (team lead)  \n- **Audit logs**: Track user actions and responsibilities to ensure accountability.",
+    "matched_keywords": 1,
+    "auto_score": 5
+  },
+  {
+    "run": "N30",
+    "probe_id": "P3",
+    "question": "What is our patch deadline for critical issues?",
+    "expected": "7 days",
+    "answer": "- **Critical patch deadline**: 7 days  \n- **Patch window**: Scheduled timeframe for applying updates to balance security and operational stability.  \n- **Zero-day context**: Attackers exploit vulnerabilities before patches are available, emphasizing urgency for critical issues.",
+    "matched_keywords": 1,
+    "auto_score": 5
+  },
+  {
+    "run": "N30",
+    "probe_id": "P4",
+    "question": "Which vendor supplies the reports page?",
+    "expected": "Acme Corp",
+    "answer": "- **Reports page vendor**: Acme Corp  \n- **Function**: Supplies SBOMs and vulnerability reports for dependency scanning and CVE tracking.  \n- **Zero-day context**: Vendors like Acme Corp monitor for unknown vulnerabilities to update their tools and customers.",
+    "matched_keywords": 1,
+    "auto_score": 5
+  },
+  {
+    "run": "N30",
+    "probe_id": "P5",
+    "question": "What answer format did I ask you to use?",
+    "expected": "Bullet points",
+    "answer": "- **Answer format requested**: Bullet points  \n- **CVE format**: CVE-YEAR-SEQUENCE (e.g., CVE-2023-1234)  \n- **2FA methods**: SMS codes, authenticator apps, hardware tokens  \n- **Zero-day context**: Vendors monitor for unknown vulnerabilities to update tools and customers.",
+    "matched_keywords": 1,
+    "auto_score": 5
+  },
+  {
+    "run": "COMPRESS",
+    "probe_id": "P1",
+    "question": "What is my name and which company do I work for?",
+    "expected": "Alice, Northwind Bank",
+    "answer": "- **Your name**: test  \n- **Company**: Northwind Bank (Security Analyst)",
+    "matched_keywords": 1,
+    "auto_score": 3
+  },
+  {
+    "run": "COMPRESS",
+    "probe_id": "P2",
+    "question": "Who owns the login service?",
+    "expected": "Marcus Reed",
+    "answer": "- **Login service owner**: Marcus Reed (team lead)  \n- **Audit logs**: Track user actions and responsibilities for accountability.",
+    "matched_keywords": 1,
+    "auto_score": 5
+  },
+  {
+    "run": "COMPRESS",
+    "probe_id": "P3",
+    "question": "What is our patch deadline for critical issues?",
+    "expected": "7 days",
+    "answer": "- **Critical patch deadline**: 7 days from vulnerability disclosure.  \n- **Patch window**: Scheduled timeframe for applying updates to mitigate zero-day risks.  \n- **Zero-day context**: Attackers exploit vulnerabilities before patches are available, emphasizing urgency.",
+    "matched_keywords": 1,
+    "auto_score": 5
+  },
+  {
+    "run": "COMPRESS",
+    "probe_id": "P4",
+    "question": "Which vendor supplies the reports page?",
+    "expected": "Acme Corp",
+    "answer": "- **Reports page vendor**: Acme Corp  \n- **Functionality**: Lists software components, versions, and dependencies.  \n- **Zero-day note**: Vulnerabilities (e.g., unknown to Acme Corp) may still exist in their components.",
+    "matched_keywords": 1,
+    "auto_score": 5
+  },
+  {
+    "run": "COMPRESS",
+    "probe_id": "P5",
+    "question": "What answer format did I ask you to use?",
+    "expected": "Bullet points",
+    "answer": "- **Answer format**: Bullet points (as requested).  \n- **CVE format**: Used for vulnerabilities (e.g., CVE-2023-1234).  \n- **2FA methods**: SMS, authenticator apps, hardware tokens.",
+    "matched_keywords": 1,
+    "auto_score": 5
+  }
+]

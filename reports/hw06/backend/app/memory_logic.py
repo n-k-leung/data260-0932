@@ -153,3 +153,16 @@ def build_prompt(session_summary, lifetime_summary, window, message, facts):
         final += "\n".join("- " + f["fact"] for f in facts) + ")"
     messages.append({"role": "user", "content": final})
     return messages
+
+def estimate_tokens(text):
+    return len(text) // 4
+
+def compress_window(window) :
+    result = []
+    cutoff = len(window) - 4
+    for i, m in enumerate(window):
+        content = m["content"]
+        if m["role"] == "assistant" and i < cutoff and len(content) > 150:
+            content = content[:150] + " .."
+        result.append({"role": m["role"], "content": content})
+    return result

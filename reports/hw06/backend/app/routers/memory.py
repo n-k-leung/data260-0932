@@ -1,20 +1,23 @@
 import uuid
 from fastapi import APIRouter, HTTPException
 from pymongo.errors import PyMongoError
-
 from ..memory_schema import ChatRequest
 from ..memory_logic import SHORT_TERM_N
 from ..mongo import get_messages_col, get_summaries_col, get_episodes_col
 from .. import memory_logic as mem
 from .. import llm_adapter
+import time 
+from .. import log
 
 router = APIRouter(prefix="/api", tags=["Memory (MongoDB)"])
 
 @router.post("/chat")
 def chat(payload: ChatRequest):
+    start=time.perf_counter()
     user_id = payload.user_id
     session_id = payload.session_id or str(uuid.uuid4())
-
+    n=payload.short_term_n or mem.SHORT_TERM_N
+    policy=payload.policy or "none"
     try:
         mem.save_message(user_id, session_id, "user", payload.message)
         window = mem.get_short_term(user_id, session_id, SHORT_TERM_N + 1)[ :- 1]
@@ -32,7 +35,21 @@ def chat(payload: ChatRequest):
         raise HTTPException(status_code=502, detail=str(e))
     except PyMongoError:
         raise HTTPException(status_code=500, detail="Database error in chat")
-
+    summary_text = (lifetime_summary or "") + (session_summary or "")
+    metrics = {
+        "prompt_tokens": prompt_tokens,
+        "completion_tokens": completion_tokens,
+        "system_primer_tokens_est": mem.estimate_tokens(mem.SYSTEM_PRIMER),
+        "long_term_summary_tokens_est": mem.estimate_tokens(summary_text),
+        "short_term_tokens_est": sum(mem.estimate_tokens(m["content"]) for m in window),
+        "episodic_tokens_est": mem.estimate_tokens("\n".join(f["fact"] for f in facts)),
+        "latency_ms": round((time.perf_counter() - start) * 1000),
+    }
+    # save one row chat_usage.csv
+    log.log_usage({ **metrics,
+        "run_label": payload.run_label or "manual",
+        "policy": policy, "short_term_n": n,
+        "user_id": user_id, "session_id": session_id})
     return {
         "reply": reply,
         "session_id": session_id,
@@ -44,7 +61,7 @@ def chat(payload: ChatRequest):
             "episodic_facts": facts,
             "new_summary_created": summary_created,
         },
-        "usage": {"prompt_tokens": prompt_tokens, "completion_tokens": completion_tokens},
+        "metrics":metrics,
     }
 
 @router.get("/memory/{user_id}")

@@ -8,3 +8,4 @@ email-validator
 pymongo
 requests
 ollama
+pyyaml
