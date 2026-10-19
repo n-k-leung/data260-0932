@@ -355,3 +355,17 @@ you> /compact
 you> /dream
 [/dream] facts added to MEMORY.md: 0
 you> /exit
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw06> python .\verify_hw06.py
+PASS - backend responds on PORT_BASE - GET /health returned 200
+PASS - document API create, read, delete works - create 201, get 200, delete 200, get after delete 404
+PASS - invalid document is rejected with 422 - POST with an invalid category returned 422
+PASS - POST /api/chat returns a reply - POST /api/chat returned 200, reply length: 29
+PASS - user and assistant messages are saved - GET /api/memory returned 2 messages, user + assistant saved: True
+PASS - short-term window is used on the next turn - second turn short_term_count = 2 (needs 2 or more)
+PASS - aggregate endpoint counts messages - GET /api/aggregate returned 200, total messages counted: 4
+PASS - memory is isolated between users - a different user_id sees no messages or facts: True
+PASS - chat request is logged with tokens and latency - chat_usage.csv rows 144 -> 146, token and latency columns present: True
+PASS - AGENT.md and MEMORY.md load into the system prompt - AGENT.md chars: 1101, MEMORY.md chars: 264, AGENT.md in system prompt: True
+PASS - consolidation trigger (over 40 lines / 24 hours) - 41 lines needs consolidation: True, small recent file needs it: False
+verification.json outputted

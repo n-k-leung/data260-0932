@@ -94,3 +94,9 @@ python file_mem_chat.py
 /compact
 /dream
 /exit
+
+# Verifying files
+1. Change directory to be reports/hw05/
+2. Run the following command
+python .\verify_hw06.py
+
