@@ -1,0 +1,33 @@
+[
+  {
+    "user_id": "demo-user",
+    "run_id": "demo-run",
+    "case_id": "A",
+    "after_attempt": 1,
+    "reflection": "I fetched id 3, but the task asked for the first search result (id 1). Next time call get_vulnerability with the id of the first result.",
+    "replaced_by_template": false,
+    "evidence": {
+      "verifier_problems": [
+        "get_vulnerability used id 3 but the first search result has id 1"
+      ],
+      "tool_calls": [
+        {
+          "name": "search_vulnerabilities",
+          "inputs": {
+            "package_name": "nodejs"
+          },
+          "ok": true
+        },
+        {
+          "name": "get_vulnerability",
+          "inputs": {
+            "vuln_id": 3
+          },
+          "ok": true
+        }
+      ],
+      "last_observation": "{\"ok\": true, \"data\": {\"id\": 3, \"package_name\": \"nodejs\", \"severity\": \"critical\", \"vul_code\": \"CVE-2026-0003\", \"vendor_id\": 2}, \"error\": null}",
+      "final_answer": "The record is CVE-2026-0003 and its severity is critical."
+    }
+  }
+]

@@ -117,24 +117,30 @@ def make_ollama_model_fn(options=None):
     
     return ask
 
-def run_agent(
-    user_input, model_fn=None, max_steps=5, require_tool=False, options=None
-):
+def run_agent(user_input, model_fn=None, max_steps=8,require_tool=False, options=None, max_tool_calls=None, max_tokens=None, notes=None,):
     if model_fn is None:
         model_fn = make_ollama_model_fn(options)
-        
+
     messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
         {"role": "user", "content": user_input},
     ]
+    if notes:
+        messages.append({"role": "user", "content": notes})
+    tokens_used = 0
     tool_log = []
     events = []
     repair_pending = False
     stop_reason = None
     final_answer = None
-        
     for step in range(1, max_steps + 1):
+        #checking token budget first
+        if max_tokens is not None and tokens_used >= max_tokens:
+            stop_reason = "budget_exhausted"
+            final_answer = "Stopped because token budget is used up"
+            break
         reply = model_fn(messages)
+        tokens_used += reply.get("total_tokens", 0)
         text = strip_thinking(reply.get("content") or "")
         calls = reply.get("tool_calls") or []
         kind, problem = check_reply(calls, require_tool, len(tool_log))
@@ -143,31 +149,32 @@ def run_agent(
             log("step " + str(step) + " PROBLEM (" + kind + "): " + problem)
             if repair_pending:
                 stop_reason = "repair_failed"
-                final_answer = "Stopped: the tool call could not be fixed (" + problem + ")."
+                final_answer = "Stopped because the tool call could not be fixed (" + problem + ")."
                 break
             repair_pending = True
-            # reprompt if prob
             shown = text or json.dumps(calls)
             messages.append({"role": "assistant", "content": shown})
             messages.append({
                 "role": "user",
-                "content": "Your last reply was not usable: " + problem + ". Please try again.",
+                "content": "Your last reply was not usable: " + problem
+                + ". Please try again.",
             })
             continue
         repair_pending = False
-        
         if not calls:
             events.append({"step": step, "kind": "final_answer"})
             final_answer = text
             stop_reason = "final_answer"
             break
-        
-        #append tool call result after run
+        if max_tool_calls is not None and len(tool_log) + len(calls) > max_tool_calls:
+            stop_reason = "budget_exhausted"
+            final_answer = "Stopped because the tool-call budget is used up"
+            break
         messages.append({
             "role": "assistant",
             "content": text,
             "tool_calls": [
-                {"function": {"name": c["name"], "arguments": c["arguments"]}} 
+                {"function": {"name": c["name"], "arguments": c["arguments"]}}
                 for c in calls
             ],
         })
@@ -179,22 +186,31 @@ def run_agent(
             except Exception as e:
                 result = {"ok": False, "data": None, "error": str(e)}
                 result_text = json.dumps(result)
-            tool_log.append({"name": name, "inputs": inputs, "ok": result["ok"]})
-            log("TOOL CALL #" + str(len(tool_log)) + ": " + name + json.dumps(inputs) + " -> ok= " + str(result["ok"]))
-            messages.append({"role": "tool", "content": "Result of " + name + ": " + result_text})
-        events.append({"step": step, "kind": "tool_calls", "tools": [c["name"] for c in calls]})
-        
+            tool_log.append(
+                {"name": name, "inputs": inputs, "ok": result["ok"], "result": result}
+            )
+            log("TOOL CALL #" + str(len(tool_log)) + ": " + name + " "
+                + json.dumps(inputs) + " -> ok=" + str(result["ok"]))
+            messages.append(
+                {"role": "tool", "content": "Result of " + name + ": " + result_text}
+            )
+        events.append(
+            {"step": step, "kind": "tool_calls", "tools": [c["name"] for c in calls]}
+        )
+
     if stop_reason is None:
         stop_reason = "max_steps_reached"
-        final_answer = "Stopped after reaching the " + str(max_steps) + "-step limit."
-        
-    log("Done stop_reason=" + stop_reason + ", total tool calls: " + str(len(tool_log)))
+        final_answer = "Stopped after reaching the " + str(max_steps) + "step limit."
+
+    log("DONE stop_reason=" + stop_reason + ", total tool calls: " + str(len(tool_log))
+        + " | tokens: " + str(tokens_used))
     return {
-        "final_answer" : final_answer,
-        "stop_reason" : stop_reason,
-        "tool_calls" : tool_log,
-        "total_tool_calls" : len(tool_log),
-        "events" : events,
+        "final_answer": final_answer,
+        "stop_reason": stop_reason,
+        "tool_calls": tool_log,
+        "total_tool_calls": len(tool_log),
+        "total_tokens": tokens_used,
+        "events": events,
     }
 def load_cases(path="verify.json"):
     with open(path, encoding="utf-8") as f:
