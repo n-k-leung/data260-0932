@@ -1,0 +1,135 @@
+{
+  "scenario": "201801-fordgobike-tripdata",
+  "decision": null,
+  "justification": null,
+  "error": "pay_unlock_fee=1.5 does not appear in the snippets from policy_retriever. Call policy_retriever again with a query like 'unlock per minute month free minutes' and k=10, then copy prices from the snippets",
+  "rates": null,
+  "costs": null,
+  "assumptions": [],
+  "citations": [],
+  "pricing_url": "https://lyftbikes.com/pricing",
+  "pages": [
+    {
+      "url": "https://lyftbikes.com/pricing",
+      "captured_at": "2026-10-26T18:16:10+00:00",
+      "sha256": "2b504ee9500d4afcc263644c0d0725cddd0d6f066cf7ecf46764ef18f4247f67"
+    }
+  ],
+  "sha256": "0fb48d1b724e41e0a72b7371ef7b7067b96ceed974c3bd5aa40ae5135f058078",
+  "snapshot_file": "pricing_snapshot_201801-fordgobike-tripdata.txt",
+  "timeline": [
+    {
+      "step": 1,
+      "by": "model",
+      "tool": "csv_sql",
+      "input": "{\"sql\": \"SELECT COUNT(*) AS ride_count, AVG(duration_sec / 60) AS avg_duration_min, COUNT(DISTINCT substr(start_time, 1, 7)) AS months FROM trips;\"}",
+      "success": true,
+      "observation": "{\"rows\": [{\"ride_count\": 94802, \"avg_duration_min\": 14.023301196177297, \"months\": 1}], \"row_count\": 1, \"source\": \"uploaded.csv\"}",
+      "ms": 9
+    },
+    {
+      "step": 2,
+      "by": "model",
+      "tool": "policy_retriever",
+      "input": "{\"url\": \"https://lyftbikes.com/pricing\", \"query\": \"unlock per minute month membership free minutes single ride\", \"k\": 10}",
+      "success": true,
+      "observation": "{\"passages\": [{\"text\": \"For less than a dollar a day, you get unlimited 45-minute rides on classic bikes, reduced ebike prices, $0 unlocks, and a whole lot more.\", \"source\": \"https://lyftbikes.com/pricing\", \"score\": 0.68}, {\"text\": \"Free unlocks + $0.49/min\", \"source\": \"https://lyftbikes.com/pricing\", \"score\": 0.54}, {\"text\": \"Free unlocks + $0.17/min\", \"source\": \"https://lyftbikes.com/pricing\", \"score\": 0.54}, {\"text\": \"Single rides. Day passes. Annual memberships. Whether you\\u2019re a longtim ...",
+      "ms": 542
+    },
+    {
+      "step": 3,
+      "by": "program",
+      "tool": "csv_sql",
+      "input": "{\"sql\": \"SELECT COUNT(*) AS rides, COUNT(DISTINCT substr(start_time, 1, 7)) AS months, SUM(duration_sec) / 60.0 AS total_minutes, SUM((1.0 + 0.19 * CASE WHEN (duration_sec / 60.0) > 30.0 THEN (duration_sec / 60.0) - 30.0 ELSE 0 END)) AS pay_total, SUM(CASE WHEN duration_sec / 60.0 > 0.0 THEN (durati ...",
+      "success": true,
+      "observation": "{\"rows\": [{\"rides\": 94802, \"months\": 1, \"total_minutes\": 1376107.8, \"pay_total\": 156075.45466666666, \"extra_total\": 261460.482}], \"row_count\": 1, \"source\": \"uploaded.csv\"}",
+      "ms": 16
+    },
+    {
+      "step": 4,
+      "by": "program",
+      "tool": "calculator",
+      "input": "{\"expression\": \"29.0 * 1 + 261460.48\"}",
+      "success": true,
+      "observation": "{\"value\": 261489.48}",
+      "ms": 0
+    },
+    {
+      "step": 5,
+      "by": "program",
+      "tool": "calculator",
+      "input": "{\"expression\": \"(156075.45) - (261489.48)\"}",
+      "success": true,
+      "observation": "{\"value\": -105414.03}",
+      "ms": 0
+    },
+    {
+      "step": 6,
+      "by": "program",
+      "tool": "calculator",
+      "input": "{\"expression\": \"94802 / 1\"}",
+      "success": true,
+      "observation": "{\"value\": 94802.0}",
+      "ms": 0
+    },
+    {
+      "step": 7,
+      "by": "program",
+      "tool": "calculator",
+      "input": "{\"expression\": \"1376107.8 / 94802\"}",
+      "success": true,
+      "observation": "{\"value\": 14.515598827028967}",
+      "ms": 0
+    },
+    {
+      "step": 8,
+      "by": "program",
+      "tool": "calculator",
+      "input": "{\"expression\": \"156075.45 / 94802\"}",
+      "success": true,
+      "observation": "{\"value\": 1.6463307736123711}",
+      "ms": 0
+    },
+    {
+      "step": 9,
+      "by": "program",
+      "tool": "calculator",
+      "input": "{\"expression\": \"261460.48 / 94802\"}",
+      "success": true,
+      "observation": "{\"value\": 2.7579637560389023}",
+      "ms": 0
+    },
+    {
+      "step": 10,
+      "by": "program",
+      "tool": "calculator",
+      "input": "{\"expression\": \"1376107.8 / 1\"}",
+      "success": true,
+      "observation": "{\"value\": 1376107.8}",
+      "ms": 0
+    },
+    {
+      "step": 11,
+      "by": "program",
+      "tool": "csv_sql",
+      "input": "{\"sql\": \"SELECT strftime('%Y-W%W', start_time) AS week, COUNT(*) AS rides, ROUND(AVG(duration_sec) / 60.0, 1) AS avg_minutes, ROUND(SUM((1.0 + 0.19 * CASE WHEN (duration_sec / 60.0) > 30.0 THEN (duration_sec / 60.0) - 30.0 ELSE 0 END)), 2) AS spend FROM trips GROUP BY week ORDER BY week LIMIT 12\"}",
+      "success": true,
+      "observation": "{\"rows\": [{\"week\": \"2018-W01\", \"rides\": 16159, \"avg_minutes\": 16.3, \"spend\": 31292.76}, {\"week\": \"2018-W02\", \"rides\": 19548, \"avg_minutes\": 14.4, \"spend\": 32056.9}, {\"week\": \"2018-W03\", \"rides\": 21647, \"avg_minutes\": 14.4, \"spend\": 34896.17}, {\"week\": \"2018-W04\", \"rides\": 23774, \"avg_minutes\": 14.2, \"spend\": 37680.9}, {\"week\": \"2018-W05\", \"rides\": 13674, \"avg_minutes\": 13.1, \"spend\": 20148.72}], \"row_count\": 5, \"source\": \"uploaded.csv\"}",
+      "ms": 45
+    },
+    {
+      "step": 12,
+      "by": "program",
+      "tool": "csv_sql",
+      "input": "{\"sql\": \"SELECT COUNT(DISTINCT strftime('%Y-W%W', start_time)) AS weeks FROM trips\"}",
+      "success": true,
+      "observation": "{\"rows\": [{\"weeks\": 5}], \"row_count\": 1, \"source\": \"uploaded.csv\"}",
+      "ms": 24
+    }
+  ],
+  "metrics": {
+    "steps": 12,
+    "total_time_s": 96.82,
+    "stop_reason": "repair_failed"
+  }
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bay Wheels: membership or pay per ride?</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; max-width: 1000px; }
+    .panel { margin-top: 16px; padding: 12px; border: 1px solid #ccc; border-radius: 6px; }
+    table { border-collapse: collapse; margin: 6px 0; }
+    td, th { border: 1px solid #ccc; padding: 4px 8px; text-align: left; font-size: 14px; }
+    th { background: #f0f0f0; }
+    .step { margin-bottom: 8px; font-size: 14px; }
+    .small { font-size: 13px; color: #444; }
+    #decision { font-size: 22px; font-weight: bold; }
+    #metrics { background: #eef3ff; padding: 8px; font-weight: bold; }
+    input[type=text] { width: 560px; }
+    pre { white-space: pre-wrap; margin: 2px 0; }
+  </style>
+</head>
+<body>
+
+<h2>Bay Wheels: monthly membership or pay per ride?</h2>
+<input type="file" id="csv" accept=".csv">
+<input type="text" id="url" value="https://www.lyft.com/bikes/bay-wheels/pricing">
+<button id="run" onclick="runAgent()">Run</button>
+<span id="status"></span>
+
+<div class="panel">
+  <h3>Timeline (tool calls and observations)</h3>
+  <div id="timeline">Nothing yet.</div>
+</div>
+
+<div class="panel">
+  <h3>Results</h3>
+  <div id="decision"></div>
+  <div id="metrics"></div>
+  <div id="justification"></div>
+  <div id="costs"></div>
+  <div id="weekly"></div>
+  <div id="citations"></div>
+  <div id="assumptions"></div>
+</div>
+
+<script>
+function esc(value) {
+  return String(value).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+function makeTable(headers, rows) {
+  let html = "<table><tr>" + headers.map(h => "<th>" + esc(h) + "</th>").join("") + "</tr>";
+  rows.forEach(r => { html += "<tr>" + r.map(c => "<td>" + esc(c) + "</td>").join("") + "</tr>"; });
+  return html + "</table>";
+}
+
+async function runAgent() {
+  const file = document.getElementById("csv").files[0];
+  if (!file) { alert("Choose a CSV file first."); 
+    return; }
+  const form = new FormData();
+  form.append("csv_file", file);
+  form.append("pricing_url", document.getElementById("url").value);
+  document.getElementById("status").innerText = " running ...";
+  document.getElementById("run").disabled = true;
+  try {
+    const response = await fetch("/run", { method: "POST", body: form });
+    const data = await response.json();
+    if (!response.ok) { throw new Error(data.detail || "request failed"); }
+    showResult(data);
+    document.getElementById("status").innerText = " done";
+  } catch (err) {
+    document.getElementById("status").innerText = " error: " + err.message;
+  }
+  document.getElementById("run").disabled = false;
+}
+
+function showResult(d) {
+  let t = "";
+  d.timeline.forEach(s => {
+    t += "<div class='step'><b>Step " + s.step + " - " + esc(s.tool) + "</b> (" + s.by + ", " +
+         s.ms + " ms, " + (s.success ? "ok" : "ERROR") + ")" +
+         (s.input ? "<pre>input: " + esc(s.input) + "</pre>" : "") +
+         "<pre>observation: " + esc(s.observation) + "</pre></div>";
+  });
+  document.getElementById("timeline").innerHTML = t;
+
+  document.getElementById("decision").innerText = d.decision || "No decision";
+  const m = d.metrics;
+  document.getElementById("metrics").innerText =
+    "Steps: " + m.steps + "   |   Total time: " + m.total_time_s + " s   |   Stop reason: " + m.stop_reason;
+
+  if (!d.decision) {
+    document.getElementById("justification").innerHTML = "<p>" + esc(d.error || "") + "</p>";
+    return;
+  }
+  document.getElementById("justification").innerHTML = "<h4>Why</h4><p>" + esc(d.justification) + "</p>";
+
+  const c = d.costs;
+  document.getElementById("costs").innerHTML = "<h4>Cost comparison</h4>" + makeTable(
+    ["Item", "Value"], [
+      ["Rides in file", c.rides],
+      ["Months with trips", c.months],
+      ["Average ride (minutes)", c.avg_minutes_per_ride],
+      ["Pay-per-use total ($)", c.pay_total],
+      ["Membership price x months ($)", (c.member_price * c.months).toFixed(2)],
+      ["Residual (extra-minute) charges ($)", c.extra_charges],
+      ["Membership total ($)", c.member_total],
+      ["Difference between the options ($)", c.saving_with_cheaper_option],
+      ["Break-even rides per month", c.break_even_rides_per_month === null ? "never" : c.break_even_rides_per_month],
+      ["Actual rides per month", c.actual_rides_per_month],
+      ["Break-even ride minutes per month", c.break_even_minutes_per_month === null ? "never" : c.break_even_minutes_per_month],
+      ["Actual ride minutes per month", c.actual_minutes_per_month],
+    ]);
+
+  document.getElementById("weekly").innerHTML = "<h4>By week (first " + c.weekly.length +
+    " of " + c.weeks_total + " weeks)</h4>" + makeTable(
+    ["Week", "Rides", "Average minutes", "Pay-per-use spend ($)"],
+    c.weekly.map(w => [w.week, w.rides, w.avg_minutes, w.spend]));
+
+  let cites = "<h4>Citations</h4>";
+  d.citations.forEach(x => { cites += "<p class='small'>\"" + esc(x.text) + "\"</p>"; });
+  d.pages.forEach(pg => {
+    cites += "<p class='small'>Pricing page: " + esc(pg.url) + "<br>Captured: " + esc(pg.captured_at) + "</p>";
+  });
+  cites += "<p class='small'>Snapshot SHA-256: " + esc(d.sha256) + "</p>";
+  document.getElementById("citations").innerHTML = cites;
+
+  document.getElementById("assumptions").innerHTML = "<h4>Assumptions and caveats</h4><ul>" +
+    d.assumptions.map(a => "<li class='small'>" + esc(a) + "</li>").join("") + "</ul>";
+}
+</script>
+</body>
+</html>

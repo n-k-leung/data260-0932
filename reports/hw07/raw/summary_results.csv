@@ -1,5 +1,0 @@
-setting,short_term_n,policy,mean_prompt_tokens,mean_completion_tokens,mean_latency_ms,probe_quality
-N4,4,none,859.4,340.2,20955,4.6
-N12,12,none,825.0,339.5,20389,4.6
-N30,30,none,886.8,333.2,21343,4.2
-COMPRESS,12,compress,868.5,347.0,21739,4.6
