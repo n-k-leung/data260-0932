@@ -1,0 +1,251 @@
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> python -c "import secrets; print(secrets.token_hex(32))"
+3f6a39785b6aa9e4319302e0b9d3625ee64959bba18e80dd5fe9d96dc0c97dbf
+
+PS C:\Users\natal> & "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
+Enter password: *******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.41 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> USE s0932_rel;
+Database changed
+mysql> DROP TABLE IF EXISTS sessions;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> DROP TABLE IF EXISTS users;
+Query OK, 0 rows affected (0.02 sec)
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw07\backend> pip install -r .\requirements.txt
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: fastapi in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from -r .\requirements.txt (line 1)) (0.142.1)
+Requirement already satisfied: sqlalchemy in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from -r .\requirements.txt (line 3)) (2.1.1)
+Requirement already satisfied: python-dotenv in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from -r .\requirements.txt (line 4)) (1.2.3)
+Requirement already satisfied: pymysql in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from -r .\requirements.txt (line 5)) (1.2.3)
+Requirement already satisfied: pydantic in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from -r .\requirements.txt (line 6)) (2.13.5)
+Requirement already satisfied: email-validator in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from -r .\requirements.txt (line 7)) (2.3.0)
+Requirement already satisfied: pymongo in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from -r .\requirements.txt (line 8)) (4.19.0)
+Requirement already satisfied: requests in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from -r .\requirements.txt (line 9)) (2.34.2)
+Requirement already satisfied: ollama in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from -r .\requirements.txt (line 10)) (0.6.3)
+Requirement already satisfied: pyyaml in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from -r .\requirements.txt (line 11)) (6.0.3)
+Requirement already satisfied: passlib==1.7.4 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from passlib[bcrypt]==1.7.4->-r .\requirements.txt (line 12)) (1.7.4)
+Collecting PyJWT==2.9.0 (from -r .\requirements.txt (line 13))
+  Downloading PyJWT-2.9.0-py3-none-any.whl.metadata (3.0 kB)
+Requirement already satisfied: bcrypt==4.0.1 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from -r .\requirements.txt (line 14)) (4.0.1)
+Collecting python-multipart==0.0.9 (from -r .\requirements.txt (line 15))
+  Downloading python_multipart-0.0.9-py3-none-any.whl.metadata (2.5 kB)
+Collecting ruff (from -r .\requirements.txt (line 16))
+  Downloading ruff-0.17.2-py3-none-win_amd64.whl.metadata (21 kB)
+Collecting pre-commit (from -r .\requirements.txt (line 17))
+  Downloading pre_commit-4.7.0-py2.py3-none-any.whl.metadata (1.2 kB)
+Requirement already satisfied: uvicorn[standard] in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from -r .\requirements.txt (line 2)) (0.54.0)
+Requirement already satisfied: starlette>=0.46.0 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from fastapi->-r .\requirements.txt (line 1)) (1.7.0)
+Requirement already satisfied: typing-extensions>=4.8.0 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from fastapi->-r .\requirements.txt (line 1)) (4.16.0)
+Requirement already satisfied: typing-inspection>=0.4.2 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from fastapi->-r .\requirements.txt (line 1)) (0.4.4)
+Requirement already satisfied: annotated-doc>=0.0.2 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from fastapi->-r .\requirements.txt (line 1)) (0.0.5)
+Requirement already satisfied: opentelemetry-api>=1.44.0 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from fastapi->-r .\requirements.txt (line 1)) (1.45.0)
+Requirement already satisfied: click>=7.0 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from uvicorn[standard]->-r .\requirements.txt (line 2)) (8.5.0)
+Requirement already satisfied: h11>=0.8 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from uvicorn[standard]->-r .\requirements.txt (line 2)) (0.16.0)
+Collecting httptools>=0.8.0 (from uvicorn[standard]->-r .\requirements.txt (line 2))
+  Downloading httptools-0.9.0-cp314-cp314-win_amd64.whl.metadata (3.7 kB)
+Collecting watchfiles>=0.20 (from uvicorn[standard]->-r .\requirements.txt (line 2))
+  Using cached watchfiles-1.3.0-cp310-abi3-win_amd64.whl.metadata (5.0 kB)
+Collecting websockets>=13.0 (from uvicorn[standard]->-r .\requirements.txt (line 2))
+  Downloading websockets-17.3-cp314-cp314-win_amd64.whl.metadata (6.5 kB)
+Requirement already satisfied: annotated-types>=0.6.0 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from pydantic->-r .\requirements.txt (line 6)) (0.8.0)
+Requirement already satisfied: pydantic-core==2.46.5 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from pydantic->-r .\requirements.txt (line 6)) (2.46.5)
+Requirement already satisfied: dnspython>=2.0.0 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from email-validator->-r .\requirements.txt (line 7)) (2.8.0)
+Requirement already satisfied: idna>=2.0.0 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from email-validator->-r .\requirements.txt (line 7)) (3.20)
+Requirement already satisfied: charset_normalizer<4,>=2 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from requests->-r .\requirements.txt (line 9)) (3.5.1)
+Requirement already satisfied: urllib3<3,>=1.26 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from requests->-r .\requirements.txt (line 9)) (2.8.0)
+Requirement already satisfied: certifi>=2023.5.7 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from requests->-r .\requirements.txt (line 9)) (2026.7.22)
+Requirement already satisfied: httpx>=0.27 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from ollama->-r .\requirements.txt (line 10)) (0.28.1)
+Collecting cfgv>=2.0.0 (from pre-commit->-r .\requirements.txt (line 17))
+  Downloading cfgv-3.5.0-py2.py3-none-any.whl.metadata (8.9 kB)
+Collecting identify>=1.0.0 (from pre-commit->-r .\requirements.txt (line 17))
+  Downloading identify-2.6.20-py2.py3-none-any.whl.metadata (4.4 kB)
+Collecting nodeenv>=0.11.1 (from pre-commit->-r .\requirements.txt (line 17))
+  Downloading nodeenv-1.11.0-py2.py3-none-any.whl.metadata (40 kB)
+Collecting virtualenv>=20.10.0 (from pre-commit->-r .\requirements.txt (line 17))
+  Downloading virtualenv-21.14.13-py3-none-any.whl.metadata (4.1 kB)
+Requirement already satisfied: anyio in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from httpx>=0.27->ollama->-r .\requirements.txt (line 10)) (4.15.1)
+Requirement already satisfied: httpcore==1.* in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from httpx>=0.27->ollama->-r .\requirements.txt (line 10)) (1.0.9)
+Collecting distlib<1,>=0.4.3 (from virtualenv>=20.10.0->pre-commit->-r .\requirements.txt (line 17))
+  Downloading distlib-0.4.4-py2.py3-none-any.whl.metadata (5.3 kB)
+Collecting filelock<5,>=3.24.2 (from virtualenv>=20.10.0->pre-commit->-r .\requirements.txt (line 17))
+  Downloading filelock-4.2.4-py3-none-any.whl.metadata (2.0 kB)
+Requirement already satisfied: packaging>=26.3 in C:\Users\natal\AppData\Roaming\Python\Python314\site-packages (from virtualenv>=20.10.0->pre-commit->-r .\requirements.txt (line 17)) (26.3)
+Collecting platformdirs<5,>=4.4 (from virtualenv>=20.10.0->pre-commit->-r .\requirements.txt (line 17))
+  Downloading platformdirs-4.13.5-py3-none-any.whl.metadata (5.5 kB)
+Collecting python-discovery>=1.6.1 (from virtualenv>=20.10.0->pre-commit->-r .\requirements.txt (line 17))
+  Downloading python_discovery-1.6.4-py3-none-any.whl.metadata (5.1 kB)
+Downloading PyJWT-2.9.0-py3-none-any.whl (22 kB)
+Downloading python_multipart-0.0.9-py3-none-any.whl (22 kB)
+Downloading ruff-0.17.2-py3-none-win_amd64.whl (10.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.3/10.3 MB 56.6 MB/s  0:00:00
+Downloading pre_commit-4.7.0-py2.py3-none-any.whl (226 kB)
+Downloading cfgv-3.5.0-py2.py3-none-any.whl (7.4 kB)
+Downloading httptools-0.9.0-cp314-cp314-win_amd64.whl (94 kB)
+Downloading identify-2.6.20-py2.py3-none-any.whl (99 kB)
+Downloading nodeenv-1.11.0-py2.py3-none-any.whl (34 kB)
+Downloading virtualenv-21.14.13-py3-none-any.whl (5.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.6/5.6 MB 63.0 MB/s  0:00:00
+Downloading distlib-0.4.4-py2.py3-none-any.whl (472 kB)
+Downloading filelock-4.2.4-py3-none-any.whl (162 kB)
+Downloading platformdirs-4.13.5-py3-none-any.whl (32 kB)
+Downloading python_discovery-1.6.4-py3-none-any.whl (39 kB)
+Using cached watchfiles-1.3.0-cp310-abi3-win_amd64.whl (290 kB)
+Downloading websockets-17.3-cp314-cp314-win_amd64.whl (218 kB)
+Installing collected packages: distlib, websockets, ruff, python-multipart, PyJWT, platformdirs, nodeenv, identify, httptools, filelock, cfgv, watchfiles, python-discovery, virtualenv, pre-commit
+   ━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━  1/15 [websockets]  WARNING: The script websockets.exe is installed in 'C:\Users\natal\AppData\Roaming\Python\Python314\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  Attempting uninstall: python-multipart
+    Found existing installation: python-multipart 0.0.32
+    Uninstalling python-multipart-0.0.32:
+      Successfully uninstalled python-multipart-0.0.32
+  Attempting uninstall: PyJWT
+    Found existing installation: PyJWT 2.15.1
+    Uninstalling PyJWT-2.15.1:
+      Successfully uninstalled PyJWT-2.15.1
+   ━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━  5/15 [platformdirs]  WARNING: The script nodeenv.exe is installed in 'C:\Users\natal\AppData\Roaming\Python\Python314\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  WARNING: The script identify-cli.exe is installed in 'C:\Users\natal\AppData\Roaming\Python\Python314\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━ 11/15 [watchfiles]  WARNING: The script watchfiles.exe is installed in 'C:\Users\natal\AppData\Roaming\Python\Python314\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━ 13/15 [virtualenv]  WARNING: The script virtualenv.exe is installed in 'C:\Users\natal\AppData\Roaming\Python\Python314\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━ 14/15 [pre-commit]  WARNING: The script pre-commit.exe is installed in 'C:\Users\natal\AppData\Roaming\Python\Python314\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed PyJWT-2.9.0 cfgv-3.5.0 distlib-0.4.4 filelock-4.2.4 httptools-0.9.0 identify-2.6.20 nodeenv-1.11.0 platformdirs-4.13.5 pre-commit-4.7.0 python-discovery-1.6.4 python-multipart-0.0.9 ruff-0.17.2 virtualenv-21.14.13 watchfiles-1.3.0 websockets-17.3
+
+PS C:\Users\natal> & "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
+Enter password: *******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.41 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> USE s0932_rel;
+Database changed
+mysql> DROP TABLE IF EXISTS sessions;
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> DROP TABLE IF EXISTS users;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESCRIBE users;
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| id            | int          | NO   | PRI | NULL    | auto_increment |
+| username      | varchar(50)  | NO   | UNI | NULL    |                |
+| password_hash | varchar(255) | NO   |     | NULL    |                |
+| role          | varchar(20)  | NO   |     | NULL    |                |
++---------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT id, username, role, password_hash FROM users;
++----+----------+-----------+--------------------------------------------------------------+
+| id | username | role      | password_hash                                                |
++----+----------+-----------+--------------------------------------------------------------+
+|  1 | alice    | reader    | $2b$12$PHMyqUQwQMhScByms.ZhbOKGNUvXXa7xandMAdQkyXvNe1ADkim7W |
+|  2 | bob      | writer    | $2b$12$1bogjH2qF5dS7yX8Jzip0OlZ3cTznRgcgOBTnta9rOS8/7p07L6dC |
+|  3 | carol    | moderator | $2b$12$hHuPp339MUbM2v80/ilZ0OtuiqTeegpIsD1AEN15B88LIm7ZTeEl2 |
++----+----------+-----------+--------------------------------------------------------------+
+3 rows in set (0.00 sec)
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw07\backend> venv\Scripts\activate                    
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw07\backend> pip install -r .\requirements.txt        
+Requirement already satisfied: fastapi in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from -r .\requirements.txt (line 1)) (0.142.2)
+Requirement already satisfied: sqlalchemy in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from -r .\requirements.txt (line 3)) (2.1.3)
+Requirement already satisfied: python-dotenv in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from -r .\requirements.txt (line 4)) (1.2.4)
+Requirement already satisfied: pymysql in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from -r .\requirements.txt (line 5)) (1.2.3)
+Requirement already satisfied: pydantic in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from -r .\requirements.txt (line 6)) (2.13.5)
+Requirement already satisfied: email-validator in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from -r .\requirements.txt (line 7)) (2.3.0)
+Requirement already satisfied: pymongo in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from -r .\requirements.txt (line 8)) (4.19.0)
+Requirement already satisfied: requests in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from -r .\requirements.txt (line 9)) (2.34.2)
+Requirement already satisfied: ollama in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from -r .\requirements.txt (line 10)) (0.6.3)
+Requirement already satisfied: pyyaml in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from -r .\requirements.txt (line 11)) (6.0.3)
+Collecting passlib==1.7.4 (from passlib[bcrypt]==1.7.4->-r .\requirements.txt (line 12))
+  Using cached passlib-1.7.4-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting PyJWT==2.9.0 (from -r .\requirements.txt (line 13))
+  Using cached PyJWT-2.9.0-py3-none-any.whl.metadata (3.0 kB)
+Collecting bcrypt==4.0.1 (from -r .\requirements.txt (line 14))
+  Using cached bcrypt-4.0.1-cp36-abi3-win_amd64.whl.metadata (9.0 kB)
+Collecting python-multipart==0.0.9 (from -r .\requirements.txt (line 15))
+  Using cached python_multipart-0.0.9-py3-none-any.whl.metadata (2.5 kB)
+Collecting ruff (from -r .\requirements.txt (line 16))
+  Using cached ruff-0.17.2-py3-none-win_amd64.whl.metadata (21 kB)
+Collecting pre-commit (from -r .\requirements.txt (line 17))
+  Using cached pre_commit-4.7.0-py2.py3-none-any.whl.metadata (1.2 kB)
+Requirement already satisfied: uvicorn[standard] in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from -r .\requirements.txt (line 2)) (0.54.0)
+Requirement already satisfied: starlette>=0.46.0 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from fastapi->-r .\requirements.txt (line 1)) (1.7.0)
+Requirement already satisfied: typing-extensions>=4.8.0 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from fastapi->-r .\requirements.txt (line 1)) (4.16.0)
+Requirement already satisfied: typing-inspection>=0.4.2 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from fastapi->-r .\requirements.txt (line 1)) (0.4.4)
+Requirement already satisfied: annotated-doc>=0.0.2 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from fastapi->-r .\requirements.txt (line 1)) (0.0.5)
+Requirement already satisfied: opentelemetry-api>=1.44.0 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from fastapi->-r .\requirements.txt (line 1)) (1.45.0)
+Requirement already satisfied: click>=7.0 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from uvicorn[standard]->-r .\requirements.txt (line 2)) (8.5.0)
+Requirement already satisfied: h11>=0.8 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from uvicorn[standard]->-r .\requirements.txt (line 2)) (0.16.0)
+Requirement already satisfied: httptools>=0.8.0 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from uvicorn[standard]->-r .\requirements.txt (line 2)) (0.8.0)
+Requirement already satisfied: watchfiles>=0.20 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from uvicorn[standard]->-r .\requirements.txt (line 2)) (1.3.0)
+Requirement already satisfied: websockets>=13.0 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from uvicorn[standard]->-r .\requirements.txt (line 2)) (17.2)
+Requirement already satisfied: annotated-types>=0.6.0 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from pydantic->-r .\requirements.txt (line 6)) (0.8.0)
+Requirement already satisfied: pydantic-core==2.46.5 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from pydantic->-r .\requirements.txt (line 6)) (2.46.5)
+Requirement already satisfied: dnspython>=2.0.0 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from email-validator->-r .\requirements.txt (line 7)) (2.8.0)
+Requirement already satisfied: idna>=2.0.0 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from email-validator->-r .\requirements.txt (line 7)) (3.20)
+Requirement already satisfied: charset_normalizer<4,>=2 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from requests->-r .\requirements.txt (line 9)) (3.5.2)
+Requirement already satisfied: urllib3<3,>=1.26 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from requests->-r .\requirements.txt (line 9)) (2.8.0)
+Requirement already satisfied: certifi>=2023.5.7 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from requests->-r .\requirements.txt (line 9)) (2026.10.18)
+Requirement already satisfied: httpx>=0.27 in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from ollama->-r .\requirements.txt (line 10)) (0.28.1)
+Collecting cfgv>=2.0.0 (from pre-commit->-r .\requirements.txt (line 17))
+  Using cached cfgv-3.5.0-py2.py3-none-any.whl.metadata (8.9 kB)
+Collecting identify>=1.0.0 (from pre-commit->-r .\requirements.txt (line 17))
+  Using cached identify-2.6.20-py2.py3-none-any.whl.metadata (4.4 kB)
+Collecting nodeenv>=0.11.1 (from pre-commit->-r .\requirements.txt (line 17))
+  Using cached nodeenv-1.11.0-py2.py3-none-any.whl.metadata (40 kB)
+Collecting virtualenv>=20.10.0 (from pre-commit->-r .\requirements.txt (line 17))
+  Using cached virtualenv-21.14.13-py3-none-any.whl.metadata (4.1 kB)
+Requirement already satisfied: anyio in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from httpx>=0.27->ollama->-r .\requirements.txt (line 10)) (4.15.1)
+Requirement already satisfied: httpcore==1.* in C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw05\backend\venv\Lib\site-packages (from httpx>=0.27->ollama->-r .\requirements.txt (line 10)) (1.0.9)
+Collecting distlib<1,>=0.4.3 (from virtualenv>=20.10.0->pre-commit->-r .\requirements.txt (line 17))
+  Using cached distlib-0.4.4-py2.py3-none-any.whl.metadata (5.3 kB)
+Collecting filelock<5,>=3.24.2 (from virtualenv>=20.10.0->pre-commit->-r .\requirements.txt (line 17))
+  Using cached filelock-4.2.4-py3-none-any.whl.metadata (2.0 kB)
+Collecting packaging>=26.3 (from virtualenv>=20.10.0->pre-commit->-r .\requirements.txt (line 17))
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting platformdirs<5,>=4.4 (from virtualenv>=20.10.0->pre-commit->-r .\requirements.txt (line 17))
+  Using cached platformdirs-4.13.5-py3-none-any.whl.metadata (5.5 kB)
+Collecting python-discovery>=1.6.1 (from virtualenv>=20.10.0->pre-commit->-r .\requirements.txt (line 17))
+  Using cached python_discovery-1.6.4-py3-none-any.whl.metadata (5.1 kB)
+Using cached passlib-1.7.4-py2.py3-none-any.whl (525 kB)
+Using cached PyJWT-2.9.0-py3-none-any.whl (22 kB)
+Using cached bcrypt-4.0.1-cp36-abi3-win_amd64.whl (152 kB)
+Using cached python_multipart-0.0.9-py3-none-any.whl (22 kB)
+Using cached ruff-0.17.2-py3-none-win_amd64.whl (10.3 MB)
+Using cached pre_commit-4.7.0-py2.py3-none-any.whl (226 kB)
+Using cached cfgv-3.5.0-py2.py3-none-any.whl (7.4 kB)
+Using cached identify-2.6.20-py2.py3-none-any.whl (99 kB)
+Using cached nodeenv-1.11.0-py2.py3-none-any.whl (34 kB)
+Using cached virtualenv-21.14.13-py3-none-any.whl (5.6 MB)
+Using cached distlib-0.4.4-py2.py3-none-any.whl (472 kB)
+Using cached filelock-4.2.4-py3-none-any.whl (162 kB)
+Using cached platformdirs-4.13.5-py3-none-any.whl (32 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Using cached python_discovery-1.6.4-py3-none-any.whl (39 kB)
+Installing collected packages: passlib, distlib, ruff, python-multipart, PyJWT, platformdirs, packaging, nodeenv, identify, filelock, cfgv, bcrypt, python-discovery, virtualenv, pre-commit
+Successfully installed PyJWT-2.9.0 bcrypt-4.0.1 cfgv-3.5.0 distlib-0.4.4 filelock-4.2.4 identify-2.6.20 nodeenv-1.11.0 packaging-26.3 passlib-1.7.4 platformdirs-4.13.5 pre-commit-4.7.0 python-discovery-1.6.4 python-multipart-0.0.9 ruff-0.17.2 virtualenv-21.14.13

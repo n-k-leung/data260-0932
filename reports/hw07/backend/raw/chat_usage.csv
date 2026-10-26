@@ -1,0 +1,7 @@
+timestamp,run_label,policy,short_term_n,user_id,session_id,prompt_tokens,completion_tokens,system_primer_tokens_est,long_term_summary_tokens_est,short_term_tokens_est,episodic_tokens_est,latency_ms
+2026-10-19T09:57:56.947780+00:00,manual,none,12,verify260932,verify-session-260932,59,65,33,0,0,0,14376
+2026-10-19T09:58:16.009716+00:00,manual,none,12,verify260932,verify-session-260932,107,89,33,0,24,8,14995
+2026-10-19T10:11:42.631592+00:00,manual,none,12,verify260932,verify-session-260932,59,65,33,0,0,0,15689
+2026-10-19T10:12:01.547223+00:00,manual,none,12,verify260932,verify-session-260932,107,89,33,0,24,8,14842
+2026-10-19T10:14:14.750329+00:00,manual,none,12,verify260932,verify-session-260932,59,65,33,0,0,0,12861
+2026-10-19T10:14:33.601296+00:00,manual,none,12,verify260932,verify-session-260932,107,89,33,0,24,8,14791

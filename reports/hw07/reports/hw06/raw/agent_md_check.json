@@ -1,0 +1,69 @@
+[
+  {
+    "case": "buggy code",
+    "reply": "- The function does not handle the case where the input list is empty, leading to a ZeroDivisionError\n- The except block is too broad and silently ignores errors instead of raising exceptions\n- No input validation is performed for non-list types (e.g. None or integers)\n- The function returns None on failure instead of raising appropriate exceptions\n- The code lacks documentation for expected input/output behavior",
+    "checks": [
+      {
+        "rule": "only bullet points",
+        "passed": true,
+        "detail": "all lines are bullets"
+      },
+      {
+        "rule": "no introduction or summary",
+        "passed": true,
+        "detail": "none found"
+      },
+      {
+        "rule": "one issue per bullet",
+        "passed": true,
+        "detail": "every bullet is short and one sentence"
+      },
+      {
+        "rule": "no repeated bullets",
+        "passed": true,
+        "detail": "all bullets are different"
+      },
+      {
+        "rule": "no code shown",
+        "passed": true,
+        "detail": "no backticks found"
+      }
+    ]
+  },
+  {
+    "case": "clean code",
+    "reply": "- There are no errors in the code",
+    "checks": [
+      {
+        "rule": "only bullet points",
+        "passed": true,
+        "detail": "all lines are bullets"
+      },
+      {
+        "rule": "no introduction or summary",
+        "passed": true,
+        "detail": "none found"
+      },
+      {
+        "rule": "one issue per bullet",
+        "passed": true,
+        "detail": "every bullet is short and one sentence"
+      },
+      {
+        "rule": "no repeated bullets",
+        "passed": true,
+        "detail": "all bullets are different"
+      },
+      {
+        "rule": "no code shown",
+        "passed": true,
+        "detail": "no backticks found"
+      },
+      {
+        "rule": "no-issue reply",
+        "passed": true,
+        "detail": "exact sentence used"
+      }
+    ]
+  }
+]

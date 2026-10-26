@@ -1,0 +1,11 @@
+ <!-- consolidation at 2026-10-19T08:44:03.176959+00:00 -->
+- MERGED_DUPLICATE [user.name] "the user's name is alice." (2026-09-03)  | same as kept fact dated 2026-09-03
+- MERGED_DUPLICATE [user.employer] "The user works at Northwind Bank." (2026-09-10)  | same as kept fact dated 2026-09-10
+- MERGED_DUPLICATE [project.name] "The project is the Open Source Vulnerability Management API." (2026-09-15)  | same as kept fact dated 2026-09-15
+- MERGED_DUPLICATE [stack.backend] "the backend uses python and fastapi" (2026-09-15)  | same as kept fact dated 2026-09-15
+- MERGED_DUPLICATE [stack.frontend] "The frontend uses React with Redux." (2026-09-15)  | same as kept fact dated 2026-09-15
+- MERGED_DUPLICATE [stack.nosql] "MongoDB stores the document and memory collections." (2026-09-16)  | same as kept fact dated 2026-09-16
+- SUPERSEDED [api.port] "The API runs on port 8000" (2026-09-07)| replaced by "The API runs on port 8032" (2026-10-01) | rule: newest date wins
+- SUPERSEDED [test.framework] "Tests are written with pytest" (2026-09-08)| replaced by "Tests are written with unittest, only for this one demo script" (2026-10-09) | rule: newest date wins | CHECK: newer fact sounds temporary, this may be the WRONG choice
+- SUPERSEDED [vendor.reports] "The vendor for the reports page is Globex Inc" (2026-09-20)| replaced by "The vendor for the reports page is Acme Corp" (2026-10-08) | rule: newest date wins
+- SUPERSEDED [patch.deadline] "Critical issues must be patched within 7 days" (2026-09-12)| replaced by "Critical issues must be patched within 14 days" (2026-10-02) | rule: newest date wins
