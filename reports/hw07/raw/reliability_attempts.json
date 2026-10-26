@@ -1,0 +1,233 @@
+[
+  {
+    "attempt": 1,
+    "case_id": "A",
+    "seed": 260933,
+    "tools_called": "search_vulnerabilities|get_vulnerability",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": null,
+    "failure_after_repair": null
+  },
+  {
+    "attempt": 2,
+    "case_id": "A",
+    "seed": 260934,
+    "tools_called": "search_vulnerabilities|get_vulnerability",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": null,
+    "failure_after_repair": null
+  },
+  {
+    "attempt": 3,
+    "case_id": "A",
+    "seed": 260935,
+    "tools_called": "search_vulnerabilities|get_vulnerability",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": null,
+    "failure_after_repair": null
+  },
+  {
+    "attempt": 4,
+    "case_id": "A",
+    "seed": 260936,
+    "tools_called": "search_vulnerabilities|get_vulnerability",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": null,
+    "failure_after_repair": null
+  },
+  {
+    "attempt": 5,
+    "case_id": "A",
+    "seed": 260937,
+    "tools_called": "search_vulnerabilities|get_vulnerability",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": null,
+    "failure_after_repair": null
+  },
+  {
+    "attempt": 6,
+    "case_id": "A",
+    "seed": 260938,
+    "tools_called": "search_vulnerabilities|get_vulnerability",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": null,
+    "failure_after_repair": null
+  },
+  {
+    "attempt": 7,
+    "case_id": "A",
+    "seed": 260939,
+    "tools_called": "search_vulnerabilities|get_vulnerability",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": null,
+    "failure_after_repair": null
+  },
+  {
+    "attempt": 8,
+    "case_id": "B",
+    "seed": 260940,
+    "tools_called": "count_by_severity|search_vulnerabilities",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": null,
+    "failure_after_repair": null
+  },
+  {
+    "attempt": 9,
+    "case_id": "B",
+    "seed": 260941,
+    "tools_called": "count_by_severity|search_vulnerabilities",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": null,
+    "failure_after_repair": null
+  },
+  {
+    "attempt": 10,
+    "case_id": "B",
+    "seed": 260942,
+    "tools_called": "count_by_severity|search_vulnerabilities",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": null,
+    "failure_after_repair": null
+  },
+  {
+    "attempt": 11,
+    "case_id": "B",
+    "seed": 260943,
+    "tools_called": "count_by_severity|search_vulnerabilities",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": null,
+    "failure_after_repair": null
+  },
+  {
+    "attempt": 12,
+    "case_id": "B",
+    "seed": 260944,
+    "tools_called": "count_by_severity|search_vulnerabilities",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": null,
+    "failure_after_repair": null
+  },
+  {
+    "attempt": 13,
+    "case_id": "B",
+    "seed": 260945,
+    "tools_called": "count_by_severity|search_vulnerabilities",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": null,
+    "failure_after_repair": null
+  },
+  {
+    "attempt": 14,
+    "case_id": "B",
+    "seed": 260946,
+    "tools_called": "count_by_severity|search_vulnerabilities",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": null,
+    "failure_after_repair": null
+  },
+  {
+    "attempt": 15,
+    "case_id": "C",
+    "seed": 260947,
+    "tools_called": "search_vulnerabilities|get_vulnerability",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": "lost_multi_step_chain",
+    "failure_after_repair": "lost_multi_step_chain"
+  },
+  {
+    "attempt": 16,
+    "case_id": "C",
+    "seed": 260948,
+    "tools_called": "search_vulnerabilities|get_vulnerability",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": "lost_multi_step_chain",
+    "failure_after_repair": "lost_multi_step_chain"
+  },
+  {
+    "attempt": 17,
+    "case_id": "C",
+    "seed": 260949,
+    "tools_called": "search_vulnerabilities|get_vulnerability",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": "lost_multi_step_chain",
+    "failure_after_repair": "lost_multi_step_chain"
+  },
+  {
+    "attempt": 18,
+    "case_id": "C",
+    "seed": 260950,
+    "tools_called": "search_vulnerabilities|get_vulnerability",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": "lost_multi_step_chain",
+    "failure_after_repair": "lost_multi_step_chain"
+  },
+  {
+    "attempt": 19,
+    "case_id": "C",
+    "seed": 260951,
+    "tools_called": "search_vulnerabilities|get_vulnerability",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": "lost_multi_step_chain",
+    "failure_after_repair": "lost_multi_step_chain"
+  },
+  {
+    "attempt": 20,
+    "case_id": "C",
+    "seed": 260952,
+    "tools_called": "search_vulnerabilities|get_vulnerability",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": "lost_multi_step_chain",
+    "failure_after_repair": "lost_multi_step_chain"
+  },
+  {
+    "attempt": 21,
+    "case_id": "C",
+    "seed": 260953,
+    "tools_called": "search_vulnerabilities|get_vulnerability",
+    "total_tool_calls": 2,
+    "repairs_used": 0,
+    "stop_reason": "final_answer",
+    "failure_before_repair": "lost_multi_step_chain",
+    "failure_after_repair": "lost_multi_step_chain"
+  }
+]

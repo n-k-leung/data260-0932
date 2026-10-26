@@ -1,0 +1,20 @@
+[
+  {
+    "id": "A",
+    "name": "search, then detail lookup of the first result",
+    "prompt": "Search for vulnerabilities in the package 'nodejs', then get the full details of the first result.",
+    "min_calls": {"search_vulnerabilities": 1, "get_vulnerability": 1}
+  },
+  {
+    "id": "B",
+    "name": "aggregate question, then one supporting example",
+    "prompt": "How many vulnerabilities are there for each severity level? Also show me one example vulnerability for the package 'nodejs'.",
+    "min_calls": {"count_by_severity": 1, "search_vulnerabilities": 1}
+  },
+  {
+    "id": "C",
+    "name": "compare two entities",
+    "prompt": "Search for the package 'nodejs', then get the full details of the first two results and compare their severity.",
+    "min_calls": {"search_vulnerabilities": 1, "get_vulnerability": 2}
+  }
+]
