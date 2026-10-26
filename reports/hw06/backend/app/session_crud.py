@@ -1,9 +1,12 @@
-from datetime import datetime, timedelta
 import secrets
+from datetime import datetime, timedelta
+
 from sqlalchemy.orm import Session
+
 from .models import SessionToken
 
 SESSION_TTL_MINUTES = 30
+
 
 def create_session(db: Session, user_id: int) -> SessionToken:
     token = secrets.token_hex(32)
@@ -14,6 +17,7 @@ def create_session(db: Session, user_id: int) -> SessionToken:
     db.commit()
     db.refresh(row)
     return row
+
 
 def get_session(db: Session, token: str) -> SessionToken | None:
     s = db.query(SessionToken).filter(SessionToken.id == token).first()
@@ -27,6 +31,7 @@ def get_session(db: Session, token: str) -> SessionToken | None:
         return None
 
     return s
+
 
 def delete_session(db: Session, token: str) -> bool:
     s = db.query(SessionToken).filter(SessionToken.id == token).first()

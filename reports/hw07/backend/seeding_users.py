@@ -5,7 +5,7 @@ from app.database import Base, SessionLocal, engine
 
 Base.metadata.create_all(bind=engine)
 
-users_to_add =[
+users_to_add = [
     ("alice", "alice123", "reader"),
     ("bob", "bob123", "writer"),
     ("carol", "carol123", "moderator"),

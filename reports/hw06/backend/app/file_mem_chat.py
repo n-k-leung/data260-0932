@@ -1,6 +1,7 @@
 from app import file_mem as fm
 from app import llm_adapter
 
+
 def main():
     messages = [{"role": "system", "content": fm.build_system_prompt()}]
 
@@ -10,7 +11,7 @@ def main():
 
     print("Paste code to review. Type /help for commands.")
     while True:
-        try: 
+        try:
             user_input = input("you> ").strip()
         except EOFError:
             break
@@ -25,11 +26,11 @@ def main():
             print(fm.show_memory())
             continue
         if user_input == "/compact":
-            messages, text = fm.run_compact (messages)
+            messages, text = fm.run_compact(messages)
             print(text)
             continue
         if user_input == "/dream":
-            added = fm.run_dream(messages [-10: ])
+            added = fm.run_dream(messages[-10:])
             print(f"[/dream] facts added to MEMORY.md: {len(added)}")
             for line in added:
                 print(" ", line)
@@ -49,7 +50,7 @@ def main():
         messages.append({"role": "assistant", "content": reply})
         print("assistant>", reply)
         print(f"[tokens] input={in_tokens} output={out_tokens}")
-        
-if __name__ =="__main__":
+
+
+if __name__ == "__main__":
     main()
-    

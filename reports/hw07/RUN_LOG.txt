@@ -249,3 +249,46 @@ Using cached packaging-26.3-py3-none-any.whl (129 kB)
 Using cached python_discovery-1.6.4-py3-none-any.whl (39 kB)
 Installing collected packages: passlib, distlib, ruff, python-multipart, PyJWT, platformdirs, packaging, nodeenv, identify, filelock, cfgv, bcrypt, python-discovery, virtualenv, pre-commit
 Successfully installed PyJWT-2.9.0 bcrypt-4.0.1 cfgv-3.5.0 distlib-0.4.4 filelock-4.2.4 identify-2.6.20 nodeenv-1.11.0 packaging-26.3 passlib-1.7.4 platformdirs-4.13.5 pre-commit-4.7.0 python-discovery-1.6.4 python-multipart-0.0.9 ruff-0.17.2 virtualenv-21.14.13
+
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw06\backend> python -m pip install ruff pre-commit
+Collecting ruff
+  Using cached ruff-0.17.2-py3-none-win_amd64.whl.metadata (21 kB)
+Collecting pre-commit
+  Using cached pre_commit-4.7.0-py2.py3-none-any.whl.metadata (1.2 kB)
+Collecting cfgv>=2.0.0 (from pre-commit)
+  Using cached cfgv-3.5.0-py2.py3-none-any.whl.metadata (8.9 kB)
+Collecting identify>=1.0.0 (from pre-commit)
+  Using cached identify-2.6.20-py2.py3-none-any.whl.metadata (4.4 kB)
+Collecting nodeenv>=0.11.1 (from pre-commit)
+  Using cached nodeenv-1.11.0-py2.py3-none-any.whl.metadata (40 kB)
+Requirement already satisfied: pyyaml>=5.1 in .\venv\Lib\site-packages (from pre-commit) (6.0.3)
+Collecting virtualenv>=20.10.0 (from pre-commit)
+  Using cached virtualenv-21.14.13-py3-none-any.whl.metadata (4.1 kB)
+Collecting distlib<1,>=0.4.3 (from virtualenv>=20.10.0->pre-commit)
+  Using cached distlib-0.4.4-py2.py3-none-any.whl.metadata (5.3 kB)
+Collecting filelock<5,>=3.24.2 (from virtualenv>=20.10.0->pre-commit)
+  Using cached filelock-4.2.4-py3-none-any.whl.metadata (2.0 kB)
+Collecting packaging>=26.3 (from virtualenv>=20.10.0->pre-commit)
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting platformdirs<5,>=4.4 (from virtualenv>=20.10.0->pre-commit)
+  Using cached platformdirs-4.13.5-py3-none-any.whl.metadata (5.5 kB)
+Collecting python-discovery>=1.6.1 (from virtualenv>=20.10.0->pre-commit)
+  Using cached python_discovery-1.6.4-py3-none-any.whl.metadata (5.1 kB)
+Using cached ruff-0.17.2-py3-none-win_amd64.whl (10.3 MB)
+Using cached pre_commit-4.7.0-py2.py3-none-any.whl (226 kB)
+Using cached cfgv-3.5.0-py2.py3-none-any.whl (7.4 kB)
+Using cached identify-2.6.20-py2.py3-none-any.whl (99 kB)
+Using cached nodeenv-1.11.0-py2.py3-none-any.whl (34 kB)
+Using cached virtualenv-21.14.13-py3-none-any.whl (5.6 MB)
+Using cached distlib-0.4.4-py2.py3-none-any.whl (472 kB)
+Using cached filelock-4.2.4-py3-none-any.whl (162 kB)
+Using cached platformdirs-4.13.5-py3-none-any.whl (32 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Using cached python_discovery-1.6.4-py3-none-any.whl (39 kB)
+Installing collected packages: distlib, ruff, platformdirs, packaging, nodeenv, identify, filelock, cfgv, python-discovery, virtualenv, pre-commit
+Successfully installed cfgv-3.5.0 distlib-0.4.4 filelock-4.2.4 identify-2.6.20 nodeenv-1.11.0 packaging-26.3 platformdirs-4.13.5 pre-commit-4.7.0 python-discovery-1.6.4 ruff-0.17.2 virtualenv-21.14.13
+
+[notice] A new release of pip is available: 26.2.1 -> 26.2.2
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw06\backend> ruff --version                  
+ruff 0.17.2

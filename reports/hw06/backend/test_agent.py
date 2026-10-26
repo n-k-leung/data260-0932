@@ -1,8 +1,9 @@
 import json
 import os
+
 from app import file_mem as fm
 
-BUGGY_CODE = '''def average(numbers):
+BUGGY_CODE = """def average(numbers):
     total = 0
     for n in numbers:
         total = total + n
@@ -10,11 +11,11 @@ BUGGY_CODE = '''def average(numbers):
         return total / len(numbers)
     except:
         pass
-'''
-CLEAN_CODE = '''def add_numbers(first, second):
+"""
+CLEAN_CODE = """def add_numbers(first, second):
     # add two numbers and return the result
     return first + second
-'''
+"""
 
 cases = [("buggy code", BUGGY_CODE, False), ("clean code", CLEAN_CODE, True)]
 output = []
@@ -27,8 +28,13 @@ for name, code, expect_no_issue in cases:
     for rule, passed, detail in results:
         print(f" [{'PASS' if passed else 'FAIL'}] {rule}: {detail}")
         all_passed = all_passed and passed
-    output.append({"case": name, "reply": reply,
-        "checks": [{"rule": r, "passed": p, "detail": d} for r, p, d in results]})
+    output.append(
+        {
+            "case": name,
+            "reply": reply,
+            "checks": [{"rule": r, "passed": p, "detail": d} for r, p, d in results],
+        }
+    )
 
 print("\nOVERALL:", "ALL RULES FOLLOWED" if all_passed else "SOME RULES BROKEN")
 raw_dir = os.path.join(os.path.dirname(__file__), "..", "reports", "hw06", "raw")

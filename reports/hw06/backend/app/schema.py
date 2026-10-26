@@ -1,15 +1,18 @@
-from pydantic import BaseModel, Field, EmailStr
 from datetime import datetime
-from typing import Optional, Literal
+
+from pydantic import BaseModel, EmailStr, Field
+
 
 class UserCreate(BaseModel):
     name: str = Field(min_length=1)
     email: EmailStr
     password: str = Field(min_length=1)
 
+
 class UserUpdate(BaseModel):
     name: str = Field(min_length=1)
     email: EmailStr
+
 
 class UserOut(BaseModel):
     id: int
@@ -19,9 +22,11 @@ class UserOut(BaseModel):
     class Config:
         from_attributes = True
 
+
 class LoginRequest(BaseModel):
-    email:EmailStr
-    password:str
+    email: EmailStr
+    password: str
+
 
 class VulCreate(BaseModel):
     package_name: str = Field(min_length=1)
@@ -29,11 +34,13 @@ class VulCreate(BaseModel):
     vul_code: str = Field(min_length=1)
     vendor_id: int
 
+
 class VulUpdate(BaseModel):
     package_name: str = Field(min_length=1)
     severity: str = Field(min_length=1)
     vul_code: str = Field(min_length=1)
     vendor_id: int
+
 
 class VulOut(BaseModel):
     id: int
@@ -44,15 +51,18 @@ class VulOut(BaseModel):
     vendor_id: int
     created_at: datetime
     updated_at: datetime
+
     class Config:
         from_attributes = True
-        
-class AdviOut (BaseModel):
+
+
+class AdviOut(BaseModel):
     id: int
     fix_version: str
 
     class Config:
         from_attributes = True
+
 
 class VulAdvi(BaseModel):
     id: int
@@ -60,13 +70,16 @@ class VulAdvi(BaseModel):
     severity: str
     advisories: list[AdviOut]
 
+
 class VendorCreate(BaseModel):
     name: str = Field(min_length=1)
     industry: str = Field(min_length=1)
     contact_email: EmailStr
 
+
 class VendorUpdate(VendorCreate):
     pass
+
 
 class VendorOut(BaseModel):
     id: int
@@ -75,5 +88,6 @@ class VendorOut(BaseModel):
     contact_email: EmailStr
     created_at: datetime
     updated_at: datetime
+
     class Config:
         from_attributes = True

@@ -1,9 +1,11 @@
-from pydantic import BaseModel, Field, EmailStr
 from datetime import datetime
-from typing import Optional, Literal
+from typing import Literal, Optional
+
+from pydantic import BaseModel, Field
 
 StatusType = Literal["open", "triaged", "fixed", "wont_fix"]
 CategoryType = Literal["injection", "xss", "auth", "dos", "other"]
+
 
 class VulDocCreate(BaseModel):
     title: str = Field(min_length=1, max_length=100)
@@ -12,12 +14,14 @@ class VulDocCreate(BaseModel):
     category: CategoryType
     discovered_at: datetime
 
+
 class VulDocUpdate(BaseModel):
     title: Optional[str] = Field(default=None, min_length=1, max_length=100)
     description: Optional[str] = None
     status: Optional[StatusType] = None
     category: Optional[CategoryType] = None
     discovered_at: Optional[datetime] = None
+
 
 class VulDocOut(BaseModel):
     id: str
