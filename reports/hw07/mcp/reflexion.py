@@ -7,8 +7,6 @@ import tool_part4
 MAX_RETRIES = 2
 MAX_TOOL_CALLS = 12
 MAX_TOKENS = 60000
-
-
 SEVERITY_WORDS = {"low", "medium", "high", "critical"}
 PROBLEM_KINDS = ["malformed_arguments", "unknown_tool", "text_when_tool_required"]
 SUSPICIOUS = ["ignore", "disregard", "system prompt", "new instructions", "you are now", "permission", "override"]

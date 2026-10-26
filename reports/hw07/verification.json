@@ -1,0 +1,56 @@
+{
+  "homework": 7,
+  "sid4": "0932",
+  "commit": "unknown",
+  "tag": "not tagged",
+  "model": "qwen3:8b",
+  "seed": 932,
+  "verify_seed": 260932,
+  "checks": [
+    {
+      "check": "backend responds on PORT_BASE",
+      "result": "pass",
+      "detail": "GET /health returned 200"
+    },
+    {
+      "check": "/auth/login returns a token for valid credentials",
+      "result": "pass",
+      "detail": "POST /auth/login (bob) returned 200, token received: True"
+    },
+    {
+      "check": "/auth/login returns 401 for invalid credentials",
+      "result": "pass",
+      "detail": "POST /auth/login with a wrong password returned 401"
+    },
+    {
+      "check": "/auth/me without a token returns 401",
+      "result": "pass",
+      "detail": "GET /auth/me without a token returned 401"
+    },
+    {
+      "check": "/auth/me with a valid token returns the user and role",
+      "result": "pass",
+      "detail": "GET /auth/me with bob's token returned 200, role: writer"
+    },
+    {
+      "check": "a reader is refused on a write route with 403",
+      "result": "pass",
+      "detail": "reader POST /vuls returned 403 (403 = wrong role)"
+    },
+    {
+      "check": "csv_sql runs SELECT and refuses DROP TABLE",
+      "result": "pass",
+      "detail": "SELECT worked, DROP TABLE refused: True, table still intact: True"
+    },
+    {
+      "check": "retrieved page text is labelled untrusted",
+      "result": "pass",
+      "detail": "web text is labelled untrusted: True, SQL results are not: True"
+    },
+    {
+      "check": "file tools work inside the sandbox and block outside paths",
+      "result": "pass",
+      "detail": "write/read/glob/search worked inside the sandbox, path outside it blocked: True"
+    }
+  ]
+}

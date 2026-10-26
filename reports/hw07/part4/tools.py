@@ -1,9 +1,9 @@
 import ast
 import re
 from datetime import datetime, timezone
-
 import requests
 from bs4 import BeautifulSoup
+
 def now_iso():
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
@@ -17,13 +17,39 @@ def make_result(success, data=None, error=None, source=None):
     }
 
 MAX_ROWS_RETURNED = 20
+SQL_CONTRACT = True
+FORBIDDEN_WORDS = ["insert", "update", "delete", "drop", "alter", "create", "attach","detach", "pragma", "vacuum", "load_extension"]
+
+def check_select_contract(sql):
+    text = sql.strip()
+    if text.endswith(";"):
+        text = text[:-1].strip()
+    if ";" in text:
+        return "only ONE statement is allowed"
+    if not text.lower().startswith("select"):
+        return "only SELECT queries are allowed"
+    if "--" in text or "/*" in text:
+        return "SQL comments are not allowed"
+    lowered = text.lower()
+    for word in FORBIDDEN_WORDS:
+        if re.search(r"\b" + word + r"\b", lowered):
+            return "the word '" + word + "' is not allowed in a read-only query"
+    return None
+
 def csv_sql(conn, sql):
     if not isinstance(sql, str) or not sql.strip():
-        return make_result(False, error="sql must be a non-empty string", source="uploaded.csv")
-    if not sql.strip().lower().startswith("select"):
-        return make_result(False, error="only SELECT queries are allowed", source="uploaded.csv")
+        return make_result(False, error="sql must be a non-empty string",
+                           source="uploaded.csv")
+    if SQL_CONTRACT:
+        problem = check_select_contract(sql)
+        if problem:
+            return make_result(False, error=problem, source="uploaded.csv")
     try:
         cursor = conn.execute(sql)
+        if cursor.description is None:
+            conn.commit()
+            return make_result(True, {"rows": [], "row_count": cursor.rowcount,
+                                      "source": "uploaded.csv"}, source="uploaded.csv")
         names = [col[0] for col in cursor.description]
         all_rows = cursor.fetchall()
     except Exception as e:
@@ -43,6 +69,7 @@ def fetch_page_text(url):
         tag.decompose()
     lines = [" ".join(line.split()) for line in soup.get_text("\n").splitlines()]
     return "\n".join(line for line in lines if line)
+
 
 def split_into_snippets(page_text):
     snippets = []
@@ -118,7 +145,8 @@ def calc_node(node):
 
 def calculator(expression, units=None):
     if not isinstance(expression, str) or not ALLOWED_EXPRESSION.match(expression):
-        return make_result(False, error="expression may only contain digits and + - * / ( ) .", source="calculator")
+        return make_result(False, error="expression may only contain digits and + - * / ( ) .",
+                           source="calculator")
     try:
         value = calc_node(ast.parse(expression.strip(), mode="eval"))
     except ZeroDivisionError:
@@ -136,7 +164,8 @@ TOOL_SCHEMAS = [
         "description": "Run one read-only SELECT query on the uploaded trips table "
                        "called trips. Returns rows, row_count and source.",
         "parameters": {"type": "object",
-                       "properties": {"sql": {"type": "string","description": "a single SELECT statement"}},
+                       "properties": {"sql": {"type": "string",
+                                              "description": "a single SELECT statement"}},
                        "required": ["sql"]}}},
     {"type": "function", "function": {
         "name": "policy_retriever",
@@ -145,14 +174,17 @@ TOOL_SCHEMAS = [
                        "dollar price are always included.",
         "parameters": {"type": "object",
                        "properties": {"url": {"type": "string"},
-                                      "query": {"type": "string","description": "words to look for"},
-                                      "k": {"type": "integer","description": "how many snippets (default 8, at most 10)"}},
+                                      "query": {"type": "string",
+                                                "description": "words to look for"},
+                                      "k": {"type": "integer",
+                                            "description": "how many snippets (default 8, at most 10)"}},
                        "required": ["url", "query"]}}},
     {"type": "function", "function": {
         "name": "calculator",
         "description": "Safe arithmetic. Only digits and + - * / ( ) . are allowed.",
         "parameters": {"type": "object",
-                       "properties": {"expression": {"type": "string"},"units": {"type": "string"}},
+                       "properties": {"expression": {"type": "string"},
+                                      "units": {"type": "string"}},
                        "required": ["expression"]}}},
 ]
 
