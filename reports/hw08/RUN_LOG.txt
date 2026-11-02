@@ -1,0 +1,247 @@
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08>   docker compose up --build -d
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.16kB done
+#1 DONE 0.0s
+
+#2 [api internal] load build definition from Dockerfile
+#2 transferring dockerfile: 273B done
+#2 DONE 0.0s
+
+#3 [worker internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 0.6s
+
+#4 [api internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [worker internal] load build context
+#5 transferring context: 4.33kB done
+#5 DONE 0.0s
+
+#6 [api 1/6] FROM docker.io/library/python:3.12-slim@sha256:aa943ce411423c7582288f18707ff66eddcbaeb510502d747a72aeb34f30d159
+#6 resolve docker.io/library/python:3.12-slim@sha256:aa943ce411423c7582288f18707ff66eddcbaeb510502d747a72aeb34f30d159 0.0s done
+#6 DONE 0.0s
+
+#7 [worker 2/6] WORKDIR /code
+#7 CACHED
+
+#8 [worker 3/6] COPY requirements.txt .
+#8 CACHED
+
+#9 [worker 4/6] RUN pip install --no-cache-dir -r requirements.txt
+#9 CACHED
+
+#10 [worker 5/6] COPY app ./app
+#10 DONE 0.0s
+
+#11 [worker 6/6] COPY worker ./worker
+#11 DONE 0.1s
+
+#12 [api] exporting to image
+#12 exporting layers
+#12 exporting layers 0.2s done
+#12 exporting manifest sha256:31c8796e5289cebb3527920d8315d9b56d00c567da6b9ed1444a7184cbfa8eef 0.0s done
+#12 exporting config sha256:f01841368810cb5984decf8ff506cbb35dc20ade2781b3a0352ab8911a1a041b 0.0s done
+#12 exporting attestation manifest sha256:f388079f52714c9977eafa95c5045cb3844fd71b2e351e3f97e5d8aedc660a43 0.0s done
+#12 exporting manifest list sha256:6a8a88fb0e28cec68fa5da9ea974ecd86532ac265f6a8ebf958ae0430a1b287d 0.0s done
+#12 naming to docker.io/library/hw08-api:latest
+#12 ...
+
+#13 [worker] exporting to image
+#13 exporting layers 0.2s done
+#13 exporting manifest sha256:01f22a0fc6a7a901321021d6f00f16845451d3160cc0f8273e7553f004cd6f1f 0.0s done
+#13 exporting config sha256:9583530aff089e9fba295f365a352231a7913b4eab113b43831314c88b783a4e 0.0s done
+#13 exporting attestation manifest sha256:62a36677129dc459c5b92a6ffd1317def206ac29bac856a2a59bcb73601ab789 0.1s done
+#13 exporting manifest list sha256:bd5c1c675eb75339673f677a5b5e9a8dec7b618d34edeca404306a9f9fdf6b24 0.0s done
+#13 naming to docker.io/library/hw08-worker:latest 0.0s done
+#13 unpacking to docker.io/library/hw08-worker:latest 0.1s done
+#13 DONE 0.5s
+
+#12 [api] exporting to image
+#12 naming to docker.io/library/hw08-api:latest done
+#12 unpacking to docker.io/library/hw08-api:latest 0.1s done
+#12 DONE 0.5s
+
+#14 [worker] resolving provenance for metadata file
+#14 DONE 0.0s
+
+#15 [api] resolving provenance for metadata file
+#15 DONE 0.0s
+[+] up 6/6
+ ✔ Image hw08-api         Built                                                                         2.0s
+ ✔ Image hw08-worker      Built                                                                         2.0s
+ ✔ Container kafka        Running                                                                       0.0s
+ ✔ Container s0932_api    Started                                                                       8.2s
+ ✔ Container s0932_worker Started                                                                       8.2s
+ ✔ Container kafka-init   Exited                                                                        4.7s
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> docker ps
+CONTAINER ID   IMAGE                COMMAND                  CREATED          STATUS                    PORTS                                         NAMES
+a391af178d83   hw08-api             "uvicorn app.main:ap…"   11 seconds ago   Up 1 second               0.0.0.0:8032->8032/tcp, [::]:8032->8032/tcp   s0932_api
+bcbd659a366c   hw08-worker          "python worker/consu…"   11 seconds ago   Up 1 second                                                             s0932_worker
+b65058d28163   apache/kafka:3.9.2   "/__cacert_entrypoin…"   29 minutes ago   Up 29 minutes             0.0.0.0:9092->9092/tcp, [::]:9092->9092/tcp   kafka
+7859a28879e3   postgres:13          "docker-entrypoint.s…"   6 months ago     Up 35 minutes (healthy)   5432/tcp                                      airflow-postgres-1
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> docker logs s0932_api
+
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+08:35:08.663 [API] Listening for Kafka responses on topic: s0932_vulnerability_responses
+FastAPI server started at http://127.0.0.1:8032
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8032 (Press CTRL+C to quit)
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> python .\homework-demo.py
+
+creating vulnerability
+01:09:36.526 CLIENT created correlation_id=69c4a536-99a3-462d-a325-0922f2f072ac
+01:09:36.526 CLIENT SEND CREATE_VULNERABILITY -> s0932_vulnerability_requests
+01:09:36.526 CLIENT SEND message={"correlation_id": "69c4a536-99a3-462d-a325-0922f2f072ac", "operation": "CREATE_VULNERABILITY", "data": {"package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
+01:09:36.537 CLIENT RESPONSE from s0932_vulnerability_responses (through FastAPI)
+01:09:36.537 CLIENT RESPONSE message={"correlation_id": "69c4a536-99a3-462d-a325-0922f2f072ac", "success": true, "vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea", "message": "Vulnerability created"}
+01:09:36.537 CLIENT generated vulnerability_id=c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea
+
+get vulneraiblity
+01:09:36.537 CLIENT created correlation_id=689a6fbe-1c60-47ae-826e-39332d79e99f
+01:09:36.537 CLIENT SEND GET_VULNERABILITY -> s0932_vulnerability_requests
+01:09:36.537 CLIENT SEND message={"correlation_id": "689a6fbe-1c60-47ae-826e-39332d79e99f", "operation": "GET_VULNERABILITY", "data": {"vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea"}}
+01:09:36.564 CLIENT RESPONSE from s0932_vulnerability_responses (through FastAPI)
+01:09:36.564 CLIENT RESPONSE message={"correlation_id": "689a6fbe-1c60-47ae-826e-39332d79e99f", "success": true, "vulnerability": {"vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea", "package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
+
+ output
+retrieved vulnerability:
+{
+  "vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea",
+  "package_name": "pip",
+  "severity": "High",
+  "vul_code": "CVE202023337",
+  "vendor_id": 1
+}
+CREATE correlation_id preserved: True (69c4a536-99a3-462d-a325-0922f2f072ac)
+GET correlation_id preserved: True (689a6fbe-1c60-47ae-826e-39332d79e99f)
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> docker logs  s0932_worker
+08:35:09.566 Consumer is ready and listening...
+08:35:23.173 [WORKER] RECEIVE from topic=s0932_vulnerability_requests partition=0 offset=0
+08:35:23.174 [WORKER] RECEIVE message={"correlation_id": "d430c138-cc19-4d24-ab46-e0381026a7d2", "reply_to": "s0932_vulnerability_responses", "operation": "CREATE_VULNERABILITY", "data": {"package_name": "lodash", "severity": "High", "vul_code": "CVE-2021-23337", "vendor_id": 1}}
+08:35:23.174 [WORKER] PROCESS operation=CREATE_VULNERABILITY correlation_id=d430c138-cc19-4d24-ab46-e0381026a7d2
+08:35:23.177 [WORKER] REPLY    to topic=s0932_vulnerability_responses partition=0 offset=0
+08:35:23.177 [WORKER] REPLY    message={"correlation_id": "d430c138-cc19-4d24-ab46-e0381026a7d2", "success": true, "vulnerability_id": "a3104369-2568-4902-9102-da7d79cdd8f2", "message": "Vulnerability created"}
+08:35:23.183 [WORKER] RECEIVE from topic=s0932_vulnerability_requests partition=0 offset=1
+08:35:23.183 [WORKER] RECEIVE message={"correlation_id": "824ae572-eae3-4333-aa7b-11d4d974b92c", "reply_to": "s0932_vulnerability_responses", "operation": "GET_VULNERABILITY", "data": {"vulnerability_id": "a3104369-2568-4902-9102-da7d79cdd8f2"}}
+08:35:23.183 [WORKER] PROCESS operation=GET_VULNERABILITY correlation_id=824ae572-eae3-4333-aa7b-11d4d974b92c
+08:35:23.184 [WORKER] REPLY    to topic=s0932_vulnerability_responses partition=0 offset=1
+08:35:23.184 [WORKER] REPLY    message={"correlation_id": "824ae572-eae3-4333-aa7b-11d4d974b92c", "success": true, "vulnerability": {"vulnerability_id": "a3104369-2568-4902-9102-da7d79cdd8f2", "package_name": "lodash", "severity": "High", "vul_code": "CVE-2021-23337", "vendor_id": 1}}
+09:03:51.301 [WORKER] RECEIVE from topic=s0932_vulnerability_requests partition=0 offset=2
+09:03:51.301 [WORKER] RECEIVE message={"correlation_id": "54a2d8a9-017a-4361-9b6d-7a045c7bc76f", "reply_to": "s0932_vulnerability_responses", "operation": "CREATE_VULNERABILITY", "data": {"package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
+09:03:51.301 [WORKER] PROCESS operation=CREATE_VULNERABILITY correlation_id=54a2d8a9-017a-4361-9b6d-7a045c7bc76f
+09:03:51.302 [WORKER] REPLY    to topic=s0932_vulnerability_responses partition=0 offset=2
+09:03:51.302 [WORKER] REPLY    message={"correlation_id": "54a2d8a9-017a-4361-9b6d-7a045c7bc76f", "success": true, "vulnerability_id": "3052f969-0ab3-4507-9642-f239cf84f9bf", "message": "Vulnerability created"}
+09:03:51.307 [WORKER] RECEIVE from topic=s0932_vulnerability_requests partition=0 offset=3
+09:03:51.307 [WORKER] RECEIVE message={"correlation_id": "2eb1b032-e5c0-4c18-861a-1b86cafe84d8", "reply_to": "s0932_vulnerability_responses", "operation": "GET_VULNERABILITY", "data": {"vulnerability_id": "3052f969-0ab3-4507-9642-f239cf84f9bf"}}
+09:03:51.307 [WORKER] PROCESS operation=GET_VULNERABILITY correlation_id=2eb1b032-e5c0-4c18-861a-1b86cafe84d8
+09:03:51.308 [WORKER] REPLY    to topic=s0932_vulnerability_responses partition=0 offset=3
+09:03:51.308 [WORKER] REPLY    message={"correlation_id": "2eb1b032-e5c0-4c18-861a-1b86cafe84d8", "success": true, "vulnerability": {"vulnerability_id": "3052f969-0ab3-4507-9642-f239cf84f9bf", "package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
+09:09:36.535 [WORKER] RECEIVE from topic=s0932_vulnerability_requests partition=0 offset=4
+09:09:36.535 [WORKER] RECEIVE message={"correlation_id": "69c4a536-99a3-462d-a325-0922f2f072ac", "reply_to": "s0932_vulnerability_responses", "operation": "CREATE_VULNERABILITY", "data": {"package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
+09:09:36.535 [WORKER] PROCESS operation=CREATE_VULNERABILITY correlation_id=69c4a536-99a3-462d-a325-0922f2f072ac
+09:09:36.536 [WORKER] REPLY    to topic=s0932_vulnerability_responses partition=0 offset=4
+09:09:36.536 [WORKER] REPLY    message={"correlation_id": "69c4a536-99a3-462d-a325-0922f2f072ac", "success": true, "vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea", "message": "Vulnerability created"}
+09:09:36.562 [WORKER] RECEIVE from topic=s0932_vulnerability_requests partition=0 offset=5
+09:09:36.562 [WORKER] RECEIVE message={"correlation_id": "689a6fbe-1c60-47ae-826e-39332d79e99f", "reply_to": "s0932_vulnerability_responses", "operation": "GET_VULNERABILITY", "data": {"vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea"}}
+09:09:36.562 [WORKER] PROCESS operation=GET_VULNERABILITY correlation_id=689a6fbe-1c60-47ae-826e-39332d79e99f
+09:09:36.563 [WORKER] REPLY    to topic=s0932_vulnerability_responses partition=0 offset=5
+09:09:36.563 [WORKER] REPLY    message={"correlation_id": "689a6fbe-1c60-47ae-826e-39332d79e99f", "success": true, "vulnerability": {"vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea", "package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> docker compose logs -t api worker
+s0932_worker  | 2026-11-02T08:35:09.567019903Z 08:35:09.566 Consumer is ready and listening...
+s0932_api     | 2026-11-02T08:35:05.641861302Z INFO:     Started server process [1]
+s0932_api     | 2026-11-02T08:35:05.641904235Z INFO:     Waiting for application startup.
+s0932_api     | 2026-11-02T08:35:08.663851759Z 08:35:08.663 [API] Listening for Kafka responses on topic: s0932_vulnerability_responses
+s0932_api     | 2026-11-02T08:35:08.663862760Z FastAPI server started at http://127.0.0.1:8032
+s0932_api     | 2026-11-02T08:35:08.664037354Z INFO:     Application startup complete.
+s0932_api     | 2026-11-02T08:35:08.664484659Z INFO:     Uvicorn running on http://0.0.0.0:8032 (Press CTRL+C to quit)
+s0932_api     | 2026-11-02T08:35:23.168369923Z 08:35:23.168 [API] SEND     to topic=s0932_vulnerability_requests partition=0 offset=0
+s0932_api     | 2026-11-02T08:35:23.168393164Z 08:35:23.168 [API] SEND     message={"correlation_id": "d430c138-cc19-4d24-ab46-e0381026a7d2", "reply_to": "s0932_vulnerability_responses", "operation": "CREATE_VULNERABILITY", "data": {"package_name": "lodash", "severity": "High", "vul_code": "CVE-2021-23337", "vendor_id": 1}}
+s0932_api     | 2026-11-02T08:35:23.178208166Z 08:35:23.178 [API] RECEIVE  from topic=s0932_vulnerability_responses partition=0 offset=0
+s0932_worker  | 2026-11-02T08:35:23.174129047Z 08:35:23.173 [WORKER] RECEIVE from topic=s0932_vulnerability_requests partition=0 offset=0
+s0932_worker  | 2026-11-02T08:35:23.174143859Z 08:35:23.174 [WORKER] RECEIVE message={"correlation_id": "d430c138-cc19-4d24-ab46-e0381026a7d2", "reply_to": "s0932_vulnerability_responses", "operation": "CREATE_VULNERABILITY", "data": {"package_name": "lodash", "severity": "High", "vul_code": "CVE-2021-23337", "vendor_id":1}}
+s0932_worker  | 2026-11-02T08:35:23.174146899Z 08:35:23.174 [WORKER] PROCESS operation=CREATE_VULNERABILITYcorrelation_id=d430c138-cc19-4d24-ab46-e0381026a7d2
+s0932_worker  | 2026-11-02T08:35:23.177725870Z 08:35:23.177 [WORKER] REPLY    to topic=s0932_vulnerability_responses partition=0 offset=0
+s0932_worker  | 2026-11-02T08:35:23.177736481Z 08:35:23.177 [WORKER] REPLY    message={"correlation_id": "d430c138-cc19-4d24-ab46-e0381026a7d2", "success": true, "vulnerability_id": "a3104369-2568-4902-9102-da7d79cdd8f2", "message": "Vulnerability created"}
+s0932_worker  | 2026-11-02T08:35:23.183956341Z 08:35:23.183 [WORKER] RECEIVE from topic=s0932_vulnerability_requests partition=0 offset=1
+s0932_worker  | 2026-11-02T08:35:23.183965192Z 08:35:23.183 [WORKER] RECEIVE message={"correlation_id": "824ae572-eae3-4333-aa7b-11d4d974b92c", "reply_to": "s0932_vulnerability_responses", "operation": "GET_VULNERABILITY", "data": {"vulnerability_id": "a3104369-2568-4902-9102-da7d79cdd8f2"}}
+s0932_worker  | 2026-11-02T08:35:23.183968052Z 08:35:23.183 [WORKER] PROCESS operation=GET_VULNERABILITY correlation_id=824ae572-eae3-4333-aa7b-11d4d974b92c
+s0932_api     | 2026-11-02T08:35:23.178219097Z 08:35:23.178 [API] RECEIVE  message={"correlation_id": "d430c138-cc19-4d24-ab46-e0381026a7d2", "success": true, "vulnerability_id": "a3104369-2568-4902-9102-da7d79cdd8f2", "message": "Vulnerability created"}
+s0932_api     | 2026-11-02T08:35:23.178289142Z 08:35:23.178 [API] RETURN   response to caller for correlation_id=d430c138-cc19-4d24-ab46-e0381026a7d2
+s0932_api     | 2026-11-02T08:35:23.178577344Z INFO:     172.21.0.1:36878 - "POST /vuls HTTP/1.1" 200 OK
+s0932_api     | 2026-11-02T08:35:23.183531330Z 08:35:23.183 [API] SEND     to topic=s0932_vulnerability_requests partition=0 offset=1
+s0932_api     | 2026-11-02T08:35:23.183540460Z 08:35:23.183 [API] SEND     message={"correlation_id": "824ae572-eae3-4333-aa7b-11d4d974b92c", "reply_to": "s0932_vulnerability_responses", "operation": "GET_VULNERABILITY", "data": {"vulnerability_id": "a3104369-2568-4902-9102-da7d79cdd8f2"}}
+s0932_api     | 2026-11-02T08:35:23.185028503Z 08:35:23.184 [API] RECEIVE  from topic=s0932_vulnerability_responses partition=0 offset=1
+s0932_api     | 2026-11-02T08:35:23.185034223Z 08:35:23.184 [API] RECEIVE  message={"correlation_id": "824ae572-eae3-4333-aa7b-11d4d974b92c", "success": true, "vulnerability": {"vulnerability_id": "a3104369-2568-4902-9102-da7d79cdd8f2", "package_name": "lodash", "severity": "High", "vul_code": "CVE-2021-23337", "vendor_id": 1}}
+s0932_api     | 2026-11-02T08:35:23.185037023Z 08:35:23.184 [API] RETURN   response to caller for correlation_id=824ae572-eae3-4333-aa7b-11d4d974b92c
+s0932_api     | 2026-11-02T08:35:23.185254060Z INFO:     172.21.0.1:36886 - "POST /vuls HTTP/1.1" 200 OK
+s0932_api     | 2026-11-02T09:03:51.301400055Z 09:03:51.301 [API] SEND     to topic=s0932_vulnerability_requests partition=0 offset=2
+s0932_api     | 2026-11-02T09:03:51.301445999Z 09:03:51.301 [API] SEND     message={"correlation_id": "54a2d8a9-017a-4361-9b6d-7a045c7bc76f", "reply_to": "s0932_vulnerability_responses", "operation": "CREATE_VULNERABILITY", "data": {"package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
+s0932_api     | 2026-11-02T09:03:51.303070427Z 09:03:51.302 [API] RECEIVE  from topic=s0932_vulnerability_responses partition=0 offset=2
+s0932_api     | 2026-11-02T09:03:51.303076968Z 09:03:51.302 [API] RECEIVE  message={"correlation_id": "54a2d8a9-017a-4361-9b6d-7a045c7bc76f", "success": true, "vulnerability_id": "3052f969-0ab3-4507-9642-f239cf84f9bf", "message": "Vulnerability created"}
+s0932_api     | 2026-11-02T09:03:51.303107390Z 09:03:51.303 [API] RETURN   response to caller for correlation_id=54a2d8a9-017a-4361-9b6d-7a045c7bc76f
+s0932_api     | 2026-11-02T09:03:51.303435468Z INFO:     172.21.0.1:47774 - "POST /vuls HTTP/1.1" 200 OK
+s0932_api     | 2026-11-02T09:03:51.307693310Z 09:03:51.307 [API] SEND     to topic=s0932_vulnerability_requests partition=0 offset=3
+s0932_api     | 2026-11-02T09:03:51.307703971Z 09:03:51.307 [API] SEND     message={"correlation_id": "2eb1b032-e5c0-4c18-861a-1b86cafe84d8", "reply_to": "s0932_vulnerability_responses", "operation": "GET_VULNERABILITY", "data": {"vulnerability_id": "3052f969-0ab3-4507-9642-f239cf84f9bf"}}
+s0932_api     | 2026-11-02T09:03:51.308599737Z 09:03:51.308 [API] RECEIVE  from topic=s0932_vulnerability_responses partition=0 offset=3
+s0932_api     | 2026-11-02T09:03:51.308606907Z 09:03:51.308 [API] RECEIVE  message={"correlation_id": "2eb1b032-e5c0-4c18-861a-1b86cafe84d8", "success": true, "vulnerability": {"vulnerability_id": "3052f969-0ab3-4507-9642-f239cf84f9bf", "package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
+s0932_api     | 2026-11-02T09:03:51.308609387Z 09:03:51.308 [API] RETURN   response to caller for correlation_id=2eb1b032-e5c0-4c18-861a-1b86cafe84d8
+s0932_api     | 2026-11-02T09:03:51.308759240Z INFO:     172.21.0.1:47778 - "POST /vuls HTTP/1.1" 200 OK
+s0932_api     | 2026-11-02T09:09:36.534739942Z 09:09:36.534 [API] SEND     to topic=s0932_vulnerability_requests partition=0 offset=4
+s0932_api     | 2026-11-02T09:09:36.534767695Z 09:09:36.534 [API] SEND     message={"correlation_id": "69c4a536-99a3-462d-a325-0922f2f072ac", "reply_to": "s0932_vulnerability_responses", "operation": "CREATE_VULNERABILITY", "data": {"package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
+s0932_api     | 2026-11-02T09:09:36.536815971Z 09:09:36.536 [API] RECEIVE  from topic=s0932_vulnerability_responses partition=0 offset=4
+s0932_api     | 2026-11-02T09:09:36.536823492Z 09:09:36.536 [API] RECEIVE  message={"correlation_id": "69c4a536-99a3-462d-a325-0922f2f072ac", "success": true, "vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea", "message": "Vulnerability created"}
+s0932_api     | 2026-11-02T09:09:36.536826802Z 09:09:36.536 [API] RETURN   response to caller for correlation_id=69c4a536-99a3-462d-a325-0922f2f072ac
+s0932_api     | 2026-11-02T09:09:36.537092486Z INFO:     172.21.0.1:43856 - "POST /vuls HTTP/1.1" 200 OK
+s0932_worker  | 2026-11-02T08:35:23.184776624Z 08:35:23.184 [WORKER] REPLY    to topic=s0932_vulnerability_responses partition=0 offset=1
+s0932_worker  | 2026-11-02T08:35:23.184782854Z 08:35:23.184 [WORKER] REPLY    message={"correlation_id": "824ae572-eae3-4333-aa7b-11d4d974b92c", "success": true, "vulnerability": {"vulnerability_id": "a3104369-2568-4902-9102-da7d79cdd8f2", "package_name": "lodash", "severity": "High", "vul_code": "CVE-2021-23337", "vendor_id": 1}}
+s0932_worker  | 2026-11-02T09:03:51.301904028Z 09:03:51.301 [WORKER] RECEIVE from topic=s0932_vulnerability_requests partition=0 offset=2
+s0932_worker  | 2026-11-02T09:03:51.301915719Z 09:03:51.301 [WORKER] RECEIVE message={"correlation_id": "54a2d8a9-017a-4361-9b6d-7a045c7bc76f", "reply_to": "s0932_vulnerability_responses", "operation": "CREATE_VULNERABILITY", "data": {"package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
+s0932_worker  | 2026-11-02T09:03:51.301919279Z 09:03:51.301 [WORKER] PROCESS operation=CREATE_VULNERABILITYcorrelation_id=54a2d8a9-017a-4361-9b6d-7a045c7bc76f
+s0932_worker  | 2026-11-02T09:03:51.302868360Z 09:03:51.302 [WORKER] REPLY    to topic=s0932_vulnerability_responses partition=0 offset=2
+s0932_api     | 2026-11-02T09:09:36.562455594Z 09:09:36.562 [API] SEND     to topic=s0932_vulnerability_requests partition=0 offset=5
+s0932_worker  | 2026-11-02T09:03:51.302875100Z 09:03:51.302 [WORKER] REPLY    message={"correlation_id": "54a2d8a9-017a-4361-9b6d-7a045c7bc76f", "success": true, "vulnerability_id": "3052f969-0ab3-4507-9642-f239cf84f9bf", "message": "Vulnerability created"}
+s0932_worker  | 2026-11-02T09:03:51.307861384Z 09:03:51.307 [WORKER] RECEIVE from topic=s0932_vulnerability_requests partition=0 offset=3
+s0932_worker  | 2026-11-02T09:03:51.307869504Z 09:03:51.307 [WORKER] RECEIVE message={"correlation_id": "2eb1b032-e5c0-4c18-861a-1b86cafe84d8", "reply_to": "s0932_vulnerability_responses", "operation": "GET_VULNERABILITY", "data": {"vulnerability_id": "3052f969-0ab3-4507-9642-f239cf84f9bf"}}
+s0932_worker  | 2026-11-02T09:03:51.307879165Z 09:03:51.307 [WORKER] PROCESS operation=GET_VULNERABILITY correlation_id=2eb1b032-e5c0-4c18-861a-1b86cafe84d8
+s0932_worker  | 2026-11-02T09:03:51.308471366Z 09:03:51.308 [WORKER] REPLY    to topic=s0932_vulnerability_responses partition=0 offset=3
+s0932_worker  | 2026-11-02T09:03:51.308478697Z 09:03:51.308 [WORKER] REPLY    message={"correlation_id": "2eb1b032-e5c0-4c18-861a-1b86cafe84d8", "success": true, "vulnerability": {"vulnerability_id": "3052f969-0ab3-4507-9642-f239cf84f9bf", "package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id":1}}
+s0932_worker  | 2026-11-02T09:09:36.535485850Z 09:09:36.535 [WORKER] RECEIVE from topic=s0932_vulnerability_requests partition=0 offset=4
+s0932_worker  | 2026-11-02T09:09:36.535534464Z 09:09:36.535 [WORKER] RECEIVE message={"correlation_id": "69c4a536-99a3-462d-a325-0922f2f072ac", "reply_to": "s0932_vulnerability_responses", "operation": "CREATE_VULNERABILITY", "data": {"package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
+s0932_worker  | 2026-11-02T09:09:36.535542865Z 09:09:36.535 [WORKER] PROCESS operation=CREATE_VULNERABILITYcorrelation_id=69c4a536-99a3-462d-a325-0922f2f072ac
+s0932_worker  | 2026-11-02T09:09:36.536235488Z 09:09:36.536 [WORKER] REPLY    to topic=s0932_vulnerability_responses partition=0 offset=4
+s0932_worker  | 2026-11-02T09:09:36.536243879Z 09:09:36.536 [WORKER] REPLY    message={"correlation_id": "69c4a536-99a3-462d-a325-0922f2f072ac", "success": true, "vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea", "message": "Vulnerability created"}
+s0932_worker  | 2026-11-02T09:09:36.562887314Z 09:09:36.562 [WORKER] RECEIVE from topic=s0932_vulnerability_requests partition=0 offset=5
+s0932_worker  | 2026-11-02T09:09:36.562900555Z 09:09:36.562 [WORKER] RECEIVE message={"correlation_id": "689a6fbe-1c60-47ae-826e-39332d79e99f", "reply_to": "s0932_vulnerability_responses", "operation": "GET_VULNERABILITY", "data": {"vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea"}}
+s0932_worker  | 2026-11-02T09:09:36.562905345Z 09:09:36.562 [WORKER] PROCESS operation=GET_VULNERABILITY correlation_id=689a6fbe-1c60-47ae-826e-39332d79e99f
+s0932_worker  | 2026-11-02T09:09:36.563867152Z 09:09:36.563 [WORKER] REPLY    to topic=s0932_vulnerability_responses partition=0 offset=5
+s0932_worker  | 2026-11-02T09:09:36.563877683Z 09:09:36.563 [WORKER] REPLY    message={"correlation_id": "689a6fbe-1c60-47ae-826e-39332d79e99f", "success": true, "vulnerability": {"vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea", "package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id":1}}
+s0932_api     | 2026-11-02T09:09:36.562478296Z 09:09:36.562 [API] SEND     message={"correlation_id": "689a6fbe-1c60-47ae-826e-39332d79e99f", "reply_to": "s0932_vulnerability_responses", "operation": "GET_VULNERABILITY", "data": {"vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea"}}
+s0932_api     | 2026-11-02T09:09:36.564015986Z 09:09:36.563 [API] RECEIVE  from topic=s0932_vulnerability_responses partition=0 offset=5
+s0932_api     | 2026-11-02T09:09:36.564025067Z 09:09:36.563 [API] RECEIVE  message={"correlation_id": "689a6fbe-1c60-47ae-826e-39332d79e99f", "success": true, "vulnerability": {"vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea", "package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
+s0932_api     | 2026-11-02T09:09:36.564043658Z 09:09:36.563 [API] RETURN   response to caller for correlation_id=689a6fbe-1c60-47ae-826e-39332d79e99f
+s0932_api     | 2026-11-02T09:09:36.564306260Z INFO:     172.21.0.1:43862 - "POST /vulsdocker compose logs -t --since 2026-11-02T09:09:36Z api worker | Sort-Object { ($_ -split '\| ',2)[1] }w08> 
+s0932_api     | 2026-11-02T09:09:36.534739942Z 09:09:36.534 [API] SEND     to topic=s0932_vulnerability_requests partition=0 offset=4
+s0932_api     | 2026-11-02T09:09:36.534767695Z 09:09:36.534 [API] SEND     message={"correlation_id": "69c4a536-99a3-462d-a325-0922f2f072ac", "reply_to": "s0932_vulnerability_responses", "operation": "CREATE_VULNERABILITY", "data": {"package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
+s0932_worker  | 2026-11-02T09:09:36.535485850Z 09:09:36.535 [WORKER] RECEIVE from topic=s0932_vulnerability_requests partition=0 offset=4
+s0932_worker  | 2026-11-02T09:09:36.535534464Z 09:09:36.535 [WORKER] RECEIVE message={"correlation_id": "69c4a536-99a3-462d-a325-0922f2f072ac", "reply_to": "s0932_vulnerability_responses", "operation": "CREATE_VULNERABILITY", "data": {"package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
+s0932_worker  | 2026-11-02T09:09:36.535542865Z 09:09:36.535 [WORKER] PROCESS operation=CREATE_VULNERABILITYcorrelation_id=69c4a536-99a3-462d-a325-0922f2f072ac
+s0932_worker  | 2026-11-02T09:09:36.536235488Z 09:09:36.536 [WORKER] REPLY    to topic=s0932_vulnerability_responses partition=0 offset=4
+s0932_worker  | 2026-11-02T09:09:36.536243879Z 09:09:36.536 [WORKER] REPLY    message={"correlation_id": "69c4a536-99a3-462d-a325-0922f2f072ac", "success": true, "vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea", "message": "Vulnerability created"}
+s0932_api     | 2026-11-02T09:09:36.536815971Z 09:09:36.536 [API] RECEIVE  from topic=s0932_vulnerability_responses partition=0 offset=4
+s0932_api     | 2026-11-02T09:09:36.536823492Z 09:09:36.536 [API] RECEIVE  message={"correlation_id": "69c4a536-99a3-462d-a325-0922f2f072ac", "success": true, "vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea", "message": "Vulnerability created"}
+s0932_api     | 2026-11-02T09:09:36.536826802Z 09:09:36.536 [API] RETURN   response to caller for correlation_id=69c4a536-99a3-462d-a325-0922f2f072ac
+s0932_api     | 2026-11-02T09:09:36.537092486Z INFO:     172.21.0.1:43856 - "POST /vuls HTTP/1.1" 200 OK
+s0932_api     | 2026-11-02T09:09:36.562455594Z 09:09:36.562 [API] SEND     to topic=s0932_vulnerability_requests partition=0 offset=5
+s0932_api     | 2026-11-02T09:09:36.562478296Z 09:09:36.562 [API] SEND     message={"correlation_id": "689a6fbe-1c60-47ae-826e-39332d79e99f", "reply_to": "s0932_vulnerability_responses", "operation": "GET_VULNERABILITY", "data": {"vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea"}}
+s0932_worker  | 2026-11-02T09:09:36.562887314Z 09:09:36.562 [WORKER] RECEIVE from topic=s0932_vulnerability_requests partition=0 offset=5
+s0932_worker  | 2026-11-02T09:09:36.562900555Z 09:09:36.562 [WORKER] RECEIVE message={"correlation_id": "689a6fbe-1c60-47ae-826e-39332d79e99f", "reply_to": "s0932_vulnerability_responses", "operation": "GET_VULNERABILITY", "data": {"vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea"}}
+s0932_worker  | 2026-11-02T09:09:36.562905345Z 09:09:36.562 [WORKER] PROCESS operation=GET_VULNERABILITY correlation_id=689a6fbe-1c60-47ae-826e-39332d79e99f
+s0932_worker  | 2026-11-02T09:09:36.563867152Z 09:09:36.563 [WORKER] REPLY    to topic=s0932_vulnerability_responses partition=0 offset=5
+s0932_worker  | 2026-11-02T09:09:36.563877683Z 09:09:36.563 [WORKER] REPLY    message={"correlation_id": "689a6fbe-1c60-47ae-826e-39332d79e99f", "success": true, "vulnerability": {"vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea", "package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id":1}}
+s0932_api     | 2026-11-02T09:09:36.564015986Z 09:09:36.563 [API] RECEIVE  from topic=s0932_vulnerability_responses partition=0 offset=5
+s0932_api     | 2026-11-02T09:09:36.564025067Z 09:09:36.563 [API] RECEIVE  message={"correlation_id": "689a6fbe-1c60-47ae-826e-39332d79e99f", "success": true, "vulnerability": {"vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea", "package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
+s0932_api     | 2026-11-02T09:09:36.564043658Z 09:09:36.563 [API] RETURN   response to caller for correlation_id=689a6fbe-1c60-47ae-826e-39332d79e99f
+s0932_api     | 2026-11-02T09:09:36.564306260Z INFO:     172.21.0.1:43862 - "POST /vuls HTTP/1.1" 200 OK
