@@ -1494,3 +1494,38 @@ Order check per package:
   lodash    partitions=['0']  processed seq order=[1, 2, 3, 4, 5, 6]  -> IN ORDER
   pip       partitions=['0']  processed seq order=[1, 2, 3, 4]  -> IN ORDER
   requests  partitions=['1']  processed seq order=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  -> IN ORDER
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8032/vuls -ContentType "application/json" -Body '{"correlation_id":"test-missing","operation":"CREATE_VULNERABILITY","data":{"package_name":"pip","severity":"High","vul_code":"CVE-1"}}'
+
+correlation_id success error                                               
+-------------- ------- -----                                               
+test-missing     False vendor_id is required and must be a positive integer
+
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8032/vuls -ContentType "application/json" -Body '{"correlation_id":"test-empty","operation":"CREATE_VULNERABILITY","data":{"package_name":"","severity":"High","vul_code":"CVE-1","vendor_id":1}}'
+
+correlation_id success error                                                  
+-------------- ------- -----                                                  
+test-empty       False package_name is required and must be a non-empty string
+
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8032/vuls -ContentType "application/json" -Body '{"correlation_id":"test-invalid","operation":"CREATE_VULNERABILITY","data":{"package_name":"pip","severity":"Huge","vul_code":"CVE-1","vendor_id":1}}'
+
+correlation_id success error                                               
+-------------- ------- -----                                               
+test-invalid     False severity must be one of: Critical, High, Medium, Low
+
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8032/vuls -ContentType "application/json" -Body '{"correlation_id":"test-unknown-op","operation":"DELETE_VULNERABILITY","data":{}}'
+
+
+correlation_id  success error            
+--------------  ------- -----            
+test-unknown-op   False Unknown operation
+
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> Invoke-RestMethod -Method Post -Uri http://127.0.0.1:8032/vuls -ContentType "application/json" -Body '{"correlation_id":"test-not-found","operation":"GET_VULNERABILITY","data":{"vulnerability_id":"does-not-exist"}}'
+
+correlation_id success error                  
+-------------- ------- -----                  
+test-not-found   False Vulnerability not found

@@ -4,7 +4,6 @@ from app.kafka_rpc import KafkaRPC
 
 rpc = KafkaRPC()
 
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await rpc.start()
@@ -12,14 +11,11 @@ async def lifespan(app: FastAPI):
     yield
     await rpc.stop()
 
-
 app = FastAPI(title="Vulnerability Kafka Demo", lifespan=lifespan)
-
 
 @app.get("/")
 async def home():
     return {"message": "FastAPI service running"}
-
 
 # Kafka-based endpoint
 @app.post("/vuls")
