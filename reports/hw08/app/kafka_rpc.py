@@ -53,8 +53,8 @@ class KafkaRPC:
             response = json.loads(msg.value.decode())
             correlation_id = response.get("correlation_id")
 
-            log(f"[API] RECEIVE  from topic={msg.topic} partition={msg.partition} offset={msg.offset}")
-            log(f"[API] RECEIVE  message={json.dumps(response)}")
+            log(f"[API] RECEIVE from topic={msg.topic} partition={msg.partition} offset={msg.offset}")
+            log(f"[API] RECEIVE message={json.dumps(response)}")
 
             if correlation_id in self.pending:
                 future = self.pending.pop(correlation_id)

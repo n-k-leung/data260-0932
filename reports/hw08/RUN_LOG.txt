@@ -245,3 +245,36 @@ s0932_api     | 2026-11-02T09:09:36.564015986Z 09:09:36.563 [API] RECEIVE  from 
 s0932_api     | 2026-11-02T09:09:36.564025067Z 09:09:36.563 [API] RECEIVE  message={"correlation_id": "689a6fbe-1c60-47ae-826e-39332d79e99f", "success": true, "vulnerability": {"vulnerability_id": "c60fb716-d3f1-4f9e-8b24-a81ef1fb0eea", "package_name": "pip", "severity": "High", "vul_code": "CVE202023337", "vendor_id": 1}}
 s0932_api     | 2026-11-02T09:09:36.564043658Z 09:09:36.563 [API] RETURN   response to caller for correlation_id=689a6fbe-1c60-47ae-826e-39332d79e99f
 s0932_api     | 2026-11-02T09:09:36.564306260Z INFO:     172.21.0.1:43862 - "POST /vuls HTTP/1.1" 200 OK
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python planner.py
+02:29:40.164 PLANNER Listening on s0932_inbox...
+02:29:40.164 PLANNER RECEIVE from s0932_inbox partition=0 offset=1 correlation_id=e63b6038-0aaf-443e-83ea-ed0c2e7f4d7d
+02:29:40.164 PLANNER question=A Critical vulnerability (CVE202023337) was reported in the open source package pip 4.18.03. What should our team do about it?
+02:29:43.578 PLANNER SEND to s0932_tasks partition=1 offset=0 correlation_id=e63b6038-0aaf-443e-83ea-ed0c2e7f4d7d
+02:29:43.578 PLANNER plan=1. Verify the vulnerability details and confirm if it affects the version of pip in use.  
+2. Assess the impact of the vulnerability on the current project and dependencies.  
+3. Plan and execute an update to a patched version of pip, and monitor for any related issues.
+3. Plan and execute an update to a patched version of pip, and monitor for any related issues.
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>python writer.py
+02:29:54.384 WRITER Listening on s0932_tasks...
+02:29:54.385 WRITER RECEIVE from s0932_tasks partition=1 offset=0 correlation_id=e63b6038-0aaf-443e-83ea-ed0c2e7f4d7d
+02:29:55.969 WRITER SEND to s0932_drafts partition=0 offset=1 correlation_id=e63b6038-0aaf-443e-83ea-ed0c2e7f4d7d
+02:29:55.969 WRITER draft=Our team should first verify if CVE-2020-23337 affects the pip version currently in use. If confirmed, assess the vulnerability's impact on the project and its dependencies. Next, plan an immediate update to a patched pip version, ensuring compatibility with existing packages. Finally, monitor the system for any issues post-update and consider implementing automated checks to prevent future vulnerabilities.
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python reviewer.py
+02:30:04.543 REVIEWER Listening on s0932_drafts...
+02:30:04.543 REVIEWER RECEIVE from s0932_drafts partition=0 offset=1 correlation_id=e63b6038-0aaf-443e-83ea-ed0c2e7f4d7d
+02:30:05.420 REVIEWER SEND to s0932_final partition=0 offset=1 correlation_id=e63b6038-0aaf-443e-83ea-ed0c2e7f4d7d
+02:30:05.420 REVIEWER status=approved review=APPROVED
+The draft provides a clear, actionable plan for addressing the vulnerability, covering verification, impact assessment, remediation, and ongoing monitoring.
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>python send_question.py
+02:30:08.871 YOU SEND to s0932_inbox partition=0 offset=2 correlation_id=aa4b70a6-0ee1-409e-a225-9bdfab829b0a
+02:30:08.871 YOU question=A Critical vulnerability (CVE202023337) was reported in the open source package pip 4.18.03. What should our team do about it?
+02:30:08.871 YOU Waiting for the result on s0932_final...
+02:30:11.276 YOU RECEIVE from s0932_final partition=0 offset=2 correlation_id=aa4b70a6-0ee1-409e-a225-9bdfab829b0a
+
+Final JSON message:
+{
+  "correlation_id": "aa4b70a6-0ee1-409e-a225-9bdfab829b0a",
+  "status": "approved",
+  "answer": "Our team should first verify if CVE-2020-23337 affects the pip version currentlyin use. If confirmed, assess the vulnerability's impact on the project and its dependencies. Next, plan an immediate update to a patched pip version, ensuring compatibility with existing packages. Finally, monitor the system for any issues post-update and consider implementing automated checks to prevent future vulnerabilities.",
+  "review": "APPROVED  \nThe draft provides a clear, actionable plan for addressing the vulnerability, covering verification, impact assessment, remediation, and ongoing monitoring."
+}
