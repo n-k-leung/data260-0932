@@ -1,0 +1,61 @@
+{
+  "homework": 8,
+  "sid4": "0932",
+  "commit": "cc19cf038f5170a28218ef8da715554ea7028cfa",
+  "tag": "not tagged",
+  "model": "qwen3:8b",
+  "seed": 932,
+  "verify_seed": 260932,
+  "checks": [
+    {
+      "check": "FastAPI responds on PORT_BASE",
+      "result": "pass",
+      "detail": "GET / returned 200"
+    },
+    {
+      "check": "CREATE_VULNERABILITY through Kafka returns a UUID and the same correlation_id",
+      "result": "pass",
+      "detail": "success: True, vulnerability_id is a UUID: True, correlation_id preserved: True"
+    },
+    {
+      "check": "GET_VULNERABILITY through Kafka returns the created vulnerability",
+      "result": "pass",
+      "detail": "success: True, same fields as created: True, correlation_id preserved: True"
+    },
+    {
+      "check": "GET_VULNERABILITY with an unknown id returns an error with the same correlation_id",
+      "result": "pass",
+      "detail": "success: False, has error: True, correlation_id preserved: True"
+    },
+    {
+      "check": "an unknown operation returns an error with the same correlation_id",
+      "result": "pass",
+      "detail": "success: False, has error: True, correlation_id preserved: True"
+    },
+    {
+      "check": "CREATE_VULNERABILITY with an invalid field is rejected",
+      "result": "pass",
+      "detail": "invalid severity rejected: True, no id created: True"
+    },
+    {
+      "check": "all s0932 topics exist and s0932_tasks has 2 partitions",
+      "result": "pass",
+      "detail": "missing topics: [], s0932_tasks has 2 partitions: True"
+    },
+    {
+      "check": "writer idempotency remembers processed correlation_ids after a restart",
+      "result": "pass",
+      "detail": "new id not seen before: True, id still seen as processed after a restart: True"
+    },
+    {
+      "check": "poison message was moved to s0932_dead_letter after 3 attempts",
+      "result": "pass",
+      "detail": "1 dead letter message(s) from s0932_tasks after 3 attempts"
+    },
+    {
+      "check": "keyed ordering run kept each package in one partition and in order",
+      "result": "pass",
+      "detail": "run key-122813: 20/20 processed, each package in one partition and in order: True"
+    }
+  ]
+}

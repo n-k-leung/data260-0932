@@ -278,3 +278,1219 @@ Final JSON message:
   "answer": "Our team should first verify if CVE-2020-23337 affects the pip version currentlyin use. If confirmed, assess the vulnerability's impact on the project and its dependencies. Next, plan an immediate update to a patched pip version, ensuring compatibility with existing packages. Finally, monitor the system for any issues post-update and consider implementing automated checks to prevent future vulnerabilities.",
   "review": "APPROVED  \nThe draft provides a clear, actionable plan for addressing the vulnerability, covering verification, impact assessment, remediation, and ongoing monitoring."
 }
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> docker exec kafka /opt/kafka/bin/kafka-topics.sh --create --if-not-exists --topic s0932_inbox --partitions 1 --replication-factor 1 --bootstrap-server localhost:9092
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> docker exec kafka /opt/kafka/bin/kafka-topics.sh --create --if-not-exists --topic s0932_tasks --partitions 2 --replication-factor 1 --bootstrap-server localhost:9092
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> docker exec kafka /opt/kafka/bin/kafka-topics.sh --create --if-not-exists --topic s0932_drafts --partitions 1 --replication-factor 1 --bootstrap-server localhost:9092
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> docker exec kafka /opt/kafka/bin/kafka-topics.sh --create --if-not-exists --topic s0932_final --partitions 1 --replication-factor 1 --bootstrap-server localhost:9092
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> docker exec kafka /opt/kafka/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+__consumer_offsets
+s0932_drafts
+s0932_final
+s0932_inbox
+s0932_tasks
+s0932_vulnerability_requests
+s0932_vulnerability_responses
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> docker exec kafka /opt/kafka/bin/kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic s0932_inbox,s0932_tasks,s0932_drafts,s0932_final
+Topic: s0932_drafts     TopicId: YNq7jbRBTNagp7hh_B5NDQ PartitionCount: 1       ReplicationFactor: 1    Configs: 
+        Topic: s0932_drafts     Partition: 0    Leader: 1       Replicas: 1     Isr: 1  Elr:    LastKnownElr: 
+Topic: s0932_inbox      TopicId: TKycl-98Qvii6Y2U3OyRyQ PartitionCount: 1       ReplicationFactor: 1    Configs: 
+        Topic: s0932_inbox      Partition: 0    Leader: 1       Replicas: 1     Isr: 1  Elr:    LastKnownElr: 
+Topic: s0932_tasks      TopicId: lHg89dsSQXeeYgDJ0uWANw PartitionCount: 2       ReplicationFactor: 1    Configs: 
+        Topic: s0932_tasks      Partition: 0    Leader: 1       Replicas: 1     Isr: 1  Elr:    LastKnownElr: 
+        Topic: s0932_tasks      Partition: 1    Leader: 1       Replicas: 1     Isr: 1  Elr:    LastKnownElr: 
+Topic: s0932_final      TopicId: l8HlRRtOSU-NQDfUEIq0gw PartitionCount: 1       ReplicationFactor: 1    Configs: 
+        Topic: s0932_final      Partition: 0    Leader: 1       Replicas: 1     Isr: 1  Elr:    LastKnownElr: 
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> cd .\reports\hw08
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> docker compose up -d
+[+] up 4/4
+ ✔ Container kafka        Running                                                                                                                                                           0.0s
+ ✔ Container s0932_worker Running                                                                                                                                                           0.0s
+ ✔ Container s0932_api    Running                                                                                                                                                           0.0s
+ ✔ Container kafka-init   Exited                                                                                                                                                            9.6s
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> docker exec kafka /opt/kafka/bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+__consumer_offsets
+s0932_dead_letter
+s0932_drafts
+s0932_final
+s0932_inbox
+s0932_tasks
+s0932_vulnerability_requests
+s0932_vulnerability_responses
+
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> cd .\reports\hw08
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> cd .\agents\
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python .\writer.py --before
+11:48:53.705 [WRITER-A] Listening on s0932_tasks... mode=BEFORE FIX (no idempotency, auto commit, no retries)
+11:49:11.167 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=2
+11:49:11.167 [WRITER-A] correlation_id=4dd7ca80-9e96-4cc2-a386-c7096a342591
+11:49:18.302 [WRITER-A] SEND to s0932_drafts partition=0 offset=3 correlation_id=4dd7ca80-9e96-4cc2-a386-c7096a342591
+11:49:18.302 [WRITER-A] draft=CVE-2018-18074 allows remote code execution via crafted HTTP headers, posing a serious security risk. The vulnerability is fixed in **requests 2.21.0** and later. You should upgrade **immediately** to a version >= 2.21.0 to mitigate this risk. Delaying the upgrade could expose your system to potential attacks. Ensure all dependent packages are also updated to avoid compatibility issues.
+11:49:18.801 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=3
+11:49:18.801 [WRITER-A] correlation_id=4dd7ca80-9e96-4cc2-a386-c7096a342591
+11:49:19.897 [WRITER-A] SEND to s0932_drafts partition=0 offset=4 correlation_id=4dd7ca80-9e96-4cc2-a386-c7096a342591
+11:49:19.897 [WRITER-A] draft=CVE-2018-18074 allows remote code execution via crafted HTTP headers, posing a serious security risk. The vulnerability is fixed in **requests 2.20.0**. You should upgrade **immediately** to mitigate this risk and protect your application from potential attacks. Delaying the upgrade could expose your system to exploitation. Ensure all dependencies are compatible with the new version before updating.
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 113, in main
+    async for msg in consumer:
+    ...<21 lines>...
+        log(f"{TAG} COMMIT partition={msg.partition} offset={msg.offset} (next offset to read: {msg.offset + 1})")
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1259, in __anext__
+    return await self.getone()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1144, in getone
+    msg = await self._fetcher.next_record(partitions)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\fetcher.py", line 1205, in next_record
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 141, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 133, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python .\writer.py
+11:51:00.415 [WRITER-A] Listening on s0932_tasks... mode=AFTER FIX (idempotency, commit after success, 3 retries + dead letter)
+11:51:05.188 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=4
+11:51:05.188 [WRITER-A] correlation_id=40d444c4-47cb-49f5-a6fc-0b06bc0174ee
+11:51:06.688 [WRITER-A] SEND to s0932_drafts partition=0 offset=5 correlation_id=40d444c4-47cb-49f5-a6fc-0b06bc0174ee
+11:51:06.688 [WRITER-A] draft=CVE-2018-18074 allows remote code execution via crafted HTTP headers, posing a serious security risk. The vulnerability is fixed in **requests 2.20.0**. You should upgrade **immediately** to mitigate this risk and protect your application from potential attacks. Delaying the upgrade could expose your system to exploitation. Ensure all dependencies are compatible with the new version before updating.
+11:51:06.689 [WRITER-A] COMMIT partition=0 offset=4 (next offset to read: 5)
+11:51:06.795 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=5
+11:51:06.795 [WRITER-A] correlation_id=40d444c4-47cb-49f5-a6fc-0b06bc0174ee
+11:51:06.795 [WRITER-A] DUPLICATE correlation_id=40d444c4-47cb-49f5-a6fc-0b06bc0174ee was already processed -> skipped, no new draft
+11:51:06.796 [WRITER-A] COMMIT partition=0 offset=5 (next offset to read: 6)
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 113, in main
+    async for msg in consumer:
+    ...<21 lines>...
+        log(f"{TAG} COMMIT partition={msg.partition} offset={msg.offset} (next offset to read: {msg.offset + 1})")
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1259, in __anext__
+    return await self.getone()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1144, in getone
+    msg = await self._fetcher.next_record(partitions)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\fetcher.py", line 1205, in next_record
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 141, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 133, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> docker exec kafka /opt/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group s0932-writer-group
+
+Consumer group 's0932-writer-group' has no active members.
+
+GROUP              TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID     HOST            CLIENT-ID
+s0932-writer-group s0932_tasks     1          1               1               0               -               -               -
+s0932-writer-group s0932_tasks     0          6               6               0               -               -               -
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python .\writer.py                                                                          
+11:54:12.535 [WRITER-A] Listening on s0932_tasks... mode=AFTER FIX (idempotency, commit after success, 3 retries + dead letter)
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 113, in main
+    async for msg in consumer:
+    ...<21 lines>...
+        log(f"{TAG} COMMIT partition={msg.partition} offset={msg.offset} (next offset to read: {msg.offset + 1})")
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1259, in __anext__
+    return await self.getone()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1144, in getone
+    msg = await self._fetcher.next_record(partitions)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\fetcher.py", line 1205, in next_record
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 141, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 133, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python .\writer.py --before --slow
+11:55:11.700 [WRITER-A] Listening on s0932_tasks... mode=BEFORE FIX (no idempotency, auto commit, no retries)
+11:55:24.533 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=6
+11:55:24.533 [WRITER-A] correlation_id=8b1206a7-c8e6-4d03-affa-6695b1798ec1
+11:55:24.533 [WRITER-A] PROCESSING... waiting 15 seconds (press Ctrl+C now to kill the writer mid-processing)
+11:55:40.987 [WRITER-A] SEND to s0932_drafts partition=0 offset=6 correlation_id=8b1206a7-c8e6-4d03-affa-6695b1798ec1
+11:55:40.987 [WRITER-A] draft=CVE-2018-18074 allows remote code execution via crafted HTTP headers, posing a serious security risk. The vulnerability is fixed in **requests 2.20.0**. You should upgrade **immediately** to mitigate this risk and protect your application from potential attacks. Delaying the upgrade could expose your system to exploitation. Ensure all dependencies are compatible with the new version before updating.
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 113, in main
+    async for msg in consumer:
+    ...<21 lines>...
+        log(f"{TAG} COMMIT partition={msg.partition} offset={msg.offset} (next offset to read: {msg.offset + 1})")
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1259, in __anext__
+    return await self.getone()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1144, in getone
+    msg = await self._fetcher.next_record(partitions)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\fetcher.py", line 1205, in next_record
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 141, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 133, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python .\writer.py --before --slow
+11:56:35.906 [WRITER-A] Listening on s0932_tasks... mode=BEFORE FIX (no idempotency, auto commit, no retries)
+11:56:35.906 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=7
+11:56:35.906 [WRITER-A] correlation_id=79c4724c-1246-4b2c-84a6-004592ea4090
+11:56:35.906 [WRITER-A] PROCESSING... waiting 15 seconds (press Ctrl+C now to kill the writer mid-processing)
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 118, in main
+    await handle_task(msg, producer, processed_ids)
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 79, in handle_task
+    await asyncio.sleep(15)
+  File "C:\Python314\Lib\asyncio\tasks.py", line 705, in sleep
+    return await future
+           ^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 141, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 133, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python .\writer.py --before       
+11:58:17.458 [WRITER-A] Listening on s0932_tasks... mode=BEFORE FIX (no idempotency, auto commit, no retries)
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 113, in main
+    async for msg in consumer:
+    ...<21 lines>...
+        log(f"{TAG} COMMIT partition={msg.partition} offset={msg.offset} (next offset to read: {msg.offset + 1})")
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1259, in __anext__
+    return await self.getone()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1144, in getone
+    msg = await self._fetcher.next_record(partitions)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\fetcher.py", line 1205, in next_record
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 141, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 133, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python .\writer.py --slow
+11:59:55.118 [WRITER-A] Listening on s0932_tasks... mode=AFTER FIX (idempotency, commit after success, 3 retries + dead letter)
+11:59:59.160 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=8
+11:59:59.160 [WRITER-A] correlation_id=b21119f4-17b8-459f-9d78-db6e90df4ea7
+11:59:59.160 [WRITER-A] PROCESSING... waiting 15 seconds (press Ctrl+C now to kill the writer mid-processing)
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 124, in main
+    await handle_task(msg, producer, processed_ids)
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 79, in handle_task
+    await asyncio.sleep(15)
+  File "C:\Python314\Lib\asyncio\tasks.py", line 705, in sleep
+    return await future
+           ^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 141, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 133, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python .\writer.py --before
+12:03:23.833 [WRITER-A] Listening on s0932_tasks... mode=BEFORE FIX (no idempotency, auto commit, no retries)
+12:03:23.833 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=8
+12:03:23.833 [WRITER-A] correlation_id=b21119f4-17b8-459f-9d78-db6e90df4ea7
+12:03:27.313 [WRITER-A] SEND to s0932_drafts partition=0 offset=7 correlation_id=b21119f4-17b8-459f-9d78-db6e90df4ea7
+12:03:27.313 [WRITER-A] draft=CVE-2018-18074 allows remote code execution via crafted HTTP headers, posing a serious security risk. The vulnerability is fixed in **requests 2.21.0** and later. You should upgrade **immediately** to a version >= 2.21.0 to mitigate this risk. Delaying the upgrade could expose your system to potential attacks. Ensure all dependent packages are also updated to avoid compatibility issues.
+12:03:27.313 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=9
+Traceback (most recent call last):
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 141, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 118, in main
+    await handle_task(msg, producer, processed_ids)
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 62, in handle_task
+    task = from_bytes(msg.value) # if not JSON then fail here so checking
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\common.py", line 24, in from_bytes
+    return json.loads(raw.decode())
+           ~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\json\__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Python314\Lib\json\decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\json\decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python .\writer.py
+12:04:38.833 [WRITER-A] Listening on s0932_tasks... mode=AFTER FIX (idempotency, commit after success, 3 retries + dead letter)
+12:04:38.833 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=10
+12:04:38.833 [WRITER-A] correlation_id=4604a542-c380-4798-b149-4a288f30a75b
+12:04:40.107 [WRITER-A] SEND to s0932_drafts partition=0 offset=8 correlation_id=4604a542-c380-4798-b149-4a288f30a75b
+12:04:40.107 [WRITER-A] draft=CVE-2018-18074 allows remote code execution via crafted HTTP headers, posing a serious security risk. The vulnerability is fixed in **requests 2.20.0**. You should upgrade **immediately** to mitigate this risk and protect your application from potential attacks. Delaying the upgrade could expose your system to exploitation. Ensure all dependencies are compatible with the new version before updating.
+12:04:40.108 [WRITER-A] COMMIT partition=0 offset=10 (next offset to read: 11)
+12:04:49.963 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=11
+12:04:49.964 [WRITER-A] RETRY attempt 1/3 failed: JSONDecodeError('Expecting value: line 1 column 1 (char 0)')
+12:04:50.967 [WRITER-A] RETRY attempt 2/3 failed: JSONDecodeError('Expecting value: line 1 column 1 (char 0)')
+12:04:51.968 [WRITER-A] RETRY attempt 3/3 failed: JSONDecodeError('Expecting value: line 1 column 1 (char 0)')
+12:04:51.973 [WRITER-A] DEAD LETTER sent to s0932_dead_letter partition=0 offset=0
+12:04:51.973 [WRITER-A] DEAD LETTER message={'source_topic': 's0932_tasks', 'partition': 0, 'offset': 11, 'original_message': 'this is not valid JSON {', 'error': "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')", 'attempts': 3}
+12:04:51.974 [WRITER-A] COMMIT partition=0 offset=11 (next offset to read: 12)
+12:04:52.082 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=12
+12:04:52.082 [WRITER-A] correlation_id=0f168683-828d-4c1a-96bd-4cd097442168
+12:04:53.635 [WRITER-A] SEND to s0932_drafts partition=0 offset=9 correlation_id=0f168683-828d-4c1a-96bd-4cd097442168
+12:04:53.636 [WRITER-A] draft=CVE-2018-18074 allows remote code execution via crafted HTTP headers, posing a serious security risk. The vulnerability is fixed in **requests 2.20.0**. You should upgrade **immediately** to mitigate this risk and protect your application from potential attacks. Delaying the upgrade could expose your system to exploitation. Ensure all dependencies are compatible with the new version before updating.
+12:04:53.637 [WRITER-A] COMMIT partition=0 offset=12 (next offset to read: 13)
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 113, in main
+    async for msg in consumer:
+    ...<21 lines>...
+        log(f"{TAG} COMMIT partition={msg.partition} offset={msg.offset} (next offset to read: {msg.offset + 1})")
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1259, in __anext__
+    return await self.getone()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1144, in getone
+    msg = await self._fetcher.next_record(partitions)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\fetcher.py", line 1205, in next_record
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 141, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 133, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python writer.py --slow
+12:08:13.409 [WRITER-A] Listening on s0932_tasks... mode=AFTER FIX (idempotency, commit after success, 3 retries + dead letter)
+12:08:15.243 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=13
+12:08:15.243 [WRITER-A] correlation_id=2f881809-1d6e-4ea4-b5de-151b7d09d233
+12:08:15.243 [WRITER-A] PROCESSING... waiting 15 seconds (press Ctrl+C now to kill the writer mid-processing)
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 124, in main
+    await handle_task(msg, producer, processed_ids)
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 79, in handle_task
+    await asyncio.sleep(15)
+  File "C:\Python314\Lib\asyncio\tasks.py", line 705, in sleep
+    return await future
+           ^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 141, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 133, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python writer.py
+12:08:50.524 [WRITER-A] Listening on s0932_tasks... mode=AFTER FIX (idempotency, commit after success, 3 retries + dead letter)
+12:08:50.524 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=13
+12:08:50.524 [WRITER-A] correlation_id=2f881809-1d6e-4ea4-b5de-151b7d09d233
+12:08:52.141 [WRITER-A] SEND to s0932_drafts partition=0 offset=10 correlation_id=2f881809-1d6e-4ea4-b5de-151b7d09d233
+12:08:52.141 [WRITER-A] draft=CVE-2018-18074 allows remote code execution via crafted HTTP headers, posing a serious security risk. The vulnerability is fixed in **requests 2.20.0**. You should upgrade **immediately** to mitigate this risk and protect your application from potential attacks. Delaying the upgrade could expose your system to exploitation. Ensure all dependencies are compatible with the new version before updating.
+12:08:52.143 [WRITER-A] COMMIT partition=0 offset=13 (next offset to read: 14)
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 113, in main
+    async for msg in consumer:
+    ...<21 lines>...
+        log(f"{TAG} COMMIT partition={msg.partition} offset={msg.offset} (next offset to read: {msg.offset + 1})")
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1259, in __anext__
+    return await self.getone()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1144, in getone
+    msg = await self._fetcher.next_record(partitions)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\fetcher.py", line 1205, in next_record
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 141, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 133, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python .\writer.py A
+12:10:34.384 [WRITER-A] Listening on s0932_tasks... mode=AFTER FIX (idempotency, commit after success, 3 retries + dead letter)
+Heartbeat failed for group s0932-writer-group because it is rebalancing
+12:11:33.032 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=14
+12:11:33.032 [WRITER-A] correlation_id=nokey-121133-05
+12:11:33.335 [WRITER-A] ORDER run=nokey-121133 entity=requests seq=1 partition=0 offset=14
+12:11:33.338 [WRITER-A] COMMIT partition=0 offset=14 (next offset to read: 15)
+12:11:33.339 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=15
+12:11:33.339 [WRITER-A] correlation_id=nokey-121133-07
+12:11:33.647 [WRITER-A] ORDER run=nokey-121133 entity=requests seq=2 partition=0 offset=15
+12:11:33.649 [WRITER-A] COMMIT partition=0 offset=15 (next offset to read: 16)
+12:11:33.649 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=16
+12:11:33.649 [WRITER-A] correlation_id=nokey-121133-08
+12:11:33.960 [WRITER-A] ORDER run=nokey-121133 entity=requests seq=3 partition=0 offset=16
+12:11:33.962 [WRITER-A] COMMIT partition=0 offset=16 (next offset to read: 17)
+12:11:33.962 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=17
+12:11:33.962 [WRITER-A] correlation_id=nokey-121133-10
+12:11:34.276 [WRITER-A] ORDER run=nokey-121133 entity=lodash seq=3 partition=0 offset=17
+12:11:34.278 [WRITER-A] COMMIT partition=0 offset=17 (next offset to read: 18)
+12:11:34.278 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=18
+12:11:34.278 [WRITER-A] correlation_id=nokey-121133-11
+12:11:34.589 [WRITER-A] ORDER run=nokey-121133 entity=requests seq=5 partition=0 offset=18
+12:11:34.591 [WRITER-A] COMMIT partition=0 offset=18 (next offset to read: 19)
+12:11:34.591 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=19
+12:11:34.591 [WRITER-A] correlation_id=nokey-121133-12
+12:11:34.901 [WRITER-A] ORDER run=nokey-121133 entity=lodash seq=4 partition=0 offset=19
+12:11:34.902 [WRITER-A] COMMIT partition=0 offset=19 (next offset to read: 20)
+12:11:34.902 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=20
+12:11:34.902 [WRITER-A] correlation_id=nokey-121133-13
+12:11:35.215 [WRITER-A] ORDER run=nokey-121133 entity=lodash seq=5 partition=0 offset=20
+12:11:35.217 [WRITER-A] COMMIT partition=0 offset=20 (next offset to read: 21)
+12:11:35.217 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=21
+12:11:35.217 [WRITER-A] correlation_id=nokey-121133-14
+12:11:35.526 [WRITER-A] ORDER run=nokey-121133 entity=requests seq=6 partition=0 offset=21
+12:11:35.527 [WRITER-A] COMMIT partition=0 offset=21 (next offset to read: 22)
+12:11:35.527 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=22
+12:11:35.527 [WRITER-A] correlation_id=nokey-121133-15
+12:11:35.838 [WRITER-A] ORDER run=nokey-121133 entity=requests seq=7 partition=0 offset=22
+12:11:35.839 [WRITER-A] COMMIT partition=0 offset=22 (next offset to read: 23)
+12:11:35.839 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=23
+12:11:35.839 [WRITER-A] correlation_id=nokey-121133-17
+12:11:36.148 [WRITER-A] ORDER run=nokey-121133 entity=requests seq=8 partition=0 offset=23
+12:11:36.150 [WRITER-A] COMMIT partition=0 offset=23 (next offset to read: 24)
+12:11:36.150 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=24
+12:11:36.150 [WRITER-A] correlation_id=nokey-121133-18
+12:11:36.461 [WRITER-A] ORDER run=nokey-121133 entity=requests seq=9 partition=0 offset=24
+12:11:36.463 [WRITER-A] COMMIT partition=0 offset=24 (next offset to read: 25)
+12:14:38.845 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=25
+12:14:38.845 [WRITER-A] correlation_id=key-121438-01
+12:14:39.151 [WRITER-A] ORDER run=key-121438 entity=pip seq=1 partition=0 offset=25
+12:14:39.153 [WRITER-A] COMMIT partition=0 offset=25 (next offset to read: 26)
+12:14:39.154 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=26
+12:14:39.154 [WRITER-A] correlation_id=key-121438-02
+12:14:39.465 [WRITER-A] ORDER run=key-121438 entity=lodash seq=1 partition=0 offset=26
+12:14:39.468 [WRITER-A] COMMIT partition=0 offset=26 (next offset to read: 27)
+12:14:39.468 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=27
+12:14:39.468 [WRITER-A] correlation_id=key-121438-03
+12:14:39.777 [WRITER-A] ORDER run=key-121438 entity=pip seq=2 partition=0 offset=27
+12:14:39.778 [WRITER-A] COMMIT partition=0 offset=27 (next offset to read: 28)
+12:14:39.779 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=28
+12:14:39.779 [WRITER-A] correlation_id=key-121438-04
+12:14:40.091 [WRITER-A] ORDER run=key-121438 entity=pip seq=3 partition=0 offset=28
+12:14:40.092 [WRITER-A] COMMIT partition=0 offset=28 (next offset to read: 29)
+12:14:40.092 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=29
+12:14:40.092 [WRITER-A] correlation_id=key-121438-06
+12:14:40.403 [WRITER-A] ORDER run=key-121438 entity=lodash seq=2 partition=0 offset=29
+12:14:40.404 [WRITER-A] COMMIT partition=0 offset=29 (next offset to read: 30)
+12:14:40.405 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=30
+12:14:40.405 [WRITER-A] correlation_id=key-121438-10
+12:14:40.717 [WRITER-A] ORDER run=key-121438 entity=lodash seq=3 partition=0 offset=30
+12:14:40.719 [WRITER-A] COMMIT partition=0 offset=30 (next offset to read: 31)
+12:14:40.719 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=31
+12:14:40.719 [WRITER-A] correlation_id=key-121438-12
+12:14:41.029 [WRITER-A] ORDER run=key-121438 entity=lodash seq=4 partition=0 offset=31
+12:14:41.030 [WRITER-A] COMMIT partition=0 offset=31 (next offset to read: 32)
+12:14:41.031 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=32
+12:14:41.031 [WRITER-A] correlation_id=key-121438-13
+12:14:41.342 [WRITER-A] ORDER run=key-121438 entity=lodash seq=5 partition=0 offset=32
+12:14:41.343 [WRITER-A] COMMIT partition=0 offset=32 (next offset to read: 33)
+12:14:41.344 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=33
+12:14:41.344 [WRITER-A] correlation_id=key-121438-16
+12:14:41.656 [WRITER-A] ORDER run=key-121438 entity=pip seq=4 partition=0 offset=33
+12:14:41.658 [WRITER-A] COMMIT partition=0 offset=33 (next offset to read: 34)
+12:14:41.658 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=34
+12:14:41.658 [WRITER-A] correlation_id=key-121438-19
+12:14:41.968 [WRITER-A] ORDER run=key-121438 entity=lodash seq=6 partition=0 offset=34
+12:14:41.969 [WRITER-A] COMMIT partition=0 offset=34 (next offset to read: 35)
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 113, in main
+    else:
+        ^
+    ...<21 lines>...
+            await consumer.commit()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1259, in __anext__
+    return await self.getone()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1144, in getone
+    msg = await self._fetcher.next_record(partitions)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\fetcher.py", line 1205, in next_record
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 141, in <module>
+    if __name__ == "__main__":
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 133, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python .\writer.py A
+12:24:40.764 [WRITER-A] Listening on s0932_tasks... mode=AFTER FIX (idempotency, commit after success, 3 retries + dead letter)
+Heartbeat failed for group s0932-writer-group because it is rebalancing
+12:25:11.368 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=20
+12:25:11.368 [WRITER-A] correlation_id=nokey-122511-01
+12:25:11.684 [WRITER-A] ORDER run=nokey-122511 entity=pip seq=1 partition=1 offset=20
+12:25:11.690 [WRITER-A] COMMIT partition=1 offset=20 (next offset to read: 21)
+12:25:11.693 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=21
+12:25:11.694 [WRITER-A] correlation_id=nokey-122511-02
+12:25:12.010 [WRITER-A] ORDER run=nokey-122511 entity=lodash seq=1 partition=1 offset=21
+12:25:12.012 [WRITER-A] COMMIT partition=1 offset=21 (next offset to read: 22)
+12:25:12.012 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=22
+12:25:12.012 [WRITER-A] correlation_id=nokey-122511-05
+12:25:12.321 [WRITER-A] ORDER run=nokey-122511 entity=requests seq=1 partition=1 offset=22
+12:25:12.322 [WRITER-A] COMMIT partition=1 offset=22 (next offset to read: 23)
+12:25:12.322 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=23
+12:25:12.322 [WRITER-A] correlation_id=nokey-122511-08
+12:25:12.630 [WRITER-A] ORDER run=nokey-122511 entity=requests seq=3 partition=1 offset=23
+12:25:12.631 [WRITER-A] COMMIT partition=1 offset=23 (next offset to read: 24)
+12:25:12.631 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=24
+12:25:12.631 [WRITER-A] correlation_id=nokey-122511-13
+12:25:12.939 [WRITER-A] ORDER run=nokey-122511 entity=lodash seq=5 partition=1 offset=24
+12:25:12.941 [WRITER-A] COMMIT partition=1 offset=24 (next offset to read: 25)
+12:25:12.941 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=25
+12:25:12.941 [WRITER-A] correlation_id=nokey-122511-18
+12:25:13.250 [WRITER-A] ORDER run=nokey-122511 entity=requests seq=9 partition=1 offset=25
+12:25:13.252 [WRITER-A] COMMIT partition=1 offset=25 (next offset to read: 26)
+12:25:13.252 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=26
+12:25:13.252 [WRITER-A] correlation_id=nokey-122511-20
+12:25:13.560 [WRITER-A] ORDER run=nokey-122511 entity=requests seq=10 partition=1 offset=26
+12:25:13.562 [WRITER-A] COMMIT partition=1 offset=26 (next offset to read: 27)
+12:28:13.212 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=27
+12:28:13.213 [WRITER-A] correlation_id=key-122813-05
+12:28:13.518 [WRITER-A] ORDER run=key-122813 entity=requests seq=1 partition=1 offset=27
+12:28:13.520 [WRITER-A] COMMIT partition=1 offset=27 (next offset to read: 28)
+12:28:13.521 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=28
+12:28:13.521 [WRITER-A] correlation_id=key-122813-07
+12:28:13.826 [WRITER-A] ORDER run=key-122813 entity=requests seq=2 partition=1 offset=28
+12:28:13.828 [WRITER-A] COMMIT partition=1 offset=28 (next offset to read: 29)
+12:28:13.828 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=29
+12:28:13.828 [WRITER-A] correlation_id=key-122813-08
+12:28:14.138 [WRITER-A] ORDER run=key-122813 entity=requests seq=3 partition=1 offset=29
+12:28:14.139 [WRITER-A] COMMIT partition=1 offset=29 (next offset to read: 30)
+12:28:14.140 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=30
+12:28:14.140 [WRITER-A] correlation_id=key-122813-09
+12:28:14.447 [WRITER-A] ORDER run=key-122813 entity=requests seq=4 partition=1 offset=30
+12:28:14.449 [WRITER-A] COMMIT partition=1 offset=30 (next offset to read: 31)
+12:28:14.450 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=31
+12:28:14.450 [WRITER-A] correlation_id=key-122813-11
+12:28:14.759 [WRITER-A] ORDER run=key-122813 entity=requests seq=5 partition=1 offset=31
+12:28:14.760 [WRITER-A] COMMIT partition=1 offset=31 (next offset to read: 32)
+12:28:14.760 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=32
+12:28:14.760 [WRITER-A] correlation_id=key-122813-14
+12:28:15.070 [WRITER-A] ORDER run=key-122813 entity=requests seq=6 partition=1 offset=32
+12:28:15.072 [WRITER-A] COMMIT partition=1 offset=32 (next offset to read: 33)
+12:28:15.072 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=33
+12:28:15.072 [WRITER-A] correlation_id=key-122813-15
+12:28:15.382 [WRITER-A] ORDER run=key-122813 entity=requests seq=7 partition=1 offset=33
+12:28:15.384 [WRITER-A] COMMIT partition=1 offset=33 (next offset to read: 34)
+12:28:15.384 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=34
+12:28:15.384 [WRITER-A] correlation_id=key-122813-17
+12:28:15.695 [WRITER-A] ORDER run=key-122813 entity=requests seq=8 partition=1 offset=34
+12:28:15.697 [WRITER-A] COMMIT partition=1 offset=34 (next offset to read: 35)
+12:28:15.697 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=35
+12:28:15.697 [WRITER-A] correlation_id=key-122813-18
+12:28:16.005 [WRITER-A] ORDER run=key-122813 entity=requests seq=9 partition=1 offset=35
+12:28:16.007 [WRITER-A] COMMIT partition=1 offset=35 (next offset to read: 36)
+12:28:16.007 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=36
+12:28:16.007 [WRITER-A] correlation_id=key-122813-20
+12:28:16.318 [WRITER-A] ORDER run=key-122813 entity=requests seq=10 partition=1 offset=36
+12:28:16.319 [WRITER-A] COMMIT partition=1 offset=36 (next offset to read: 37)
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> cd .\agents\      
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>python .\send_test_task.py duplicate
+11:49:11.167 [TEST] SEND task correlation_id=4dd7ca80-9e96-4cc2-a386-c7096a342591 (first time) to s0932_tasks partition=0 offset=2
+11:49:11.168 [TEST] SEND task correlation_id=4dd7ca80-9e96-4cc2-a386-c7096a342591 (REPLAY) to s0932_tasks partition=0 offset=3
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>python .\send_test_task.py duplicate
+11:51:05.188 TEST SEND task correlation_id=40d444c4-47cb-49f5-a6fc-0b06bc0174ee (first time) to s0932_tasks partition=0 offset=4
+11:51:05.189 TEST SEND task correlation_id=40d444c4-47cb-49f5-a6fc-0b06bc0174ee (REPLAY) to s0932_tasks partition=0 offset=5
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> docker exec kafka /opt/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group s0932-writer-group
+
+GROUP              TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                          HOST            CLIENT-ID
+s0932-writer-group s0932_tasks     1          1               1               0               aiokafka-0.15.0-7bfb441f-9f0e-465a-9b89-e18a4b83b49c /172.21.0.1     aiokafka-0.15.0
+s0932-writer-group s0932_tasks     0          6               6               0               aiokafka-0.15.0-7bfb441f-9f0e-465a-9b89-e18a4b83b49c /172.21.0.1     aiokafka-0.15.0
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>python .\send_test_task.py once
+11:55:24.532 TEST SEND task correlation_id=8b1206a7-c8e6-4d03-affa-6695b1798ec1 to s0932_tasks partition=0 offset=6
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>python .\send_test_task.py once
+11:56:35.805 TEST SEND task correlation_id=79c4724c-1246-4b2c-84a6-004592ea4090 to s0932_tasks partition=0 offset=7
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>docker exec kafka /opt/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group s0932-writer-group
+
+Consumer group 's0932-writer-group' has no active members.
+
+GROUP              TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID     HOST            CLIENT-ID
+s0932-writer-group s0932_tasks     1          1               1               0               -               -               -
+s0932-writer-group s0932_tasks     0          8               8               0               -               -               -
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>python .\send_test_task.py once                                                                
+11:59:59.159 TEST SEND task correlation_id=b21119f4-17b8-459f-9d78-db6e90df4ea7 to s0932_tasks partition=0 offset=8
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>docker exec kafka /opt/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group s0932-writer-group
+
+Consumer group 's0932-writer-group' has no active members.
+
+GROUP              TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID     HOST            CLIENT-ID
+s0932-writer-group s0932_tasks     1          1               1               0               -               -               -
+s0932-writer-group s0932_tasks     0          8               9               1               -               -               -
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>python .\send_test_task.py poison
+12:03:17.890 TEST SEND POISON message to s0932_tasks partition=0 offset=9
+12:03:17.891 TEST SEND normal task after the poison, correlation_id=4604a542-c380-4798-b149-4a288f30a75b to s0932_tasks partition=0 offset=10
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>python .\send_test_task.py poison
+12:04:49.963 TEST SEND POISON message to s0932_tasks partition=0 offset=11
+12:04:49.964 TEST SEND normal task after the poison, correlation_id=0f168683-828d-4c1a-96bd-4cd097442168 to s0932_tasks partition=0 offset=12
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>  docker exec kafka /opt/kafka/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic s0932_dead_letter --from-beginning --timeout-ms 5000
+{"source_topic": "s0932_tasks", "partition": 0, "offset": 11, "original_message": "this is not valid JSON {", "error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')", "attempts": 3}
+[2026-11-02 20:05:27,984] ERROR Error processing message, terminating consumer process:  (org.apache.kafka.tools.consumer.ConsoleConsumer)
+org.apache.kafka.common.errors.TimeoutException
+Processed a total of 1 messages
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>python send_test_task.py once
+12:08:15.242 TEST SEND task correlation_id=2f881809-1d6e-4ea4-b5de-151b7d09d233 to s0932_tasks partition=0 offset=13
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>docker exec kafka /opt/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group s0932-writer-group
+
+Consumer group 's0932-writer-group' has no active members.
+
+GROUP              TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID     HOST            CLIENT-ID
+s0932-writer-group s0932_tasks     1          1               1               0               -               -               -
+s0932-writer-group s0932_tasks     0          13              14              1               -               -               -
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>docker exec kafka /opt/kafka/bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --describe --group s0932-writer-group
+
+GROUP              TOPIC           PARTITION  CURRENT-OFFSET  LOG-END-OFFSET  LAG             CONSUMER-ID                                          HOST            CLIENT-ID
+s0932-writer-group s0932_tasks     1          1               1               0               aiokafka-0.15.0-95b1022f-bc53-40f6-8504-75459bba28db /172.21.0.1     aiokafka-0.15.0
+s0932-writer-group s0932_tasks     0          14              14              0               aiokafka-0.15.0-95b1022f-bc53-40f6-8504-75459bba28db /172.21.0.1     aiokafka-0.15.0          
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>pytyhon .\writer.py B
+pytyhon : The term 'pytyhon' is not recognized as the name of a cmdlet, function, script 
+file, or operable program. Check the spelling of the name, or if a path was included, verify 
+that the path is correct and try again.
+At line:1 char:1
++ pytyhon .\writer.py B
++ ~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (pytyhon:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>python .\writer.py B 
+12:11:04.455 [WRITER-B] Listening on s0932_tasks... mode=AFTER FIX (idempotency, commit after success, 3 retries + dead letter)
+12:11:33.028 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=1
+12:11:33.028 [WRITER-B] correlation_id=nokey-121133-01
+12:11:33.335 [WRITER-B] ORDER run=nokey-121133 entity=pip seq=1 partition=1 offset=1
+12:11:33.337 [WRITER-B] COMMIT partition=1 offset=1 (next offset to read: 2)
+12:11:33.339 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=2
+12:11:33.339 [WRITER-B] correlation_id=nokey-121133-02
+12:11:33.647 [WRITER-B] ORDER run=nokey-121133 entity=lodash seq=1 partition=1 offset=2
+12:11:33.649 [WRITER-B] COMMIT partition=1 offset=2 (next offset to read: 3)
+12:11:33.649 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=3
+12:11:33.649 [WRITER-B] correlation_id=nokey-121133-03
+12:11:33.960 [WRITER-B] ORDER run=nokey-121133 entity=pip seq=2 partition=1 offset=3
+12:11:33.962 [WRITER-B] COMMIT partition=1 offset=3 (next offset to read: 4)
+12:11:33.962 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=4
+12:11:33.962 [WRITER-B] correlation_id=nokey-121133-04
+12:11:34.276 [WRITER-B] ORDER run=nokey-121133 entity=pip seq=3 partition=1 offset=4
+12:11:34.278 [WRITER-B] COMMIT partition=1 offset=4 (next offset to read: 5)
+12:11:34.278 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=5
+12:11:34.278 [WRITER-B] correlation_id=nokey-121133-06
+12:11:34.589 [WRITER-B] ORDER run=nokey-121133 entity=lodash seq=2 partition=1 offset=5
+12:11:34.591 [WRITER-B] COMMIT partition=1 offset=5 (next offset to read: 6)
+12:11:34.591 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=6
+12:11:34.591 [WRITER-B] correlation_id=nokey-121133-09
+12:11:34.901 [WRITER-B] ORDER run=nokey-121133 entity=requests seq=4 partition=1 offset=6
+12:11:34.902 [WRITER-B] COMMIT partition=1 offset=6 (next offset to read: 7)
+12:11:34.902 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=7
+12:11:34.902 [WRITER-B] correlation_id=nokey-121133-16
+12:11:35.215 [WRITER-B] ORDER run=nokey-121133 entity=pip seq=4 partition=1 offset=7
+12:11:35.217 [WRITER-B] COMMIT partition=1 offset=7 (next offset to read: 8)
+12:11:35.217 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=8
+12:11:35.217 [WRITER-B] correlation_id=nokey-121133-19
+12:11:35.526 [WRITER-B] ORDER run=nokey-121133 entity=lodash seq=6 partition=1 offset=8
+12:11:35.527 [WRITER-B] COMMIT partition=1 offset=8 (next offset to read: 9)
+12:11:35.527 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=9
+12:11:35.527 [WRITER-B] correlation_id=nokey-121133-20
+12:11:35.837 [WRITER-B] ORDER run=nokey-121133 entity=requests seq=10 partition=1 offset=9
+12:11:35.839 [WRITER-B] COMMIT partition=1 offset=9 (next offset to read: 10)
+12:14:38.849 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=10
+12:14:38.850 [WRITER-B] correlation_id=key-121438-05
+12:14:39.151 [WRITER-B] ORDER run=key-121438 entity=requests seq=1 partition=1 offset=10
+12:14:39.153 [WRITER-B] COMMIT partition=1 offset=10 (next offset to read: 11)
+12:14:39.154 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=11
+12:14:39.154 [WRITER-B] correlation_id=key-121438-07
+12:14:39.465 [WRITER-B] ORDER run=key-121438 entity=requests seq=2 partition=1 offset=11
+12:14:39.468 [WRITER-B] COMMIT partition=1 offset=11 (next offset to read: 12)
+12:14:39.468 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=12
+12:14:39.468 [WRITER-B] correlation_id=key-121438-08
+12:14:39.777 [WRITER-B] ORDER run=key-121438 entity=requests seq=3 partition=1 offset=12
+12:14:39.778 [WRITER-B] COMMIT partition=1 offset=12 (next offset to read: 13)
+12:14:39.779 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=13
+12:14:39.779 [WRITER-B] correlation_id=key-121438-09
+12:14:40.091 [WRITER-B] ORDER run=key-121438 entity=requests seq=4 partition=1 offset=13
+12:14:40.092 [WRITER-B] COMMIT partition=1 offset=13 (next offset to read: 14)
+12:14:40.092 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=14
+12:14:40.092 [WRITER-B] correlation_id=key-121438-11
+12:14:40.403 [WRITER-B] ORDER run=key-121438 entity=requests seq=5 partition=1 offset=14
+12:14:40.405 [WRITER-B] COMMIT partition=1 offset=14 (next offset to read: 15)
+12:14:40.405 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=15
+12:14:40.405 [WRITER-B] correlation_id=key-121438-14
+12:14:40.717 [WRITER-B] ORDER run=key-121438 entity=requests seq=6 partition=1 offset=15
+12:14:40.719 [WRITER-B] COMMIT partition=1 offset=15 (next offset to read: 16)
+12:14:40.719 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=16
+12:14:40.719 [WRITER-B] correlation_id=key-121438-15
+12:14:41.029 [WRITER-B] ORDER run=key-121438 entity=requests seq=7 partition=1 offset=16
+12:14:41.031 [WRITER-B] COMMIT partition=1 offset=16 (next offset to read: 17)
+12:14:41.031 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=17
+12:14:41.031 [WRITER-B] correlation_id=key-121438-17
+12:14:41.342 [WRITER-B] ORDER run=key-121438 entity=requests seq=8 partition=1 offset=17
+12:14:41.343 [WRITER-B] COMMIT partition=1 offset=17 (next offset to read: 18)
+12:14:41.344 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=18
+12:14:41.344 [WRITER-B] correlation_id=key-121438-18
+12:14:41.656 [WRITER-B] ORDER run=key-121438 entity=requests seq=9 partition=1 offset=18
+12:14:41.658 [WRITER-B] COMMIT partition=1 offset=18 (next offset to read: 19)
+12:14:41.658 [WRITER-B] RECEIVE from s0932_tasks partition=1 offset=19
+12:14:41.658 [WRITER-B] correlation_id=key-121438-20
+12:14:41.968 [WRITER-B] ORDER run=key-121438 entity=requests seq=10 partition=1 offset=19
+12:14:41.969 [WRITER-B] COMMIT partition=1 offset=19 (next offset to read: 20)
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 113, in main
+    else:
+        ^
+    ...<21 lines>...
+            await consumer.commit()
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1259, in __anext__
+    return await self.getone()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1144, in getone
+    msg = await self._fetcher.next_record(partitions)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\fetcher.py", line 1205, in next_record
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 141, in <module>
+    if __name__ == "__main__":
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 133, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents>python .\writer.py B
+12:24:58.804 [WRITER-B] Listening on s0932_tasks... mode=AFTER FIX (idempotency, commit after success, 3 retries + dead letter)
+12:25:11.369 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=35
+12:25:11.369 [WRITER-B] correlation_id=nokey-122511-03
+12:25:11.686 [WRITER-B] ORDER run=nokey-122511 entity=pip seq=2 partition=0 offset=35
+12:25:11.692 [WRITER-B] COMMIT partition=0 offset=35 (next offset to read: 36)
+12:25:11.695 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=36
+12:25:11.696 [WRITER-B] correlation_id=nokey-122511-04
+12:25:12.010 [WRITER-B] ORDER run=nokey-122511 entity=pip seq=3 partition=0 offset=36
+12:25:12.012 [WRITER-B] COMMIT partition=0 offset=36 (next offset to read: 37)
+12:25:12.012 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=37
+12:25:12.012 [WRITER-B] correlation_id=nokey-122511-06
+12:25:12.321 [WRITER-B] ORDER run=nokey-122511 entity=lodash seq=2 partition=0 offset=37
+12:25:12.322 [WRITER-B] COMMIT partition=0 offset=37 (next offset to read: 38)
+12:25:12.322 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=38
+12:25:12.322 [WRITER-B] correlation_id=nokey-122511-07
+12:25:12.630 [WRITER-B] ORDER run=nokey-122511 entity=requests seq=2 partition=0 offset=38
+12:25:12.631 [WRITER-B] COMMIT partition=0 offset=38 (next offset to read: 39)
+12:25:12.631 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=39
+12:25:12.631 [WRITER-B] correlation_id=nokey-122511-09
+12:25:12.939 [WRITER-B] ORDER run=nokey-122511 entity=requests seq=4 partition=0 offset=39
+12:25:12.941 [WRITER-B] COMMIT partition=0 offset=39 (next offset to read: 40)
+12:25:12.941 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=40
+12:25:12.941 [WRITER-B] correlation_id=nokey-122511-10
+12:25:13.250 [WRITER-B] ORDER run=nokey-122511 entity=lodash seq=3 partition=0 offset=40
+12:25:13.251 [WRITER-B] COMMIT partition=0 offset=40 (next offset to read: 41)
+12:25:13.252 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=41
+12:25:13.252 [WRITER-B] correlation_id=nokey-122511-11
+12:25:13.560 [WRITER-B] ORDER run=nokey-122511 entity=requests seq=5 partition=0 offset=41
+12:25:13.562 [WRITER-B] COMMIT partition=0 offset=41 (next offset to read: 42)
+12:25:13.562 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=42
+12:25:13.562 [WRITER-B] correlation_id=nokey-122511-12
+12:25:13.868 [WRITER-B] ORDER run=nokey-122511 entity=lodash seq=4 partition=0 offset=42
+12:25:13.869 [WRITER-B] COMMIT partition=0 offset=42 (next offset to read: 43)
+12:25:13.869 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=43
+12:25:13.869 [WRITER-B] correlation_id=nokey-122511-14
+12:25:14.181 [WRITER-B] ORDER run=nokey-122511 entity=requests seq=6 partition=0 offset=43
+12:25:14.182 [WRITER-B] COMMIT partition=0 offset=43 (next offset to read: 44)
+12:25:14.182 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=44
+12:25:14.182 [WRITER-B] correlation_id=nokey-122511-15
+12:25:14.489 [WRITER-B] ORDER run=nokey-122511 entity=requests seq=7 partition=0 offset=44
+12:25:14.491 [WRITER-B] COMMIT partition=0 offset=44 (next offset to read: 45)
+12:25:14.491 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=45
+12:25:14.491 [WRITER-B] correlation_id=nokey-122511-16
+12:25:14.798 [WRITER-B] ORDER run=nokey-122511 entity=pip seq=4 partition=0 offset=45
+12:25:14.800 [WRITER-B] COMMIT partition=0 offset=45 (next offset to read: 46)
+12:25:14.800 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=46
+12:25:14.800 [WRITER-B] correlation_id=nokey-122511-17
+12:25:15.110 [WRITER-B] ORDER run=nokey-122511 entity=requests seq=8 partition=0 offset=46
+12:25:15.111 [WRITER-B] COMMIT partition=0 offset=46 (next offset to read: 47)
+12:25:15.111 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=47
+12:25:15.111 [WRITER-B] correlation_id=nokey-122511-19
+12:25:15.422 [WRITER-B] ORDER run=nokey-122511 entity=lodash seq=6 partition=0 offset=47
+12:25:15.423 [WRITER-B] COMMIT partition=0 offset=47 (next offset to read: 48)
+12:28:13.209 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=48
+12:28:13.209 [WRITER-B] correlation_id=key-122813-01
+12:28:13.518 [WRITER-B] ORDER run=key-122813 entity=pip seq=1 partition=0 offset=48
+12:28:13.520 [WRITER-B] COMMIT partition=0 offset=48 (next offset to read: 49)
+12:28:13.521 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=49
+12:28:13.521 [WRITER-B] correlation_id=key-122813-02
+12:28:13.826 [WRITER-B] ORDER run=key-122813 entity=lodash seq=1 partition=0 offset=49
+12:28:13.828 [WRITER-B] COMMIT partition=0 offset=49 (next offset to read: 50)
+12:28:13.828 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=50
+12:28:13.828 [WRITER-B] correlation_id=key-122813-03
+12:28:14.138 [WRITER-B] ORDER run=key-122813 entity=pip seq=2 partition=0 offset=50
+12:28:14.139 [WRITER-B] COMMIT partition=0 offset=50 (next offset to read: 51)
+12:28:14.140 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=51
+12:28:14.140 [WRITER-B] correlation_id=key-122813-04
+12:28:14.447 [WRITER-B] ORDER run=key-122813 entity=pip seq=3 partition=0 offset=51
+12:28:14.449 [WRITER-B] COMMIT partition=0 offset=51 (next offset to read: 52)
+12:28:14.449 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=52
+12:28:14.450 [WRITER-B] correlation_id=key-122813-06
+12:28:14.758 [WRITER-B] ORDER run=key-122813 entity=lodash seq=2 partition=0 offset=52
+12:28:14.760 [WRITER-B] COMMIT partition=0 offset=52 (next offset to read: 53)
+12:28:14.760 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=53
+12:28:14.760 [WRITER-B] correlation_id=key-122813-10
+12:28:15.070 [WRITER-B] ORDER run=key-122813 entity=lodash seq=3 partition=0 offset=53
+12:28:15.072 [WRITER-B] COMMIT partition=0 offset=53 (next offset to read: 54)
+12:28:15.072 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=54
+12:28:15.072 [WRITER-B] correlation_id=key-122813-12
+12:28:15.382 [WRITER-B] ORDER run=key-122813 entity=lodash seq=4 partition=0 offset=54
+12:28:15.384 [WRITER-B] COMMIT partition=0 offset=54 (next offset to read: 55)
+12:28:15.384 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=55
+12:28:15.384 [WRITER-B] correlation_id=key-122813-13
+12:28:15.695 [WRITER-B] ORDER run=key-122813 entity=lodash seq=5 partition=0 offset=55
+12:28:15.697 [WRITER-B] COMMIT partition=0 offset=55 (next offset to read: 56)
+12:28:15.697 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=56
+12:28:15.697 [WRITER-B] correlation_id=key-122813-16
+12:28:16.005 [WRITER-B] ORDER run=key-122813 entity=pip seq=4 partition=0 offset=56
+12:28:16.007 [WRITER-B] COMMIT partition=0 offset=56 (next offset to read: 57)
+12:28:16.007 [WRITER-B] RECEIVE from s0932_tasks partition=0 offset=57
+12:28:16.007 [WRITER-B] correlation_id=key-122813-19
+12:28:16.318 [WRITER-B] ORDER run=key-122813 entity=lodash seq=6 partition=0 offset=57
+12:28:16.319 [WRITER-B] COMMIT partition=0 offset=57 (next offset to read: 58)
+Heartbeat failed for group s0932-writer-group because it is rebalancing
+Traceback (most recent call last):
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 720, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 116, in main
+    async for msg in consumer:
+    ...<19 lines>...
+        log(f"{TAG} COMMIT partition={msg.partition} offset={msg.offset} (next offset to read: {msg.offset + 1})")
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1259, in __anext__
+    return await self.getone()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\consumer.py", line 1144, in getone
+    msg = await self._fetcher.next_record(partitions)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\natal\AppData\Roaming\Python\Python314\site-packages\aiokafka\consumer\fetcher.py", line 1205, in next_record
+    await waiter
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents\writer.py", line 142, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 205, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Python314\Lib\asyncio\runners.py", line 133, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> cd .\reports\hw08
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08> cd .\agents\
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> ptyhon .\ordering_test.py nokey
+ptyhon : The term 'ptyhon' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the 
+path is correct and try again.
+At line:1 char:1
++ ptyhon .\ordering_test.py nokey
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (ptyhon:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python .\ordering_test.py nokey
+12:11:33.011 TEST run=nokey-121133 VERIFY_SEED=260932 messages=20
+12:11:33.028 TEST SEND nokey-121133-01 entity=pip seq=1 key=None -> partition=1
+12:11:33.029 TEST SEND nokey-121133-02 entity=lodash seq=1 key=None -> partition=1
+12:11:33.030 TEST SEND nokey-121133-03 entity=pip seq=2 key=None -> partition=1
+12:11:33.031 TEST SEND nokey-121133-04 entity=pip seq=3 key=None -> partition=1
+12:11:33.032 TEST SEND nokey-121133-05 entity=requests seq=1 key=None -> partition=0
+12:11:33.033 TEST SEND nokey-121133-06 entity=lodash seq=2 key=None -> partition=1
+12:11:33.034 TEST SEND nokey-121133-07 entity=requests seq=2 key=None -> partition=0
+12:11:33.034 TEST SEND nokey-121133-08 entity=requests seq=3 key=None -> partition=0
+12:11:33.035 TEST SEND nokey-121133-09 entity=requests seq=4 key=None -> partition=1
+12:11:33.036 TEST SEND nokey-121133-10 entity=lodash seq=3 key=None -> partition=0
+12:11:33.037 TEST SEND nokey-121133-11 entity=requests seq=5 key=None -> partition=0
+12:11:33.038 TEST SEND nokey-121133-12 entity=lodash seq=4 key=None -> partition=0
+12:11:33.039 TEST SEND nokey-121133-13 entity=lodash seq=5 key=None -> partition=0
+12:11:33.039 TEST SEND nokey-121133-14 entity=requests seq=6 key=None -> partition=0
+12:11:33.040 TEST SEND nokey-121133-15 entity=requests seq=7 key=None -> partition=0
+12:11:33.041 TEST SEND nokey-121133-16 entity=pip seq=4 key=None -> partition=1
+12:11:33.042 TEST SEND nokey-121133-17 entity=requests seq=8 key=None -> partition=0
+12:11:33.043 TEST SEND nokey-121133-18 entity=requests seq=9 key=None -> partition=0
+12:11:33.043 TEST SEND nokey-121133-19 entity=lodash seq=6 key=None -> partition=1
+12:11:33.044 TEST SEND nokey-121133-20 entity=requests seq=10 key=None -> partition=1
+12:11:33.044 TEST Waiting for the writers to process all messages...
+
+Processing order for run nokey-121133 (12/20 processed):
+  #  processed_at             writer  partition  entity     seq
+  1  2026-11-02T12:11:33.335  A       0          requests   1
+  2  2026-11-02T12:11:33.647  A       0          requests   2
+  3  2026-11-02T12:11:33.960  A       0          requests   3
+  4  2026-11-02T12:11:34.276  B       1          pip        3
+  5  2026-11-02T12:11:34.589  B       1          lodash     2
+  6  2026-11-02T12:11:34.900  A       0          lodash     4
+  7  2026-11-02T12:11:35.215  A       0          lodash     5
+  8  2026-11-02T12:11:35.526  A       0          requests   6
+  9  2026-11-02T12:11:35.837  B       1          requests   10
+ 10  2026-11-02T12:11:35.837  A       0          requests   7
+ 11  2026-11-02T12:11:36.148  A       0          requests   8
+ 12  2026-11-02T12:11:36.461  A       0          requests   9
+
+Order check per package:
+  lodash    partitions=['0', '1']  processed seq order=[2, 4, 5]  -> IN ORDER
+  pip       partitions=['1']  processed seq order=[3]  -> IN ORDER
+  requests  partitions=['0', '1']  processed seq order=[1, 2, 3, 6, 10, 7, 8, 9]  -> OUT OF ORDER
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python .\ordering_test.py key  
+12:14:38.824 TEST run=key-121438 VERIFY_SEED=260932 messages=20
+12:14:38.844 TEST SEND key-121438-01 entity=pip seq=1 key=b'pip' -> partition=0
+12:14:38.845 TEST SEND key-121438-02 entity=lodash seq=1 key=b'lodash' -> partition=0
+12:14:38.846 TEST SEND key-121438-03 entity=pip seq=2 key=b'pip' -> partition=0
+12:14:38.847 TEST SEND key-121438-04 entity=pip seq=3 key=b'pip' -> partition=0
+12:14:38.849 TEST SEND key-121438-05 entity=requests seq=1 key=b'requests' -> partition=1
+12:14:38.850 TEST SEND key-121438-06 entity=lodash seq=2 key=b'lodash' -> partition=0
+12:14:38.852 TEST SEND key-121438-07 entity=requests seq=2 key=b'requests' -> partition=1
+12:14:38.853 TEST SEND key-121438-08 entity=requests seq=3 key=b'requests' -> partition=1
+12:14:38.854 TEST SEND key-121438-09 entity=requests seq=4 key=b'requests' -> partition=1
+12:14:38.855 TEST SEND key-121438-10 entity=lodash seq=3 key=b'lodash' -> partition=0
+12:14:38.856 TEST SEND key-121438-11 entity=requests seq=5 key=b'requests' -> partition=1
+12:14:38.857 TEST SEND key-121438-12 entity=lodash seq=4 key=b'lodash' -> partition=0
+12:14:38.858 TEST SEND key-121438-13 entity=lodash seq=5 key=b'lodash' -> partition=0
+12:14:38.859 TEST SEND key-121438-14 entity=requests seq=6 key=b'requests' -> partition=1
+12:14:38.868 TEST SEND key-121438-15 entity=requests seq=7 key=b'requests' -> partition=1
+12:14:38.870 TEST SEND key-121438-16 entity=pip seq=4 key=b'pip' -> partition=0
+12:14:38.871 TEST SEND key-121438-17 entity=requests seq=8 key=b'requests' -> partition=1
+12:14:38.872 TEST SEND key-121438-18 entity=requests seq=9 key=b'requests' -> partition=1
+12:14:38.873 TEST SEND key-121438-19 entity=lodash seq=6 key=b'lodash' -> partition=0
+12:14:38.874 TEST SEND key-121438-20 entity=requests seq=10 key=b'requests' -> partition=1
+12:14:38.874 TEST Waiting for the writers to process all messages...
+
+Processing order for run key-121438 (12/20 processed):
+  #  processed_at             writer  partition  entity     seq
+  1  2026-11-02T12:14:39.151  B       1          requests   1
+  2  2026-11-02T12:14:39.465  A       0          lodash     1
+  3  2026-11-02T12:14:39.776  A       0          pip        2
+  4  2026-11-02T12:14:40.091  A       0          pip        3
+  5  2026-11-02T12:14:40.403  A       0          lodash     2
+  6  2026-11-02T12:14:40.717  A       0          lodash     3
+  7  2026-11-02T12:14:41.029  A       0          lodash     4
+  8  2026-11-02T12:14:41.029  B       1          requests   7
+  9  2026-11-02T12:14:41.342  A       0          lodash     5
+ 10  2026-11-02T12:14:41.656  A       0          pip        4
+ 11  2026-11-02T12:14:41.967  A       0          lodash     6
+ 12  2026-11-02T12:14:41.967  B       1          requests   10
+
+Order check per package:
+  lodash    partitions=['0']  processed seq order=[1, 2, 3, 4, 5, 6]  -> IN ORDER
+  pip       partitions=['0']  processed seq order=[2, 3, 4]  -> IN ORDER
+  requests  partitions=['1']  processed seq order=[1, 7, 10]  -> IN ORDER
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python .\ordering_test.py nokey
+12:25:11.352 [TEST] run=nokey-122511 VERIFY_SEED=260932 messages=20
+12:25:11.367 [TEST] SEND nokey-122511-01 entity=pip seq=1 key=None -> partition=1
+12:25:11.368 [TEST] SEND nokey-122511-02 entity=lodash seq=1 key=None -> partition=1
+12:25:11.369 [TEST] SEND nokey-122511-03 entity=pip seq=2 key=None -> partition=0
+12:25:11.370 [TEST] SEND nokey-122511-04 entity=pip seq=3 key=None -> partition=0
+12:25:11.371 [TEST] SEND nokey-122511-05 entity=requests seq=1 key=None -> partition=1
+12:25:11.371 [TEST] SEND nokey-122511-06 entity=lodash seq=2 key=None -> partition=0
+12:25:11.372 [TEST] SEND nokey-122511-07 entity=requests seq=2 key=None -> partition=0
+12:25:11.373 [TEST] SEND nokey-122511-08 entity=requests seq=3 key=None -> partition=1
+12:25:11.374 [TEST] SEND nokey-122511-09 entity=requests seq=4 key=None -> partition=0
+12:25:11.375 [TEST] SEND nokey-122511-10 entity=lodash seq=3 key=None -> partition=0
+12:25:11.375 [TEST] SEND nokey-122511-11 entity=requests seq=5 key=None -> partition=0
+12:25:11.376 [TEST] SEND nokey-122511-12 entity=lodash seq=4 key=None -> partition=0
+12:25:11.377 [TEST] SEND nokey-122511-13 entity=lodash seq=5 key=None -> partition=1
+12:25:11.378 [TEST] SEND nokey-122511-14 entity=requests seq=6 key=None -> partition=0
+12:25:11.379 [TEST] SEND nokey-122511-15 entity=requests seq=7 key=None -> partition=0
+12:25:11.379 [TEST] SEND nokey-122511-16 entity=pip seq=4 key=None -> partition=0
+12:25:11.380 [TEST] SEND nokey-122511-17 entity=requests seq=8 key=None -> partition=0
+12:25:11.381 [TEST] SEND nokey-122511-18 entity=requests seq=9 key=None -> partition=1
+12:25:11.382 [TEST] SEND nokey-122511-19 entity=lodash seq=6 key=None -> partition=0
+12:25:11.383 [TEST] SEND nokey-122511-20 entity=requests seq=10 key=None -> partition=1
+12:25:11.383 [TEST] Waiting for the writers to process all messages...
+
+Processing order for run nokey-122511 (20/20 processed):
+  #  processed_at             writer  partition  entity     seq
+  1  2026-11-02T12:25:11.684  A       1          pip        1
+  2  2026-11-02T12:25:11.686  B       0          pip        2
+  3  2026-11-02T12:25:12.010  A       1          lodash     1
+  4  2026-11-02T12:25:12.010  B       0          pip        3
+  5  2026-11-02T12:25:12.320  A       1          requests   1
+  6  2026-11-02T12:25:12.320  B       0          lodash     2
+  7  2026-11-02T12:25:12.630  A       1          requests   3
+  8  2026-11-02T12:25:12.630  B       0          requests   2
+  9  2026-11-02T12:25:12.939  A       1          lodash     5
+ 10  2026-11-02T12:25:12.939  B       0          requests   4
+ 11  2026-11-02T12:25:13.250  A       1          requests   9
+ 12  2026-11-02T12:25:13.250  B       0          lodash     3
+ 13  2026-11-02T12:25:13.560  A       1          requests   10
+ 14  2026-11-02T12:25:13.560  B       0          requests   5
+ 15  2026-11-02T12:25:13.868  B       0          lodash     4
+ 16  2026-11-02T12:25:14.180  B       0          requests   6
+ 17  2026-11-02T12:25:14.489  B       0          requests   7
+ 18  2026-11-02T12:25:14.798  B       0          pip        4
+ 19  2026-11-02T12:25:15.109  B       0          requests   8
+ 20  2026-11-02T12:25:15.422  B       0          lodash     6
+
+Order check per package:
+  lodash    partitions=['0', '1']  processed seq order=[1, 2, 5, 3, 4, 6]  -> OUT OF ORDER
+  pip       partitions=['0', '1']  processed seq order=[1, 2, 3, 4]  -> IN ORDER
+  requests  partitions=['0', '1']  processed seq order=[1, 3, 2, 4, 9, 10, 5, 6, 7, 8]  -> OUT OF ORDER
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw08\agents> python .\ordering_test.py key  
+12:28:13.192 [TEST] run=key-122813 VERIFY_SEED=260932 messages=20
+12:28:13.208 [TEST] SEND key-122813-01 entity=pip seq=1 key=b'pip' -> partition=0
+12:28:13.210 [TEST] SEND key-122813-02 entity=lodash seq=1 key=b'lodash' -> partition=0
+12:28:13.210 [TEST] SEND key-122813-03 entity=pip seq=2 key=b'pip' -> partition=0
+12:28:13.211 [TEST] SEND key-122813-04 entity=pip seq=3 key=b'pip' -> partition=0
+12:28:13.212 [TEST] SEND key-122813-05 entity=requests seq=1 key=b'requests' -> partition=1
+12:28:13.213 [TEST] SEND key-122813-06 entity=lodash seq=2 key=b'lodash' -> partition=0
+12:28:13.213 [TEST] SEND key-122813-07 entity=requests seq=2 key=b'requests' -> partition=1
+12:28:13.214 [TEST] SEND key-122813-08 entity=requests seq=3 key=b'requests' -> partition=1
+12:28:13.215 [TEST] SEND key-122813-09 entity=requests seq=4 key=b'requests' -> partition=1
+12:28:13.216 [TEST] SEND key-122813-10 entity=lodash seq=3 key=b'lodash' -> partition=0
+12:28:13.217 [TEST] SEND key-122813-11 entity=requests seq=5 key=b'requests' -> partition=1
+12:28:13.217 [TEST] SEND key-122813-12 entity=lodash seq=4 key=b'lodash' -> partition=0
+12:28:13.218 [TEST] SEND key-122813-13 entity=lodash seq=5 key=b'lodash' -> partition=0
+12:28:13.219 [TEST] SEND key-122813-14 entity=requests seq=6 key=b'requests' -> partition=1
+12:28:13.220 [TEST] SEND key-122813-15 entity=requests seq=7 key=b'requests' -> partition=1
+12:28:13.221 [TEST] SEND key-122813-16 entity=pip seq=4 key=b'pip' -> partition=0
+12:28:13.221 [TEST] SEND key-122813-17 entity=requests seq=8 key=b'requests' -> partition=1
+12:28:13.222 [TEST] SEND key-122813-18 entity=requests seq=9 key=b'requests' -> partition=1
+12:28:13.223 [TEST] SEND key-122813-19 entity=lodash seq=6 key=b'lodash' -> partition=0
+12:28:13.224 [TEST] SEND key-122813-20 entity=requests seq=10 key=b'requests' -> partition=1
+12:28:13.224 [TEST] Waiting for the writers to process all messages...
+
+Processing order for run key-122813 (20/20 processed):
+  #  processed_at             writer  partition  entity     seq
+  1  2026-11-02T12:28:13.517  A       1          requests   1
+  2  2026-11-02T12:28:13.517  B       0          pip        1
+  3  2026-11-02T12:28:13.826  A       1          requests   2
+  4  2026-11-02T12:28:13.826  B       0          lodash     1
+  5  2026-11-02T12:28:14.138  A       1          requests   3
+  6  2026-11-02T12:28:14.138  B       0          pip        2
+  7  2026-11-02T12:28:14.447  A       1          requests   4
+  8  2026-11-02T12:28:14.447  B       0          pip        3
+  9  2026-11-02T12:28:14.758  A       1          requests   5
+ 10  2026-11-02T12:28:14.758  B       0          lodash     2
+ 11  2026-11-02T12:28:15.070  A       1          requests   6
+ 12  2026-11-02T12:28:15.070  B       0          lodash     3
+ 13  2026-11-02T12:28:15.382  A       1          requests   7
+ 14  2026-11-02T12:28:15.382  B       0          lodash     4
+ 15  2026-11-02T12:28:15.695  A       1          requests   8
+ 16  2026-11-02T12:28:15.695  B       0          lodash     5
+ 17  2026-11-02T12:28:16.005  A       1          requests   9
+ 18  2026-11-02T12:28:16.005  B       0          pip        4
+ 19  2026-11-02T12:28:16.317  A       1          requests   10
+ 20  2026-11-02T12:28:16.317  B       0          lodash     6
+
+Order check per package:
+  lodash    partitions=['0']  processed seq order=[1, 2, 3, 4, 5, 6]  -> IN ORDER
+  pip       partitions=['0']  processed seq order=[1, 2, 3, 4]  -> IN ORDER
+  requests  partitions=['1']  processed seq order=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  -> IN ORDER
