@@ -1,0 +1,65 @@
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> cd .\reports\hw09
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09> python -m venv venv
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09> venv\Scripts\activate 
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09> pip install -r .\requirements.txt
+Collecting redis (from -r .\requirements.txt (line 1))
+  Downloading redis-8.1.0-py3-none-any.whl.metadata (16 kB)
+Collecting sqlalchemy (from -r .\requirements.txt (line 2))
+  Downloading sqlalchemy-2.1.8-cp314-cp314-win_amd64.whl.metadata (9.9 kB)
+Collecting pymysql (from -r .\requirements.txt (line 3))
+  Using cached pymysql-1.2.3-py3-none-any.whl.metadata (4.2 kB)
+Collecting python-dotenv (from -r .\requirements.txt (line 4))
+  Using cached python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+Collecting typing-extensions>=4.6.0 (from sqlalchemy->-r .\requirements.txt (line 2))
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Downloading redis-8.1.0-py3-none-any.whl (560 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 560.6/560.6 kB 14.7 MB/s  0:00:00
+Downloading sqlalchemy-2.1.8-cp314-cp314-win_amd64.whl (2.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.4/2.4 MB 46.0 MB/s  0:00:00
+Using cached pymysql-1.2.3-py3-none-any.whl (46 kB)
+Using cached python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Installing collected packages: typing-extensions, redis, python-dotenv, pymysql, sqlalchemy
+Successfully installed pymysql-1.2.3 python-dotenv-1.2.4 redis-8.1.0 sqlalchemy-2.1.8 typing-extensions-4.16.0
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09> docker compose up -d
+[+] up 14/14
+ ✔ Image redis/redis-stack-server:latest Pulled                                                                21.2s
+ ✔ Network hw09_default                  Created                                                                0.1s
+ ✔ Container s0932_redis                 Started    
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09> python .\view_counter.py
+DATABASE: mysql+pymysql://root:seekrit@localhost:3306/s0932_rel
+connected to redis
+Testing vulnerability id=1 (package: nodejs)
+
+=== Testing Counter ===
+
+Access #1: Total = 1
+Access #2: Total = 2
+Access #3: Total = 3
+Access #4: Total = 4
+Access #5: Total = 5
+Access #6: Total = 6
+Access #7: Total = 7
+Access #8: Total = 8
+Access #9: Total = 9
+✓ Synced views to database
+Access #10: Total = 10
+Access #11: Total = 11
+Access #12: Total = 12
+Access #13: Total = 13
+Access #14: Total = 14
+Access #15: Total = 15
+Access #16: Total = 16
+Access #17: Total = 17
+Access #18: Total = 18
+Access #19: Total = 19
+✓ Synced views to database
+Access #20: Total = 20
+Access #21: Total = 21
+Access #22: Total = 22
+Access #23: Total = 23
+Access #24: Total = 24
+Access #25: Total = 25
+
+database view_count for id=1: 20
+redis value for s0932:views:vulnerability:1: 25
