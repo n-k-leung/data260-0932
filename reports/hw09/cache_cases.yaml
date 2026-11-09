@@ -1,0 +1,60 @@
+seed_queries:
+  - "What should our team do about CVE-2021-23337 in lodash 4.17.20?"
+  - "Which version of requests fixes CVE-2018-18074?"
+  - "What is the CVSS severity rating for a score of 9.8?"
+  - "What is a software bill of materials (SBOM)?"
+  - "Which log4j version fixes the Log4Shell vulnerability CVE-2021-44228?"
+  - "What is a transitive dependency vulnerability?"
+  - "How do we check if our npm project uses a vulnerable package?"
+  - "What type of vulnerability is prototype pollution?"
+  - "How quickly should we patch a Critical severity vulnerability?"
+  - "What is the difference between a CVE and a CWE?"
+
+cases:
+  # ---------- 10 exact duplicates (should hit) ----------
+  - {id: 1, category: exact_duplicate, expected: hit, query: "What should our team do about CVE-2021-23337 in lodash 4.17.20?", seed: "What should our team do about CVE-2021-23337 in lodash 4.17.20?"}
+  - {id: 2, category: exact_duplicate, expected: hit, query: "Which version of requests fixes CVE-2018-18074?", seed: "Which version of requests fixes CVE-2018-18074?"}
+  - {id: 3, category: exact_duplicate, expected: hit, query: "What is the CVSS severity rating for a score of 9.8?", seed: "What is the CVSS severity rating for a score of 9.8?"}
+  - {id: 4, category: exact_duplicate, expected: hit, query: "What is a software bill of materials (SBOM)?", seed: "What is a software bill of materials (SBOM)?"}
+  - {id: 5, category: exact_duplicate, expected: hit, query: "Which log4j version fixes the Log4Shell vulnerability CVE-2021-44228?", seed: "Which log4j version fixes the Log4Shell vulnerability CVE-2021-44228?"}
+  - {id: 6, category: exact_duplicate, expected: hit, query: "What is a transitive dependency vulnerability?", seed: "What is a transitive dependency vulnerability?"}
+  - {id: 7, category: exact_duplicate, expected: hit, query: "How do we check if our npm project uses a vulnerable package?", seed: "How do we check if our npm project uses a vulnerable package?"}
+  - {id: 8, category: exact_duplicate, expected: hit, query: "What type of vulnerability is prototype pollution?", seed: "What type of vulnerability is prototype pollution?"}
+  - {id: 9, category: exact_duplicate, expected: hit, query: "How quickly should we patch a Critical severity vulnerability?", seed: "How quickly should we patch a Critical severity vulnerability?"}
+  - {id: 10, category: exact_duplicate, expected: hit, query: "What is the difference between a CVE and a CWE?", seed: "What is the difference between a CVE and a CWE?"}
+
+  # ---------- 10 paraphrases (should hit) ----------
+  - {id: 11, category: paraphrase, expected: hit, query: "How should we respond to CVE-2021-23337 affecting lodash 4.17.20?", seed: "What should our team do about CVE-2021-23337 in lodash 4.17.20?"}
+  - {id: 12, category: paraphrase, expected: hit, query: "What requests release patches CVE-2018-18074?", seed: "Which version of requests fixes CVE-2018-18074?"}
+  - {id: 13, category: paraphrase, expected: hit, query: "Which severity level does a CVSS score of 9.8 fall into?", seed: "What is the CVSS severity rating for a score of 9.8?"}
+  - {id: 14, category: paraphrase, expected: hit, query: "Can you explain what an SBOM is?", seed: "What is a software bill of materials (SBOM)?"}
+  - {id: 15, category: paraphrase, expected: hit, query: "What log4j version should we upgrade to for Log4Shell (CVE-2021-44228)?", seed: "Which log4j version fixes the Log4Shell vulnerability CVE-2021-44228?"}
+  - {id: 16, category: paraphrase, expected: hit, query: "What does it mean when a vulnerability is in a transitive dependency?", seed: "What is a transitive dependency vulnerability?"}
+  - {id: 17, category: paraphrase, expected: hit, query: "How can we find vulnerable packages in our npm project?", seed: "How do we check if our npm project uses a vulnerable package?"}
+  - {id: 18, category: paraphrase, expected: hit, query: "Can you explain the prototype pollution vulnerability type?", seed: "What type of vulnerability is prototype pollution?"}
+  - {id: 19, category: paraphrase, expected: hit, query: "What is the recommended time to fix a Critical vulnerability?", seed: "How quickly should we patch a Critical severity vulnerability?"}
+  - {id: 20, category: paraphrase, expected: hit, query: "How is a CVE different from a CWE?", seed: "What is the difference between a CVE and a CWE?"}
+
+  # ---------- 10 superficially similar, different correct answer (should miss) ----------
+  - {id: 21, category: similar_different, expected: miss, query: "What should our team do about CVE-2020-8203 in lodash 4.17.15?", seed: "What should our team do about CVE-2021-23337 in lodash 4.17.20?"}
+  - {id: 22, category: similar_different, expected: miss, query: "Which version of requests fixes CVE-2023-32681?", seed: "Which version of requests fixes CVE-2018-18074?"}
+  - {id: 23, category: similar_different, expected: miss, query: "What is the CVSS severity rating for a score of 5.3?", seed: "What is the CVSS severity rating for a score of 9.8?"}
+  - {id: 24, category: similar_different, expected: miss, query: "What is a vulnerability exploitability exchange (VEX) document?", seed: "What is a software bill of materials (SBOM)?"}
+  - {id: 25, category: similar_different, expected: miss, query: "Which log4j version fixes CVE-2021-45046?", seed: "Which log4j version fixes the Log4Shell vulnerability CVE-2021-44228?"}
+  - {id: 26, category: similar_different, expected: miss, query: "What is a direct dependency vulnerability?", seed: "What is a transitive dependency vulnerability?"}
+  - {id: 27, category: similar_different, expected: miss, query: "How do we check if our Python project uses a vulnerable package?", seed: "How do we check if our npm project uses a vulnerable package?"}
+  - {id: 28, category: similar_different, expected: miss, query: "What type of vulnerability is a regular expression denial of service (ReDoS)?", seed: "What type of vulnerability is prototype pollution?"}
+  - {id: 29, category: similar_different, expected: miss, query: "How quickly should we patch a Low severity vulnerability?", seed: "How quickly should we patch a Critical severity vulnerability?"}
+  - {id: 30, category: similar_different, expected: miss, query: "What is the difference between a CVE and a GHSA advisory?", seed: "What is the difference between a CVE and a CWE?"}
+
+  # ---------- 10 unrelated (should miss) ----------
+  - {id: 31, category: unrelated, expected: miss, query: "What is the capital of Australia?"}
+  - {id: 32, category: unrelated, expected: miss, query: "How do I bake sourdough bread?"}
+  - {id: 33, category: unrelated, expected: miss, query: "Who won the 2018 FIFA World Cup?"}
+  - {id: 34, category: unrelated, expected: miss, query: "What is the boiling point of water at sea level?"}
+  - {id: 35, category: unrelated, expected: miss, query: "How do I make a pivot table in Excel?"}
+  - {id: 36, category: unrelated, expected: miss, query: "What is the tallest mountain in the world?"}
+  - {id: 37, category: unrelated, expected: miss, query: "How many planets are in our solar system?"}
+  - {id: 38, category: unrelated, expected: miss, query: "What is a good stretching routine before running?"}
+  - {id: 39, category: unrelated, expected: miss, query: "How do I change a flat bicycle tire?"}
+  - {id: 40, category: unrelated, expected: miss, query: "What is the plot of Romeo and Juliet?"}
