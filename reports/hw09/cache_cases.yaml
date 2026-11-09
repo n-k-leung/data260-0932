@@ -11,7 +11,6 @@ seed_queries:
   - "What is the difference between a CVE and a CWE?"
 
 cases:
-  # ---------- 10 exact duplicates (should hit) ----------
   - {id: 1, category: exact_duplicate, expected: hit, query: "What should our team do about CVE-2021-23337 in lodash 4.17.20?", seed: "What should our team do about CVE-2021-23337 in lodash 4.17.20?"}
   - {id: 2, category: exact_duplicate, expected: hit, query: "Which version of requests fixes CVE-2018-18074?", seed: "Which version of requests fixes CVE-2018-18074?"}
   - {id: 3, category: exact_duplicate, expected: hit, query: "What is the CVSS severity rating for a score of 9.8?", seed: "What is the CVSS severity rating for a score of 9.8?"}
@@ -22,8 +21,6 @@ cases:
   - {id: 8, category: exact_duplicate, expected: hit, query: "What type of vulnerability is prototype pollution?", seed: "What type of vulnerability is prototype pollution?"}
   - {id: 9, category: exact_duplicate, expected: hit, query: "How quickly should we patch a Critical severity vulnerability?", seed: "How quickly should we patch a Critical severity vulnerability?"}
   - {id: 10, category: exact_duplicate, expected: hit, query: "What is the difference between a CVE and a CWE?", seed: "What is the difference between a CVE and a CWE?"}
-
-  # ---------- 10 paraphrases (should hit) ----------
   - {id: 11, category: paraphrase, expected: hit, query: "How should we respond to CVE-2021-23337 affecting lodash 4.17.20?", seed: "What should our team do about CVE-2021-23337 in lodash 4.17.20?"}
   - {id: 12, category: paraphrase, expected: hit, query: "What requests release patches CVE-2018-18074?", seed: "Which version of requests fixes CVE-2018-18074?"}
   - {id: 13, category: paraphrase, expected: hit, query: "Which severity level does a CVSS score of 9.8 fall into?", seed: "What is the CVSS severity rating for a score of 9.8?"}
@@ -34,8 +31,6 @@ cases:
   - {id: 18, category: paraphrase, expected: hit, query: "Can you explain the prototype pollution vulnerability type?", seed: "What type of vulnerability is prototype pollution?"}
   - {id: 19, category: paraphrase, expected: hit, query: "What is the recommended time to fix a Critical vulnerability?", seed: "How quickly should we patch a Critical severity vulnerability?"}
   - {id: 20, category: paraphrase, expected: hit, query: "How is a CVE different from a CWE?", seed: "What is the difference between a CVE and a CWE?"}
-
-  # ---------- 10 superficially similar, different correct answer (should miss) ----------
   - {id: 21, category: similar_different, expected: miss, query: "What should our team do about CVE-2020-8203 in lodash 4.17.15?", seed: "What should our team do about CVE-2021-23337 in lodash 4.17.20?"}
   - {id: 22, category: similar_different, expected: miss, query: "Which version of requests fixes CVE-2023-32681?", seed: "Which version of requests fixes CVE-2018-18074?"}
   - {id: 23, category: similar_different, expected: miss, query: "What is the CVSS severity rating for a score of 5.3?", seed: "What is the CVSS severity rating for a score of 9.8?"}
@@ -46,8 +41,6 @@ cases:
   - {id: 28, category: similar_different, expected: miss, query: "What type of vulnerability is a regular expression denial of service (ReDoS)?", seed: "What type of vulnerability is prototype pollution?"}
   - {id: 29, category: similar_different, expected: miss, query: "How quickly should we patch a Low severity vulnerability?", seed: "How quickly should we patch a Critical severity vulnerability?"}
   - {id: 30, category: similar_different, expected: miss, query: "What is the difference between a CVE and a GHSA advisory?", seed: "What is the difference between a CVE and a CWE?"}
-
-  # ---------- 10 unrelated (should miss) ----------
   - {id: 31, category: unrelated, expected: miss, query: "What is the capital of Australia?"}
   - {id: 32, category: unrelated, expected: miss, query: "How do I bake sourdough bread?"}
   - {id: 33, category: unrelated, expected: miss, query: "Who won the 2018 FIFA World Cup?"}

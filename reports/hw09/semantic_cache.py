@@ -48,8 +48,9 @@ async def ask_agents(question):
 
 
 class SemanticResponseCache:
-    def __init__(self, threshold=THRESHOLD):
+    def __init__(self, threshold=THRESHOLD, check_data_version=True):
         self.threshold = threshold
+        self.check_data_version = check_data_version
         self.redis_client = redis.Redis(host="localhost", port=6379, decode_responses=True)
         self.redis_client.ping()
         self.model = SentenceTransformer(EMBEDDING_MODEL)
@@ -77,6 +78,10 @@ class SemanticResponseCache:
         self.redis_client.setnx(DATA_VERSION_KEY, 1)
         return self.redis_client.get(DATA_VERSION_KEY)
 
+    def bump_data_version(self):
+        self.get_data_version()
+        return self.redis_client.incr(DATA_VERSION_KEY)
+
     def find_most_similar(self, embedding):
         query = (
             Query("*=>[KNN 1 @embedding $vec AS distance]")
@@ -102,14 +107,17 @@ class SemanticResponseCache:
         })
         return key
 
-    def handle_query(self, question):
+    def handle_query(self, question, context=None):
         log(f"Start: {question}")
         start = time.perf_counter()
         embedding = self.embed(question)
         best, similarity = self.find_most_similar(embedding)
-
+        if (best is not None and similarity >= self.threshold and self.check_data_version and best.data_version != self.get_data_version()):
+            log(f"Stale answer (cached data_version {best.data_version}, current {self.get_data_version()}), deleting it")
+            self.redis_client.delete(best.id)
+            best = None
         if best is not None and similarity >= self.threshold:
-            latency_ms = (time.perf_counter() - start) * 1000
+            latency_ms = (time.perf_counter() - start)*1000
             log(f"Cache hit, similarity {similarity:.3f}, matched: {best.query}")
             log(f"End: {latency_ms:.1f} ms")
             return {
@@ -122,7 +130,8 @@ class SemanticResponseCache:
                 "latency_ms": round(latency_ms, 1),
             }
         log(f"Cache miss, best similarity {similarity:.3f}, asking the agents")
-        result = asyncio.run(ask_agents(question))
+        agent_question = question if context is None else f"{question}\n\n{context}"
+        result = asyncio.run(ask_agents(agent_question))
         answer = result["answer"]
         self.store(question, embedding, answer)
 

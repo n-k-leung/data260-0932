@@ -1,0 +1,262 @@
+[
+  {
+    "threshold": 0.75,
+    "case_id": 21,
+    "category": "similar_different",
+    "incoming_query": "What should our team do about CVE-2020-8203 in lodash 4.17.15?",
+    "cached_query": "What should our team do about CVE-2021-23337 in lodash 4.17.20?",
+    "similarity": 0.963,
+    "cached_answer_returned": "Verify if your project uses lodash 4.17.20. If so, assess the vulnerability's impact on your code. CVE-2021-23337 allows remote code execution, making it critical. Update to a patched version (e.g., 4.17.21 or later) as soon as possible. If an update isn't feasible, implement a mitigation strategy, such as input sanitization or limiting lodash usage. Prioritize security to prevent potential exploitation.",
+    "correct_answer": "To address CVE-2020-8203 in lodash 4.17.15, first confirm if this version is still used in your project. Then, check if a patched version (e.g., 4.17.16 or later) is available and compatible. Update lodash and all dependent packages to the secure version to eliminate the vulnerability. Ensure your dependency tree is fully updated to prevent reintroduction of the issue."
+  },
+  {
+    "threshold": 0.75,
+    "case_id": 22,
+    "category": "similar_different",
+    "incoming_query": "Which version of requests fixes CVE-2023-32681?",
+    "cached_query": "Which version of requests fixes CVE-2018-18074?",
+    "similarity": 0.958,
+    "cached_answer_returned": "CVE-2018-18074 relates to a vulnerability in the `requests` package where improper handling of certain HTTP headers could lead to information disclosure. The fix for this vulnerability was included in `requests` version 2.19.1, released on April 10, 2019. This version addresses the issue by properly validating and sanitizing headers. You can verify this fix by checking the [PyPI release notes](https://pypi.org/project/requests/2.19.1/) or the [CVE details page](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-18074). Upgrading to version 2.19.1 or later is recommended to resolve this vulnerability.",
+    "correct_answer": "CVE-2023-32681 affects the `requests` package by allowing unauthorized access to certain headers in specific scenarios. The vulnerability was addressed in `requests` version 2.29.0. Users should upgrade to **requests 2.29.0 or later** to resolve this issue. This version includes the necessary security patch to prevent unauthorized header access. Always verify the release notes for confirmation."
+  },
+  {
+    "threshold": 0.75,
+    "case_id": 23,
+    "category": "similar_different",
+    "incoming_query": "What is the CVSS severity rating for a score of 5.3?",
+    "cached_query": "What is the CVSS severity rating for a score of 9.8?",
+    "similarity": 0.934,
+    "cached_answer_returned": "CVSS v3 is used for scores above 7.0. A CVSS score of 9.8 falls within the range of 9.0\u201310.0, which corresponds to a **Critical** severity rating.",
+    "correct_answer": "The CVSS version is typically v3.1 unless specified otherwise. A score of 5.3 falls within the \"Medium\" severity rating range, which is defined as scores between 4.0 and 6.9 in CVSS v3.1. Therefore, the severity rating for a CVSS score of 5.3 is Medium."
+  },
+  {
+    "threshold": 0.75,
+    "case_id": 25,
+    "category": "similar_different",
+    "incoming_query": "Which log4j version fixes CVE-2021-45046?",
+    "cached_query": "Which log4j version fixes the Log4Shell vulnerability CVE-2021-44228?",
+    "similarity": 0.904,
+    "cached_answer_returned": "The Log4Shell vulnerability (CVE-2021-44228) is fixed in Log4j version 2.15.0 and later. The minimum recommended version to address the vulnerability is 2.15.0, as confirmed by the Apache Software Foundation in their official release notes and security advisories. Upgrading to this version or newer ensures the patch is applied, mitigating the risk of remote code execution.",
+    "correct_answer": "CVE-2021-45046 refers to the Log4j vulnerability that allows remote code execution via JNDI lookup in log messages. The fix for this vulnerability was included in **Log4j 2.15.0**, released on December 10, 2021. This version disables JNDI lookups by default, mitigating the risk. The Apache Software Foundation and cybersecurity databases like NVD confirm that **Log4j 2.15.0** is the recommended version to address CVE-2021-45046. Users should upgrade to this version or later to ensure security."
+  },
+  {
+    "threshold": 0.75,
+    "case_id": 26,
+    "category": "similar_different",
+    "incoming_query": "What is a direct dependency vulnerability?",
+    "cached_query": "What is a transitive dependency vulnerability?",
+    "similarity": 0.825,
+    "cached_answer_returned": "A transitive dependency is an indirect dependency introduced through a direct dependency in a software project. A transitive dependency vulnerability occurs when a vulnerable library is included via another library, without the developer explicitly knowing about it. This can happen when a dependency's sub-dependency contains a security flaw. The potential risks include unexpected security breaches, data leaks, and system instability, as the vulnerability may be exploited through the indirect dependency, compromising the entire application. These vulnerabilities are often difficult to detect and mitigate without proper dependency management tools.",
+    "correct_answer": "A direct dependency is a library or package explicitly required by a project. A vulnerability in a direct dependency can directly impact the project's security and functionality, as the vulnerable component is actively used. For example, a flaw in a direct dependency could allow attackers to exploit the main project. Tools like **npm audit**, **OWASP Dependency-Check**, and **Snyk** help identify and manage these vulnerabilities by scanning dependencies and providing remediation guidance. Regular updates and dependency tracking are essential to mitigate risks."
+  },
+  {
+    "threshold": 0.75,
+    "case_id": 27,
+    "category": "similar_different",
+    "incoming_query": "How do we check if our Python project uses a vulnerable package?",
+    "cached_query": "How do we check if our npm project uses a vulnerable package?",
+    "similarity": 0.801,
+    "cached_answer_returned": "Run `npm audit` to identify known vulnerabilities in your project's dependencies. Review the audit report to see which packages are flagged as vulnerable. Check the specific versions of these packages in your `package.json` to determine if they are currently in use. If a vulnerable version is present, consider updating to a secure version using `npm update` or specifying a safe version in the `package.json`. Always verify the fix with another `npm audit` to ensure the issue is resolved.",
+    "correct_answer": "To check for vulnerable packages in your Python project:  \n1. Use `pip freeze` or `pipdeptree` to list all installed packages and their versions.  \n2. Run `safety check` or `bandit -r .` to scan for known vulnerabilities.  \n3. Review the output to identify any vulnerable packages and update them via `pip install --upgrade <package>`. This ensures your project remains secure."
+  },
+  {
+    "threshold": 0.75,
+    "case_id": 29,
+    "category": "similar_different",
+    "incoming_query": "How quickly should we patch a Low severity vulnerability?",
+    "cached_query": "How quickly should we patch a Critical severity vulnerability?",
+    "similarity": 0.935,
+    "cached_answer_returned": "Patch a Critical severity vulnerability immediately. Assess the risk and prioritize based on system criticality and user impact. Apply the patch within 24\u201348 hours if a reliable fix is available. Communicate the action to stakeholders promptly to ensure transparency and minimize exposure. swift response is essential to prevent exploitation and protect users.",
+    "correct_answer": "For a Low severity vulnerability, patching should align with your organization's security policies and risk tolerance. If the vulnerability does not affect your specific use case or systems, a delayed patch may be acceptable. However, if it impacts critical systems or data, prioritize it sooner. Generally, Low severity issues should be addressed within 30\u201390 days, depending on your internal guidelines. Always consider available mitigations and system criticality when determining the timeline."
+  },
+  {
+    "threshold": 0.8,
+    "case_id": 21,
+    "category": "similar_different",
+    "incoming_query": "What should our team do about CVE-2020-8203 in lodash 4.17.15?",
+    "cached_query": "What should our team do about CVE-2021-23337 in lodash 4.17.20?",
+    "similarity": 0.963,
+    "cached_answer_returned": "Verify if your project uses lodash 4.17.20. If so, assess the vulnerability's impact on your code. CVE-2021-23337 allows remote code execution, making it critical. Update to a patched version (e.g., 4.17.21 or later) as soon as possible. If an update isn't feasible, implement a mitigation strategy, such as input sanitization or limiting lodash usage. Prioritize security to prevent potential exploitation.",
+    "correct_answer": "To address CVE-2020-8203 in lodash 4.17.15, first confirm if this version is still used in your project. Then, check if a patched version (e.g., 4.17.16 or later) is available and compatible. Update lodash and all dependent packages to the secure version to eliminate the vulnerability. Ensure your dependency tree is fully updated to prevent reintroduction of the issue."
+  },
+  {
+    "threshold": 0.8,
+    "case_id": 22,
+    "category": "similar_different",
+    "incoming_query": "Which version of requests fixes CVE-2023-32681?",
+    "cached_query": "Which version of requests fixes CVE-2018-18074?",
+    "similarity": 0.958,
+    "cached_answer_returned": "CVE-2018-18074 relates to a vulnerability in the `requests` package where improper handling of certain HTTP headers could lead to information disclosure. The fix for this vulnerability was included in `requests` version 2.19.1, released on April 10, 2019. This version addresses the issue by properly validating and sanitizing headers. You can verify this fix by checking the [PyPI release notes](https://pypi.org/project/requests/2.19.1/) or the [CVE details page](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-18074). Upgrading to version 2.19.1 or later is recommended to resolve this vulnerability.",
+    "correct_answer": "CVE-2023-32681 affects the `requests` package by allowing unauthorized access to certain headers in specific scenarios. The vulnerability was addressed in `requests` version 2.29.0. Users should upgrade to **requests 2.29.0 or later** to resolve this issue. This version includes the necessary security patch to prevent unauthorized header access. Always verify the release notes for confirmation."
+  },
+  {
+    "threshold": 0.8,
+    "case_id": 23,
+    "category": "similar_different",
+    "incoming_query": "What is the CVSS severity rating for a score of 5.3?",
+    "cached_query": "What is the CVSS severity rating for a score of 9.8?",
+    "similarity": 0.934,
+    "cached_answer_returned": "CVSS v3 is used for scores above 7.0. A CVSS score of 9.8 falls within the range of 9.0\u201310.0, which corresponds to a **Critical** severity rating.",
+    "correct_answer": "The CVSS version is typically v3.1 unless specified otherwise. A score of 5.3 falls within the \"Medium\" severity rating range, which is defined as scores between 4.0 and 6.9 in CVSS v3.1. Therefore, the severity rating for a CVSS score of 5.3 is Medium."
+  },
+  {
+    "threshold": 0.8,
+    "case_id": 25,
+    "category": "similar_different",
+    "incoming_query": "Which log4j version fixes CVE-2021-45046?",
+    "cached_query": "Which log4j version fixes the Log4Shell vulnerability CVE-2021-44228?",
+    "similarity": 0.904,
+    "cached_answer_returned": "The Log4Shell vulnerability (CVE-2021-44228) is fixed in Log4j version 2.15.0 and later. The minimum recommended version to address the vulnerability is 2.15.0, as confirmed by the Apache Software Foundation in their official release notes and security advisories. Upgrading to this version or newer ensures the patch is applied, mitigating the risk of remote code execution.",
+    "correct_answer": "CVE-2021-45046 refers to the Log4j vulnerability that allows remote code execution via JNDI lookup in log messages. The fix for this vulnerability was included in **Log4j 2.15.0**, released on December 10, 2021. This version disables JNDI lookups by default, mitigating the risk. The Apache Software Foundation and cybersecurity databases like NVD confirm that **Log4j 2.15.0** is the recommended version to address CVE-2021-45046. Users should upgrade to this version or later to ensure security."
+  },
+  {
+    "threshold": 0.8,
+    "case_id": 26,
+    "category": "similar_different",
+    "incoming_query": "What is a direct dependency vulnerability?",
+    "cached_query": "What is a transitive dependency vulnerability?",
+    "similarity": 0.825,
+    "cached_answer_returned": "A transitive dependency is an indirect dependency introduced through a direct dependency in a software project. A transitive dependency vulnerability occurs when a vulnerable library is included via another library, without the developer explicitly knowing about it. This can happen when a dependency's sub-dependency contains a security flaw. The potential risks include unexpected security breaches, data leaks, and system instability, as the vulnerability may be exploited through the indirect dependency, compromising the entire application. These vulnerabilities are often difficult to detect and mitigate without proper dependency management tools.",
+    "correct_answer": "A direct dependency is a library or package explicitly required by a project. A vulnerability in a direct dependency can directly impact the project's security and functionality, as the vulnerable component is actively used. For example, a flaw in a direct dependency could allow attackers to exploit the main project. Tools like **npm audit**, **OWASP Dependency-Check**, and **Snyk** help identify and manage these vulnerabilities by scanning dependencies and providing remediation guidance. Regular updates and dependency tracking are essential to mitigate risks."
+  },
+  {
+    "threshold": 0.8,
+    "case_id": 27,
+    "category": "similar_different",
+    "incoming_query": "How do we check if our Python project uses a vulnerable package?",
+    "cached_query": "How do we check if our npm project uses a vulnerable package?",
+    "similarity": 0.801,
+    "cached_answer_returned": "Run `npm audit` to identify known vulnerabilities in your project's dependencies. Review the audit report to see which packages are flagged as vulnerable. Check the specific versions of these packages in your `package.json` to determine if they are currently in use. If a vulnerable version is present, consider updating to a secure version using `npm update` or specifying a safe version in the `package.json`. Always verify the fix with another `npm audit` to ensure the issue is resolved.",
+    "correct_answer": "To check for vulnerable packages in your Python project:  \n1. Use `pip freeze` or `pipdeptree` to list all installed packages and their versions.  \n2. Run `safety check` or `bandit -r .` to scan for known vulnerabilities.  \n3. Review the output to identify any vulnerable packages and update them via `pip install --upgrade <package>`. This ensures your project remains secure."
+  },
+  {
+    "threshold": 0.8,
+    "case_id": 29,
+    "category": "similar_different",
+    "incoming_query": "How quickly should we patch a Low severity vulnerability?",
+    "cached_query": "How quickly should we patch a Critical severity vulnerability?",
+    "similarity": 0.935,
+    "cached_answer_returned": "Patch a Critical severity vulnerability immediately. Assess the risk and prioritize based on system criticality and user impact. Apply the patch within 24\u201348 hours if a reliable fix is available. Communicate the action to stakeholders promptly to ensure transparency and minimize exposure. swift response is essential to prevent exploitation and protect users.",
+    "correct_answer": "For a Low severity vulnerability, patching should align with your organization's security policies and risk tolerance. If the vulnerability does not affect your specific use case or systems, a delayed patch may be acceptable. However, if it impacts critical systems or data, prioritize it sooner. Generally, Low severity issues should be addressed within 30\u201390 days, depending on your internal guidelines. Always consider available mitigations and system criticality when determining the timeline."
+  },
+  {
+    "threshold": 0.85,
+    "case_id": 21,
+    "category": "similar_different",
+    "incoming_query": "What should our team do about CVE-2020-8203 in lodash 4.17.15?",
+    "cached_query": "What should our team do about CVE-2021-23337 in lodash 4.17.20?",
+    "similarity": 0.963,
+    "cached_answer_returned": "Verify if your project uses lodash 4.17.20. If so, assess the vulnerability's impact on your code. CVE-2021-23337 allows remote code execution, making it critical. Update to a patched version (e.g., 4.17.21 or later) as soon as possible. If an update isn't feasible, implement a mitigation strategy, such as input sanitization or limiting lodash usage. Prioritize security to prevent potential exploitation.",
+    "correct_answer": "To address CVE-2020-8203 in lodash 4.17.15, first confirm if this version is still used in your project. Then, check if a patched version (e.g., 4.17.16 or later) is available and compatible. Update lodash and all dependent packages to the secure version to eliminate the vulnerability. Ensure your dependency tree is fully updated to prevent reintroduction of the issue."
+  },
+  {
+    "threshold": 0.85,
+    "case_id": 22,
+    "category": "similar_different",
+    "incoming_query": "Which version of requests fixes CVE-2023-32681?",
+    "cached_query": "Which version of requests fixes CVE-2018-18074?",
+    "similarity": 0.958,
+    "cached_answer_returned": "CVE-2018-18074 relates to a vulnerability in the `requests` package where improper handling of certain HTTP headers could lead to information disclosure. The fix for this vulnerability was included in `requests` version 2.19.1, released on April 10, 2019. This version addresses the issue by properly validating and sanitizing headers. You can verify this fix by checking the [PyPI release notes](https://pypi.org/project/requests/2.19.1/) or the [CVE details page](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-18074). Upgrading to version 2.19.1 or later is recommended to resolve this vulnerability.",
+    "correct_answer": "CVE-2023-32681 affects the `requests` package by allowing unauthorized access to certain headers in specific scenarios. The vulnerability was addressed in `requests` version 2.29.0. Users should upgrade to **requests 2.29.0 or later** to resolve this issue. This version includes the necessary security patch to prevent unauthorized header access. Always verify the release notes for confirmation."
+  },
+  {
+    "threshold": 0.85,
+    "case_id": 23,
+    "category": "similar_different",
+    "incoming_query": "What is the CVSS severity rating for a score of 5.3?",
+    "cached_query": "What is the CVSS severity rating for a score of 9.8?",
+    "similarity": 0.934,
+    "cached_answer_returned": "CVSS v3 is used for scores above 7.0. A CVSS score of 9.8 falls within the range of 9.0\u201310.0, which corresponds to a **Critical** severity rating.",
+    "correct_answer": "The CVSS version is typically v3.1 unless specified otherwise. A score of 5.3 falls within the \"Medium\" severity rating range, which is defined as scores between 4.0 and 6.9 in CVSS v3.1. Therefore, the severity rating for a CVSS score of 5.3 is Medium."
+  },
+  {
+    "threshold": 0.85,
+    "case_id": 25,
+    "category": "similar_different",
+    "incoming_query": "Which log4j version fixes CVE-2021-45046?",
+    "cached_query": "Which log4j version fixes the Log4Shell vulnerability CVE-2021-44228?",
+    "similarity": 0.904,
+    "cached_answer_returned": "The Log4Shell vulnerability (CVE-2021-44228) is fixed in Log4j version 2.15.0 and later. The minimum recommended version to address the vulnerability is 2.15.0, as confirmed by the Apache Software Foundation in their official release notes and security advisories. Upgrading to this version or newer ensures the patch is applied, mitigating the risk of remote code execution.",
+    "correct_answer": "CVE-2021-45046 refers to the Log4j vulnerability that allows remote code execution via JNDI lookup in log messages. The fix for this vulnerability was included in **Log4j 2.15.0**, released on December 10, 2021. This version disables JNDI lookups by default, mitigating the risk. The Apache Software Foundation and cybersecurity databases like NVD confirm that **Log4j 2.15.0** is the recommended version to address CVE-2021-45046. Users should upgrade to this version or later to ensure security."
+  },
+  {
+    "threshold": 0.85,
+    "case_id": 29,
+    "category": "similar_different",
+    "incoming_query": "How quickly should we patch a Low severity vulnerability?",
+    "cached_query": "How quickly should we patch a Critical severity vulnerability?",
+    "similarity": 0.935,
+    "cached_answer_returned": "Patch a Critical severity vulnerability immediately. Assess the risk and prioritize based on system criticality and user impact. Apply the patch within 24\u201348 hours if a reliable fix is available. Communicate the action to stakeholders promptly to ensure transparency and minimize exposure. swift response is essential to prevent exploitation and protect users.",
+    "correct_answer": "For a Low severity vulnerability, patching should align with your organization's security policies and risk tolerance. If the vulnerability does not affect your specific use case or systems, a delayed patch may be acceptable. However, if it impacts critical systems or data, prioritize it sooner. Generally, Low severity issues should be addressed within 30\u201390 days, depending on your internal guidelines. Always consider available mitigations and system criticality when determining the timeline."
+  },
+  {
+    "threshold": 0.9,
+    "case_id": 21,
+    "category": "similar_different",
+    "incoming_query": "What should our team do about CVE-2020-8203 in lodash 4.17.15?",
+    "cached_query": "What should our team do about CVE-2021-23337 in lodash 4.17.20?",
+    "similarity": 0.963,
+    "cached_answer_returned": "Verify if your project uses lodash 4.17.20. If so, assess the vulnerability's impact on your code. CVE-2021-23337 allows remote code execution, making it critical. Update to a patched version (e.g., 4.17.21 or later) as soon as possible. If an update isn't feasible, implement a mitigation strategy, such as input sanitization or limiting lodash usage. Prioritize security to prevent potential exploitation.",
+    "correct_answer": "To address CVE-2020-8203 in lodash 4.17.15, first confirm if this version is still used in your project. Then, check if a patched version (e.g., 4.17.16 or later) is available and compatible. Update lodash and all dependent packages to the secure version to eliminate the vulnerability. Ensure your dependency tree is fully updated to prevent reintroduction of the issue."
+  },
+  {
+    "threshold": 0.9,
+    "case_id": 22,
+    "category": "similar_different",
+    "incoming_query": "Which version of requests fixes CVE-2023-32681?",
+    "cached_query": "Which version of requests fixes CVE-2018-18074?",
+    "similarity": 0.958,
+    "cached_answer_returned": "CVE-2018-18074 relates to a vulnerability in the `requests` package where improper handling of certain HTTP headers could lead to information disclosure. The fix for this vulnerability was included in `requests` version 2.19.1, released on April 10, 2019. This version addresses the issue by properly validating and sanitizing headers. You can verify this fix by checking the [PyPI release notes](https://pypi.org/project/requests/2.19.1/) or the [CVE details page](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-18074). Upgrading to version 2.19.1 or later is recommended to resolve this vulnerability.",
+    "correct_answer": "CVE-2023-32681 affects the `requests` package by allowing unauthorized access to certain headers in specific scenarios. The vulnerability was addressed in `requests` version 2.29.0. Users should upgrade to **requests 2.29.0 or later** to resolve this issue. This version includes the necessary security patch to prevent unauthorized header access. Always verify the release notes for confirmation."
+  },
+  {
+    "threshold": 0.9,
+    "case_id": 23,
+    "category": "similar_different",
+    "incoming_query": "What is the CVSS severity rating for a score of 5.3?",
+    "cached_query": "What is the CVSS severity rating for a score of 9.8?",
+    "similarity": 0.934,
+    "cached_answer_returned": "CVSS v3 is used for scores above 7.0. A CVSS score of 9.8 falls within the range of 9.0\u201310.0, which corresponds to a **Critical** severity rating.",
+    "correct_answer": "The CVSS version is typically v3.1 unless specified otherwise. A score of 5.3 falls within the \"Medium\" severity rating range, which is defined as scores between 4.0 and 6.9 in CVSS v3.1. Therefore, the severity rating for a CVSS score of 5.3 is Medium."
+  },
+  {
+    "threshold": 0.9,
+    "case_id": 25,
+    "category": "similar_different",
+    "incoming_query": "Which log4j version fixes CVE-2021-45046?",
+    "cached_query": "Which log4j version fixes the Log4Shell vulnerability CVE-2021-44228?",
+    "similarity": 0.904,
+    "cached_answer_returned": "The Log4Shell vulnerability (CVE-2021-44228) is fixed in Log4j version 2.15.0 and later. The minimum recommended version to address the vulnerability is 2.15.0, as confirmed by the Apache Software Foundation in their official release notes and security advisories. Upgrading to this version or newer ensures the patch is applied, mitigating the risk of remote code execution.",
+    "correct_answer": "CVE-2021-45046 refers to the Log4j vulnerability that allows remote code execution via JNDI lookup in log messages. The fix for this vulnerability was included in **Log4j 2.15.0**, released on December 10, 2021. This version disables JNDI lookups by default, mitigating the risk. The Apache Software Foundation and cybersecurity databases like NVD confirm that **Log4j 2.15.0** is the recommended version to address CVE-2021-45046. Users should upgrade to this version or later to ensure security."
+  },
+  {
+    "threshold": 0.9,
+    "case_id": 29,
+    "category": "similar_different",
+    "incoming_query": "How quickly should we patch a Low severity vulnerability?",
+    "cached_query": "How quickly should we patch a Critical severity vulnerability?",
+    "similarity": 0.935,
+    "cached_answer_returned": "Patch a Critical severity vulnerability immediately. Assess the risk and prioritize based on system criticality and user impact. Apply the patch within 24\u201348 hours if a reliable fix is available. Communicate the action to stakeholders promptly to ensure transparency and minimize exposure. swift response is essential to prevent exploitation and protect users.",
+    "correct_answer": "For a Low severity vulnerability, patching should align with your organization's security policies and risk tolerance. If the vulnerability does not affect your specific use case or systems, a delayed patch may be acceptable. However, if it impacts critical systems or data, prioritize it sooner. Generally, Low severity issues should be addressed within 30\u201390 days, depending on your internal guidelines. Always consider available mitigations and system criticality when determining the timeline."
+  },
+  {
+    "threshold": 0.95,
+    "case_id": 21,
+    "category": "similar_different",
+    "incoming_query": "What should our team do about CVE-2020-8203 in lodash 4.17.15?",
+    "cached_query": "What should our team do about CVE-2021-23337 in lodash 4.17.20?",
+    "similarity": 0.963,
+    "cached_answer_returned": "Verify if your project uses lodash 4.17.20. If so, assess the vulnerability's impact on your code. CVE-2021-23337 allows remote code execution, making it critical. Update to a patched version (e.g., 4.17.21 or later) as soon as possible. If an update isn't feasible, implement a mitigation strategy, such as input sanitization or limiting lodash usage. Prioritize security to prevent potential exploitation.",
+    "correct_answer": "To address CVE-2020-8203 in lodash 4.17.15, first confirm if this version is still used in your project. Then, check if a patched version (e.g., 4.17.16 or later) is available and compatible. Update lodash and all dependent packages to the secure version to eliminate the vulnerability. Ensure your dependency tree is fully updated to prevent reintroduction of the issue."
+  },
+  {
+    "threshold": 0.95,
+    "case_id": 22,
+    "category": "similar_different",
+    "incoming_query": "Which version of requests fixes CVE-2023-32681?",
+    "cached_query": "Which version of requests fixes CVE-2018-18074?",
+    "similarity": 0.958,
+    "cached_answer_returned": "CVE-2018-18074 relates to a vulnerability in the `requests` package where improper handling of certain HTTP headers could lead to information disclosure. The fix for this vulnerability was included in `requests` version 2.19.1, released on April 10, 2019. This version addresses the issue by properly validating and sanitizing headers. You can verify this fix by checking the [PyPI release notes](https://pypi.org/project/requests/2.19.1/) or the [CVE details page](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-18074). Upgrading to version 2.19.1 or later is recommended to resolve this vulnerability.",
+    "correct_answer": "CVE-2023-32681 affects the `requests` package by allowing unauthorized access to certain headers in specific scenarios. The vulnerability was addressed in `requests` version 2.29.0. Users should upgrade to **requests 2.29.0 or later** to resolve this issue. This version includes the necessary security patch to prevent unauthorized header access. Always verify the release notes for confirmation."
+  }
+]
