@@ -5,3 +5,10 @@
 | 0.85 | 21 | 5 | 52.5 | 12.5 | 1080.6 | 69 |
 | 0.9 | 20 | 5 | 50.0 | 12.5 | 1146.1 | 70 |
 | 0.95 | 14 | 2 | 35.0 | 5.0 | 1523.3 | 46 |
+
+| Variant | Correct answers | Incorrect answers | Average attempts | Average latency (ms) |
+|---|---|---|---|---|
+| Baseline | 3 | 7 | 1.0 | 805.1 |
+| Evaluator Repair | 10 | 0 | 1.7 | 1150.3 |
+| Lesson Memory | 10 | 0 | 1.6 | 1006.4 |
+| Validated Improvement | 10 | 0 | 1.6 | 1031.2 |
