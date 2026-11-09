@@ -63,3 +63,499 @@ Access #25: Total = 25
 
 database view_count for id=1: 20
 redis value for s0932:views:vulnerability:1: 25
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09> pip install -r .\requirements.txt                
+Requirement already satisfied: redis in .\venv\Lib\site-packages (from -r .\requirements.txt (line 1)) (8.1.0)
+Requirement already satisfied: sqlalchemy in .\venv\Lib\site-packages (from -r .\requirements.txt (line 2)) (2.1.8)
+Requirement already satisfied: pymysql in .\venv\Lib\site-packages (from -r .\requirements.txt (line 3)) (1.2.3)
+Requirement already satisfied: python-dotenv in .\venv\Lib\site-packages (from -r .\requirements.txt (line 4)) (1.2.4)
+Collecting sentence-transformers (from -r .\requirements.txt (line 5))
+  Downloading sentence_transformers-6.2.0-py3-none-any.whl.metadata (20 kB)
+Collecting numpy (from -r .\requirements.txt (line 6))
+  Using cached numpy-2.5.4-cp314-cp314-win_amd64.whl.metadata (6.6 kB)
+Collecting aiokafka (from -r .\requirements.txt (line 7))
+  Using cached aiokafka-0.15.0-cp314-cp314-win_amd64.whl.metadata (5.2 kB)
+Collecting ollama (from -r .\requirements.txt (line 8))
+  Using cached ollama-0.6.3-py3-none-any.whl.metadata (7.6 kB)
+Requirement already satisfied: typing-extensions>=4.6.0 in .\venv\Lib\site-packages (from sqlalchemy->-r .\requirements.txt (line 2)) (4.16.0)
+Collecting transformers<6.0.0,>=5.0.0 (from sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading transformers-5.22.2-py3-none-any.whl.metadata (31 kB)
+Collecting tokenizers>=0.19 (from sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading tokenizers-0.23.3-cp310-abi3-win_amd64.whl.metadata (10 kB)
+Collecting huggingface-hub<3.0.0,>=1.3.0 (from sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading huggingface_hub-2.4.0-py3-none-any.whl.metadata (16 kB)
+Collecting torch>=2.2 (from sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading torch-2.15.0-cp314-cp314-win_amd64.whl.metadata (36 kB)
+Collecting scikit-learn>=1.1.0 (from sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached scikit_learn-1.9.1-cp314-cp314-win_amd64.whl.metadata (9.3 kB)
+Collecting scipy>=1.0.0 (from sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached scipy-1.18.1-cp314-cp314-win_amd64.whl.metadata (61 kB)
+Collecting tqdm>=4.0.0 (from sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)
+Collecting click<9.0.0,>=8.4.2 (from huggingface-hub<3.0.0,>=1.3.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading click-8.5.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting filelock>=3.10.0 (from huggingface-hub<3.0.0,>=1.3.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading filelock-4.2.9-py3-none-any.whl.metadata (2.3 kB)
+Collecting fsspec>=2023.5.0 (from huggingface-hub<3.0.0,>=1.3.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached fsspec-2026.9.0-py3-none-any.whl.metadata (10 kB)
+Collecting hf-xet<2.0.0,>=1.6.0 (from huggingface-hub<3.0.0,>=1.3.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading hf_xet-1.8.0-cp38-abi3-win_amd64.whl.metadata (4.9 kB)
+Collecting httpx2<3,>=2.0.0 (from huggingface-hub<3.0.0,>=1.3.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading httpx2-2.16.0-py3-none-any.whl.metadata (10 kB)
+Collecting packaging>=20.9 (from huggingface-hub<3.0.0,>=1.3.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pyyaml>=5.1 (from huggingface-hub<3.0.0,>=1.3.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached pyyaml-6.0.3-cp314-cp314-win_amd64.whl.metadata (2.4 kB)
+Collecting anyio>=4.10 (from httpx2<3,>=2.0.0->huggingface-hub<3.0.0,>=1.3.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading anyio-4.16.0-py3-none-any.whl.metadata (4.7 kB)
+Collecting httpcore2==2.16.0 (from httpx2<3,>=2.0.0->huggingface-hub<3.0.0,>=1.3.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading httpcore2-2.16.0-py3-none-any.whl.metadata (27 kB)
+Collecting idna>=3.18 (from httpx2<3,>=2.0.0->huggingface-hub<3.0.0,>=1.3.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting truststore>=0.10 (from httpx2<3,>=2.0.0->huggingface-hub<3.0.0,>=1.3.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading truststore-0.10.5-py3-none-any.whl.metadata (4.5 kB)
+Collecting h11>=0.16 (from httpcore2==2.16.0->httpx2<3,>=2.0.0->huggingface-hub<3.0.0,>=1.3.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting regex>=2025.10.22 (from transformers<6.0.0,>=5.0.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading regex-2026.11.9-cp314-cp314-win_amd64.whl.metadata (41 kB)
+Collecting typer (from transformers<6.0.0,>=5.0.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading typer-0.28.0-py3-none-any.whl.metadata (16 kB)
+Collecting safetensors>=0.8.0 (from transformers<6.0.0,>=5.0.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached safetensors-0.8.0-cp310-abi3-win_amd64.whl.metadata (4.2 kB)
+Collecting httpx>=0.27 (from ollama->-r .\requirements.txt (line 8))
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting pydantic>=2.9 (from ollama->-r .\requirements.txt (line 8))
+  Downloading pydantic-2.14.3-py3-none-any.whl.metadata (141 kB)
+Collecting certifi (from httpx>=0.27->ollama->-r .\requirements.txt (line 8))
+  Using cached certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx>=0.27->ollama->-r .\requirements.txt (line 8))
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2.9->ollama->-r .\requirements.txt (line 8))
+  Using cached annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.50.4 (from pydantic>=2.9->ollama->-r .\requirements.txt (line 8))
+  Downloading pydantic_core-2.50.4-cp314-cp314-win_amd64.whl.metadata (6.7 kB)
+Collecting typing-inspection>=0.4.4 (from pydantic>=2.9->ollama->-r .\requirements.txt (line 8))
+  Downloading typing_inspection-0.4.5-py3-none-any.whl.metadata (2.6 kB)
+Collecting joblib>=1.4.0 (from scikit-learn>=1.1.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting narwhals>=2.0.1 (from scikit-learn>=1.1.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading narwhals-2.28.0-py3-none-any.whl.metadata (15 kB)
+Collecting threadpoolctl>=3.5.0 (from scikit-learn>=1.1.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading threadpoolctl-3.8.0-py3-none-any.whl.metadata (29 kB)
+Collecting cloudpickle>=3.0 (from joblib>=1.4.0->scikit-learn>=1.1.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Collecting setuptools>=77.0.3 (from torch>=2.2->sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading setuptools-84.2.1-py3-none-any.whl.metadata (6.6 kB)
+Collecting sympy>=1.13.3 (from torch>=2.2->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx>=2.5.1 (from torch>=2.2->sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading networkx-3.7-py3-none-any.whl.metadata (6.7 kB)
+Collecting jinja2 (from torch>=2.2->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch>=2.2->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting colorama (from tqdm>=4.0.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch>=2.2->sentence-transformers->-r .\requirements.txt (line 5))
+  Downloading markupsafe-3.0.4-cp314-cp314-win_amd64.whl.metadata (2.8 kB)
+Collecting shellingham>=1.3.0 (from typer->transformers<6.0.0,>=5.0.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting rich>=13.8.0 (from typer->transformers<6.0.0,>=5.0.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+Collecting annotated-doc>=0.0.2 (from typer->transformers<6.0.0,>=5.0.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached annotated_doc-0.0.5-py3-none-any.whl.metadata (6.5 kB)
+Collecting markdown-it-py>=2.2.0 (from rich>=13.8.0->typer->transformers<6.0.0,>=5.0.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich>=13.8.0->typer->transformers<6.0.0,>=5.0.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=13.8.0->typer->transformers<6.0.0,>=5.0.0->sentence-transformers->-r .\requirements.txt (line 5))
+  Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Downloading sentence_transformers-6.2.0-py3-none-any.whl (760 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 760.7/760.7 kB 3.1 MB/s  0:00:00
+Downloading huggingface_hub-2.4.0-py3-none-any.whl (857 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 857.0/857.0 kB 2.6 MB/s  0:00:00
+Downloading click-8.5.1-py3-none-any.whl (126 kB)
+Downloading hf_xet-1.8.0-cp38-abi3-win_amd64.whl (3.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.9/3.9 MB 3.2 MB/s  0:00:01
+Downloading httpx2-2.16.0-py3-none-any.whl (97 kB)
+Downloading httpcore2-2.16.0-py3-none-any.whl (85 kB)
+Downloading transformers-5.22.2-py3-none-any.whl (13.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.1/13.1 MB 4.2 MB/s  0:00:03
+Downloading tokenizers-0.23.3-cp310-abi3-win_amd64.whl (2.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.9/2.9 MB 5.3 MB/s  0:00:00
+Using cached numpy-2.5.4-cp314-cp314-win_amd64.whl (12.7 MB)
+Using cached aiokafka-0.15.0-cp314-cp314-win_amd64.whl (338 kB)
+Using cached ollama-0.6.3-py3-none-any.whl (16 kB)
+Downloading anyio-4.16.0-py3-none-any.whl (134 kB)
+Downloading filelock-4.2.9-py3-none-any.whl (164 kB)
+Using cached fsspec-2026.9.0-py3-none-any.whl (221 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Using cached idna-3.20-py3-none-any.whl (69 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pydantic-2.14.3-py3-none-any.whl (494 kB)
+Downloading pydantic_core-2.50.4-cp314-cp314-win_amd64.whl (2.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 6.0 MB/s  0:00:00
+Using cached annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Using cached pyyaml-6.0.3-cp314-cp314-win_amd64.whl (156 kB)
+Downloading regex-2026.11.9-cp314-cp314-win_amd64.whl (284 kB)
+Using cached safetensors-0.8.0-cp310-abi3-win_amd64.whl (355 kB)
+Using cached scikit_learn-1.9.1-cp314-cp314-win_amd64.whl (8.4 MB)
+Using cached joblib-1.6.0-py3-none-any.whl (306 kB)
+Using cached cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Downloading narwhals-2.28.0-py3-none-any.whl (490 kB)
+Using cached scipy-1.18.1-cp314-cp314-win_amd64.whl (37.4 MB)
+Downloading threadpoolctl-3.8.0-py3-none-any.whl (32 kB)
+Downloading torch-2.15.0-cp314-cp314-win_amd64.whl (126.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 126.7/126.7 MB 11.6 MB/s  0:00:10
+Downloading networkx-3.7-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 15.5 MB/s  0:00:00
+Downloading setuptools-84.2.1-py3-none-any.whl (876 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 876.3/876.3 kB 16.4 MB/s  0:00:00
+Using cached sympy-1.14.0-py3-none-any.whl (6.3 MB)
+Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+Using cached tqdm-4.70.1-py3-none-any.whl (80 kB)
+Downloading truststore-0.10.5-py3-none-any.whl (19 kB)
+Downloading typing_inspection-0.4.5-py3-none-any.whl (14 kB)
+Using cached certifi-2026.10.23-py3-none-any.whl (135 kB)
+Using cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading markupsafe-3.0.4-cp314-cp314-win_amd64.whl (14 kB)
+Downloading typer-0.28.0-py3-none-any.whl (123 kB)
+Using cached annotated_doc-0.0.5-py3-none-any.whl (5.3 kB)
+Using cached rich-15.0.0-py3-none-any.whl (310 kB)
+Using cached pygments-2.21.0-py3-none-any.whl (1.3 MB)
+Using cached markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Using cached shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+Installing collected packages: mpmath, typing-inspection, truststore, threadpoolctl, sympy, shellingham, setuptools, safetensors, regex, pyyaml, pygments, pydantic-core, packaging, numpy, networkx, narwhals, mdurl, MarkupSafe, idna, hf-xet, h11, fsspec, filelock, colorama, cloudpickle, click, certifi, annotated-types, annotated-doc, aiokafka, tqdm, scipy, pydantic, markdown-it-py, joblib, jinja2, httpcore2, httpcore, anyio, torch, scikit-learn, rich, httpx2, httpx, typer, ollama, huggingface-hub, tokenizers, transformers, sentence-transformers
+Successfully installed MarkupSafe-3.0.4 aiokafka-0.15.0 annotated-doc-0.0.5 annotated-types-0.8.0 anyio-4.16.0 certifi-2026.10.23 click-8.5.1 cloudpickle-3.1.2 colorama-0.4.6 filelock-4.2.9 fsspec-2026.9.0 h11-0.16.0 hf-xet-1.8.0 httpcore-1.0.9 httpcore2-2.16.0 httpx-0.28.1 httpx2-2.16.0 huggingface-hub-2.4.0 idna-3.20 jinja2-3.1.6 joblib-1.6.0 markdown-it-py-4.2.0 mdurl-0.1.2 mpmath-1.3.0 narwhals-2.28.0 networkx-3.7 numpy-2.5.4 ollama-0.6.3 packaging-26.3 pydantic-2.14.3 pydantic-core-2.50.4 pygments-2.21.0 pyyaml-6.0.3 regex-2026.11.9 rich-15.0.0 safetensors-0.8.0 scikit-learn-1.9.1 scipy-1.18.1 sentence-transformers-6.2.0 setuptools-84.2.1 shellingham-1.5.4 sympy-1.14.0 threadpoolctl-3.8.0 tokenizers-0.23.3 torch-2.15.0 tqdm-4.70.1 transformers-5.22.2 truststore-0.10.5 typer-0.28.0 typing-inspection-0.4.5
+
+[notice] A new release of pip is available: 26.2.1 -> 26.3
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09> docker compose up -d
+[+] up 3/3
+ ✔ Container kafka       Started                                                                                           0.6s
+ ✔ Container s0932_redis Started                                                                                           0.6s
+ ✔ Container kafka-init  Started                                                                                           0.6s
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09> 
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09> docker ps
+CONTAINER ID   IMAGE                             COMMAND                  CREATED              STATUS                   PORTS                                         NAMES
+f1eb7142f701   apache/kafka:3.9.2                "/__cacert_entrypoin…"   About a minute ago   Up About a minute        0.0.0.0:9092->9092/tcp, [::]:9092->9092/tcp   kafka
+851666f25aee   redis/redis-stack-server:latest   "/entrypoint.sh"         About a minute ago   Up About a minute        0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp   s0932_redis
+7859a28879e3   postgres:13                       "docker-entrypoint.s…"   6 months ago         Up 5 minutes (healthy)   5432/tcp                                      airflow-postgres-1
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09> docker logs kafka-init
+[2026-11-09 00:45:48,130] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (kafka/172.23.0.3:29092) could not be established. Node may not be available. (org.apache.kafka.clients.NetworkClient)
+[2026-11-09 00:45:48,233] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (kafka/172.23.0.3:29092) could not be established. Node may not be available. (org.apache.kafka.clients.NetworkClient)
+[2026-11-09 00:45:48,435] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (kafka/172.23.0.3:29092) could not be established. Node may not be available. (org.apache.kafka.clients.NetworkClient)
+[2026-11-09 00:45:48,737] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (kafka/172.23.0.3:29092) could not be established. Node may not be available. (org.apache.kafka.clients.NetworkClient)
+[2026-11-09 00:45:49,139] WARN [AdminClient clientId=adminclient-1] Connection to node -1 (kafka/172.23.0.3:29092) could not be established. Node may not be available. (org.apache.kafka.clients.NetworkClient)
+
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+Created topic s0932_inbox.
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+Created topic s0932_tasks.
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+Created topic s0932_drafts.
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+Created topic s0932_final.
+WARNING: Due to limitations in metric names, topics with a period ('.') or underscore ('_') could collide. To avoid issues it is best to use either, but not both.
+Created topic s0932_dead_letter.
+s0932_dead_letter
+s0932_drafts
+s0932_final
+s0932_inbox
+s0932_tasks
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09> ollama pull qwen3:8b
+pulling manifest 
+pulling a3de86cd1c13: 100% ▕▏ 5.2 GB                         
+pulling ae370d884f10: 100% ▕▏ 1.7 KB                         
+pulling d18a5cc71b84: 100% ▕▏  11 KB                         
+pulling cff3f395ef37: 100% ▕▏  120 B                         
+pulling 05a61d37b084: 100% ▕▏  487 B                         
+verifying sha256 digest 
+writing manifest 
+removing unused layers 
+success 
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09\agents> python .\planner.py
+Group Coordinator Request failed: [Error 15] GroupCoordinatorNotAvailableError
+Marking the coordinator dead (node 1)for group s0932-planner-group.
+Marking the coordinator dead (node 1)for group s0932-planner-group.
+Marking the coordinator dead (node 1)for group s0932-planner-group.
+Marking the coordinator dead (node 1)for group s0932-planner-group.
+Marking the coordinator dead (node 1)for group s0932-planner-group.
+Marking the coordinator dead (node 1)for group s0932-planner-group.
+Marking the coordinator dead (node 1)for group s0932-planner-group.
+16:48:17.186 PLANNER Listening on s0932_inbox...
+16:49:24.912 PLANNER RECEIVE from s0932_inbox partition=0 offset=0 correlation_id=cced3418-b270-4625-b0ed-8225a4ee649b
+16:49:24.912 PLANNER question=What should our team do about CVE-2021-23337 in lodash 4.17.20?
+16:50:01.926 PLANNER SEND to s0932_tasks partition=0 offset=0 correlation_id=cced3418-b270-4625-b0ed-8225a4ee649b
+16:50:01.926 PLANNER plan=1. Verify if the affected version of lodash (4.17.20) is actually in use by your project.  
+2. Determine the severity of the vulnerability and whether it impacts your specific use case.  
+3. Plan to update to a patched version of lodash or apply a mitigation strategy if an update is not immediately feasible.
+16:50:04.098 PLANNER RECEIVE from s0932_inbox partition=0 offset=1 correlation_id=2f126c71-15c9-4688-823b-968c3f2080d1
+16:50:04.099 PLANNER question=How should we handle the lodash 4.17.20 vulnerability CVE-2021-23337?
+16:50:05.314 PLANNER SEND to s0932_tasks partition=0 offset=1 correlation_id=2f126c71-15c9-4688-823b-968c3f2080d1
+16:50:05.314 PLANNER plan=1. Identify all dependencies in your project that are using lodash 4.17.20 or a vulnerable version.  
+2. Update the affected packages to a secure version of lodash that is not vulnerable to CVE-2021-23337.  
+3. Run security audits and tests to ensure the update does not break existing functionality and that the vulnerability is fully mitigated.
+16:50:07.070 PLANNER RECEIVE from s0932_inbox partition=0 offset=2 correlation_id=c7916087-cd57-463e-90c7-7af20d2ba9f2
+16:50:07.071 PLANNER question=Which version of requests fixes CVE-2018-18074?
+16:50:08.127 PLANNER SEND to s0932_tasks partition=0 offset=2 correlation_id=c7916087-cd57-463e-90c7-7af20d2ba9f2
+16:50:08.127 PLANNER plan=1. Identify the specific CVE-2018-18074 vulnerability description to understand the issue.  
+2. Check the release notes or security advisories of the `requests` package to find the version that includes the fix.  
+3. Verify the fix by testing the specified version or referencing a trusted security database like CVE details or PyPI.
+16:50:11.006 PLANNER RECEIVE from s0932_inbox partition=0 offset=3 correlation_id=9a349cfa-61d3-4f34-baaf-dea29f1f7c19
+16:50:11.006 PLANNER question=What requests release patches CVE-2018-18074?
+16:50:12.019 PLANNER SEND to s0932_tasks partition=1 offset=0 correlation_id=9a349cfa-61d3-4f34-baaf-dea29f1f7c19
+16:50:12.019 PLANNER plan=1. Identify the specific software or package associated with the CVE-2018-18074 vulnerability.  
+2. Determine which organizations or maintainers are responsible for releasing patches for that vulnerability.  
+3. Research and list the official requests or reports that prompted the release of the patch for CVE-2018-18074.
+16:50:14.085 PLANNER RECEIVE from s0932_inbox partition=0 offset=4 correlation_id=1c4fc4f6-672b-4578-9001-8b40a13717f9
+16:50:14.085 PLANNER question=What is a software bill of materials (SBOM)?
+16:50:14.699 PLANNER SEND to s0932_tasks partition=1 offset=1 correlation_id=1c4fc4f6-672b-4578-9001-8b40a13717f9
+16:50:14.699 PLANNER plan=1. Define what an SBOM is and its purpose in software development.  
+2. Explain the typical components included in an SBOM.  
+3. Describe the benefits of using an SBOM for vulnerability management.
+16:50:16.427 PLANNER RECEIVE from s0932_inbox partition=0 offset=5 correlation_id=1cda0aad-88d8-4d21-b6d2-b6c1dbfeb9f7
+16:50:16.427 PLANNER question=Can you explain what an SBOM is?
+16:50:17.262 PLANNER SEND to s0932_tasks partition=0 offset=3 correlation_id=1cda0aad-88d8-4d21-b6d2-b6c1dbfeb9f7
+16:50:17.262 PLANNER plan=1. Define what an SBOM is and its purpose in software development.  
+2. Explain the common formats used for SBOMs, such as SPDX, CycloneDX, and SWID.  
+3. Describe how SBOMs are used to identify and manage software vulnerabilities.
+16:50:19.190 PLANNER RECEIVE from s0932_inbox partition=0 offset=6 correlation_id=4b11efe4-28fb-4274-9587-03b670d3873d
+16:50:19.190 PLANNER question=How often should we scan our open source dependencies for vulnerabilities?
+16:50:19.888 PLANNER SEND to s0932_tasks partition=0 offset=4 correlation_id=4b11efe4-28fb-4274-9587-03b670d3873d
+16:50:19.888 PLANNER plan=1. Determine the frequency based on your project's release cycle and update schedule.  
+2. Consider using automated tools that provide real-time or scheduled vulnerability scanning.  
+3. Establish a policy for reviewing and addressing vulnerabilities based on their severity and impact.
+16:50:21.552 PLANNER RECEIVE from s0932_inbox partition=0 offset=7 correlation_id=2f9470bf-d7b4-49ce-844c-17141b549787
+16:50:21.552 PLANNER question=What does a CVSS score of 9.8 mean?
+16:50:22.540 PLANNER SEND to s0932_tasks partition=0 offset=5 correlation_id=2f9470bf-d7b4-49ce-844c-17141b549787
+16:50:22.540 PLANNER plan=1. Identify the CVSS score range and what a 9.8 score signifies in terms of severity.  
+2. Explain the factors that contribute to a CVSS score of 9.8, such as exploitability and impact.  
+3. Discuss the implications of a 9.8 CVSS score for vulnerability prioritization and remediation.
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09\agents> python .\writer.py
+16:48:28.863 [WRITER-A] Listening on s0932_tasks... mode=AFTER FIX (idempotency, commit after success, 3 retries + dead letter)
+16:50:01.926 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=0
+16:50:01.926 [WRITER-A] correlation_id=cced3418-b270-4625-b0ed-8225a4ee649b
+16:50:03.298 [WRITER-A] SEND to s0932_drafts partition=0 offset=0 correlation_id=cced3418-b270-4625-b0ed-8225a4ee649b
+16:50:03.298 [WRITER-A] draft=Verify if your project uses lodash 4.17.20. If so, assess the vulnerability's impact on your code. CVE-2021-23337 allows remote code execution, making it high severity. Update to a patched version (e.g., 4.17.21 or later) as soon as possible. If an update isn't feasible, implement input validation or isolate sensitive operations to mitigate risk. Prioritize patching to ensure security.
+16:50:03.300 [WRITER-A] COMMIT partition=0 offset=0 (next offset to read: 1)
+16:50:05.314 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=1
+16:50:05.315 [WRITER-A] correlation_id=2f126c71-15c9-4688-823b-968c3f2080d1
+16:50:06.511 [WRITER-A] SEND to s0932_drafts partition=0 offset=1 correlation_id=2f126c71-15c9-4688-823b-968c3f2080d1
+16:50:06.511 [WRITER-A] draft=To address CVE-2021-23337, first identify all dependencies using lodash 4.17.20 or earlier. Update them to a secure version (e.g., 4.17.21 or later). Then, run security audits and tests to confirm the fix and ensure no functionality is broken. This approach mitigates the vulnerability while maintaining project stability.
+16:50:06.513 [WRITER-A] COMMIT partition=0 offset=1 (next offset to read: 2)
+16:50:08.127 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=2
+16:50:08.127 [WRITER-A] correlation_id=c7916087-cd57-463e-90c7-7af20d2ba9f2
+16:50:10.366 [WRITER-A] SEND to s0932_drafts partition=0 offset=2 correlation_id=c7916087-cd57-463e-90c7-7af20d2ba9f2
+16:50:10.366 [WRITER-A] draft=CVE-2018-18074 relates to a vulnerability in the `requests` package where improper handling of certain HTTP headers could lead to information disclosure. The fix for this vulnerability was included in `requests` version 2.19.1, released on April 10, 2019. This version addresses the issue by properly validating and sanitizing headers. You can verify this fix by checking the [PyPI release notes](https://pypi.org/project/requests/2.19.1/) or the [CVE details page](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-18074). Upgrading to version 2.19.1 or later is recommended to resolve this vulnerability.
+16:50:10.368 [WRITER-A] COMMIT partition=0 offset=2 (next offset to read: 3)
+16:50:12.020 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=0
+16:50:12.020 [WRITER-A] correlation_id=9a349cfa-61d3-4f34-baaf-dea29f1f7c19
+16:50:13.493 [WRITER-A] SEND to s0932_drafts partition=0 offset=3 correlation_id=9a349cfa-61d3-4f34-baaf-dea29f1f7c19
+16:50:13.493 [WRITER-A] draft=CVE-2018-18074 affects the Linux kernel's `ip6gre` module. The patch was released by the Linux kernel maintainers, specifically Linus Torvalds and the kernel development team. The request for the patch originated from a vulnerability report by the National Vulnerability Database (NVD) and was likely triggered by security researchers or users encountering the issue. The official request was not publicly detailed, but the patch was prompted by the discovery of a buffer overflow vulnerability in the IPv6 GRE tunneling code.
+16:50:13.495 [WRITER-A] COMMIT partition=1 offset=0 (next offset to read: 1)
+16:50:14.699 [WRITER-A] RECEIVE from s0932_tasks partition=1 offset=1
+16:50:14.699 [WRITER-A] correlation_id=1c4fc4f6-672b-4578-9001-8b40a13717f9
+16:50:15.976 [WRITER-A] SEND to s0932_drafts partition=0 offset=4 correlation_id=1c4fc4f6-672b-4578-9001-8b40a13717f9
+16:50:15.976 [WRITER-A] draft=An SBOM is a formal document listing all the components, libraries, and dependencies in a software product. Its purpose is to provide transparency and visibility into the software supply chain. Typical components include software names, versions, licenses, and cryptographic hashes. Using an SBOM enhances vulnerability management by enabling quick identification and remediation of security issues, ensuring compliance, and supporting incident response. It also aids in tracking dependencies and reducing the risk of using outdated or insecure components.
+16:50:15.978 [WRITER-A] COMMIT partition=1 offset=1 (next offset to read: 2)
+16:50:17.262 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=3
+16:50:17.262 [WRITER-A] correlation_id=1cda0aad-88d8-4d21-b6d2-b6c1dbfeb9f7
+16:50:18.669 [WRITER-A] SEND to s0932_drafts partition=0 offset=5 correlation_id=1cda0aad-88d8-4d21-b6d2-b6c1dbfeb9f7
+16:50:18.669 [WRITER-A] draft=An SBOM (Software Bill of Materials) is a formal document listing all components, libraries, and dependencies in a software product. Its purpose is to enhance transparency and security by providing visibility into software composition. Common SBOM formats include SPDX, CycloneDX, and SWID, each offering structured data for component tracking. SBOMs help identify and manage vulnerabilities by enabling rapid detection of outdated or insecure components, facilitating patching and compliance efforts. They are essential for secure software development and supply chain risk management.
+16:50:18.671 [WRITER-A] COMMIT partition=0 offset=3 (next offset to read: 4)
+16:50:19.889 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=4
+16:50:19.889 [WRITER-A] correlation_id=4b11efe4-28fb-4274-9587-03b670d3873d
+16:50:21.052 [WRITER-A] SEND to s0932_drafts partition=0 offset=6 correlation_id=4b11efe4-28fb-4274-9587-03b670d3873d
+16:50:21.053 [WRITER-A] draft=Scan your open source dependencies for vulnerabilities regularly, ideally with each code update or release. If your project has a frequent release cycle, scan daily or weekly. For less frequent updates, monthly scans may suffice. Use automated tools like Dependabot or Snyk to enable real-time or scheduled scanning. Establish a policy to address critical vulnerabilities immediately and review lower-severity issues periodically. This ensures your dependencies remain secure and up-to-date.
+16:50:21.054 [WRITER-A] COMMIT partition=0 offset=4 (next offset to read: 5)
+16:50:22.540 [WRITER-A] RECEIVE from s0932_tasks partition=0 offset=5
+16:50:22.540 [WRITER-A] correlation_id=2f9470bf-d7b4-49ce-844c-17141b549787
+16:50:23.969 [WRITER-A] SEND to s0932_drafts partition=0 offset=7 correlation_id=2f9470bf-d7b4-49ce-844c-17141b549787
+16:50:23.970 [WRITER-A] draft=A CVSS score of 9.8 indicates a critical severity level, as it is the highest score (out of 10) and signifies a high-impact, easily exploitable vulnerability. This score typically results from factors like high exploitability, significant impact on confidentiality, integrity, and availability, and minimal required user interaction. A 9.8 score means the vulnerability should be prioritized for immediate remediation to prevent potential system compromise and data loss. Organizations must address such vulnerabilities swiftly to maintain security and minimize risk.
+16:50:23.972 [WRITER-A] COMMIT partition=0 offset=5 (next offset to read: 6)
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09\agents> python .\reviewer.py
+16:48:44.243 REVIEWER Listening on s0932_drafts...
+16:50:03.298 REVIEWER RECEIVE from s0932_drafts partition=0 offset=0 correlation_id=cced3418-b270-4625-b0ed-8225a4ee649b
+16:50:04.058 REVIEWER SEND to s0932_final partition=0 offset=0 correlation_id=cced3418-b270-4625-b0ed-8225a4ee649b
+16:50:04.058 REVIEWER status=approved review=APPROVED  
+The draft clearly outlines the necessary steps to address CVE-2021-23337 in lodash 4.17.20, including verification, impact assessment, mitigation strategies, and prioritization of patching.
+16:50:06.511 REVIEWER RECEIVE from s0932_drafts partition=0 offset=1 correlation_id=2f126c71-15c9-4688-823b-968c3f2080d1
+16:50:07.039 REVIEWER SEND to s0932_final partition=0 offset=1 correlation_id=2f126c71-15c9-4688-823b-968c3f2080d1
+16:50:07.039 REVIEWER status=approved review=APPROVED  
+The draft clearly outlines the steps to address the CVE-2021-23337 vulnerability by updating dependencies and verifying the fix.
+16:50:10.366 REVIEWER RECEIVE from s0932_drafts partition=0 offset=2 correlation_id=c7916087-cd57-463e-90c7-7af20d2ba9f2
+16:50:10.967 REVIEWER SEND to s0932_final partition=0 offset=2 correlation_id=c7916087-cd57-463e-90c7-7af20d2ba9f2
+16:50:10.967 REVIEWER status=approved review=APPROVED  
+The draft correctly identifies the version of `requests` that fixes CVE-2018-18074 and provides accurate information about the fix and recommended action.
+16:50:13.493 REVIEWER RECEIVE from s0932_drafts partition=0 offset=3 correlation_id=9a349cfa-61d3-4f34-baaf-dea29f1f7c19
+16:50:14.053 REVIEWER SEND to s0932_final partition=0 offset=3 correlation_id=9a349cfa-61d3-4f34-baaf-dea29f1f7c19
+16:50:14.053 REVIEWER status=approved review=APPROVED  
+The draft correctly identifies the origin of the patch request for CVE-2018-18074 and explains the context of the vulnerability and its resolution.
+16:50:15.976 REVIEWER RECEIVE from s0932_drafts partition=0 offset=4 correlation_id=1c4fc4f6-672b-4578-9001-8b40a13717f9
+16:50:16.396 REVIEWER SEND to s0932_final partition=0 offset=4 correlation_id=1c4fc4f6-672b-4578-9001-8b40a13717f9
+16:50:16.396 REVIEWER status=approved review=APPROVED  
+The draft clearly and accurately defines an SBOM, explaining its purpose, components, and benefits in a concise manner.
+16:50:18.669 REVIEWER RECEIVE from s0932_drafts partition=0 offset=5 correlation_id=1cda0aad-88d8-4d21-b6d2-b6c1dbfeb9f7
+16:50:19.159 REVIEWER SEND to s0932_final partition=0 offset=5 correlation_id=1cda0aad-88d8-4d21-b6d2-b6c1dbfeb9f7
+16:50:19.159 REVIEWER status=approved review=APPROVED  
+The draft clearly and accurately explains what an SBOM is, its purpose, common formats, and its importance in software security and supply chain management.
+16:50:21.053 REVIEWER RECEIVE from s0932_drafts partition=0 offset=6 correlation_id=4b11efe4-28fb-4274-9587-03b670d3873d
+16:50:21.515 REVIEWER SEND to s0932_final partition=0 offset=6 correlation_id=4b11efe4-28fb-4274-9587-03b670d3873d
+16:50:21.515 REVIEWER status=approved review=APPROVED  
+The draft clearly answers the question by providing a structured approach to scanning frequency based on project needs and recommends tools and policies for maintaining security.
+16:50:23.970 REVIEWER RECEIVE from s0932_drafts partition=0 offset=7 correlation_id=2f9470bf-d7b4-49ce-844c-17141b549787
+16:50:24.432 REVIEWER SEND to s0932_final partition=0 offset=7 correlation_id=2f9470bf-d7b4-49ce-844c-17141b549787
+16:50:24.432 REVIEWER status=approved review=APPROVED  
+The draft accurately explains the significance of a CVSS 9.8 score, its implications, and the urgency of remediation.
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09> venv\Scripts\activate
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09> python .\test_semantic_cache.py
+Loading weights: 100%|█| 103/103 [00:00<00:00, 4
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+16:49:24.870 Created vector index s0932:semantic_cache_idx
+16:49:24.872 Created vector index s0932:semantic_cache_idx
+
+Query 1 (new)
+16:49:24.872 Start: What should our team do about CVE-2021-23337 in lodash 4.17.20?
+16:49:24.885 Cache miss, best similarity 0.000, asking the agents
+16:49:24.911 Sent the question to s0932_inbox (correlation_id cced3418-b270-4625-b0ed-8225a4ee649b)
+16:50:04.059 Got the answer from s0932_final (correlation_id cced3418-b270-4625-b0ed-8225a4ee649b, status approved)
+16:50:04.062 End: 39189.8 ms
+is_cached: False
+similarity: 0.0
+latency: 39189.8 ms
+answer: Verify if your project uses lodash 4.17.20. If so, assess the vulnerability's impact on your code. CVE-2021-23337 allows remote code execution, making it high severity. Update to a patched version (e.g., 4.17.21 or later) as soon as possible. If an update isn't feasible, implement input validation or isolate sensitive operations to mitigate risk. Prioritize patching to ensure security.
+
+Query 2 (exact duplicate)
+16:50:04.063 Start: What should our team do about CVE-2021-23337 in lodash 4.17.20?
+16:50:04.072 Cache hit, similarity 1.000, matched: What should our team do about CVE-2021-23337 in lodash 4.17.20?
+16:50:04.072 End: 8.7 ms
+is_cached: True
+similarity: 1.0
+latency: 8.7 ms
+answer: Verify if your project uses lodash 4.17.20. If so, assess the vulnerability's impact on your code. CVE-2021-23337 allows remote code execution, making it high severity. Update to a patched version (e.g., 4.17.21 or later) as soon as possible. If an update isn't feasible, implement input validation or isolate sensitive operations to mitigate risk. Prioritize patching to ensure security.
+
+Query 3 (paraphrase)
+16:50:04.072 Start: How should we handle the lodash 4.17.20 vulnerability CVE-2021-23337?
+16:50:04.080 Cache miss, best similarity 0.764, asking the agents
+16:50:04.098 Sent the question to s0932_inbox (correlation_id 2f126c71-15c9-4688-823b-968c3f2080d1)
+16:50:07.040 Got the answer from s0932_final (correlation_id 2f126c71-15c9-4688-823b-968c3f2080d1, status approved)
+16:50:07.043 End: 2970.7 ms
+is_cached: False
+similarity: 0.764
+latency: 2970.7 ms
+answer: To address CVE-2021-23337, first identify all dependencies using lodash 4.17.20 or earlier. Update them to a secure version (e.g., 4.17.21 or later). Then, run security audits and tests to confirm the fix and ensure no functionality is broken. This approach mitigates the vulnerability while maintaining project stability.
+
+Query 4 (new)
+16:50:07.044 Start: Which version of requests fixes CVE-2018-18074?
+16:50:07.051 Cache miss, best similarity 0.428, asking the agents
+16:50:07.070 Sent the question to s0932_inbox (correlation_id c7916087-cd57-463e-90c7-7af20d2ba9f2)
+16:50:10.967 Got the answer from s0932_final (correlation_id c7916087-cd57-463e-90c7-7af20d2ba9f2, status approved)
+16:50:10.970 End: 3926.6 ms
+is_cached: False
+similarity: 0.428
+latency: 3926.6 ms
+answer: CVE-2018-18074 relates to a vulnerability in the `requests` package where improper handling of certain HTTP headers could lead to information disclosure. The fix for this vulnerability was included in `requests` version 2.19.1, released on April 10, 2019. This version addresses the issue by properly validating and sanitizing headers. You can verify this fix by checking the [PyPI release notes](https://pypi.org/project/requests/2.19.1/) or the [CVE details page](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-18074). Upgrading to version 2.19.1 or later is recommended to resolve this vulnerability.
+
+Query 5 (exact duplicate)
+16:50:10.971 Start: Which version of requests fixes CVE-2018-18074?
+16:50:10.979 Cache hit, similarity 1.000, matched: Which version of requests fixes CVE-2018-18074?
+16:50:10.979 End: 8.1 ms
+is_cached: True
+similarity: 1.0
+latency: 8.1 ms
+answer: CVE-2018-18074 relates to a vulnerability in the `requests` package where improper handling of certain HTTP headers could lead to information disclosure. The fix for this vulnerability was included in `requests` version 2.19.1, released on April 10, 2019. This version addresses the issue by properly validating and sanitizing headers. You can verify this fix by checking the [PyPI release notes](https://pypi.org/project/requests/2.19.1/) or the [CVE details page](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-18074). Upgrading to version 2.19.1 or later is recommended to resolve this vulnerability.
+
+Query 6 (paraphrase)
+16:50:10.980 Start: What requests release patches CVE-2018-18074?
+16:50:10.987 Cache miss, best similarity 0.788, asking the agents
+16:50:11.006 Sent the question to s0932_inbox (correlation_id 9a349cfa-61d3-4f34-baaf-dea29f1f7c19)
+16:50:14.054 Got the answer from s0932_final (correlation_id 9a349cfa-61d3-4f34-baaf-dea29f1f7c19, status approved)
+16:50:14.057 End: 3077.2 ms
+is_cached: False
+similarity: 0.788
+latency: 3077.2 ms
+answer: CVE-2018-18074 affects the Linux kernel's `ip6gre` module. The patch was released by the Linux kernel maintainers, specifically Linus Torvalds and the kernel development team. The request for the patch originated from a vulnerability report by the National Vulnerability Database (NVD) and was likely triggered by security researchers or users encountering the issue. The official request was not publicly detailed, but the patch was prompted by the discovery of a buffer overflow vulnerability in the IPv6 GRE tunneling code.
+
+Query 7 (new)
+16:50:14.058 Start: What is a software bill of materials (SBOM)?
+16:50:14.067 Cache miss, best similarity 0.262, asking the agents
+16:50:14.085 Sent the question to s0932_inbox (correlation_id 1c4fc4f6-672b-4578-9001-8b40a13717f9)
+16:50:16.396 Got the answer from s0932_final (correlation_id 1c4fc4f6-672b-4578-9001-8b40a13717f9, status approved)
+16:50:16.399 End: 2341.2 ms
+is_cached: False
+similarity: 0.262
+latency: 2341.2 ms
+answer: An SBOM is a formal document listing all the components, libraries, and dependencies in a software product. Its purpose is to provide transparency and visibility into the software supply chain. Typical components include software names, versions, licenses, and cryptographic hashes. Using an SBOM enhances vulnerability management by enabling quick identification and remediation of security issues, ensuring compliance, and supporting incident response. It also aids in tracking dependencies and reducing the risk of using outdated or insecure components.
+
+Query 8 (paraphrase)
+16:50:16.400 Start: Can you explain what an SBOM is?
+16:50:16.408 Cache miss, best similarity 0.601, asking the agents
+16:50:16.427 Sent the question to s0932_inbox (correlation_id 1cda0aad-88d8-4d21-b6d2-b6c1dbfeb9f7)
+16:50:19.160 Got the answer from s0932_final (correlation_id 1cda0aad-88d8-4d21-b6d2-b6c1dbfeb9f7, status approved)
+16:50:19.162 End: 2762.4 ms
+is_cached: False
+similarity: 0.601
+latency: 2762.4 ms
+answer: An SBOM (Software Bill of Materials) is a formal document listing all components, libraries, and dependencies in a software product. Its purpose is to enhance transparency and security by providing visibility into software composition. Common SBOM formats include SPDX, CycloneDX, and SWID, each offering structured data for component tracking. SBOMs help identify and manage vulnerabilities by enabling rapid detection of outdated or insecure components, facilitating patching and compliance efforts. They are essential for secure software development and supply chain risk management.
+
+Query 9 (new)
+16:50:19.163 Start: How often should we scan our open source dependencies for vulnerabilities?
+16:50:19.172 Cache miss, best similarity 0.374, asking the agents
+16:50:19.190 Sent the question to s0932_inbox (correlation_id 4b11efe4-28fb-4274-9587-03b670d3873d)
+16:50:21.515 Got the answer from s0932_final (correlation_id 4b11efe4-28fb-4274-9587-03b670d3873d, status approved)
+16:50:21.518 End: 2354.8 ms
+is_cached: False
+similarity: 0.374
+latency: 2354.8 ms
+answer: Scan your open source dependencies for vulnerabilities regularly, ideally with each code update or release. If your project has a frequent release cycle, scan daily or weekly. For less frequent updates, monthly scans may suffice. Use automated tools like Dependabot or Snyk to enable real-time or scheduled scanning. Establish a policy to address critical vulnerabilities immediately and review lower-severity issues periodically. This ensures your dependencies remain secure and up-to-date.
+
+Query 10 (exact duplicate)
+16:50:21.519 Start: How often should we scan our open source dependencies for vulnerabilities?
+16:50:21.527 Cache hit, similarity 1.000, matched: How often should we scan our open source dependencies for vulnerabilities?
+16:50:21.527 End: 7.7 ms
+is_cached: True
+similarity: 1.0
+latency: 7.7 ms
+answer: Scan your open source dependencies for vulnerabilities regularly, ideally with each code update or release. If your project has a frequent release cycle, scan daily or weekly. For less frequent updates, monthly scans may suffice. Use automated tools like Dependabot or Snyk to enable real-time or scheduled scanning. Establish a policy to address critical vulnerabilities immediately and review lower-severity issues periodically. This ensures your dependencies remain secure and up-to-date.
+
+Query 11 (new)
+16:50:21.527 Start: What does a CVSS score of 9.8 mean?
+16:50:21.535 Cache miss, best similarity 0.370, asking the agents
+16:50:21.552 Sent the question to s0932_inbox (correlation_id 2f9470bf-d7b4-49ce-844c-17141b549787)
+16:50:24.432 Got the answer from s0932_final (correlation_id 2f9470bf-d7b4-49ce-844c-17141b549787, status approved)
+16:50:24.435 End: 2908.3 ms
+is_cached: False
+similarity: 0.37
+latency: 2908.3 ms
+answer: A CVSS score of 9.8 indicates a critical severity level, as it is the highest score (out of 10) and signifies a high-impact, easily exploitable vulnerability. This score typically results from factors like high exploitability, significant impact on confidentiality, integrity, and availability, and minimal required user interaction. A 9.8 score means the vulnerability should be prioritized for immediate remediation to prevent potential system compromise and data loss. Organizations must address such vulnerabilities swiftly to maintain security and minimize risk.
+
+Query 12 (paraphrase)
+16:50:24.436 Start: Explain what a CVSS rating of 9.8 means.
+16:50:24.444 Cache hit, similarity 0.946, matched: What does a CVSS score of 9.8 mean?
+16:50:24.444 End: 7.4 ms
+is_cached: True
+similarity: 0.946
+latency: 7.4 ms
+answer: A CVSS score of 9.8 indicates a critical severity level, as it is the highest score (out of 10) and signifies a high-impact, easily exploitable vulnerability. This score typically results from factors like high exploitability, significant impact on confidentiality, integrity, and availability, and minimal required user interaction. A 9.8 score means the vulnerability should be prioritized for immediate remediation to prevent potential system compromise and data loss. Organizations must address such vulnerabilities swiftly to maintain security and minimize risk.
+
+Results
+1. new, is_cached: False, similarity: 0.0, latency: 39189.8 ms, question: What should our team do about CVE-2021-23337 in lodash 4.17.20?
+2. exact duplicate, is_cached: True, similarity: 1.0, latency: 8.7 ms, question: What should our team do about CVE-2021-23337 in lodash 4.17.20?
+3. paraphrase, is_cached: False, similarity: 0.764, latency: 2970.7 ms, question: How should we handle the lodash 4.17.20 vulnerability CVE-2021-23337?
+4. new, is_cached: False, similarity: 0.428, latency: 3926.6 ms, question: Which version of requests fixes CVE-2018-18074?
+5. exact duplicate, is_cached: True, similarity: 1.0, latency: 8.1 ms, question: Which version of requests fixes CVE-2018-18074?
+6. paraphrase, is_cached: False, similarity: 0.788, latency: 3077.2 ms, question: What requests release patches CVE-2018-18074?
+7. new, is_cached: False, similarity: 0.262, latency: 2341.2 ms, question: What is a software bill of materials (SBOM)?
+8. paraphrase, is_cached: False, similarity: 0.601, latency: 2762.4 ms, question: Can you explain what an SBOM is?
+9. new, is_cached: False, similarity: 0.374, latency: 2354.8 ms, question: How often should we scan our open source dependencies for vulnerabilities?
+10. exact duplicate, is_cached: True, similarity: 1.0, latency: 7.7 ms, question: How often should we scan our open source dependencies for vulnerabilities?
+11. new, is_cached: False, similarity: 0.37, latency: 2908.3 ms, question: What does a CVSS score of 9.8 mean?
+12. paraphrase, is_cached: True, similarity: 0.946, latency: 7.4 ms, question: Explain what a CVSS rating of 9.8 means.
+
+Cache hit rate: 4 of 12 (33.3%)
+Average latency, cached: 8.0 ms
+Average latency, not cached: 7441.4 ms

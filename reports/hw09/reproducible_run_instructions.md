@@ -18,7 +18,33 @@ docker compose up -d
 python .\view_counter.py
 
 # Part 2
+1. Change directory to be reports/hw09
+2. Run the following commands
+One terminal:
+venv\Scripts\activate
+pip install -r .\requirements.txt
+docker compose up -d
+docker ps
+docker logs kafka-init
 
+One terminal:
+ollama pull qwen3:8b
+
+One terminal:
+cd .\agents\
+python .\planner.py
+
+One terminal:
+cd .\agents\
+python .\writer.py
+
+One terminal:
+cd .\agents\
+python .\reviewer.py
+
+One terminal:
+venv\Scripts\activate
+python .\test_semantic_cache.py
 
 # Part 3
 

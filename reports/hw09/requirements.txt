@@ -2,3 +2,7 @@ redis
 sqlalchemy
 pymysql
 python-dotenv
+sentence-transformers
+numpy
+aiokafka
+ollama
