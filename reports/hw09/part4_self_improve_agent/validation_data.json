@@ -1,0 +1,10 @@
+[
+  {"id": "val-1", "question": "Which version of semver fixes CVE-2022-25883?"},
+  {"id": "val-2", "question": "What is the severity of CVE-2021-44228 in log4j-core?"},
+  {"id": "val-3", "question": "What is the CVSS score of CVE-2018-18074 in requests?"},
+  {"id": "val-4", "question": "Who won the 2018 FIFA World Cup?"},
+  {"id": "val-5", "question": "What type of vulnerability is CVE-2020-7598 in minimist?"},
+  {"id": "val-6", "question": "Which version of lodash fixes CVE-2020-28500?"},
+  {"id": "val-7", "question": "How many planets are in our solar system?"},
+  {"id": "val-8", "question": "What is the severity of CVE-2023-32681 in requests?"}
+]

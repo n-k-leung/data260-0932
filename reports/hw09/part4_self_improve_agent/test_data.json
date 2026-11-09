@@ -1,0 +1,12 @@
+[
+  {"id": "test-1", "question": "Which version of lodash fixes CVE-2019-10744?"},
+  {"id": "test-2", "question": "What is the severity of CVE-2020-28500 in lodash?"},
+  {"id": "test-3", "question": "What is the CVSS score of CVE-2021-44228 in log4j-core?"},
+  {"id": "test-4", "question": "Which version of requests fixes CVE-2018-18074?"},
+  {"id": "test-5", "question": "What type of vulnerability is CVE-2022-25883 in semver?"},
+  {"id": "test-6", "question": "What is the tallest mountain in the world?"},
+  {"id": "test-7", "question": "What is the severity of CVE-2021-3749 in axios?"},
+  {"id": "test-8", "question": "Which version of minimist fixes CVE-2020-7598?"},
+  {"id": "test-9", "question": "How do I change a flat bicycle tire?"},
+  {"id": "test-10", "question": "What type of vulnerability is CVE-2021-23337 in lodash?"}
+]

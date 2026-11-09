@@ -1,0 +1,11 @@
+[
+  {"id": "train-1", "question": "Which version of lodash fixes CVE-2021-23337?"},
+  {"id": "train-2", "question": "What is the severity of CVE-2018-18074 in requests?"},
+  {"id": "train-3", "question": "Which version of requests fixes CVE-2023-32681?"},
+  {"id": "train-4", "question": "What is the CVSS score of CVE-2019-10744 in lodash?"},
+  {"id": "train-5", "question": "What is the capital of Australia?"},
+  {"id": "train-6", "question": "What type of vulnerability is CVE-2021-3749 in axios?"},
+  {"id": "train-7", "question": "How do I bake sourdough bread?"},
+  {"id": "train-8", "question": "Which version of axios fixes CVE-2021-3749?"},
+  {"id": "train-9", "question": "What is the boiling point of water at sea level?"}
+]
