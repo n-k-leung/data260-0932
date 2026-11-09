@@ -1,0 +1,83 @@
+[
+  {
+    "cve": "CVE-2021-23337",
+    "package": "lodash",
+    "vulnerability_type": "command injection",
+    "type_keywords": ["command injection", "code injection"],
+    "severity": "High",
+    "cvss_score": 7.2,
+    "fixed_versions": ["4.17.21"]
+  },
+  {
+    "cve": "CVE-2019-10744",
+    "package": "lodash",
+    "vulnerability_type": "prototype pollution",
+    "type_keywords": ["prototype pollution"],
+    "severity": "Critical",
+    "cvss_score": 9.1,
+    "fixed_versions": ["4.17.12"]
+  },
+  {
+    "cve": "CVE-2020-28500",
+    "package": "lodash",
+    "vulnerability_type": "regular expression denial of service (ReDoS)",
+    "type_keywords": ["regular expression denial of service", "redos"],
+    "severity": "Medium",
+    "cvss_score": 5.3,
+    "fixed_versions": ["4.17.21"]
+  },
+  {
+    "cve": "CVE-2018-18074",
+    "package": "requests",
+    "vulnerability_type": "credential leak (Authorization header sent after an https to http redirect)",
+    "type_keywords": ["credential", "authorization header", "information exposure", "information disclosure"],
+    "severity": "High",
+    "cvss_score": 7.5,
+    "fixed_versions": ["2.20.0"]
+  },
+  {
+    "cve": "CVE-2023-32681",
+    "package": "requests",
+    "vulnerability_type": "credential leak (Proxy-Authorization header)",
+    "type_keywords": ["proxy-authorization", "credential", "information exposure", "information disclosure"],
+    "severity": "Medium",
+    "cvss_score": 6.1,
+    "fixed_versions": ["2.31.0"]
+  },
+  {
+    "cve": "CVE-2021-44228",
+    "package": "log4j-core",
+    "vulnerability_type": "remote code execution (Log4Shell)",
+    "type_keywords": ["remote code execution", "rce", "code execution"],
+    "severity": "Critical",
+    "cvss_score": 10.0,
+    "fixed_versions": ["2.15.0", "2.16.0", "2.17.0", "2.17.1"]
+  },
+  {
+    "cve": "CVE-2021-3749",
+    "package": "axios",
+    "vulnerability_type": "regular expression denial of service (ReDoS)",
+    "type_keywords": ["regular expression denial of service", "redos"],
+    "severity": "High",
+    "cvss_score": 7.5,
+    "fixed_versions": ["0.21.2"]
+  },
+  {
+    "cve": "CVE-2022-25883",
+    "package": "semver",
+    "vulnerability_type": "regular expression denial of service (ReDoS)",
+    "type_keywords": ["regular expression denial of service", "redos"],
+    "severity": "High",
+    "cvss_score": 7.5,
+    "fixed_versions": ["7.5.2", "6.3.1", "5.7.2"]
+  },
+  {
+    "cve": "CVE-2020-7598",
+    "package": "minimist",
+    "vulnerability_type": "prototype pollution",
+    "type_keywords": ["prototype pollution"],
+    "severity": "Medium",
+    "cvss_score": 5.6,
+    "fixed_versions": ["1.2.2", "0.2.1"]
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "lesson_id": "L1",
+    "failure_pattern": "The answer responds to a question that is not about open source package vulnerabilities.",
+    "correction": "If the question is not about an open source package vulnerability, do not answer it. Reply exactly: \"I can only answer questions about open source package vulnerabilities.\"",
+    "created_at": "2026-11-09",
+    "use_count": 7,
+    "pattern": "unsupported_answer",
+    "topic": "unrelated",
+    "validated": true,
+    "validation_result": "fixed 2, regressions 0"
+  },
+  {
+    "lesson_id": "L2",
+    "failure_pattern": "The answer does not give the exact fixed version.",
+    "correction": "When asked which version fixes a CVE, give one exact version number and say to upgrade to that version or later.",
+    "created_at": "2026-11-09",
+    "use_count": 8,
+    "pattern": "missing_fixed_version",
+    "topic": "fixed_version",
+    "validated": true,
+    "validation_result": "fixed 0, regressions 0"
+  }
+]

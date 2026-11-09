@@ -1513,3 +1513,228 @@ data_version: 2
 answer: The vulnerability code `23s67es` is listed in the database record for the `nodejs` package, and the corresponding severity level is `High`.
 Updated s0932_rel vulnerabilities id=1: severity High -> high
 Data version is now 3
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932> cd .\reports\
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports> cd hw09
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09> cd .\part4_self_improve_agent\
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09\part4_self_improve_agent> python .\train.py
+Controlled test case (4.1): the first answer is intentionally incomplete
+
+Question (train-1): Which version of lodash fixes CVE-2021-23337?
+Lessons loaded: none
+Attempt 1 answer: Upgrade lodash to a newer version.
+Evaluator result: REVISE
+Evaluator explanation: The answer does not give the correct fixed version. The reference dataset says: 4.17.21.
+Evaluator feedback: State the fixed version of CVE-2021-23337 in lodash: 4.17.21.
+Attempt 2 answer: The version of lodash that fixes CVE-2021-23337 is 4.17.21. Upgrade to lodash 4.17.21 or newer to address this vulnerability.
+Evaluator result: PASS
+Evaluator explanation: The answer gives the correct fixed version (4.17.21) from the reference dataset.
+Number of attempts: 2
+Final evaluation: PASS
+Final response: The version of lodash that fixes CVE-2021-23337 is 4.17.21. Upgrade to lodash 4.17.21 or newer to address this vulnerability.
+Latency: 6098.8 ms
+
+Training run (4.2)
+
+Question (train-1): Which version of lodash fixes CVE-2021-23337?
+Lessons loaded: none
+Attempt 1 answer: The vulnerability CVE-2021-23337 is fixed in lodash version 4.17.15 and later. It is recommended to upgrade to the latest stable version of lodash to ensure this fix is applied.
+Evaluator result: REVISE
+Evaluator explanation: The answer does not give the correct fixed version. The reference dataset says: 4.17.21.
+Evaluator feedback: State the fixed version of CVE-2021-23337 in lodash: 4.17.21.
+Attempt 2 answer: The vulnerability CVE-2021-23337 is fixed in lodash version 4.17.21 and later. It is recommended to upgrade to the latest stable version of lodash to ensure this fix is applied.
+Evaluator result: PASS
+Evaluator explanation: The answer gives the correct fixed version (4.17.21) from the reference dataset.
+Number of attempts: 2
+Final evaluation: PASS
+Final response: The vulnerability CVE-2021-23337 is fixed in lodash version 4.17.21 and later. It is recommended to upgrade to the latest stable version of lodash to ensure this fix is applied.
+Latency: 1240.1 ms
+
+Question (train-2): What is the severity of CVE-2018-18074 in requests?
+Lessons loaded: none
+Attempt 1 answer: CVE-2018-18074 in the requests library is rated as a high severity vulnerability. It allows an attacker to perform SSRF (Server Side Request Forgery) attacks by exploiting improper handling of URLs in HTTP requests. This can lead to unauthorized access to internal services.
+Evaluator result: PASS
+Evaluator explanation: The answer gives the correct severity (High) from the reference dataset.
+Number of attempts: 1
+Final evaluation: PASS
+Final response: CVE-2018-18074 in the requests library is rated as a high severity vulnerability. It allows an attacker to perform SSRF (Server Side Request Forgery) attacks by exploiting improper handling of URLs in HTTP requests. This can lead to unauthorized access to internal services.
+Latency: 761.3 ms
+
+Question (train-3): Which version of requests fixes CVE-2023-32681?
+Lessons loaded: none
+Attempt 1 answer: The vulnerability CVE-2023-32681 is fixed in requests version 2.31.0 and later. Ensure you upgrade to one of these versions to address the issue.
+Evaluator result: PASS
+Evaluator explanation: The answer gives the correct fixed version (2.31.0) from the reference dataset.
+Number of attempts: 1
+Final evaluation: PASS
+Final response: The vulnerability CVE-2023-32681 is fixed in requests version 2.31.0 and later. Ensure you upgrade to one of these versions to address the issue.
+Latency: 539.0 ms
+
+Question (train-4): What is the CVSS score of CVE-2019-10744 in lodash?
+Lessons loaded: none
+Attempt 1 answer: The CVSS score for CVE-2019-10744 in lodash is 7.5, which is a high severity rating. This vulnerability allows for prototype pollution, which can lead to unauthorized access and manipulation of objects.
+Evaluator result: REVISE
+Evaluator explanation: The answer does not give the correct CVSS score. The reference dataset says: 9.1.
+Evaluator feedback: State the CVSS score of CVE-2019-10744 in lodash: 9.1.
+Attempt 2 answer: The CVSS score for CVE-2019-10744 in lodash is 9.1, which is a critical severity rating. This vulnerability allows for prototype pollution, which can lead to unauthorized access and manipulation of objects.
+Evaluator result: PASS
+Evaluator explanation: The answer gives the correct CVSS score (9.1) from the reference dataset.
+Number of attempts: 2
+Final evaluation: PASS
+Final response: The CVSS score for CVE-2019-10744 in lodash is 9.1, which is a critical severity rating. This vulnerability allows for prototype pollution, which can lead to unauthorized access and manipulation of objects.
+Latency: 1255.2 ms
+
+Question (train-5): What is the capital of Australia?
+Lessons loaded: none
+Attempt 1 answer: The capital of Australia is Canberra. It is located in the Australian Capital Territory, which is a federal district. Canberra was chosen as the capital in 1908 to resolve a dispute between Sydney and Melbourne.
+Evaluator result: REVISE
+Evaluator explanation: The question is not about a vulnerability in the reference dataset, but the answer gives an unsupported answer.
+Evaluator feedback: Do not answer this question. Reply exactly: "I can only answer questions about open source package vulnerabilities."
+Attempt 2 answer: I can only answer questions about open source package vulnerabilities.
+Evaluator result: PASS
+Evaluator explanation: The question is not in the reference dataset and the answer correctly declines.
+Number of attempts: 2
+Final evaluation: PASS
+Final response: I can only answer questions about open source package vulnerabilities.
+Latency: 716.5 ms
+
+Question (train-6): What type of vulnerability is CVE-2021-3749 in axios?
+Lessons loaded: none
+Attempt 1 answer: CVE-2021-3749 in axios is a **buffer overflow vulnerability** that allows an attacker to execute arbitrary code by providing a specially crafted URL. This vulnerability arises from improper handling of URL parameters in the Axios library, leading to potential remote code execution.
+Evaluator result: REVISE
+Evaluator explanation: The answer does not give the correct vulnerability type. The reference dataset says: regular expression denial of service (ReDoS).
+Evaluator feedback: State the vulnerability type of CVE-2021-3749 in axios: regular expression denial of service (ReDoS).
+Attempt 2 answer: CVE-2021-3749 in axios is a **regular expression denial of service (ReDoS)** vulnerability. It allows an attacker to cause a denial of service by providing a maliciously crafted URL that triggers a vulnerable regular expression, leading to excessive CPU consumption.
+Evaluator result: PASS
+Evaluator explanation: The answer gives the correct vulnerability type (regular expression denial of service (ReDoS)) from the reference dataset.
+Number of attempts: 2
+Final evaluation: PASS
+Final response: CVE-2021-3749 in axios is a **regular expression denial of service (ReDoS)** vulnerability. It allows an attacker to cause a denial of service by providing a maliciously crafted URL that triggers a vulnerable regular expression, leading to excessive CPU consumption.
+Latency: 1434.3 ms
+
+Question (train-7): How do I bake sourdough bread?
+Lessons loaded: none
+Attempt 1 answer: Baking sourdough bread involves creating and maintaining a sourdough starter, which is a fermented dough culture. Once your starter is active, you'll mix it with flour and water to form a dough, let it ferment, shape it, and bake at a high temperature to develop a crisp crust and airy crumb.
+Evaluator result: REVISE
+Evaluator explanation: The question is not about a vulnerability in the reference dataset, but the answer gives an unsupported answer.
+Evaluator feedback: Do not answer this question. Reply exactly: "I can only answer questions about open source package vulnerabilities."
+Attempt 2 answer: I can only answer questions about open source package vulnerabilities.
+Evaluator result: PASS
+Evaluator explanation: The question is not in the reference dataset and the answer correctly declines.
+Number of attempts: 2
+Final evaluation: PASS
+Final response: I can only answer questions about open source package vulnerabilities.
+Latency: 976.2 ms
+New lesson L1 (failure pattern seen 2 times): If the question is not about an open source package vulnerability, do not answer it. Reply exactly: "I can only answer questions about open source package vulnerabilities."
+
+Question (train-8): Which version of axios fixes CVE-2021-3749?
+Lessons loaded: none
+Attempt 1 answer: The vulnerability CVE-2021-3749 is fixed in axios version 1.6.2 and later. It is recommended to upgrade to the latest stable version of axios to ensure this vulnerability is addressed.
+Evaluator result: REVISE
+Evaluator explanation: The answer does not give the correct fixed version. The reference dataset says: 0.21.2.
+Evaluator feedback: State the fixed version of CVE-2021-3749 in axios: 0.21.2.
+Attempt 2 answer: The vulnerability CVE-2021-3749 is fixed in axios version 0.21.2 and later. It is recommended to upgrade to the latest stable version of axios to ensure this vulnerability is addressed.
+Evaluator result: PASS
+Evaluator explanation: The answer gives the correct fixed version (0.21.2) from the reference dataset.
+Number of attempts: 2
+Final evaluation: PASS
+Final response: The vulnerability CVE-2021-3749 is fixed in axios version 0.21.2 and later. It is recommended to upgrade to the latest stable version of axios to ensure this vulnerability is addressed.
+Latency: 1177.7 ms
+New lesson L2 (failure pattern seen 2 times): When asked which version fixes a CVE, give one exact version number and say to upgrade to that version or later.
+
+Question (train-9): What is the boiling point of water at sea level?
+Lessons loaded: L1
+Attempt 1 answer: I can only answer questions about open source package vulnerabilities.
+Evaluator result: PASS
+Evaluator explanation: The question is not in the reference dataset and the answer correctly declines.
+Number of attempts: 1
+Final evaluation: PASS
+Final response: I can only answer questions about open source package vulnerabilities.
+Latency: 171.1 ms
+
+Failure patterns in training: {'missing_fixed_version': 2, 'missing_cvss_score': 1, 'unsupported_answer': 2, 'missing_vulnerability_type': 1}
+Saved 2 lesson(s) in lessons.json
+L1: The answer responds to a question that is not about open source package vulnerabilities. (use_count 1)
+L2: The answer does not give the exact fixed version. (use_count 0)
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09\part4_self_improve_agent> python .\validate.py
+Validation before (no lessons)
+
+Validating lesson L1: If the question is not about an open source package vulnerability, do not answer it. Reply exactly: "I can only answer questions about open source package vulnerabilities."
+val-1 (fixed_version): before REVISE, after REVISE
+val-2 (severity): before PASS, after PASS
+val-3 (cvss_score): before REVISE, after REVISE
+val-4 (unrelated): before REVISE, after PASS
+val-5 (vulnerability_type): before REVISE, after REVISE
+val-6 (fixed_version): before REVISE, after REVISE
+val-7 (unrelated): before REVISE, after PASS
+val-8 (severity): before PASS, after PASS
+Keep L1: fixed 2, regressions 0
+
+Validating lesson L2: When asked which version fixes a CVE, give one exact version number and say to upgrade to that version or later.
+val-1 (fixed_version): before REVISE, after REVISE
+val-2 (severity): before PASS, after PASS
+val-3 (cvss_score): before REVISE, after REVISE
+val-4 (unrelated): before REVISE, after REVISE
+val-5 (vulnerability_type): before REVISE, after REVISE
+val-6 (fixed_version): before REVISE, after REVISE
+val-7 (unrelated): before REVISE, after REVISE
+val-8 (severity): before PASS, after PASS
+Keep L2: fixed 0, regressions 0
+
+Saved the validation result for each lesson in lessons.json
+PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw09\part4_self_improve_agent> python .\evaluate_test.py
+
+Running Baseline (0 lesson(s))
+test-1: PASS in 1 attempt(s), lessons []
+test-2: REVISE in 1 attempt(s), lessons []
+test-3: PASS in 1 attempt(s), lessons []
+test-4: REVISE in 1 attempt(s), lessons []
+test-5: REVISE in 1 attempt(s), lessons []
+test-6: REVISE in 1 attempt(s), lessons []
+test-7: PASS in 1 attempt(s), lessons []
+test-8: REVISE in 1 attempt(s), lessons []
+test-9: REVISE in 1 attempt(s), lessons []
+test-10: REVISE in 1 attempt(s), lessons []
+
+Running Evaluator Repair (0 lesson(s))
+test-1: PASS in 1 attempt(s), lessons []
+test-2: PASS in 2 attempt(s), lessons []
+test-3: PASS in 1 attempt(s), lessons []
+test-4: PASS in 2 attempt(s), lessons []
+test-5: PASS in 2 attempt(s), lessons []
+test-6: PASS in 2 attempt(s), lessons []
+test-7: PASS in 1 attempt(s), lessons []
+test-8: PASS in 2 attempt(s), lessons []
+test-9: PASS in 2 attempt(s), lessons []
+test-10: PASS in 2 attempt(s), lessons []
+
+Running Lesson Memory (2 lesson(s))
+test-1: PASS in 2 attempt(s), lessons ['L2']
+test-2: PASS in 2 attempt(s), lessons []
+test-3: PASS in 1 attempt(s), lessons []
+test-4: PASS in 2 attempt(s), lessons ['L2']
+test-5: PASS in 2 attempt(s), lessons []
+test-6: PASS in 1 attempt(s), lessons ['L1']
+test-7: PASS in 1 attempt(s), lessons []
+test-8: PASS in 2 attempt(s), lessons ['L2']
+test-9: PASS in 1 attempt(s), lessons ['L1']
+test-10: PASS in 2 attempt(s), lessons []
+
+Running Validated Improvement (2 lesson(s))
+test-1: PASS in 2 attempt(s), lessons ['L2']
+test-2: PASS in 2 attempt(s), lessons []
+test-3: PASS in 1 attempt(s), lessons []
+test-4: PASS in 2 attempt(s), lessons ['L2']
+test-5: PASS in 2 attempt(s), lessons []
+test-6: PASS in 1 attempt(s), lessons ['L1']
+test-7: PASS in 1 attempt(s), lessons []
+test-8: PASS in 2 attempt(s), lessons ['L2']
+test-9: PASS in 1 attempt(s), lessons ['L1']
+test-10: PASS in 2 attempt(s), lessons []
+
+Results on test_data.json (10 questions)
+Baseline: correct 3, incorrect 7, average attempts 1.0, average latency 805.1 ms
+Evaluator Repair: correct 10, incorrect 0, average attempts 1.7, average latency 1150.3 ms
+Lesson Memory: correct 10, incorrect 0, average attempts 1.6, average latency 1006.4 ms
+Validated Improvement: correct 10, incorrect 0, average attempts 1.6, average latency 1031.2 ms
+
+Saved raw/part4_test_results.json

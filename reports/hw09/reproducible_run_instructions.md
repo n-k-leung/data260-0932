@@ -78,10 +78,13 @@ python .\threshold_sweep.py
 python .\stale.py
 
 # Part 4
-
+1. Change directory to be reports/hw09/part4_self_improve_agent
+python .\train.py
+python .\validate.py
+python .\evaluate_test.py
 
 # Verifying files
-1. Change directory to be reports/hw09/
+1. Change directory to be reports/hw09/part4_self_improve_agent
 2. Run the following command
 python .\verify-hw09.py
 
