@@ -1,0 +1,51 @@
+{
+  "homework": 10,
+  "sid4": "0932",
+  "commit": "eafbd2c2768d02751ebc79596e689c075109f0bb",
+  "tag": "not tagged",
+  "model": "qwen3:8b",
+  "seed": 932,
+  "verify_seed": 260932,
+  "checks": [
+    {
+      "check": "Redis Stack responds and has vector search",
+      "result": "pass",
+      "detail": "Vector search is available"
+    },
+    {
+      "check": "dashboard has the three pages, @st.cache_data and coordination notes",
+      "result": "pass",
+      "detail": "pages found: True, @st.cache_data used: True, coordination_notes.md exists: True"
+    },
+    {
+      "check": "evaluation has all three scores and the saved Kafka messages",
+      "result": "pass",
+      "detail": "trace b9eed896: plan_quality_score = 4.0, writer_helpfulness_score = 5.0, final_helpfulness_score = 5.0, Kafka metadata saved: True"
+    },
+    {
+      "check": "20 labeled cases and the judge validation statistics",
+      "result": "pass",
+      "detail": "cases: 20, all human labels 1-5: True, spearman = 0.03, mean absolute difference = 3.15, changed = 10.0%"
+    },
+    {
+      "check": "write_span writes a JSON span with all required fields",
+      "result": "pass",
+      "detail": "span fields: trace_id, stage, start_time, end_time, duration_ms, status, error"
+    },
+    {
+      "check": "saved spans have the required fields and cache hit/miss",
+      "result": "pass",
+      "detail": "468 spans, all have the required fields: True, cache_lookup spans have hit/miss: True"
+    },
+    {
+      "check": "trace examples: full miss path, hit path, failed trace",
+      "result": "pass",
+      "detail": "miss trace has all 9 stages: True, hit trace skips the agents: True, failed trace error at: final"
+    },
+    {
+      "check": "latency experiment: 50 cache-miss requests and the latency table",
+      "result": "pass",
+      "detail": "50 requests, all cache misses: True, table rows correct: True, dominant: Evaluation (73.9%)"
+    }
+  ]
+}

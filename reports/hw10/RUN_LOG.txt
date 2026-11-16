@@ -1870,3 +1870,25 @@ PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports
 10:36:32.449 [WRITER-A] SEND to s0932_drafts partition=0 offset=77 correlation_id=4425f7f6-382b-43ec-aeda-e167324b0d07
 10:36:32.450 [WRITER-A] draft=CVE-2023-25577 in Werkzeug is a **directory traversal vulnerability**. It allows an attacker to access files outside the intended directory structure by manipulating request paths. The vulnerability affects Werkzeug versions prior to 2.3.5. It enables unauthorized access to sensitive files, posing a risk of information disclosure. This type of vulnerability falls under **path traversal** or **directory traversal**, which is a subset of **injection** vulnerabilities. The issue was confirmed by cross-referencing with known Werkzeug vulnerabilities and its impact aligns with the described behavior.
 10:36:32.452 [WRITER-A] COMMIT partition=1 offset=32 (next offset to read: 33)
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw10> python .\verify_hw10.py
+PASS - Redis Stack responds and has vector search - Vector search is available
+PASS - dashboard has the three pages, @st.cache_data and coordination notes - pages found: True, @st.cache_data used: True, coordination_notes.md exists: True
+PASS - evaluation has all three scores and the saved Kafka messages - trace b9eed896: plan_quality_score = 4.0, writer_helpfulness_score = 5.0, final_helpfulness_score = 5.0, Kafka metadata saved: True
+PASS - 20 labeled cases and the judge validation statistics - cases: 20, all human labels 1-5: True, spearman = 0.03, mean absolute difference = 3.15, changed = 10.0%
+PASS - write_span writes a JSON span with all required fields - span fields: trace_id, stage, start_time, end_time, duration_ms, status, error
+PASS - saved spans have the required fields and cache hit/miss - 468 spans, all have the required fields: True, cache_lookup spans have hit/miss: True
+PASS - trace examples: full miss path, hit path, failed trace - miss trace has all 9 stages: True, hit trace skips the agents: True, failed trace error at: final
+PASS - latency experiment: 50 cache-miss requests and the latency table - 50 requests, all cache misses: True, table rows correct: True, dominant: Evaluation (73.9%)
+verification.json outputted
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw10> streamlit run .\dashboard.py
+2026-11-16 10:48:16.828 Uvicorn server started on :::8501
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://192.168.50.43:8501
+
+  Help agents write better Streamlit apps?
+  Install the official Streamlit skills by running streamlit skills in your terminal.
+
+  Stopping...
