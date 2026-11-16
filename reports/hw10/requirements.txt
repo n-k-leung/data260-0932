@@ -3,3 +3,7 @@ pandas
 aiokafka
 ollama
 deepeval
+scipy
+redis
+sentence-transformers
+numpy

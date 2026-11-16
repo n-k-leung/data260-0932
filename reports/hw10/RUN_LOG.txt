@@ -670,3 +670,81 @@ PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports
 00:57:37.608 Case 20: got the draft
 
 saved 20 cases in eval_cases.json
+(venv) PS C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw10> python .\validate_judge.py                                
+C:\Users\natal\Documents\masters\fall 26\data 260\github\data260-0932\reports\hw10\validate_judge.py:8: DeprecationWarning: 'LLMTestCaseParams' is deprecated and will be removed in a future release. Use 'SingleTurnParams' instead.
+  from deepeval.test_case import LLMTestCase, LLMTestCaseParams
+
+Judge run 1 of 3
+case-01: human 4, judge 5.0
+case-02: human 2, judge 5.0
+case-03: human 1, judge 5.0
+case-04: human 1, judge 5.0
+case-05: human 2, judge 5.0
+case-06: human 2, judge 4.0
+case-07: human 4, judge 5.0
+case-08: human 2, judge 5.0
+case-09: human 1, judge 5.0
+case-10: human 3, judge 5.0
+case-11: human 1, judge 5.0
+case-12: human 1, judge 5.0
+case-13: human 2, judge 5.0
+case-14: human 1, judge 5.0
+case-15: human 1, judge 3.0
+case-16: human 1, judge 5.0
+case-17: human 1, judge 5.0
+case-18: human 1, judge 5.0
+case-19: human 2, judge 5.0
+case-20: human 1, judge 5.0
+
+Judge run 2 of 3
+case-01: human 4, judge 5.0
+case-02: human 2, judge 5.0
+case-03: human 1, judge 5.0
+case-04: human 1, judge 5.0
+case-05: human 2, judge 5.0
+case-06: human 2, judge 5.0
+case-07: human 4, judge 5.0
+case-08: human 2, judge 5.0
+case-09: human 1, judge 5.0
+case-10: human 3, judge 5.0
+case-11: human 1, judge 5.0
+case-12: human 1, judge 5.0
+case-13: human 2, judge 5.0
+case-14: human 1, judge 5.0
+case-15: human 1, judge 3.0
+case-16: human 1, judge 5.0
+case-17: human 1, judge 5.0
+case-18: human 1, judge 4.0
+case-19: human 2, judge 5.0
+case-20: human 1, judge 5.0
+
+Judge run 3 of 3
+case-01: human 4, judge 5.0
+case-02: human 2, judge 5.0
+case-03: human 1, judge 5.0
+case-04: human 1, judge 5.0
+case-05: human 2, judge 5.0
+case-06: human 2, judge 5.0
+case-07: human 4, judge 5.0
+case-08: human 2, judge 5.0
+case-09: human 1, judge 5.0
+case-10: human 3, judge 5.0
+case-11: human 1, judge 5.0
+case-12: human 1, judge 5.0
+case-13: human 2, judge 5.0
+case-14: human 1, judge 5.0
+case-15: human 1, judge 3.0
+case-16: human 1, judge 5.0
+case-17: human 1, judge 5.0
+case-18: human 1, judge 4.0
+case-19: human 2, judge 5.0
+case-20: human 1, judge 5.0
+
+Judge vs human labels (run 1)
+Spearman rank correlation: 0.03
+Mean absolute difference: 3.15
+
+Repeatability (3 runs)
+Cases whose score changed: 2 of 20 (10.0%)
+Mean absolute change: 0.1
+Max absolute change: 1.0

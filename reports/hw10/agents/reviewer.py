@@ -1,17 +1,13 @@
-"""Reviewer: reads a draft from s0932_drafts and sends the approved answer to s0932_final."""
 import asyncio
-
 from aiokafka import AIOKafkaConsumer, AIOKafkaProducer
-
-from common import (DRAFTS_TOPIC, FINAL_TOPIC, KAFKA_BOOTSTRAP_SERVERS, ask_llm,
-                    from_bytes, log, to_bytes)
+from common import (DRAFTS_TOPIC, FINAL_TOPIC, KAFKA_BOOTSTRAP_SERVERS, ask_llm, from_bytes, log, to_bytes)
+from tracing import kafka_time, now, write_span
 
 SYSTEM_PROMPT = (
     "You are the Reviewer for an open source package vulnerability team. "
     "Check that the draft answers the question correctly and clearly. "
     "Reply with APPROVED or NEEDS_CHANGES on the first line, then one sentence explaining why."
 )
-
 
 async def main():
     consumer = AIOKafkaConsumer(
@@ -30,17 +26,18 @@ async def main():
             draft_message = from_bytes(msg.value)
             correlation_id = draft_message["correlation_id"]
             log(f"[REVIEWER] RECEIVE from {msg.topic} partition={msg.partition} offset={msg.offset} correlation_id={correlation_id}")
-
+            received = now()
+            write_span("reviewer", correlation_id, "drafts", kafka_time(msg), received)
             prompt = f"Question: {draft_message['question']}\n\nDraft:\n{draft_message['draft']}"
-            review = await ask_llm(SYSTEM_PROMPT, prompt)
-
-            # The first word of the review decides the status
+            try:
+                review = await ask_llm(SYSTEM_PROMPT, prompt)
+            except Exception as error:
+                write_span("reviewer", correlation_id, "reviewer", received, now(), status="error", error=repr(error))
+                raise
             if review.upper().startswith("APPROVED"):
                 status = "approved"
             else:
                 status = "needs_changes"
-
-            # Final JSON: same correlation_id, plus status and answer
             final_message = {
                 "correlation_id": correlation_id,
                 "status": status,
@@ -49,11 +46,11 @@ async def main():
             }
             metadata = await producer.send_and_wait(FINAL_TOPIC, to_bytes(final_message))
             log(f"[REVIEWER] SEND to {metadata.topic} partition={metadata.partition} offset={metadata.offset} correlation_id={correlation_id}")
+            write_span("reviewer", correlation_id, "reviewer", received, now())
             log(f"[REVIEWER] status={status} review={review}")
     finally:
         await consumer.stop()
         await producer.stop()
-
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -1,0 +1,13 @@
+{
+  "cases": 20,
+  "cases_used": 20,
+  "judge_failures": 0,
+  "spearman": 0.03,
+  "mean_absolute_difference": 3.15,
+  "cases_changed": 2,
+  "percent_changed": 10.0,
+  "mean_absolute_change": 0.1,
+  "max_absolute_change": 1.0,
+  "judge_settings": "qwen3:8b through Ollama, GEval Writer Helpfulness, 1-5 rubric, temperature 0, seed 932, 3 runs, same inputs",
+  "compared_with_humans": "judge run 1"
+}
