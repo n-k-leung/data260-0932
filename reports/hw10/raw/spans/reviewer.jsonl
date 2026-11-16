@@ -21,3 +21,8 @@
 {"trace_id": "79916a7a-37eb-4fde-b81b-499ba7eeaf4f", "stage": "drafts", "start_time": "2026-11-16T10:29:11.908000", "end_time": "2026-11-16T10:29:11.910738", "duration_ms": 2.7, "status": "ok", "error": null}
 {"trace_id": "79916a7a-37eb-4fde-b81b-499ba7eeaf4f", "stage": "reviewer", "start_time": "2026-11-16T10:29:11.910738", "end_time": "2026-11-16T10:29:12.513511", "duration_ms": 602.8, "status": "ok", "error": null}
 {"trace_id": "de59eee8-1a67-4a94-8e6e-01a15edea3ba", "stage": "drafts", "start_time": "2026-11-16T10:29:20.825000", "end_time": "2026-11-16T10:29:20.827230", "duration_ms": 2.2, "status": "ok", "error": null}
+{"trace_id": "de59eee8-1a67-4a94-8e6e-01a15edea3ba", "stage": "reviewer", "start_time": "2026-11-16T10:29:20.827230", "end_time": "2026-11-16T10:29:21.351743", "duration_ms": 524.5, "status": "ok", "error": null}
+{"trace_id": "756298a4-25b2-4a71-afe9-b03e520082f2", "stage": "drafts", "start_time": "2026-11-16T10:29:29.949000", "end_time": "2026-11-16T10:29:29.951967", "duration_ms": 3.0, "status": "ok", "error": null}
+{"trace_id": "756298a4-25b2-4a71-afe9-b03e520082f2", "stage": "reviewer", "start_time": "2026-11-16T10:29:29.951967", "end_time": "2026-11-16T10:29:30.524657", "duration_ms": 572.7, "status": "ok", "error": null}
+{"trace_id": "3e3f6e36-11cd-44a9-914f-d256ad15e235", "stage": "drafts", "start_time": "2026-11-16T10:29:38.979000", "end_time": "2026-11-16T10:29:38.981092", "duration_ms": 2.1, "status": "ok", "error": null}
+{"trace_id": "3e3f6e36-11cd-44a9-914f-d256ad15e235", "stage": "reviewer", "start_time": "2026-11-16T10:29:38.981092", "end_time": "2026-11-16T10:29:39.488902", "duration_ms": 507.8, "status": "ok", "error": null}
