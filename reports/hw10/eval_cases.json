@@ -1,0 +1,122 @@
+[
+  {
+    "case_id": "case-01",
+    "trace_id": "111ceafb-6a7a-4112-b20f-5e5c26a93ce8",
+    "question": "Which version of lodash fixes CVE-2021-23337, and what should our team do about it?",
+    "draft": "The version of lodash that fixes CVE-2021-23337 is **lodash@4.17.21**. Your team should check if any projects are using a version prior to 4.17.21. If so, update to the fixed version and test the codebase to ensure compatibility and functionality. Monitor for any breaking changes and document the update for future reference."
+  },
+  {
+    "case_id": "case-02",
+    "trace_id": "e86f05fe-da3a-49e1-a444-4982c4bde3b7",
+    "question": "What type of vulnerability is CVE-2019-10744 in lodash, and how do we fix it?",
+    "draft": "CVE-2019-10744 in lodash is an insecure deserialization vulnerability that allows attackers to execute arbitrary code by manipulating the `_.merge` function. The root cause is the unsafe handling of input data during object merging. The recommended fix is to upgrade to lodash version 4.17.12 or later. Developers should update their dependencies using package managers like npm or yarn to ensure the patched version is installed, mitigating the risk of exploitation."
+  },
+  {
+    "case_id": "case-03",
+    "trace_id": "b0494089-89ff-4d4a-800d-fa5615dde5a4",
+    "question": "How serious is CVE-2020-28500 in lodash, and which version fixes it?",
+    "draft": "CVE-2020-28500 in lodash has a CVSS score of 6.4, indicating a medium severity vulnerability. It allows an attacker to bypass the `_.isArray()` check, potentially leading to unexpected behavior in applications relying on array detection. The fix is included in lodash version 4.17.19. Users should upgrade to this version or later to mitigate the risk and ensure secure array handling."
+  },
+  {
+    "case_id": "case-04",
+    "trace_id": "de27137a-c213-4914-902c-a7fb01efe1fa",
+    "question": "Which version of requests fixes CVE-2018-18074?",
+    "draft": "CVE-2018-18074 affects the `requests` package by allowing SSRF (Server-Side Request Forgery) via the `allow_redirects` parameter. The vulnerability was fixed in `requests` version 2.19.1. This version includes a patch that prevents unauthorized redirects, mitigating the SSRF risk. To ensure protection, users should upgrade to `requests >= 2.19.1`."
+  },
+  {
+    "case_id": "case-05",
+    "trace_id": "daf4bd70-f99c-49f9-a2ef-79420eaa5af6",
+    "question": "What is CVE-2023-32681 in requests and how should we fix it?",
+    "draft": "CVE-2023-32681 affects the `requests` library, allowing potential information leakage via insecure handling of certain HTTP headers. It impacts versions 2.28.1 and earlier. The fix involves updating to version 2.28.2 or later. To resolve this, upgrade `requests` using `pip install --upgrade requests` or via your package manager. Always ensure dependencies are up to date to avoid similar vulnerabilities."
+  },
+  {
+    "case_id": "case-06",
+    "trace_id": "d25d1181-8be2-4e46-9fd4-5d75e898b7c6",
+    "question": "What should our team do about Log4Shell (CVE-2021-44228) in log4j-core?",
+    "draft": "Our team should first identify all instances of log4j-core in the codebase and dependencies. Next, apply the latest patches or update to a secure version of log4j-core to mitigate Log4Shell (CVE-2021-44228). Finally, conduct a security review to ensure the fix is effective and monitor systems for any signs of exploitation. This proactive approach minimizes risk and ensures the system remains secure."
+  },
+  {
+    "case_id": "case-07",
+    "trace_id": "842d2983-772a-4032-90ad-6ad2a6e6fe4a",
+    "question": "Which log4j-core version fixes CVE-2021-45046?",
+    "draft": "CVE-2021-45046 is a log4j vulnerability that allows remote code execution via JNDI lookups. The fix for this vulnerability was included in **log4j-core 2.16.0**, released on December 10, 2021. This version disables JNDI lookups by default and introduces a configuration option to re-enable them if needed. Users should upgrade to log4j-core 2.16.0 or later to mitigate the risk associated with CVE-2021-45046."
+  },
+  {
+    "case_id": "case-08",
+    "trace_id": "dba29e55-e859-42d2-82bf-2d70d1ced2a3",
+    "question": "What type of vulnerability is CVE-2021-3749 in axios, and which version fixes it?",
+    "draft": "CVE-2021-3749 in axios is a **regular expression denial of service (ReDoS)** vulnerability, where an attacker can trigger a long-running regex match, leading to application slowdown or crash. The vulnerability was fixed in **axios 1.6.2**, released on April 15, 2022. This version addresses the issue by improving the regex handling in the package. The fix is confirmed in the axios GitHub repository and security advisories."
+  },
+  {
+    "case_id": "case-09",
+    "trace_id": "b223b6d5-4de3-4b84-8ea2-794370b341b1",
+    "question": "How do we fix CVE-2022-25883 in the semver package?",
+    "draft": "To fix CVE-2022-25883 in the semver package, first confirm the affected version is 2.11.0. Update to version 2.11.1 or later, which includes the patch. Test the updated package in your environment to ensure the vulnerability is resolved and no new issues are introduced."
+  },
+  {
+    "case_id": "case-10",
+    "trace_id": "8479864d-9820-4c5d-b9df-14cac4113bcb",
+    "question": "What is CVE-2020-7598 in minimist and which version fixes it?",
+    "draft": "CVE-2020-7598 in minimist is a prototype pollution vulnerability that allows attackers to inject malicious properties into JavaScript objects, potentially leading to code execution. The vulnerability was introduced in minimist version 1.2.2 and fixed in version 1.2.3. The issue arises from improper handling of object prototypes during parsing. To mitigate the risk, users should upgrade to minimist version 1.2.3 or later."
+  },
+  {
+    "case_id": "case-11",
+    "trace_id": "806791da-40df-47fa-a621-caac911641b4",
+    "question": "Which version of jsonwebtoken fixes CVE-2022-23529?",
+    "draft": "CVE-2022-23529 is a vulnerability in jsonwebtoken related to insecure deserialization. The fix for this vulnerability was included in jsonwebtoken version **4.0.1**. This version addresses the issue by improving the handling of JWT token deserialization, preventing potential remote code execution. The project's security advisories confirm that version 4.0.1 is the recommended fix for this CVE. Users are advised to upgrade to this version or later to ensure security."
+  },
+  {
+    "case_id": "case-12",
+    "trace_id": "a1700167-3f2d-4432-83d7-540b6ea261e0",
+    "question": "What is CVE-2024-29041 in express and how do we fix it?",
+    "draft": "CVE-2024-29041 affects Express versions prior to 4.18.1, involving an insecure temporary file creation vulnerability. The recommended fix is to update to Express 4.18.1 or later. To resolve the issue, run `npm install express@latest` or use your package manager to upgrade. Ensure all dependencies are also updated to avoid similar vulnerabilities."
+  },
+  {
+    "case_id": "case-13",
+    "trace_id": "b2e690d2-2257-4cd9-9058-2e06b4edbfdb",
+    "question": "Which urllib3 version fixes CVE-2023-43804?",
+    "draft": "CVE-2023-43804 is addressed in urllib3 version 2.1.1. This version includes the necessary fix to resolve the vulnerability. To ensure your system is protected, update to urllib3 >=2.1.1 using your package manager, such as `pip install --upgrade urllib3`. Always verify the exact version with the official urllib3 documentation or security advisories for confirmation."
+  },
+  {
+    "case_id": "case-14",
+    "trace_id": "9af1af14-2ada-4a08-9f4a-98e6e52035d7",
+    "question": "What type of vulnerability is CVE-2024-22195 in Jinja2, and which version fixes it?",
+    "draft": "CVE-2024-22195 in Jinja2 is a **template injection vulnerability** that allows attackers to inject arbitrary code into templates, potentially leading to remote code execution. This vulnerability affects Jinja2 versions **2.11.3 and earlier**. The fix is included in **Jinja2 version 2.11.4**, which addresses the issue by properly sanitizing template inputs and preventing unauthorized template execution. Users are advised to upgrade to this version to mitigate the risk."
+  },
+  {
+    "case_id": "case-15",
+    "trace_id": "9a312380-1c61-4c49-90d2-354001115807",
+    "question": "How should we handle CVE-2020-14343 in PyYAML?",
+    "draft": "CVE-2020-14343 affects PyYAML via its underlying C library, libyaml. PyYAML 5.4.1 and earlier are vulnerable. The fix involves updating to a patched version of libyaml. PyYAML maintainers should release a patched version, update documentation, and communicate the fix. Users should upgrade to PyYAML 5.4.1 or later. If unavailable, use a fork with the patch or disable unsafe loader features. Monitor PyYAML's release history for confirmed fixes."
+  },
+  {
+    "case_id": "case-16",
+    "trace_id": "850c52be-f004-4b01-895d-78f704927b50",
+    "question": "Which version of Pillow fixes CVE-2023-50447?",
+    "draft": "The CVE-2023-50447 vulnerability in Pillow relates to an insecure temporary file handling issue. Pillow version 10.1.0 addresses this vulnerability by fixing the insecure temporary file creation. The Pillow team recommends upgrading to version 10.1.0 or later to resolve this issue. This version includes the necessary security patch to prevent potential malicious file overwrites. Users should ensure they are using a version equal to or greater than 10.1.0 to mitigate the risk associated with CVE-2023-50447."
+  },
+  {
+    "case_id": "case-17",
+    "trace_id": "e1976ea9-8e98-44df-b117-991b7a380a5a",
+    "question": "What is CVE-2022-0235 in node-fetch and which version fixes it?",
+    "draft": "CVE-2022-0235 in node-fetch is a denial-of-service (DoS) vulnerability caused by an infinite loop in the `fetch` function when handling certain malformed HTTP responses. It affects node-fetch versions 2.6.1 and earlier. The vulnerability was fixed in version 2.6.2. To mitigate the issue, update node-fetch to version 2.6.2 or later."
+  },
+  {
+    "case_id": "case-18",
+    "trace_id": "46224deb-fa79-4c80-8978-798f00845e03",
+    "question": "What type of vulnerability is CVE-2021-32803 in the npm tar package?",
+    "draft": "CVE-2021-32803 is a **buffer overflow vulnerability** in the npm tar package. It arises from improper handling of large input data during the parsing of tar archives, allowing an attacker to overflow a buffer. This could lead to **code execution** if exploited. The vulnerability affects the ability of the tar package to safely process tar files, potentially enabling unauthorized actions on the system. It poses a **security risk** in environments where the package is used to handle untrusted tar archives."
+  },
+  {
+    "case_id": "case-19",
+    "trace_id": "744910cb-d6cc-4a6c-bd03-4e7e92497eb7",
+    "question": "Which version of moment fixes CVE-2022-24785?",
+    "draft": "CVE-2022-24785 affects moment.js versions prior to 2.29.4, as it allows bypassing the tz database validation. The vulnerability is fixed in **moment 2.29.4** and later versions. Users should upgrade to at least version 2.29.4 to resolve this issue."
+  },
+  {
+    "case_id": "case-20",
+    "trace_id": "304b330a-0f54-4595-a218-e77056a7f69e",
+    "question": "What is CVE-2022-0155 in follow-redirects and how do we fix it?",
+    "draft": "CVE-2022-0155 in `follow-redirects` is a vulnerability allowing attackers to bypass intended redirects via crafted URLs, affecting versions before 2.0.0. The fix involves updating to version 2.0.0 or later. To resolve this, update your project's dependency configuration (e.g., `package.json`) to specify `follow-redirects@^2.0.0`, then run `npm install` or `yarn install` to apply the update."
+  }
+]
